@@ -2,7 +2,7 @@
 
 namespace Authing;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// require_once __DIR__ . '/../vendor/autoload.php';
 
 use DateTime;
 use stdClass;
@@ -84,7 +84,7 @@ PUBLICKKEY;
         if (is_null($this->userPoolId) && is_null($this->appId)) {
             throw new InvalidArgumentException("Invalid userPoolIdOrFunc");
         }
-        $this->naiveHttpClient = new Client(['base_uri' => $this->options->host ?? $this->host]);
+        $this->naiveHttpClient = new Client(['base_uri' => isset($this->options->host) ? $this->options->host : $this->host]);
     }
 
     /**
@@ -126,7 +126,6 @@ PUBLICKKEY;
         $tokenInfo = Utils::getTokenPlayloadData($this->accessToken);
         $exp = $tokenInfo->exp;
         $this->_accessTokenExpriredAt = $exp;
-        echo $this->_accessTokenExpriredAt;
         return $res;
     }
 
@@ -210,7 +209,7 @@ PUBLICKKEY;
     {
         $result = $this->send($this->host . $path, null, 'GET');
         $res = json_decode(json_encode($result));
-        return $res->data ?? $res;
+        return isset($res->data) ? $res->data : $res;
         // return $this->arrayToObject($result);
     }
 
@@ -229,7 +228,7 @@ PUBLICKKEY;
         }
         $result = $this->send($path, $this->objectToArray($data));
         $res = json_decode(json_encode($result));
-        return $res->data ?? $res;
+        return isset($res->data) ? $res->data : $res;
         // return json_decode(json_encode($result));
         // return $this->arrayToObject($result);
     }
@@ -238,7 +237,7 @@ PUBLICKKEY;
     {
         $result = $this->send($this->host . $path, $data, 'PATCH');
         $res = json_decode(json_encode($result));
-        return $res->data ?? $res;
+        return isset($res->data) ? $res->data : $res;
         // return $this->arrayToObject($result);
     }
 
@@ -246,7 +245,7 @@ PUBLICKKEY;
     {
         $result = $this->send($this->host . $path, $data, 'PUT');
         $res = json_decode(json_encode($result));
-        return $res->data ?? $res;
+        return isset($res->data) ? $res->data : $res;
         // return $this->arrayToObject($result);
     }
 
@@ -259,7 +258,7 @@ PUBLICKKEY;
     {
         $result = $this->send($this->host . $path, null, 'DELETE');
         $res = json_decode(json_encode($result));
-        return $res->data ?? $res;
+        return isset($res->data) ? $res->data : $res;
         // return $this->arrayToObject($result);
     }
 
@@ -363,7 +362,7 @@ PUBLICKKEY;
     {
         $token = $this->getToken();
         // 如果是通过密钥刷新
-        $this->accessToken = $token ?? $this->accessToken;
+        $this->accessToken = isset($token) ? $token : $this->accessToken;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -377,7 +376,7 @@ PUBLICKKEY;
         // set header
         $h = [
             "Authorization: Bearer " . ($this->mfaToken ? $this->mfaToken :
-                $this->options->accessToken ?? $this->accessToken ??  null),
+                (isset($this->options->accessToken) ? $this->options->accessToken : (isset($this->accessToken) ? $this->accessToken : null))),
             "Content-type: application/json",
             "x-authing-userpool-id: $this->userPoolId",
             "x-authing-app-id: $this->appId",

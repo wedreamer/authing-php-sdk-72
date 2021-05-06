@@ -13,7 +13,10 @@ class StatisticsManagementClient
      */
     private $client;
 
-    public function __construct(ManagementClient $client)
+    /**
+     * @param \Authing\Mgmt\ManagementClient $client
+     */
+    public function __construct($client)
     {
         $this->client = $client;
     }
@@ -36,24 +39,24 @@ class StatisticsManagementClient
             $requestParam->operator_arn = $options->userIds;
         }
 
-        $requestParam->page = $options->page ?? 1;
-        $requestParam->limit = $options->limit ?? 10;
+        $requestParam->page = isset($options->page) ? $options->page : 1;
+        $requestParam->limit = isset($options->limit) ? $options->limit : 10;
         $params = http_build_query($requestParam);
         $data = $this->client->httpGet("/api/v2/analysis/user-action?$params");
         list($list, $totalCount) = (array)$data->data;
         array_map(function ($item) {
             return (object) [
                 'userpoolId' => $item->userpool_id,
-                'userId' => ($item->user ?? null) && $item->user->id,
-                'username' => ($item->user ?? null) && $item->user->displayName,
-                'cityName' => ($item->geoip ?? null) && $item->geoip->city_name,
-                'regionName' => ($item->geoip ?? null) && $item->geoip->region_name,
-                'clientIp' => ($item->geoip ?? null) && $item->geoip->ip,
+                'userId' => (isset($item->user) ? $item->user : null) && $item->user->id,
+                'username' => (isset($item->user) ? $item->user : null) && $item->user->displayName,
+                'cityName' => (isset($item->geoip) ? $item->geoip : null) && $item->geoip->city_name,
+                'regionName' => (isset($item->geoip) ? $item->geoip : null) && $item->geoip->region_name,
+                'clientIp' => (isset($item->geoip) ? $item->geoip : null) && $item->geoip->ip,
                 'operationDesc' => $item->operation_desc,
                 'operationName' => $item->operation_name,
                 'timestamp' => $item->timestamp,
                 'appId' => $item->app_id,
-                'appName' => $item->appName ?? null,
+                'appName' => isset($item->appName) ? $item->appName : null,
             ];
         }, $list);
         return (object)[
@@ -76,8 +79,8 @@ class StatisticsManagementClient
             $requestParam->operator_arn = $options->operatorArns;
         }
 
-        $requestParam->page = $options->page ?? 1;
-        $requestParam->limit = $options->limit ?? 10;
+        $requestParam->page = isset($options->page) ? $options->page : 1;
+        $requestParam->limit = isset($options->limit) ? $options->limit : 10;
         $params = http_build_query($requestParam);
         $data = $this->client->httpGet("/api/v2/analysis/user-action?$params");
 
@@ -85,17 +88,17 @@ class StatisticsManagementClient
         array_map(function ($item) {
             return (object) [
                 'userpoolId' => $item->userpool_id,
-                'operatorType' => $item->operator_type ?? null,
-                'userId' => ($item->user ?? null) && $item->user->id,
-                'username' => ($item->user ?? null) && $item->user->displayName,
-                'cityName' => ($item->geoip ?? null) && $item->geoip->city_name,
-                'regionName' => ($item->geoip ?? null) && $item->geoip->region_name,
-                'clientIp' => ($item->geoip ?? null) && $item->geoip->ip,
+                'operatorType' => isset($item->operator_type) ? $item->operator_type : null,
+                'userId' => (isset($item->user) ? $item->user : null) && $item->user->id,
+                'username' => (isset($item->user) ? $item->user : null) && $item->user->displayName,
+                'cityName' => (isset($item->geoip) ? $item->geoip : null) && $item->geoip->city_name,
+                'regionName' => (isset($item->geoip) ? $item->geoip : null) && $item->geoip->region_name,
+                'clientIp' => (isset($item->geoip) ? $item->geoip : null) && $item->geoip->ip,
                 'operationDesc' => $item->operation_desc,
                 'operationName' => $item->operation_name,
                 'timestamp' => $item->timestamp,
                 'appId' => $item->app_id,
-                'appName' => $item->appName ?? null,
+                'appName' => isset($item->appName) ? $item->appName : null,
             ];
         }, $list);
         return (object)[

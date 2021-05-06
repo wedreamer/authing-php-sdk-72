@@ -224,7 +224,10 @@ class OrgManagementClient
 
     }
 
-    public function getNodeById(string $nodeId)
+    /**
+     * @param string $nodeId
+     */
+    public function getNodeById($nodeId)
     {
         $param = new NodeByIdParam($nodeId);
         $node = $this->client->request($param->createRequest());
@@ -237,22 +240,33 @@ class OrgManagementClient
         return $data;
     }
 
-    public function setMainDepartment(string $userId, string $departmentId)
+    /**
+     * @param string $userId
+     * @param string $departmentId
+     */
+    public function setMainDepartment($userId, $departmentId)
     {
         $param = (new SetMainDepartmentParam($userId))->withDepartmentId($departmentId);
         $data = $this->client->request($param->createRequest())->setMainDepartment;
         return $data;
     }
 
-    public function exportByOrgId(string $orgId)
+    /**
+     * @param string $orgId
+     */
+    public function exportByOrgId($orgId)
     {
         $data = $this->client->httpGet("/api/v2/orgs/export?org_id=$orgId");
         return $data;
     }
 
-    public function listAuthorizedResourcesByNodeId(string $nodeId, string $namespace, array $options = [])
+    /**
+     * @param string $nodeId
+     * @param string $namespace
+     */
+    public function listAuthorizedResourcesByNodeId($nodeId, $namespace, array $options = [])
     {
-        $resourceType = $options['resourceType'] ?? new stdClass;
+        $resourceType = isset($options['resourceType']) ? $options['resourceType'] : new stdClass;
         $param = (new ListNodeByIdAuthorizedResourcesParam($nodeId))->withNamespace($namespace)->withResourceType($resourceType);
         $node = $this->client->request($param->createRequest())->nodeById;
         if (!$node) {
@@ -268,9 +282,14 @@ class OrgManagementClient
         return $_;
     }
 
-    public function listAuthorizedResourcesByNodeCode(string $orgId, string $code, string $namespace, array $options = [])
+    /**
+     * @param string $orgId
+     * @param string $code
+     * @param string $namespace
+     */
+    public function listAuthorizedResourcesByNodeCode($orgId, $code, $namespace, array $options = [])
     {
-        $resourceType = $options['resourceType'] ?? new stdClass;
+        $resourceType = isset($options['resourceType']) ? $options['resourceType'] : new stdClass;
         $param = (new ListNodeByCodeAuthorizedResourcesParam($orgId, $code))->withNamespace($namespace)->withResourceType($resourceType);
         $node = $this->client->request($param->createRequest())->nodeById;
         if (!$node) {

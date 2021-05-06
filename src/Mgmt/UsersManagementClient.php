@@ -177,7 +177,7 @@ class UsersManagementClient
      */
     public function batch(array $identifiers, array $options = [])
     {
-        $queryField = $options['queryField'] ?? 'id';
+        $queryField = isset($options['queryField']) ? $options['queryField'] : 'id';
         $data = new stdClass();
         $data->ids = $identifiers;
         $data->type = $queryField;
@@ -281,7 +281,7 @@ class UsersManagementClient
      * @return PaginatedRoles
      * @throws Exception
      */
-    public function listRoles(string $userId, string $namespace = '')
+    public function listRoles($userId, $namespace = '')
     {
         $param = (new GetUserRolesParam($userId))->withNamespace($namespace);
         return $this->client->request($param->createRequest())->roles;
@@ -416,7 +416,10 @@ class UsersManagementClient
         return $res;
     }
 
-    public function setUdfValue(string $userId, array $data)
+    /**
+     * @param string $userId
+     */
+    public function setUdfValue($userId, array $data)
     {
         if (count($data) === 0) {
             throw new Error('empty udf value list');
@@ -451,20 +454,31 @@ class UsersManagementClient
         return $res;
     }
 
-    public function removeUdfValue(string $userId, string $key)
+    /**
+     * @param string $userId
+     * @param string $key
+     */
+    public function removeUdfValue($userId, $key)
     {
         $param = new RemoveUdvParam("User", $userId, $key);
         $res = $this->client->request($param->createRequest());
         return true;
     }
 
-    public function listOrgs(string $userId)
+    /**
+     * @param string $userId
+     */
+    public function listOrgs($userId)
     {
         $res = $this->client->httpGet('/api/v2/users/' . $userId . '/orgs');
         return $res;
     }
 
-    public function listAuthorizedResources(string $userId, string $namespace, $obj = [])
+    /**
+     * @param string $userId
+     * @param string $namespace
+     */
+    public function listAuthorizedResources($userId, $namespace, $obj = [])
     {
         $resourceType = null;
         if (count($obj) > 0) {
@@ -484,26 +498,36 @@ class UsersManagementClient
     {
         // $username, $email, $phone, $externalId
         extract($options, EXTR_OVERWRITE);
-        $userParam = (new FindUserParam())->withEmail($email ?? "")->withPhone($phone ?? "")->withUsername($username ?? "")->withExternalId($externalId ?? "");
+        $userParam = (new FindUserParam())->withEmail(isset($email) ? $email : "")->withPhone(isset($phone) ? $phone : "")->withUsername(isset($username) ? $username : "")->withExternalId(isset($externalId) ? $externalId : "");
         $res = $this->client->request($userParam->createRequest());
         return $res;
     }
 
-    public function listArchivedUsers(int $page = 1, int $limit = 10)
+    /**
+     * @param int $page
+     * @param int $limit
+     */
+    public function listArchivedUsers($page = 1, $limit = 10)
     {
         $param = (new ArchivedUsersParam())->withLimit($limit)->withPage($page);
         $res = $this->client->request($param->createRequest());
         return $res;
     }
 
-    public function listDepartment(string $userId)
+    /**
+     * @param string $userId
+     */
+    public function listDepartment($userId)
     {
         $param = (new GetUserDepartmentsParam($userId));
         $res = $this->client->request($param->createRequest());
         return $res;
     }
 
-    public function getUdfValue(string $userId)
+    /**
+     * @param string $userId
+     */
+    public function getUdfValue($userId)
     {
         $param = new UdvParam('USER', $userId);
         $res = $this->client->request($param->createRequest());
@@ -529,8 +553,8 @@ class UsersManagementClient
     {
         $api = '/api/v2/analysis/user-action';
         $param = http_build_query([
-            'page' => $options['page'] ?? 1,
-            'limit' => $options['limit'] ?? 10,
+            'page' => isset($options['page']) ? $options['page'] : 1,
+            'limit' => isset($options['limit']) ? $options['limit'] : 10,
             'clientip' => $options['clientip'],
             'operation_name' => $options['operationName'],
             'operator_arn' => $options['operatoArn'],
@@ -539,7 +563,12 @@ class UsersManagementClient
         return $data;
     }
 
-    public function hasRole(string $userId, string $roleCode, string $namespace)
+    /**
+     * @param string $userId
+     * @param string $roleCode
+     * @param string $namespace
+     */
+    public function hasRole($userId, $roleCode, $namespace)
     {
         $roleList = $this->listRoles($userId, $namespace);
         if ($roleList->totalCount < 1) {

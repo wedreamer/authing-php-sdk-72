@@ -154,7 +154,11 @@ class RolesManagementClient
         return $this->client->request($param->createRequest());
     }
 
-    public function findByCode(string $code, string $namespace = '')
+    /**
+     * @param string $code
+     * @param string $namespace
+     */
+    public function findByCode($code, $namespace = '')
     {
         $param = (new RoleParam($code))->withNamespace($namespace);
         return $this->client->request($param->createRequest());
@@ -303,7 +307,10 @@ class RolesManagementClient
         return formatAuthorizedResources($data);
     }
 
-    public function getUdfValue(string $roleId)
+    /**
+     * @param string $roleId
+     */
+    public function getUdfValue($roleId)
     {
         $param = (new UdvParam('ROLE', $roleId));
         $data = $this->client->request($param->createRequest());
@@ -311,7 +318,11 @@ class RolesManagementClient
         return convertUdvToKeyValuePair($list);
     }
 
-    public function getSpecificUdfValue(string $roleId, string $udfKey)
+    /**
+     * @param string $roleId
+     * @param string $udfKey
+     */
+    public function getSpecificUdfValue($roleId, $udfKey)
     {
         $param = new UdvParam(UDFTargetType::ROLE, $roleId);
         $data = $this->client->request($param->createRequest())->udv;
@@ -347,7 +358,10 @@ class RolesManagementClient
         return $ret;
     }
 
-    public function setUdfValue(string $roleId, array $data)
+    /**
+     * @param string $roleId
+     */
+    public function setUdfValue($roleId, array $data)
     {
         if (count($data) === 0) {
             throw new Error('empty udf value list');
@@ -375,7 +389,11 @@ class RolesManagementClient
         $this->client->request($param->createRequest());
     }
 
-    public function removeUdfValue(string $roleId, string $key)
+    /**
+     * @param string $roleId
+     * @param string $key
+     */
+    public function removeUdfValue($roleId, $key)
     {
         $param = new RemoveUdvParam(UDFTargetType::ROLE, $roleId, $key);
         $this->client->request($param->createRequest());

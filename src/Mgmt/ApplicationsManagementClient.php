@@ -34,7 +34,10 @@ class ApplicationsManagementClient
      */
     private $agreements;
 
-    public function __construct(ManagementClient $client)
+    /**
+     * @param \Authing\Mgmt\ManagementClient $client
+     */
+    public function __construct($client)
     {
         $this->client = $client;
         $this->acl = new AclManagementClient($client);
@@ -44,13 +47,16 @@ class ApplicationsManagementClient
 
     public function list(array $params = [])
     {
-        $page = $params['page'] ?? 1;
-        $limit = $params['limit'] ?? 10;
+        $page = isset($params['page']) ? $params['page'] : 1;
+        $limit = isset($params['limit']) ? $params['limit'] : 10;
         $data = $this->client->httpGet("/api/v2/applications?page=$page&limit=$limit");
         return $data;
     }
 
-    public function findById(string $id)
+    /**
+     * @param string $id
+     */
+    public function findById($id)
     {
         $data = $this->client->httpGet("/api/v2/applications/$id");
         return $data;
@@ -62,19 +68,30 @@ class ApplicationsManagementClient
         return $res;
     }
 
-    public function delete(string $appId)
+    /**
+     * @param string $appId
+     */
+    public function delete($appId)
     {
         $this->client->httpDelete("/api/v2/applications/$appId");
         return true;
     }
 
-    public function activeUsers(string $appId, int $page = 1, int $limit = 10)
+    /**
+     * @param string $appId
+     * @param int $page
+     * @param int $limit
+     */
+    public function activeUsers($appId, $page = 1, $limit = 10)
     {
         $res = $this->client->httpGet("/api/v2/applications/$appId/active-users?page=$page&limit=$limit");
         return $res;
     }
 
-    public function refreshApplicationSecret(string $appId)
+    /**
+     * @param string $appId
+     */
+    public function refreshApplicationSecret($appId)
     {
         $res = $this->client->httpPatch("/api/v2/application/$appId/refresh-secret");
         return $res;
@@ -92,13 +109,20 @@ class ApplicationsManagementClient
         return $this->acl->createResource(...$args);
     }
 
-    public function updateResource(string $code, array $options)
+    /**
+     * @param string $code
+     */
+    public function updateResource($code, array $options)
     {
         $args = func_get_args();
         return $this->acl->updateResource(...$args);
     }
 
-    public function deleteResource(string $code, string $namespaceCode)
+    /**
+     * @param string $code
+     * @param string $namespaceCode
+     */
+    public function deleteResource($code, $namespaceCode)
     {
         $args = func_get_args();
         return $this->acl->deleteResource(...$args);
@@ -200,31 +224,48 @@ class ApplicationsManagementClient
         return $this->roles->listAuthorizedResources(...$args);
     }
 
-    public function listAgreement(string $appId)
+    /**
+     * @param string $appId
+     */
+    public function listAgreement($appId)
     {
         $args = func_get_args();
         return $this->agreements->list(...$args);
     }
 
-    public function createAgreement(string $appId, array $agreement)
+    /**
+     * @param string $appId
+     */
+    public function createAgreement($appId, array $agreement)
     {
         $args = func_get_args();
         return $this->agreements->create(...$args);
     }
 
-    public function deleteAgreement(string $appId, int $agreementId)
+    /**
+     * @param string $appId
+     * @param int $agreementId
+     */
+    public function deleteAgreement($appId, $agreementId)
     {
         $args = func_get_args();
         return $this->agreements->delete(...$args);
     }
 
-    public function modifyAgreement(string $appId, int $agreementId, array $updates)
+    /**
+     * @param string $appId
+     * @param int $agreementId
+     */
+    public function modifyAgreement($appId, $agreementId, array $updates)
     {
         $args = func_get_args();
         return $this->agreements->modify(...$args);
     }
 
-    public function sortAgreement(string $appId, array $order)
+    /**
+     * @param string $appId
+     */
+    public function sortAgreement($appId, array $order)
     {
          $args = func_get_args();
         return $this->agreements->sort(...$args);

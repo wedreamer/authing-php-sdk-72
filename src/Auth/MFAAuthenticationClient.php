@@ -97,7 +97,10 @@ class MFAAuthenticationClient
         return $user;
     }
 
-    public function assosicateMfaAuthenticator(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function assosicateMfaAuthenticator($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -109,7 +112,10 @@ class MFAAuthenticationClient
         }
     }
 
-    public function verifyTotpMfa(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function verifyTotpMfa($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -128,7 +134,10 @@ class MFAAuthenticationClient
         }
     }
 
-    public function getMfaAuthenticators(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function getMfaAuthenticators($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -149,7 +158,10 @@ class MFAAuthenticationClient
         return $resData;
     }
 
-    public function confirmAssosicateMfaAuthenticator(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function confirmAssosicateMfaAuthenticator($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -170,7 +182,10 @@ class MFAAuthenticationClient
         }
     }
 
-    public function verifyAppSmsMfa(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function verifyAppSmsMfa($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -191,7 +206,10 @@ class MFAAuthenticationClient
         }
     }
 
-    public function verifyAppEmailMfa(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function verifyAppEmailMfa($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -212,7 +230,10 @@ class MFAAuthenticationClient
         }
     }
 
-    public function phoneOrEmailBindable(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function phoneOrEmailBindable($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -233,7 +254,10 @@ class MFAAuthenticationClient
         }
     }
 
-    public function verifyTotpRecoveryCode(Callback $cb)
+    /**
+     * @param \PHPUnit\Framework\Constraint\Callback $cb
+     */
+    public function verifyTotpRecoveryCode($cb)
     {
         $_ = new stdClass;
         $cb($_);
@@ -252,7 +276,11 @@ class MFAAuthenticationClient
         }
     }
 
-    public function verifyFaceMfa(string $photo, string $mfaToken)
+    /**
+     * @param string $photo
+     * @param string $mfaToken
+     */
+    public function verifyFaceMfa($photo, $mfaToken)
     {
         $api = '/api/v2/mfa/face/verify';
         $req = new Request('POST', $api, [
@@ -273,7 +301,10 @@ class MFAAuthenticationClient
         
     }
 
-    public function associateFaceByLocalFile(string $mfaToken)
+    /**
+     * @param string $mfaToken
+     */
+    public function associateFaceByLocalFile($mfaToken)
     {
         
     }
@@ -285,7 +316,7 @@ class MFAAuthenticationClient
         $req = new Request('POST', $api, [
             'body' => (object) [
                 'photoA' => $photoA,
-                'photoB' => $photoB ?? $photoA,
+                'photoB' => isset($photoB) ? $photoB : $photoA,
                 'isExternal' => true,
             ],
             'headers' =>

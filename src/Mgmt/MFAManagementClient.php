@@ -16,18 +16,25 @@ class MFAManagementClient
      * MFAManagementClient constructor.
      * @param $client ManagementClient
      */
-    public function __construct(ManagementClient $client)
+    public function __construct($client)
     {
         $this->client = $client;
     }
 
-    public function getStatus(string $userId)
+    /**
+     * @param string $userId
+     */
+    public function getStatus($userId)
     {
         $data = $this->client->httpGet("/api/v2/users/$userId/mfa-bound");
         return $data;
     }
 
-    public function unAssociateMfa(string $userId, string $type)
+    /**
+     * @param string $userId
+     * @param string $type
+     */
+    public function unAssociateMfa($userId, $type)
     {
         $data = $this->client->httpDelete("/api/v2/users/$userId/mfa-bound?type=$type");
         return true;

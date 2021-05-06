@@ -14,18 +14,27 @@ class AgreementManagementClient {
      */
     private $client;
 
-    public function __construct(ManagementClient $client)
+    /**
+     * @param \Authing\Mgmt\ManagementClient $client
+     */
+    public function __construct($client)
     {
         $this->client = $client;
     }
 
-    public function list(string $appId)
+    /**
+     * @param string $appId
+     */
+    public function list($appId)
     {
         $data = $this->client->httpGet("/api/v2/applications/$appId/agreements");
         return $data;
     }
 
-    public function create(string $appId, array $agreement)
+    /**
+     * @param string $appId
+     */
+    public function create($appId, array $agreement)
     {
         $data = [
             'lang' => 'zh-CN',
@@ -38,19 +47,30 @@ class AgreementManagementClient {
         return $res;
     }
 
-    public function delete(string $appId, int $agreementId)
+    /**
+     * @param string $appId
+     * @param int $agreementId
+     */
+    public function delete($appId, $agreementId)
     {
         $this->client->httpDelete("api/v2/applications/$appId/agreements/$agreementId");
         return true;
     }
 
-    public function modify(string $appId, int $agreementId, array $updates)
+    /**
+     * @param string $appId
+     * @param int $agreementId
+     */
+    public function modify($appId, $agreementId, array $updates)
     {
         $data = $this->client->httpPut("/api/v2/applications/$appId/agreements/$agreementId", $updates);
         return $data;
     }
 
-    public function sort(string $appId, array $order)
+    /**
+     * @param string $appId
+     */
+    public function sort($appId, array $order)
     {
         $this->client->httpPost("/api/v2/applications/$appId/agreements/sort", [
             'ids' => $order

@@ -77,7 +77,11 @@ class UdfManagementClient
         return $this->client->request($param->createRequest());
     }
 
-    public function listUdv(string $targetType, string $targetId)
+    /**
+     * @param string $targetType
+     * @param string $targetId
+     */
+    public function listUdv($targetType, $targetId)
     {
         $param = new UdvParam($targetType, $targetId);
         $res = $this->client->request($param->createRequest());
@@ -87,7 +91,11 @@ class UdfManagementClient
         return [];
     }
 
-    public function setUdvBatch(string $targetType, string $targetId, array $udvList)
+    /**
+     * @param string $targetType
+     * @param string $targetId
+     */
+    public function setUdvBatch($targetType, $targetId, array $udvList)
     {
         $data = array_map(function($item) {
             return (object)[

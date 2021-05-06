@@ -14,7 +14,10 @@ class NamespaceManagementClient {
      */
     private $client;
 
-    public function __construct(ManagementClient $client)
+    /**
+     * @param \Authing\Mgmt\ManagementClient $client
+     */
+    public function __construct($client)
     {
         $this->client = $client;
         $this->options = $client->options;
@@ -23,14 +26,19 @@ class NamespaceManagementClient {
     public function list(array $params = [])
     {
         $userPoolId = $this->client->options->userPoolId;
-        $page = $params['page'] ?? 1;
-        $limit = $params['limit'] ?? 10;
+        $page = isset($params['page']) ? $params['page'] : 1;
+        $limit = isset($params['limit']) ? $params['limit'] : 10;
         $data = $this->client->httpGet("/api/v2/resource-namespace/$userPoolId/?page=$page&limit=$limit");
         return $data;
     }
 
 
-    public function create(string $code, string $name, string $description = "")
+    /**
+     * @param string $code
+     * @param string $name
+     * @param string $description
+     */
+    public function create($code, $name, $description = "")
     {
         $res = $this->client->httpPost("/api/v2/resource-namespace/{$this->client->options->userPoolId}", (object)[
             'name' => $name,
@@ -40,13 +48,19 @@ class NamespaceManagementClient {
         return $res;
     }
 
-    public function delete(string $code)
+    /**
+     * @param string $code
+     */
+    public function delete($code)
     {
         $this->client->httpDelete("/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/$code");
         return true;
     }
 
-    public function update(string $code, array $updates)
+    /**
+     * @param string $code
+     */
+    public function update($code, array $updates)
     {
         $data = $this->client->httpPut("/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/{$code}", (object)$updates);
         return $data;
