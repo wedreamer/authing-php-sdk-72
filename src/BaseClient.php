@@ -414,7 +414,9 @@ PUBLICKKEY;
 
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 3000);
         curl_setopt($ch, CURLOPT_TIMEOUT_MS, $time);
-
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        
         $response = curl_exec($ch);
 
         if (curl_errno($ch) === 0) {

@@ -49,25 +49,6 @@ use Error;
 use Exception;
 use stdClass;
 
-function formatAuthorizedResources($obj)
-{
-    $authorizedResources = $obj->authorizedResources;
-    $list = $authorizedResources->list;
-    $total = $authorizedResources->totalCount;
-    array_map(function ($_) {
-        foreach ($_ as $key => $value) {
-            if (!$_->$key) {
-                unset($_->$key);
-            }
-        }
-        return $_;
-    }, (array) $list);
-    $res = new stdClass;
-    $res->list = $list;
-    $res->totalCount = $total;
-    return $res;
-}
-
 class UsersManagementClient
 {
     /**
@@ -487,7 +468,7 @@ class UsersManagementClient
         $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace)->withResourceType($resourceType);
         $resUser = $this->client->request($param->createRequest());
         if ($resUser) {
-            $res = formatAuthorizedResources($resUser);
+            $res = Utils::formatAuthorizedResources($resUser);
             return $res;
         } else {
             throw new Exception("用户不存在");

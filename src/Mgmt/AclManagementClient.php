@@ -1,6 +1,6 @@
 <?php
 
-namespace Authing\Mgmt\Acl;
+namespace Authing\Mgmt;
 
 use Authing\Types\AllowParam;
 use Authing\Types\AuthorizedResourcesParam;
@@ -14,25 +14,6 @@ use Authing\Mgmt\ManagementClient;
 use Error;
 use Exception;
 use stdClass;
-
-function formatAuthorizedResources($obj)
-{
-    // $authorizedResources = $obj->authorizedResources;
-    $list = $obj->list;
-    $total = $obj->totalCount;
-    array_map(function ($_) {
-        foreach ($_ as $key => $value) {
-            if (!$_->$key) {
-                unset($_->$key);
-            }
-        }
-        return $_;
-    }, (array) $list);
-    $res = new stdClass;
-    $res->list = $list;
-    $res->totalCount = $total;
-    return $res;
-}
 
 /**
  * @param int $randomLenth
@@ -110,7 +91,7 @@ class AclManagementClient
             $resourceType = $ops['resourceType'];
         }
         $param = (new AuthorizedResourcesParam())->withTargetType($targetType)->withTargetIdentifier($targetIdentifier)->withNamespace($namespace)->withResourceType($resourceType);
-        $data = formatAuthorizedResources($this->client->request($param->createRequest()));
+        $data = Utils::formatAuthorizedResources($this->client->request($param->createRequest()));
         return $data;
     }
 

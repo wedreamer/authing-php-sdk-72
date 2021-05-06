@@ -80,4 +80,23 @@ class Utils
         }
         return $n;
     }
+
+    public static function formatAuthorizedResources($obj)
+    {
+        // $authorizedResources = $obj->authorizedResources;
+        $list = $obj->list;
+        $total = $obj->totalCount;
+        array_map(function ($_) {
+            foreach ($_ as $key => $value) {
+                if (!$_->$key) {
+                    unset($_->$key);
+                }
+            }
+            return $_;
+        }, (array) $list);
+        $res = new stdClass;
+        $res->list = $list;
+        $res->totalCount = $total;
+        return $res;
+    }
 }

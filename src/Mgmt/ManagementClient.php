@@ -13,13 +13,13 @@ use Authing\InvalidArgumentException;
 use Authing\Mgmt\OrgManagementClient;
 use Authing\Mgmt\UdfManagementClient;
 use Authing\Mgmt\UsersManagementClient;
-use Authing\Mgmt\Acl\AclManagementClient;
+use Authing\Mgmt\AclManagementClient;
 use Authing\Mgmt\PoliciesManagementClient;
 use Authing\Mgmt\UserpoolManagementClient;
 use Authing\Mgmt\WhitelistManagementClient;
-use Authing\Mgmt\Roles\RolesManagementClient;
+use Authing\Mgmt\RolesManagementClient;
 use Authing\Mgmt\ApplicationsManagementClient;
-use Authing\Mgmt\Groups\GroupsManagementClient;
+use Authing\Mgmt\GroupsManagementClient;
 use Authing\Types\ListUserAuthorizedResourcesParam;
 
 

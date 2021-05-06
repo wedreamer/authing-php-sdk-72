@@ -1,6 +1,6 @@
 <?php
 
-namespace Authing\Mgmt\Mfa;
+namespace Authing\Mgmt;
 
 use Authing\Mgmt\ManagementClient;
 use Exception;

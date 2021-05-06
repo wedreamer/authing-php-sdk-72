@@ -3,9 +3,9 @@
 namespace Authing\Mgmt;
 
 use Authing\Mgmt\ManagementClient;
-use Authing\Mgmt\Acl\AclManagementClient;
+use Authing\Mgmt\AclManagementClient;
 use Authing\Mgmt\AgreementManagementClient;
-use Authing\Mgmt\Roles\RolesManagementClient;
+use Authing\Mgmt\RolesManagementClient;
 
 class ApplicationsManagementClient
 {

@@ -26,6 +26,7 @@ use Authing\Types\SetMainDepartmentParam;
 use Authing\Types\NodeByIdWithMembersParam;
 use Authing\Types\ListNodeByIdAuthorizedResourcesParam;
 use Authing\Types\ListNodeByCodeAuthorizedResourcesParam;
+use Authing\Types\RemoveMemberParam;
 
 class OrgManagementClient
 {
@@ -199,7 +200,11 @@ class OrgManagementClient
 
     public function importByJson($json)
     {
-
+        $res = $this->client->httpPost('api/v2/orgs/import', [
+            'filetype' => 'json',
+            'file' => $json,
+        ]);
+        return $res;
     }
 
     public function addMembers($nodeId, $userIds)
@@ -221,7 +226,9 @@ class OrgManagementClient
 
     public function removeMembers($nodeId, $userIds)
     {
-
+        $param = (new RemoveMemberParam($userIds))->withNodeId($nodeId);
+        $node = $this->client->request($param->createRequest());
+        return $node;
     }
 
     /**
@@ -275,7 +282,7 @@ class OrgManagementClient
         $list = $node->authorizedResources->list;
         $totalCount = $node->authorizedResources->totalCount;
 
-        $list = formatAuthorizedResources($list);
+        $list = Utils::formatAuthorizedResources($list);
         $_ = new stdClass;
         $_->list = $list;
         $_->totalCount = $totalCount;
@@ -298,7 +305,7 @@ class OrgManagementClient
         $list = $node->authorizedResources->list;
         $totalCount = $node->authorizedResources->totalCount;
 
-        $list = formatAuthorizedResources($list);
+        $list = Utils::formatAuthorizedResources($list);
         $_ = new stdClass;
         $_->list = $list;
         $_->totalCount = $totalCount;

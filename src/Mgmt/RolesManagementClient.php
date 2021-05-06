@@ -1,6 +1,6 @@
 <?php
 
-namespace Authing\Mgmt\Roles;
+namespace Authing\Mgmt;
 
 use Error;
 use stdClass;
@@ -32,25 +32,6 @@ use Authing\Types\PaginatedPolicyAssignments;
 use Authing\Types\PolicyAssignmentTargetType;
 use Authing\Types\RemovePolicyAssignmentsParam;
 use Authing\Types\ListRoleAuthorizedResourcesParam;
-
-function formatAuthorizedResources($obj)
-{
-    $authorizedResources = $obj->authorizedResources;
-    $list = $authorizedResources->list;
-    $total = $authorizedResources->totalCount;
-    array_map(function ($_) {
-        foreach ($_ as $key => $value) {
-            if (!$_->$key) {
-                unset($_->$key);
-            }
-        }
-        return $_;
-    }, (array) $list);
-    $res = new stdClass;
-    $res->list = $list;
-    $res->totalCount = $total;
-    return $res;
-}
 
 function convertUdv(array $data)
 {
@@ -304,7 +285,7 @@ class RolesManagementClient
         $param = (new ListRoleAuthorizedResourcesParam($roleCode))->withNamespace($namespace)->withResourceType($resourceType);
         $data = $this->client->request($param->createRequest());
 
-        return formatAuthorizedResources($data);
+        return Utils::formatAuthorizedResources($data);
     }
 
     /**
