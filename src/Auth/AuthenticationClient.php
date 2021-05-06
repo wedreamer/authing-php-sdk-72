@@ -1308,7 +1308,6 @@ class AuthenticationClient extends BaseClient
             'grant_type' => 'refresh_token',
             'refresh_token' => $refreshToken,
         ]);
-        echo $qstr;
         $req = new Request('POST', $api, [
             'body' => $qstr,
         ]);
@@ -1337,7 +1336,6 @@ class AuthenticationClient extends BaseClient
             return $res;
         }
         if ($this->options->tokenEndPointAuthMethod === 'none') {
-            echo '+++++' . $refreshToken;
             $res = $this->_getNewAccessTokenByRefreshTokenWithNone($refreshToken);
             return $res;
         }

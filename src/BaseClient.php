@@ -345,7 +345,6 @@ PUBLICKKEY;
         ) {
             return $this->accessToken;
         } else if (isset($this->_accessTokenExpriredAt) && ($this->_accessTokenExpriredAt < (time() + 3600))) {
-            echo $this->_accessTokenExpriredAt;
             return $this->requestToken();
         }
     }
