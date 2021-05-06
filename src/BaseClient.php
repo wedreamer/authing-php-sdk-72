@@ -65,6 +65,11 @@ PUBLICKKEY;
             //     $userPoolIdOrFunc;
             $this->userPoolId =
                 $userPoolIdOrFunc;
+            $params = func_get_args();
+            if (count($params) > 1) {
+                $this->options = new stdClass;
+                $this->options->secret = $params[1];
+            }
         }
         if (is_callable($userPoolIdOrFunc)) {
             $this->options = new stdClass;
