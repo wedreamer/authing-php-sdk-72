@@ -95,11 +95,11 @@ class AclManagementClient
         return $data;
     }
 
-    public function getResources(array $options)
+    public function getResources(array $options, $namespaceCode = 'default')
     {
         extract($options, EXTR_OVERWRITE);
         $array = [
-            'namespaceCode' => $namespaceCode,
+            'namespace' => $namespaceCode,
             'type' => $type,
             'limit' => isset($limit) ? $limit : 10,
             'page' => isset($page) ? $page : 1,
@@ -109,17 +109,18 @@ class AclManagementClient
         return $data;
     }
 
-    public function createResource(array $options)
+    public function createResource(array $options, $namespaceCode = 'default')
     {
         if (!isset($options['code'])) {
             throw new Error('请为资源设定一个资源标识符');
         }
+
         if (!isset($options['actions']) || count($options['actions']) === 0) {
             throw new Error('请至少定义一个资源操作');
         }
-        if (!isset($options['namespace'])) {
-            throw new Error('请传入权限分组标识符');
-        }
+
+        $options['namespace'] = $namespaceCode;
+
         $data = $this->client->httpPost('/api/v2/resources', $options);
 
         return $data;
@@ -138,7 +139,7 @@ class AclManagementClient
      * @param string $code
      * @param string $namespaceCode
      */
-    public function deleteResource($code, $namespaceCode)
+    public function deleteResource($code, $namespaceCode = 'default')
     {
         $data = $this->client->httpDelete("/api/v2/resources/$code?namespace=$namespaceCode");
         return true;
@@ -187,7 +188,7 @@ class AclManagementClient
             "page" => $page,
             "limit" => $limit,
         ]);
-        $data = $this->client->httpGet($api.$param);
+        $data = $this->client->httpGet($api . $param);
         return $data;
     }
 
@@ -300,7 +301,7 @@ class AclManagementClient
             'limit' => isset($options['limit']) ? $options['limit'] : 10,
             'page' => isset($options['page']) ? $options['page'] : 1,
         ]);
-        $this->client->httpGet($api.$param);
+        $this->client->httpGet($api . $param);
     }
 
     public function listResources(array $options)
@@ -312,7 +313,7 @@ class AclManagementClient
             'limit' => isset($options['limit']) ? $options['limit'] : 10,
             'page' => isset($options['page']) ? $options['page'] : 1,
         ]);
-        $data = $this->client->httpGet($api.$param);
+        $data = $this->client->httpGet($api . $param);
         return $data;
     }
 
@@ -321,7 +322,7 @@ class AclManagementClient
         if (!$options['appId']) {
             throw new Error('请传入 appId');
         }
-        $options = (object) $options;
+        $options = (object)$options;
         $appId = $options->appId;
         $page = isset($options->page) ? $options->page : 1;
         $limit = isset($options->limit) ? $options->limit : 10;
@@ -350,7 +351,7 @@ class AclManagementClient
             'inheritByChildren' => isset($inheritByChildren) ? $inheritByChildren : null,
         ];
         $this->client->httpPost("/api/v2/applications/$appId/authorization/enable-effect", $data);
-        return (object) [
+        return (object)[
             'code' => 200,
             'message' => '启用应用访问控制策略成功',
         ];

@@ -101,9 +101,9 @@ class RolesManagementClient
      * @return PaginatedRoles
      * @throws Exception
      */
-    public function paginate($page = 1, $limit = 10)
+    public function paginate($options, $namespaceCode = 'default')
     {
-        $param = (new RolesParam())->withPage($page)->withLimit($limit);
+        $param = (new RolesParam())->withPage($options['page'])->withLimit($options['limit'])->withNamespace($namespaceCode);
         return $this->client->request($param->createRequest());
     }
 
@@ -116,9 +116,9 @@ class RolesManagementClient
      * @return Role
      * @throws Exception
      */
-    public function create($code, $description = null, $namespace = null)
+    public function create($code, $description = null, $namespaceCode = 'default')
     {
-        $param = (new CreateRoleParam($code))->withDescription($description)->withNamespace($namespace);
+        $param = (new CreateRoleParam($code))->withDescription($description)->withNamespace($namespaceCode);
         return $this->client->request($param->createRequest());
     }
 
@@ -129,19 +129,19 @@ class RolesManagementClient
      * @return Role
      * @throws Exception
      */
-    public function detail($code)
+    public function detail($code, $namespaceCode = 'default')
     {
         $param = new RoleParam($code);
-        return $this->client->request($param->createRequest());
+        return $this->client->request($param->withNamespace($namespaceCode)->createRequest());
     }
 
     /**
      * @param string $code
      * @param string $namespace
      */
-    public function findByCode($code, $namespace = '')
+    public function findByCode($code, $namespaceCode = 'default')
     {
-        $param = (new RoleParam($code))->withNamespace($namespace);
+        $param = (new RoleParam($code))->withNamespace($namespaceCode);
         return $this->client->request($param->createRequest());
     }
 
@@ -154,9 +154,9 @@ class RolesManagementClient
      * @return Role
      * @throws Exception
      */
-    public function update($code, $description = null, $newCode = null)
+    public function update($code, $options)
     {
-        $param = (new UpdateRoleParam($code))->withDescription($description)->withNewCode($newCode);
+        $param = (new UpdateRoleParam($code))->withDescription($options['description'])->withNewCode($options['newCode'])->withNamespace($options['namespace']);
         return $this->client->request($param->createRequest());
     }
 
@@ -167,10 +167,10 @@ class RolesManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function delete($code)
+    public function delete($code, $namespaceCode = 'default')
     {
         $param = new DeleteRoleParam($code);
-        return $this->client->request($param->createRequest());
+        return $this->client->request($param->withNamespace($namespaceCode)->createRequest());
     }
 
     /**
@@ -193,10 +193,10 @@ class RolesManagementClient
      * @return PaginatedUsers
      * @throws Exception
      */
-    public function listUsers($code)
+    public function listUsers($code, $namespaceCode = 'default')
     {
         $param = new RoleWithUsersParam($code);
-        return $this->client->request($param->createRequest());
+        return $this->client->request($param->withNamespace($namespaceCode)->createRequest());
     }
 
     /**
@@ -207,9 +207,9 @@ class RolesManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function addUsers($code, $userIds)
+    public function addUsers($code, $userIds, $namespaceCode = 'default')
     {
-        $param = (new AssignRoleParam())->withUserIds($userIds)->withRoleCodes([$code]);
+        $param = (new AssignRoleParam())->withUserIds($userIds)->withRoleCodes([$code])->withNamespace($namespaceCode);
         return $this->client->request($param->createRequest());
     }
 
@@ -221,9 +221,9 @@ class RolesManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function removeUsers($code, $userIds)
+    public function removeUsers($code, $userIds, $namespaceCode = 'default')
     {
-        $param = (new RevokeRoleParam())->withUserIds($userIds)->withRoleCodes([$code]);
+        $param = (new RevokeRoleParam())->withNamespace($namespaceCode)->withUserIds($userIds)->withRoleCodes([$code]);
         return $this->client->request($param->createRequest());
     }
 
@@ -276,16 +276,25 @@ class RolesManagementClient
         return $this->client->request($param->createRequest());
     }
 
-    public function listAuthorizedResources($roleCode, $namespace, $opts = [])
+    /**
+     * 获取角色被授权的所有资源列表
+     * @param $roleCode
+     * @param string $namespaceCode
+     * @param null $resourceType
+     * @return stdClass
+     * @throws Exception
+     */
+    public function listAuthorizedResources($roleCode, $resourceType = null, $namespaceCode = 'default')
     {
-        $resourceType = null;
-        if (count($opts) > 0) {
-            $resourceType = $opts['resourceType'];
+        $param = (new ListRoleAuthorizedResourcesParam($roleCode))->withNamespace($namespaceCode);
+
+        if ($resourceType !== null) {
+            $param->withResourceType($resourceType);
         }
-        $param = (new ListRoleAuthorizedResourcesParam($roleCode))->withNamespace($namespace)->withResourceType($resourceType);
+
         $data = $this->client->request($param->createRequest());
 
-        return Utils::formatAuthorizedResources($data);
+        return Utils::formatAuthorizedResources($data->authorizedResources);
     }
 
     /**

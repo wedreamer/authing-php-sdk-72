@@ -88,13 +88,13 @@ class Utils
         $total = $obj->totalCount;
         array_map(function ($_) {
             foreach ($_ as $key => $value) {
-                if (!$_->$key) {
-                    unset($_->$key);
+                if (!$_[$key]) {
+                    unset($_[$key]);
                 }
             }
             return $_;
         }, (array) $list);
-        $res = new stdClass;
+        $res = new stdClass();
         $res->list = $list;
         $res->totalCount = $total;
         return $res;
