@@ -66,32 +66,20 @@ class UsersManagementClient
     }
 
     /**
-     * 获取用户列表
-     *
-     * @param $page int 分页页数
-     * @param $limit int 分页大小
-     * @return PaginatedUsers
-     * @throws Exception
-     */
-    public function paginate($page = 1, $limit = 10)
-    {
-        $param = (new UsersParam())->withPage($page)->withLimit($limit);
-        return $this->client->request($param->createRequest());
-    }
-
-    /**
      * 创建用户
      *
      * @param $input CreateUserInput
      * @return User
      * @throws Exception
      */
-    public function create($input)
+    public function create($input, array $options = [])
     {
+        $keepPassword = $options['keepPassword'] ?? false;
         $input->password = $this->client->encrypt($input->password);
-        $param = new CreateUserParam($input);
+        $param = (new CreateUserParam($input))->withKeepPassword($keepPassword);
         return $this->client->request($param->createRequest());
     }
+
 
     /**
      * 更新用户信息
@@ -130,9 +118,10 @@ class UsersManagementClient
      * @return PaginatedUsers
      * @throws Exception
      */
-    public function search($query, $page = 1, $limit = 10)
+    public function search($query, array $opts = [], $page = 1, $limit = 10)
     {
-        $param = (new SearchUserParam($query))->withPage($page)->withLimit($limit);
+        $opts = (object)$opts;
+        $param = (new SearchUserParam($query))->withPage($page)->withLimit($limit)->withDepartmentOpts($opts->departmentOpts ?? null)->withFields($opts->fields)->withGroupOpts($opts->groupOpts)->withRoleOpts($opts->roleOpts);
         return $this->client->request($param->createRequest());
     }
 
@@ -164,6 +153,20 @@ class UsersManagementClient
         $data->type = $queryField;
         $users = $this->client->httpPost('/api/v2/users/batch', $data);
         return $users;
+    }
+
+    /**
+     * 获取用户列表
+     *
+     * @param $page int 分页页数
+     * @param $limit int 分页大小
+     * @return PaginatedUsers
+     * @throws Exception
+     */
+    public function paginate($page = 1, $limit = 10)
+    {
+        $param = (new UsersParam())->withPage($page)->withLimit($limit);
+        return $this->client->request($param->createRequest());
     }
 
     /**

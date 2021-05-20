@@ -8,6 +8,7 @@ use Rector\Core\ValueObject\PhpVersion;
 use Rector\Set\ValueObject\DowngradeSetList;
 use Rector\DowngradePhp73\Tokenizer\FollowedByCommaAnalyzer;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Polyfill\Php72\Php72;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     // get parameters
@@ -29,13 +30,24 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     // here we can define, what sets of rules will be applied
     $parameters->set(Option::SETS, [
-        DowngradeSetList::PHP_74,
-        DowngradeSetList::PHP_73,
-        DowngradeSetList::PHP_72,
-        DowngradeSetList::PHP_71,
-        // DowngradeSetList::PHP_70,
+        // DowngradeSetList::PHP_72,
+        SetList::PHP_72,
+        SetList::PHP_71,
+        SetList::PHP_70,
+        SetList::PHP_56,
+        SetList::PHP_55,
+        SetList::PHP_54,
+        SetList::PHP_53,
+        SetList::PHP_52,
+        // SetList::PHP_73,
+        // SetList::PHP_72,
+        // SetList::PHP_72,
+        // SetList::PHP_72,
+        // SetList::PHP_72,
+        // SetList::PHP_72,
     ]);
 
+    // vendor/bin/rector process --dry-run
     // is your PHP version different from the one your refactor to? [default: your PHP version]
     $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_80);
 
