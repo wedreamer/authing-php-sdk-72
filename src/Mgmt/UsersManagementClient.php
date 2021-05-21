@@ -3,52 +3,53 @@
 declare(strict_types=1);
 namespace Authing\Mgmt;
 
-use Authing\Types\AddPolicyAssignmentsParam;
-use Authing\Types\AddUserToGroupParam;
-use Authing\Types\ArchivedUsersParam;
-use Authing\Types\AssignRoleParam;
-use Authing\Types\CheckLoginStatusParam;
+use Error;
+use stdClass;
+use Exception;
+use Authing\Types\User;
+use Authing\Types\UdvParam;
+use Authing\Types\UserParam;
+use Authing\Types\UsersParam;
+use Authing\Types\SetUdvParam;
+use Authing\Types\UDFDataType;
+use Authing\Types\RefreshToken;
+use Authing\Types\ResourceType;
 use Authing\Types\CommonMessage;
+use Authing\Types\FindUserParam;
+use Authing\Types\UDFTargetType;
+use Authing\Types\JWTTokenStatus;
+use Authing\Types\PaginatedRoles;
+use Authing\Types\PaginatedUsers;
+use Authing\Types\RemoveUdvParam;
+use Authing\Types\AssignRoleParam;
 use Authing\Types\CreateUserInput;
 use Authing\Types\CreateUserParam;
 use Authing\Types\DeleteUserParam;
-use Authing\Types\DeleteUsersParam;
-use Authing\Types\FindUserParam;
-use Authing\Types\GetUserDepartmentsParam;
-use Authing\Types\GetUserGroupsParam;
-use Authing\Types\GetUserRolesParam;
-use Authing\Types\IsUserExistsParam;
-use Authing\Types\JWTTokenStatus;
-use Authing\Types\ListUserAuthorizedResourcesParam;
 use Authing\Types\PaginatedGroups;
-use Authing\Types\PaginatedPolicyAssignments;
-use Authing\Types\PaginatedRoles;
-use Authing\Types\PaginatedUsers;
-use Authing\Types\PolicyAssignmentsParam;
-use Authing\Types\PolicyAssignmentTargetType;
-use Authing\Types\RefreshToken;
-use Authing\Types\RefreshTokenParam;
-use Authing\Types\RemovePolicyAssignmentsParam;
-use Authing\Types\RemoveUdvParam;
-use Authing\Types\RemoveUserFromGroupParam;
 use Authing\Types\RevokeRoleParam;
 use Authing\Types\SearchUserParam;
-use Authing\Types\SetUdfValueBatchParam;
-use Authing\Types\SetUdvParam;
-use Authing\Types\UDFTargetType;
-use Authing\Types\UdfValueBatchParam;
-use Authing\Types\UdvParam;
 use Authing\Types\UpdateUserInput;
 use Authing\Types\UpdateUserParam;
-use Authing\Types\User;
 use Authing\Types\UserDefinedData;
-use Authing\Types\UserParam;
-use Authing\Types\UsersParam;
+use Authing\Types\DeleteUsersParam;
 use Authing\Types\SetUdvBatchParam;
-use Authing\Types\UDFDataType;
-use Error;
-use Exception;
-use stdClass;
+use Authing\Types\GetUserRolesParam;
+use Authing\Types\IsUserExistsParam;
+use Authing\Types\RefreshTokenParam;
+use Authing\Types\ArchivedUsersParam;
+use Authing\Types\GetUserGroupsParam;
+use Authing\Types\UdfValueBatchParam;
+use Authing\Types\AddUserToGroupParam;
+use Authing\Types\CheckLoginStatusParam;
+use Authing\Types\SetUdfValueBatchParam;
+use Authing\Types\PolicyAssignmentsParam;
+use Authing\Types\GetUserDepartmentsParam;
+use Authing\Types\RemoveUserFromGroupParam;
+use Authing\Types\AddPolicyAssignmentsParam;
+use Authing\Types\PaginatedPolicyAssignments;
+use Authing\Types\PolicyAssignmentTargetType;
+use Authing\Types\RemovePolicyAssignmentsParam;
+use Authing\Types\ListUserAuthorizedResourcesParam;
 
 class UsersManagementClient
 {
@@ -348,12 +349,8 @@ class UsersManagementClient
         return $res;
     }
 
-    public function listAuthorizedResources(string $userId, string $namespace, ?array $obj = [])
+    public function listAuthorizedResources(string $userId, string $namespace, string $resourceType = null)
     {
-        $resourceType = null;
-        if (count((array) $obj) > 0) {
-            $resourceType = $obj['resourceType'];
-        }
         $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace)->withResourceType($resourceType);
         $resUser = $this->client->request($param->createRequest());
         if ($resUser) {

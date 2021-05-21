@@ -77,12 +77,8 @@ class AclManagementClient
         return $this->client->request($param->createRequest());
     }
 
-    public function listAuthorizedResources(string $targetType, string $targetIdentifier, string $namespace, array $ops = [])
+    public function listAuthorizedResources(string $targetType, string $targetIdentifier, string $namespace, string $resourceType = null)
     {
-        $resourceType = null;
-        if (count($ops) > 0) {
-            $resourceType = $ops['resourceType'];
-        }
         $param = (new AuthorizedResourcesParam())->withTargetType($targetType)->withTargetIdentifier($targetIdentifier)->withNamespace($namespace)->withResourceType($resourceType);
         $data = Utils::formatAuthorizedResources($this->client->request($param->createRequest()));
         return $data;
@@ -169,9 +165,9 @@ class AclManagementClient
         return $data;
     }
 
-    public function deleteResource(string $code, string $namespaceCode)
+    public function deleteResource(string $code, string $namespace)
     {
-        $data = $this->client->httpDelete("/api/v2/resources/$code?namespace=$namespaceCode");
+        $data = $this->client->httpDelete("/api/v2/resources/$code?namespace=$namespace");
         return true;
     }
 

@@ -156,12 +156,8 @@ class GroupsManagementClient
         return $this->client->request($param->createRequest());
     }
 
-    function listAuthorizedResources($groupCode, $namespace, $opts = [])
+    function listAuthorizedResources($groupCode, $namespace, string $resourceType = null)
     {
-        $resourceType = null;
-        if ((is_countable($opts) ? count($opts) : 0) > 0) {
-            $resourceType = $opts['resourceType'];
-        }
         $param = (new ListGroupAuthorizedResourcesParam($groupCode))->withNamespace($namespace)->withResourceType($resourceType);
         $data = $this->client->request($param->createRequest());
          

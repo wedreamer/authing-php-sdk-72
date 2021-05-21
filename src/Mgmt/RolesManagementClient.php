@@ -285,9 +285,9 @@ class RolesManagementClient
      * @return stdClass
      * @throws Exception
      */
-    public function listAuthorizedResources(string $roleCode, string $namespaceCode, string $resourceType = null)
+    public function listAuthorizedResources(string $roleCode, string $namespace, string $resourceType = null)
     {
-        $param = (new ListRoleAuthorizedResourcesParam($roleCode))->withNamespace($namespaceCode);
+        $param = (new ListRoleAuthorizedResourcesParam($roleCode))->withNamespace($namespace);
 
         if ($resourceType !== null) {
             $param->withResourceType($resourceType);
