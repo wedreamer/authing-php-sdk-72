@@ -280,6 +280,9 @@ class MFAAuthenticationClient
 
     public function associateFaceByUrl(array $options)
     {
+        $photoB = null;
+        $photoA = null;
+        $mfaToken = null;
         extract($options);
         $api = '/api/v2/mfa/face/associate';
         $req = new Request('POST', $api, [

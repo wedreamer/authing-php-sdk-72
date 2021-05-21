@@ -158,6 +158,7 @@ PUBLICKKEY;
     public function httpSend(\GuzzleHttp\Psr7\Request $req)
     {
 
+        $code = null;
         $res = $this->naiveHttpClient->send($req, ['http_errors' => false]);
 
         if ($res->getStatusCode() != 200)
@@ -271,6 +272,7 @@ PUBLICKKEY;
      */
     private function checkResult($result)
     {
+        $errors = null;
         if (isset($result['errors'])) {
             $errors = $result['errors'];
         }
@@ -377,8 +379,7 @@ PUBLICKKEY;
 
         // set header
         $h = [
-            "Authorization: Bearer " . ($this->mfaToken ? $this->mfaToken :
-                ($this->options->accessToken ?? $this->accessToken ?? null)),
+            "Authorization: Bearer " . ($this->mfaToken ?: $this->options->accessToken ?? $this->accessToken ?? null),
             "Content-type: application/json",
             "x-authing-userpool-id: $this->userPoolId",
             "x-authing-app-id: $this->appId",

@@ -129,6 +129,8 @@ class AclManagementClient
 
     public function getResources(array $options = [])
     {
+        $limit = null;
+        $page = null;
         extract($options, EXTR_OVERWRITE);
         $array = [
             'namespace' => $namespaceCode,
@@ -185,6 +187,9 @@ class AclManagementClient
 
     public function enableAccessPolicy(array $options)
     {
+        $namespace = null;
+        $inheritByChildren = null;
+        $appId = null;
         if (!$options['appId']) {
             throw new Error('请传入 appId');
         }
@@ -212,6 +217,9 @@ class AclManagementClient
 
     public function disableAccessPolicy(array $options)
     {
+        $namespace = null;
+        $inheritByChildren = null;
+        $appId = null;
         if (!$options['appId']) {
             throw new Error('请传入 appId');
         }
@@ -240,6 +248,9 @@ class AclManagementClient
 
     public function deleteAccessPolicy(array $options)
     {
+        $namespace = null;
+        $inheritByChildren = null;
+        $appId = null;
         if (!$options['appId']) {
             throw new Error('请传入 appId');
         }
@@ -268,6 +279,9 @@ class AclManagementClient
 
     public function allowAccess(array $options)
     {
+        $namespace = null;
+        $inheritByChildren = null;
+        $appId = null;
         if (!$options['appId']) {
             throw new Error('请传入 appId');
         }
@@ -296,6 +310,9 @@ class AclManagementClient
 
     public function denyAccess(array $options)
     {
+        $namespace = null;
+        $inheritByChildren = null;
+        $appId = null;
         if (!$options['appId']) {
             throw new Error('请传入 appId');
         }

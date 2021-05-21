@@ -227,6 +227,11 @@ class AuthenticationClient extends BaseClient
      */
     public function registerByEmail($email, $password, $profile = null, array $options = [])
     {
+        $clientIp = null;
+        $context = null;
+        $generateToken = null;
+        $params = null;
+        $forceLogin = null;
         extract($options);
         $password = $this->encrypt($password);
         $input = (new RegisterByEmailInput($email, $password))
@@ -251,6 +256,11 @@ class AuthenticationClient extends BaseClient
      */
     public function registerByUsername($username, $password, $profile = null, array $options = [])
     {
+        $clientIp = null;
+        $context = null;
+        $generateToken = null;
+        $params = null;
+        $forceLogin = null;
         extract($options);
         $password = $this->encrypt($password);
         $input = (new RegisterByUsernameInput($username, $password))
@@ -280,6 +290,11 @@ class AuthenticationClient extends BaseClient
         $profile = null,
         array $options = []
     ) {
+        $clientIp = null;
+        $context = null;
+        $generateToken = null;
+        $params = null;
+        $forceLogin = null;
         extract($options);
         $password = $this->encrypt($password);
         $input = (new RegisterByPhoneCodeInput($username, $code))
@@ -336,6 +351,11 @@ class AuthenticationClient extends BaseClient
      */
     public function loginByEmail($email, $password, array $options = [])
     {
+        $clientIp = null;
+        $context = null;
+        $params = null;
+        $autoRegister = null;
+        $captchaCode = null;
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByEmailInput($email, $password))
@@ -359,6 +379,11 @@ class AuthenticationClient extends BaseClient
      */
     public function loginByUsername($username, $password, array $options = [])
     {
+        $clientIp = null;
+        $context = null;
+        $params = null;
+        $autoRegister = null;
+        $captchaCode = null;
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByUsernameInput($username, $password))
@@ -383,6 +408,10 @@ class AuthenticationClient extends BaseClient
      */
     public function loginByPhoneCode($phone, $code, array $options = [])
     {
+        $clientIp = null;
+        $context = null;
+        $params = null;
+        $autoRegister = null;
         extract($options);
         $input = (new LoginByPhoneCodeInput($phone, $code))
             ->withClientIp($clientIp ?? '')
@@ -404,6 +433,11 @@ class AuthenticationClient extends BaseClient
      */
     public function loginByPhonePassword($phone, $password, array $options = [])
     {
+        $clientIp = null;
+        $context = null;
+        $params = null;
+        $autoRegister = null;
+        $captchaCode = null;
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByPhonePasswordInput($phone, $password))
@@ -677,6 +711,7 @@ class AuthenticationClient extends BaseClient
     // 不实现
     public function updateAvatar($src)
     {
+        $set = null;
         if (!isset($set)) {
             throw new Exception("请输入需要修改的数据");
         } else {
@@ -723,6 +758,7 @@ class AuthenticationClient extends BaseClient
 
     public function loginByLdap($username, $password)
     {
+        $options = null;
         if (!isset($username, $password)) {
             throw new Exception("请输入必要的参数");
         } else {

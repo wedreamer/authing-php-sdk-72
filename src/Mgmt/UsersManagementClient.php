@@ -205,6 +205,10 @@ class UsersManagementClient
 
     public function find(array $options)
     {
+        $email = null;
+        $phone = null;
+        $username = null;
+        $externalId = null;
         // $username, $email, $phone, $externalId
         extract($options, EXTR_OVERWRITE);
         $userParam = (new FindUserParam())->withEmail($email ?? "")->withPhone($phone ?? "")->withUsername($username ?? "")->withExternalId($externalId ?? "");
