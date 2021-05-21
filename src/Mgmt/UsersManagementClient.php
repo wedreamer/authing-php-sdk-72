@@ -50,6 +50,9 @@ use Authing\Types\PaginatedPolicyAssignments;
 use Authing\Types\PolicyAssignmentTargetType;
 use Authing\Types\RemovePolicyAssignmentsParam;
 use Authing\Types\ListUserAuthorizedResourcesParam;
+use Authing\Types\UserDefinedDataInput;
+use Authing\Types\SetUdfValueBatchInput;
+
 
 class UsersManagementClient
 {
@@ -91,9 +94,11 @@ class UsersManagementClient
      * @return User
      * @throws Exception
      */
-    public function update($userId, $input)
+    public function update(string $userId, UpdateUserInput $input)
     {
-        $input->password = $this->client->encrypt($input->password);
+        if(isset($input->password)) {
+            $input->password = $this->client->encrypt($input->password);
+        }
         $param = (new UpdateUserParam($input))->withId($userId);
         return $this->client->request($param->createRequest());
     }
@@ -349,9 +354,10 @@ class UsersManagementClient
         return $res;
     }
 
-    public function listAuthorizedResources(string $userId, string $namespace, string $resourceType = null)
+    public function listAuthorizedResources(string $userId, string $namespace, ?string $resourceType = null)
     {
-        $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace)->withResourceType($resourceType);
+        $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace);
+        $resourceType && $param->withResourceType($resourceType);
         $resUser = $this->client->request($param->createRequest());
         if ($resUser) {
             $res = Utils::formatAuthorizedResources($resUser->authorizedResources);
@@ -383,13 +389,17 @@ class UsersManagementClient
         if (count($data) === 0) {
             throw new Error('empty udf value list');
         }
+        $input = [];
         foreach ($data as $key => $value) {
-            $value = json_encode($value);
+            $input [] = (object)[
+                'key' => $key,
+                'value' => json_encode($value)
+            ];
         }
         array_map(function ($item) {
-            return json_encode((object)$item);
-        }, $data);
-        $param = (new SetUdvBatchParam(UDFTargetType::USER, $userId))->withUdvList($data);
+            return (new UserDefinedDataInput($item->key))->withValue($item->value);
+        }, $input);
+        $param = (new SetUdvBatchParam(UDFTargetType::USER, $userId))->withUdvList($input);
         $res = $this->client->request($param->createRequest());
         return $res;
     }
@@ -399,23 +409,21 @@ class UsersManagementClient
         if (!isset($input) && !is_array($input)) {
             throw new Error("userId 为数组 不能为空");
         }
+        $att = [];
         foreach ($input as $index => $val) {
-            foreach ($val as $_key => $_val) {
-                $_ = new stdClass;
-                $_->targetId = $val->targetId;
-                $_->key = $_key;
-                $_->value = $_val;
-                array_push($input, $_);
+            foreach ($val['data'] as $_key => $_val) {
+                $_ = new SetUdfValueBatchInput($val['userId'], $_key, json_encode($_val));
+                $att [] = $_;
             }
         }
-        $param = new SetUdfValueBatchParam("User", $input);
+        $param = new SetUdfValueBatchParam(UdfTargetType::USER, $att);
         $res = $this->client->request($param->createRequest());
         return $res;
     }
 
     public function removeUdfValue(string $userId, string $key)
     {
-        $param = new RemoveUdvParam("User", $userId, $key);
+        $param = new RemoveUdvParam(UdfTargetType::USER, $userId, $key);
         $res = $this->client->request($param->createRequest());
         return true;
     }

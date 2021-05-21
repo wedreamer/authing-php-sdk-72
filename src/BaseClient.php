@@ -199,8 +199,14 @@ PUBLICKKEY;
         if (!$this->firstElement($result['data'])) {
             return null;
         } else {
-            return $this->arrayToObject($this->firstElement((object)$result['data']));
+            $attOrObj = $this->firstElement((object)$result['data']);
+            if (gettype($attOrObj) == 'array' || getType($attOrObj) == 'object') {
+                return $this->arrayToObject($attOrObj);
+            } else {
+                return $attOrObj;
+            }
         }
+        
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 
 declare(strict_types=1);
+
+require_once __DIR__ . '../../../vendor/autoload.php';
 namespace Authing\Mgmt;
 use Authing\Mgmt\ManagementClient;
 
