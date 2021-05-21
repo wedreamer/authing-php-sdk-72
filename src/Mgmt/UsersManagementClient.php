@@ -110,66 +110,6 @@ class UsersManagementClient
     }
 
     /**
-     * 模糊搜索用户信息
-     *
-     * @param $query string 关键字
-     * @param $page int 分页页数
-     * @param $limit int 分页大小
-     * @return PaginatedUsers
-     * @throws Exception
-     */
-    public function search($query, array $opts = [], $page = 1, $limit = 10)
-    {
-        $opts = (object)$opts;
-        $param = (new SearchUserParam($query))->withPage($page)->withLimit($limit)->withDepartmentOpts($opts->departmentOpts ?? null)->withFields($opts->fields)->withGroupOpts($opts->groupOpts)->withRoleOpts($opts->roleOpts);
-        return $this->client->request($param->createRequest());
-    }
-
-    // /**
-    //  * 通过用户 ID 批量获取用户信息
-    //  *
-    //  * @param $userIds string[] 用户 ID 列表
-    //  * @return User[]
-    //  * @throws Exception
-    //  */
-    // public function batch($userIds)
-    // {
-    //     $param = new UserBatchParam($userIds);
-    //     return $this->client->request($param->createRequest());
-    // }
-
-    /**
-     * 通过 id、username、email、phone、email、externalId 批量获取用户详情
-     *
-     * @param $identifiers string[] 用户 ID 列表
-     * @return User[]
-     * @throws Exception
-     */
-    public function batch(array $identifiers, array $options = [])
-    {
-        $queryField = isset($options['queryField']) ? $options['queryField'] : 'id';
-        $data = new stdClass();
-        $data->ids = $identifiers;
-        $data->type = $queryField;
-        $users = $this->client->httpPost('/api/v2/users/batch', $data);
-        return $users;
-    }
-
-    /**
-     * 获取用户列表
-     *
-     * @param $page int 分页页数
-     * @param $limit int 分页大小
-     * @return PaginatedUsers
-     * @throws Exception
-     */
-    public function paginate($page = 1, $limit = 10)
-    {
-        $param = (new UsersParam())->withPage($page)->withLimit($limit);
-        return $this->client->request($param->createRequest());
-    }
-
-    /**
      * 删除用户
      *
      * @param $userId string 用户 ID
@@ -194,6 +134,67 @@ class UsersManagementClient
     }
 
     /**
+     * 通过 id、username、email、phone、email、externalId 批量获取用户详情
+     *
+     * @param $identifiers string[] 用户 ID 列表
+     * @return User[]
+     * @throws Exception
+     */
+    public function batch(array $identifiers, array $options = [])
+    {
+        $queryField = isset($options['queryField']) ? $options['queryField'] : 'id';
+        $data = new stdClass();
+        $data->ids = $identifiers;
+        $data->type = $queryField;
+        $users = $this->client->httpPost('/api/v2/users/batch', $data);
+        return $users;
+    }
+
+    
+
+    // /**
+    //  * 通过用户 ID 批量获取用户信息
+    //  *
+    //  * @param $userIds string[] 用户 ID 列表
+    //  * @return User[]
+    //  * @throws Exception
+    //  */
+    // public function batch($userIds)
+    // {
+    //     $param = new UserBatchParam($userIds);
+    //     return $this->client->request($param->createRequest());
+    // }
+
+    
+
+    /**
+     * 获取用户列表
+     *
+     * @param $page int 分页页数
+     * @param $limit int 分页大小
+     * @return PaginatedUsers
+     * @throws Exception
+     */
+    public function paginate($page = 1, $limit = 10)
+    {
+        $param = (new UsersParam())->withPage($page)->withLimit($limit);
+        return $this->client->request($param->createRequest());
+    }
+
+
+    /**
+     * @param int $page
+     * @param int $limit
+     */
+    public function listArchivedUsers($page = 1, $limit = 10)
+    {
+        $param = (new ArchivedUsersParam())->withLimit($limit)->withPage($page);
+        $res = $this->client->request($param->createRequest());
+        return $res;
+    }
+    
+
+    /**
      * 检查用户是否存在，目前可检测的字段有用户名、邮箱、手机号。
      *
      * @param $param IsUserExistsParam
@@ -206,16 +207,52 @@ class UsersManagementClient
         return $this->client->request($param->createRequest());
     }
 
+    public function find(array $options)
+    {
+        // $username, $email, $phone, $externalId
+        extract($options, EXTR_OVERWRITE);
+        $userParam = (new FindUserParam())->withEmail(isset($email) ? $email : "")->withPhone(isset($phone) ? $phone : "")->withUsername(isset($username) ? $username : "")->withExternalId(isset($externalId) ? $externalId : "");
+        $res = $this->client->request($userParam->createRequest());
+        return $res;
+    }
+
     /**
-     * @param $token string 用户的 access token
-     * @return JWTTokenStatus
+     * 模糊搜索用户信息
+     *
+     * @param $query string 关键字
+     * @param $page int 分页页数
+     * @param $limit int 分页大小
+     * @return PaginatedUsers
      * @throws Exception
      */
-    public function checkLoginStatus($token)
+    public function search($query, array $opts = [], $page = 1, $limit = 10)
     {
-        $param = (new CheckLoginStatusParam())->withToken($token);
+        $opts = (object)$opts;
+        $param = (new SearchUserParam($query))->withPage($page)->withLimit($limit)->withDepartmentOpts($opts->departmentOpts ?? null)->withFields($opts->fields)->withGroupOpts($opts->groupOpts)->withRoleOpts($opts->roleOpts);
         return $this->client->request($param->createRequest());
     }
+
+    /**
+     * @param $userId string 用户 ID
+     * @return RefreshToken
+     * @throws Exception
+     */
+    public function refreshToken($userId)
+    {
+        $param = (new RefreshTokenParam())->withId($userId);
+        return $this->client->request($param->createRequest());
+    }
+
+    // /**
+    //  * @param $token string 用户的 access token
+    //  * @return JWTTokenStatus
+    //  * @throws Exception
+    //  */
+    // public function checkLoginStatus($token)
+    // {
+    //     $param = (new CheckLoginStatusParam())->withToken($token);
+    //     return $this->client->request($param->createRequest());
+    // }
 
     /**
      * 获取用户分组列表
@@ -277,9 +314,9 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function addRoles($userId, $roles)
+    public function addRoles($userId, $roles, $namespace = '')
     {
-        $param = (new AssignRoleParam())->withUserIds([$userId])->withRoleCodes($roles);
+        $param = (new AssignRoleParam())->withUserIds([$userId])->withRoleCodes($roles)->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }
 
@@ -289,105 +326,59 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function removeRoles($userId, $roles)
+    public function removeRoles($userId, $roles, $namespace = '')
     {
-        $param = (new RevokeRoleParam())->withUserIds([$userId])->withRoleCodes($roles);
+        $param = (new RevokeRoleParam())->withUserIds([$userId])->withRoleCodes($roles)->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }
 
     /**
-     * @param $userId string 用户 ID
-     * @return RefreshToken
-     * @throws Exception
+     * @param string $userId
      */
-    public function refreshToken($userId)
+    public function listOrgs($userId)
     {
-        $param = (new RefreshTokenParam())->withId($userId);
-        return $this->client->request($param->createRequest());
+        $res = $this->client->httpGet('/api/v2/users/' . $userId . '/orgs');
+        return $res;
     }
 
     /**
-     * @param $userId string  用户 ID
-     * @param $page int 分页页数
-     * @param $limit int 分页大小
-     * @return PaginatedPolicyAssignments
-     * @throws Exception
+     * @param string $userId
      */
-    public function listPolicies($userId, $page = 1, $limit = 10)
+    public function listDepartment($userId)
     {
-        $param = (new PolicyAssignmentsParam())
-            ->withPage($page)
-            ->withLimit($limit)
-            ->withTargetIdentifier($userId)
-            // php don't have enum
-            ->withTargetType(PolicyAssignmentTargetType::USER);
-        return $this->client->request($param->createRequest());
+        $param = (new GetUserDepartmentsParam($userId));
+        $res = $this->client->request($param->createRequest());
+        return $res;
     }
 
     /**
-     * @param $userId string 用户 ID
-     * @param $policies string[] 策略 code 列表
-     * @return CommonMessage
-     * @throws Exception
+     * @param string $userId
+     * @param string $namespace
      */
-    public function addPolicies($userId, $policies)
+    public function listAuthorizedResources($userId, $namespace, $obj = [])
     {
-        $param = (new AddPolicyAssignmentsParam($policies, PolicyAssignmentTargetType::USER))->withTargetIdentifiers([$userId]);
-        return $this->client->request($param->createRequest());
+        $resourceType = null;
+        if (count($obj) > 0) {
+            $resourceType = $obj['resourceType'];
+        }
+        $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace)->withResourceType($resourceType);
+        $resUser = $this->client->request($param->createRequest());
+        if ($resUser) {
+            $res = Utils::formatAuthorizedResources($resUser);
+            return $res;
+        } else {
+            throw new Exception("用户不存在");
+        }
     }
 
     /**
-     * @param $userId string 用户 ID
-     * @param $policies string[] 策略 code 列表
-     * @return CommonMessage
-     * @throws Exception
+     * @param string $userId
      */
-    public function removePolicies($userId, $policies)
+    public function getUdfValue($userId)
     {
-        $param = (new RemovePolicyAssignmentsParam($policies, PolicyAssignmentTargetType::USER))->withTargetIdentifiers([$userId]);
-        return $this->client->request($param->createRequest());
-    }
-
-    /**
-     * 获取该用户的自定义数据列表
-     *
-     * @param $userId
-     * @return UserDefinedData[]
-     * @throws Exception
-     */
-    public function listUdv($userId)
-    {
-        $param = new UdvParam(UDFTargetType::USER, $userId);
-        return $this->client->request($param->createRequest());
-    }
-
-    /**
-     * 设置自定义用户数据
-     *
-     * @param $userId string 用户 ID
-     * @param $key string 字段 key
-     * @param $value string 字段 value
-     * @return UserDefinedData
-     * @throws Exception
-     */
-    public function setUdv($userId, $key, $value)
-    {
-        $param = new SetUdvParam(UDFTargetType::USER, $userId, $key, $value);
-        return $this->client->request($param->createRequest());
-    }
-
-    /**
-     * 删除自定义用户数据
-     *
-     * @param $userId string 用户 ID
-     * @param $key string 字段 key
-     * @return UserDefinedData
-     * @throws Exception
-     */
-    public function removeUdv($userId, $key)
-    {
-        $param = new RemoveUdvParam(UDFTargetType::USER, $userId, $key);
-        return $this->client->request($param->createRequest());
+        $param = new UdvParam('USER', $userId);
+        $res = $this->client->request($param->createRequest());
+        return $res;
     }
 
     public function getUdfValueBatch($userIds)
@@ -411,9 +402,9 @@ class UsersManagementClient
         foreach ($data as $key => $value) {
             $value = json_encode($value);
         }
-        array_map(function($item) {
+        array_map(function ($item) {
             return json_encode((object)$item);
-        },$data);
+        }, $data);
         $param = (new SetUdvBatchParam(UDFTargetType::USER, $userId))->withUdvList($data);
         $res = $this->client->request($param->createRequest());
         return $res;
@@ -451,72 +442,25 @@ class UsersManagementClient
 
     /**
      * @param string $userId
-     */
-    public function listOrgs($userId)
-    {
-        $res = $this->client->httpGet('/api/v2/users/' . $userId . '/orgs');
-        return $res;
-    }
-
-    /**
-     * @param string $userId
+     * @param string $roleCode
      * @param string $namespace
      */
-    public function listAuthorizedResources($userId, $namespace, $obj = [])
+    public function hasRole($userId, $roleCode, $namespace)
     {
-        $resourceType = null;
-        if (count($obj) > 0) {
-            $resourceType = $obj['resourceType'];
+        $roleList = $this->listRoles($userId, $namespace);
+        if ($roleList->totalCount < 1) {
+            return false;
         }
-        $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace)->withResourceType($resourceType);
-        $resUser = $this->client->request($param->createRequest());
-        if ($resUser) {
-            $res = Utils::formatAuthorizedResources($resUser);
-            return $res;
-        } else {
-            throw new Exception("用户不存在");
+        $hasRole = false;
+        $list = $roleList->list;
+        foreach ($list as $val) {
+            if ($val->code === $roleCode) {
+                $hasRole = true;
+            }
         }
+        return $hasRole;
     }
 
-    public function find(array $options)
-    {
-        // $username, $email, $phone, $externalId
-        extract($options, EXTR_OVERWRITE);
-        $userParam = (new FindUserParam())->withEmail(isset($email) ? $email : "")->withPhone(isset($phone) ? $phone : "")->withUsername(isset($username) ? $username : "")->withExternalId(isset($externalId) ? $externalId : "");
-        $res = $this->client->request($userParam->createRequest());
-        return $res;
-    }
-
-    /**
-     * @param int $page
-     * @param int $limit
-     */
-    public function listArchivedUsers($page = 1, $limit = 10)
-    {
-        $param = (new ArchivedUsersParam())->withLimit($limit)->withPage($page);
-        $res = $this->client->request($param->createRequest());
-        return $res;
-    }
-
-    /**
-     * @param string $userId
-     */
-    public function listDepartment($userId)
-    {
-        $param = (new GetUserDepartmentsParam($userId));
-        $res = $this->client->request($param->createRequest());
-        return $res;
-    }
-
-    /**
-     * @param string $userId
-     */
-    public function getUdfValue($userId)
-    {
-        $param = new UdvParam('USER', $userId);
-        $res = $this->client->request($param->createRequest());
-        return $res;
-    }
 
     public function kick(array $userIds)
     {
@@ -547,24 +491,89 @@ class UsersManagementClient
         return $data;
     }
 
-    /**
-     * @param string $userId
-     * @param string $roleCode
-     * @param string $namespace
-     */
-    public function hasRole($userId, $roleCode, $namespace)
-    {
-        $roleList = $this->listRoles($userId, $namespace);
-        if ($roleList->totalCount < 1) {
-            return false;
-        }
-        $hasRole = false;
-        $list = $roleList->list;
-        foreach ($list as $val) {
-            if ($val->code === $roleCode) {
-                $hasRole = true;
-            }
-        }
-        return $hasRole;
-    }
+    // node js 中没有这几个方法
+    // /**
+    //  * @param $userId string  用户 ID
+    //  * @param $page int 分页页数
+    //  * @param $limit int 分页大小
+    //  * @return PaginatedPolicyAssignments
+    //  * @throws Exception
+    //  */
+    // public function listPolicies($userId, $page = 1, $limit = 10)
+    // {
+    //     $param = (new PolicyAssignmentsParam())
+    //         ->withPage($page)
+    //         ->withLimit($limit)
+    //         ->withTargetIdentifier($userId)
+    //         // php don't have enum
+    //         ->withTargetType(PolicyAssignmentTargetType::USER);
+    //     return $this->client->request($param->createRequest());
+    // }
+
+    // /**
+    //  * @param $userId string 用户 ID
+    //  * @param $policies string[] 策略 code 列表
+    //  * @return CommonMessage
+    //  * @throws Exception
+    //  */
+    // public function addPolicies($userId, $policies)
+    // {
+    //     $param = (new AddPolicyAssignmentsParam($policies, PolicyAssignmentTargetType::USER))->withTargetIdentifiers([$userId]);
+    //     return $this->client->request($param->createRequest());
+    // }
+
+    // /**
+    //  * @param $userId string 用户 ID
+    //  * @param $policies string[] 策略 code 列表
+    //  * @return CommonMessage
+    //  * @throws Exception
+    //  */
+    // public function removePolicies($userId, $policies)
+    // {
+    //     $param = (new RemovePolicyAssignmentsParam($policies, PolicyAssignmentTargetType::USER))->withTargetIdentifiers([$userId]);
+    //     return $this->client->request($param->createRequest());
+    // }
+
+    // /**
+    //  * 获取该用户的自定义数据列表
+    //  *
+    //  * @param $userId
+    //  * @return UserDefinedData[]
+    //  * @throws Exception
+    //  */
+    // public function listUdv($userId)
+    // {
+    //     $param = new UdvParam(UDFTargetType::USER, $userId);
+    //     return $this->client->request($param->createRequest());
+    // }
+
+    // /**
+    //  * 设置自定义用户数据
+    //  *
+    //  * @param $userId string 用户 ID
+    //  * @param $key string 字段 key
+    //  * @param $value string 字段 value
+    //  * @return UserDefinedData
+    //  * @throws Exception
+    //  */
+    // public function setUdv($userId, $key, $value)
+    // {
+    //     $param = new SetUdvParam(UDFTargetType::USER, $userId, $key, $value);
+    //     return $this->client->request($param->createRequest());
+    // }
+
+    // /**
+    //  * 删除自定义用户数据
+    //  *
+    //  * @param $userId string 用户 ID
+    //  * @param $key string 字段 key
+    //  * @return UserDefinedData
+    //  * @throws Exception
+    //  */
+    // public function removeUdv($userId, $key)
+    // {
+    //     $param = new RemoveUdvParam(UDFTargetType::USER, $userId, $key);
+    //     return $this->client->request($param->createRequest());
+    // }
+
 }

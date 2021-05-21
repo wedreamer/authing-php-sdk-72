@@ -14,6 +14,7 @@ use Rector\DowngradePhp73\Tokenizer\FollowedByCommaAnalyzer;
 use Rector\TypeDeclaration\ValueObject\AddParamTypeDeclaration;
 use Rector\CodeQuality\Rector\FuncCall\CompactToVariablesRector;
 use Rector\TypeDeclaration\ValueObject\AddReturnTypeDeclaration;
+use Rector\CodeQuality\Rector\Class_\CompleteDynamicPropertiesRector;
 use Rector\CodeQuality\Rector\For_\ForRepeatedCountToOwnVariableRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddArrayParamDocTypeRector;
 use Rector\CodeQuality\Rector\FuncCall\ChangeArrayPushToArrayAssignRector;
@@ -22,6 +23,7 @@ use Rector\TypeDeclaration\Rector\ClassMethod\AddParamTypeDeclarationRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddReturnTypeDeclarationRector;
 use Rector\TypeDeclaration\Rector\Param\ParamTypeFromStrictTypedPropertyRector;
 use Rector\CodeQuality\Rector\FuncCall\ArrayMergeOfNonArraysToSimpleArrayRector;
+use Rector\CodeQuality\Rector\Isset_\IssetOnPropertyObjectToPropertyExistsRector;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddMethodCallBasedStrictParamTypeRector;
 
@@ -80,7 +82,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(ForRepeatedCountToOwnVariableRector::class);
     $services->set(ForToForeachRector::class);
     $services->set(IssetOnPropertyObjectToPropertyExistsRector::class);
-    $services->set(ForToForeachRector::class);
+    // $services->set(ForToForeachRector::class);
     
     // $services->set(
     //     ParamTypeDeclarationRector::class);
