@@ -29,22 +29,9 @@ class UdfManagementClient
      * UdfManagementClient constructor.
      * @param $client ManagementClient
      */
-    public function __construct($client)
+    public function __construct(ManagementClient $client)
     {
         $this->client = $client;
-    }
-
-    /**
-     * 获取自定义字段元信息列表
-     *
-     * @param $targetType UDFTargetType
-     * @return UserDefinedField[]
-     * @throws Exception
-     */
-    public function paginate($targetType)
-    {
-        $param = new UdfParam($targetType);
-        return (array)$this->client->request($param->createRequest());
     }
 
     /**
@@ -57,7 +44,7 @@ class UdfManagementClient
      * @return UserDefinedField
      * @throws Exception
      */
-    public function set($targetType, $key, $dataType, $label)
+    public function set(string $targetType, string $key, string $dataType, string $label)
     {
         $param = new SetUdfParam($targetType, $key, $dataType, $label);
         return $this->client->request($param->createRequest());
@@ -71,10 +58,23 @@ class UdfManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function remove($targetType, $key)
+    public function remove(string $targetType, string $key)
     {
         $param = new RemoveUdfParam($targetType, $key);
         return $this->client->request($param->createRequest());
+    }
+
+    /**
+     * 获取自定义字段元信息列表
+     *
+     * @param $targetType UDFTargetType
+     * @return UserDefinedField[]
+     * @throws Exception
+     */
+    public function paginate(string $targetType)
+    {
+        $param = new UdfParam($targetType);
+        return (array)$this->client->request($param->createRequest());
     }
 
     public function listUdv(string $targetType, string $targetId)
