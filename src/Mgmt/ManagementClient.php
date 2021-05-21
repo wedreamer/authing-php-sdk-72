@@ -187,7 +187,7 @@ class ManagementClient extends BaseClient
 
     public function checkLoginStatus(string $token, array $options = [])
     {
-        $fetchUserDetail = isset($options['fetchUserDetail']) ? $options['fetchUserDetail'] : false;
+        $fetchUserDetail = $options['fetchUserDetail'] ?? false;
         if (!$token) return null;
         $userData = null;
         $tokenIllegal = false;

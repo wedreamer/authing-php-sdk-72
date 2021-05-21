@@ -113,7 +113,7 @@ class AuthenticationClient extends BaseClient
             throw new Error('请先登录！');
         }
         $tokenInfo = Utils::getTokenPlayloadData($this->accessToken);
-        $userId = isset($tokenInfo->sub) ? $tokenInfo->sub : ($tokenInfo->data ? $tokenInfo->data->id : '');
+        $userId = $tokenInfo->sub ?? ($tokenInfo->data ? $tokenInfo->data->id : '');
         if ($userId) {
             throw new Error('不合法的 accessToken');
         }
@@ -230,12 +230,12 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new RegisterByEmailInput($email, $password))
-            ->withProfile(isset($profile) ? $profile : null)
-            ->withClientIp(isset($clientIp) ? $clientIp : '')
-            ->withContext(isset($context) ? $context : '')
-            ->withGenerateToken(isset($generateToken) ? $generateToken : '')
-            ->withParams(isset($params) ? $params : '')
-            ->withForceLogin(isset($forceLogin) ? $forceLogin : '');
+            ->withProfile($profile ?? null)
+            ->withClientIp($clientIp ?? '')
+            ->withContext($context ?? '')
+            ->withGenerateToken($generateToken ?? '')
+            ->withParams($params ?? '')
+            ->withForceLogin($forceLogin ?? '');
         $param = new RegisterByEmailParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -254,12 +254,12 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new RegisterByUsernameInput($username, $password))
-            ->withProfile(isset($profile) ? $profile : null)
-            ->withClientIp(isset($clientIp) ? $clientIp : '')
-            ->withContext(isset($context) ? $context : '')
-            ->withGenerateToken(isset($generateToken) ? $generateToken : '')
-            ->withParams(isset($params) ? $params : '')
-            ->withForceLogin(isset($forceLogin) ? $forceLogin : '');
+            ->withProfile($profile ?? null)
+            ->withClientIp($clientIp ?? '')
+            ->withContext($context ?? '')
+            ->withGenerateToken($generateToken ?? '')
+            ->withParams($params ?? '')
+            ->withForceLogin($forceLogin ?? '');
         $param = new RegisterByUsernameParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -283,13 +283,13 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new RegisterByPhoneCodeInput($username, $code))
-            ->withPassword(isset($password) ? $password : null)
-            ->withProfile(isset($profile) ? $profile : null)
-            ->withClientIp(isset($clientIp) ? $clientIp : '')
-            ->withContext(isset($context) ? $context : '')
-            ->withGenerateToken(isset($generateToken) ? $generateToken : '')
-            ->withParams(isset($params) ? $params : '')
-            ->withForceLogin(isset($forceLogin) ? $forceLogin : '');
+            ->withPassword($password ?? null)
+            ->withProfile($profile ?? null)
+            ->withClientIp($clientIp ?? '')
+            ->withContext($context ?? '')
+            ->withGenerateToken($generateToken ?? '')
+            ->withParams($params ?? '')
+            ->withForceLogin($forceLogin ?? '');
 
         $param = new RegisterByPhoneCodeParam($input);
         $user = $this->request($param->createRequest());
@@ -339,11 +339,11 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByEmailInput($email, $password))
-            ->withClientIp(isset($clientIp) ? $clientIp : '')
-            ->withContext(isset($context) ? $context : '')
-            ->withParams(isset($params) ? $params : '')
-            ->withAutoRegister(isset($autoRegister) ? $autoRegister : '')
-            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : '');
+            ->withClientIp($clientIp ?? '')
+            ->withContext($context ?? '')
+            ->withParams($params ?? '')
+            ->withAutoRegister($autoRegister ?? '')
+            ->withCaptchaCode($captchaCode ?? '');
         $param = new LoginByEmailParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -362,11 +362,11 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByUsernameInput($username, $password))
-            ->withClientIp(isset($clientIp) ? $clientIp : '')
-            ->withContext(isset($context) ? $context : '')
-            ->withParams(isset($params) ? $params : '')
-            ->withAutoRegister(isset($autoRegister) ? $autoRegister : '')
-            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : '');
+            ->withClientIp($clientIp ?? '')
+            ->withContext($context ?? '')
+            ->withParams($params ?? '')
+            ->withAutoRegister($autoRegister ?? '')
+            ->withCaptchaCode($captchaCode ?? '');
 
         $param = new LoginByUsernameParam($input);
         $user = $this->request($param->createRequest());
@@ -385,10 +385,10 @@ class AuthenticationClient extends BaseClient
     {
         extract($options);
         $input = (new LoginByPhoneCodeInput($phone, $code))
-            ->withClientIp(isset($clientIp) ? $clientIp : '')
-            ->withContext(isset($context) ? $context : '')
-            ->withParams(isset($params) ? $params : '')
-            ->withAutoRegister(isset($autoRegister) ? $autoRegister : '');
+            ->withClientIp($clientIp ?? '')
+            ->withContext($context ?? '')
+            ->withParams($params ?? '')
+            ->withAutoRegister($autoRegister ?? '');
         $param = new LoginByPhoneCodeParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -407,11 +407,11 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByPhonePasswordInput($phone, $password))
-            ->withClientIp(isset($clientIp) ? $clientIp : '')
-            ->withContext(isset($context) ? $context : '')
-            ->withParams(isset($params) ? $params : '')
-            ->withAutoRegister(isset($autoRegister) ? $autoRegister : false)
-            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : '');
+            ->withClientIp($clientIp ?? '')
+            ->withContext($context ?? '')
+            ->withParams($params ?? '')
+            ->withAutoRegister($autoRegister ?? false)
+            ->withCaptchaCode($captchaCode ?? '');
 
         $param = new LoginByPhonePasswordParam($input);
         $user = $this->request($param->createRequest());
@@ -947,13 +947,13 @@ class AuthenticationClient extends BaseClient
             throw new Error('请在初始化 AuthenticationClient 时传入 appId 和 secret 参数');
         }
         if (isset($this->options->tokenEndPointAuthMethod) && $this->options->tokenEndPointAuthMethod === 'client_secret_post') {
-            return $this->_getAccessTokenByCodeWithClientSecretPost($code, isset($options['codeVerifier']) ? $options['codeVerifier'] : '');
+            return $this->_getAccessTokenByCodeWithClientSecretPost($code, $options['codeVerifier'] ?? '');
         }
         if (isset($this->options->tokenEndPointAuthMethod) && $this->options->tokenEndPointAuthMethod === 'client_secret_basic') {
-            return $this->_getAccessTokenByCodeWithClientSecretBasic($code, isset($options['codeVerifier']) ? $options['codeVerifier'] : '');
+            return $this->_getAccessTokenByCodeWithClientSecretBasic($code, $options['codeVerifier'] ?? '');
         }
         if (isset($this->options->tokenEndPointAuthMethod) && $this->options->tokenEndPointAuthMethod === 'none') {
-            return $this->_getAccessTokenByCodeWithNone($code, isset($options['codeVerifier']) ? $options['codeVerifier'] : '');
+            return $this->_getAccessTokenByCodeWithNone($code, $options['codeVerifier'] ?? '');
         }
     }
 
@@ -974,7 +974,7 @@ class AuthenticationClient extends BaseClient
                 '请提供 options.codeChallenge，值为一个长度大于等于 43 的字符串'
             );
         }
-        $method = isset($options['method']) ? $options['method'] : 'S256';
+        $method = $options['method'] ?? 'S256';
         if ($method === 'S256') {
             // url safe base64
             // + -> -
@@ -1075,8 +1075,8 @@ class AuthenticationClient extends BaseClient
             'codeChallengeMethod' => 'code_challenge_method'
         ];
         $res = [
-            'nonce' => substr(rand(0, 1) . '', 0, 2),
-            'state' => substr(rand(0, 1) . '', 0, 2),
+            'nonce' => substr(random_int(0, 1) . '', 0, 2),
+            'state' => substr(random_int(0, 1) . '', 0, 2),
             'scope' => 'openid profile email phone address',
             'client_id' => $this->options->appId,
             'response_mode' => 'query',
@@ -1106,7 +1106,7 @@ class AuthenticationClient extends BaseClient
             'redirectUri' => 'redirect_uri'
         ];
         $res = [
-            'state' => substr(rand(0, 1) . '', 0, 2),
+            'state' => substr(random_int(0, 1) . '', 0, 2),
             'scope' => 'user',
             'client_id' => $this->options->appId,
             'redirect_uri' => $this->options->redirectUri,
@@ -1202,9 +1202,9 @@ class AuthenticationClient extends BaseClient
         $SDK_VERSION = "4.1.12";
         return [
             'x-authing-sdk-version' => 'php:' . $SDK_VERSION,
-            'x-authing-userpool-id' => (isset($this->options->userPoolId) ? $this->options->userPoolId : ""),
-            'x-authing-request-from' => (isset($this->options->requestFrom) ? $this->options->requestFrom : 'sdk'),
-            'x-authing-app-id' => (isset($this->options->appId) ? $this->options->appId : ''),
+            'x-authing-userpool-id' => ($this->options->userPoolId ?? ""),
+            'x-authing-request-from' => ($this->options->requestFrom ?? 'sdk'),
+            'x-authing-app-id' => ($this->options->appId ?? ''),
         ];
     }
 
@@ -1399,8 +1399,8 @@ class AuthenticationClient extends BaseClient
 
     public function listApplications(array $params = [])
     {
-        $page = isset($params['page']) ? $params['page'] : 1;
-        $limit = isset($params['limit']) ? $params['limit'] : 10;
+        $page = $params['page'] ?? 1;
+        $limit = $params['limit'] ?? 10;
         $data = $this->httpGet("/api/v2/users/me/applications/allowed?page=$page&limit=$limit");
         return $data;
     }

@@ -257,7 +257,7 @@ class OrgManagementClient
 
     public function listAuthorizedResourcesByNodeId(string $nodeId, string $namespace, array $options = [])
     {
-        $resourceType = isset($options['resourceType']) ? $options['resourceType'] : new stdClass;
+        $resourceType = $options['resourceType'] ?? new stdClass;
         $param = (new ListNodeByIdAuthorizedResourcesParam($nodeId))->withNamespace($namespace)->withResourceType($resourceType);
         $node = $this->client->request($param->createRequest())->nodeById;
         if (!$node) {
@@ -275,7 +275,7 @@ class OrgManagementClient
 
     public function listAuthorizedResourcesByNodeCode(string $orgId, string $code, string $namespace, array $options = [])
     {
-        $resourceType = isset($options['resourceType']) ? $options['resourceType'] : new stdClass;
+        $resourceType = $options['resourceType'] ?? new stdClass;
         $param = (new ListNodeByCodeAuthorizedResourcesParam($orgId, $code))->withNamespace($namespace)->withResourceType($resourceType);
         $node = $this->client->request($param->createRequest())->nodeById;
         if (!$node) {

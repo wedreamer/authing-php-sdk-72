@@ -67,13 +67,13 @@ class Utils
      */
     public static function randomString(int $randomLenth = 32)
     {
-        $randomLenth = isset($randomLenth) ? $randomLenth : 32;
+        $randomLenth = $randomLenth ?? 32;
         $t = 'abcdefhijkmnprstwxyz2345678';
         $a = strlen($t);
         $n = '';
 
         for ($i = 0; $i < $randomLenth; $i++) {
-            $n .= $t[rand(0, $a - 1)];
+            $n .= $t[random_int(0, $a - 1)];
         }
         return $n;
     }

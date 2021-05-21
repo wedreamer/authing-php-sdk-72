@@ -285,7 +285,7 @@ class MFAAuthenticationClient
         $req = new Request('POST', $api, [
             'body' => (object) [
                 'photoA' => $photoA,
-                'photoB' => isset($photoB) ? $photoB : $photoA,
+                'photoB' => $photoB ?? $photoA,
                 'isExternal' => true,
             ],
             'headers' =>

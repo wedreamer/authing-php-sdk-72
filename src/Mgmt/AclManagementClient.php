@@ -17,13 +17,13 @@ use stdClass;
 
 function randomString(int $randomLenth = 32)
 {
-    $randomLenth = isset($randomLenth) ? $randomLenth : 32;
+    $randomLenth = $randomLenth ?? 32;
     $t = 'abcdefhijkmnprstwxyz2345678';
     $a = strlen($t);
     $n = '';
 
     for ($i = 0; $i < $randomLenth; $i++) {
-        $n .= $t[rand(0, $a - 1)];
+        $n .= $t[random_int(0, $a - 1)];
     }
     return $n;
 }
@@ -109,7 +109,7 @@ class AclManagementClient
             throw new Error('请传入 options.resourceType，含义为资源类型');
         }
         list($namespace, $resourceType, $resource) = $options;
-        $params = (new AuthorizedTargetsParam($namespace, $resourceType, $resource))->withActions(isset($options['actions']) ? $options['actions'] : null)->withTargetType(isset($options['targetType']) ? $options['targetType'] : null);
+        $params = (new AuthorizedTargetsParam($namespace, $resourceType, $resource))->withActions($options['actions'] ?? null)->withTargetType($options['targetType'] ?? null);
         $data = $this->client->request($params->createRequest());
         return $data;
     }
@@ -118,10 +118,10 @@ class AclManagementClient
     {
         $api = "/api/v2/resources";
         $param = http_build_query([
-            'namespaceCode' => isset($options['namespace']) ? $options['namespace'] : $options['namespaceCode'],
+            'namespaceCode' => $options['namespace'] ?? $options['namespaceCode'],
             'type' => $options['type'],
-            'limit' => isset($options['limit']) ? $options['limit'] : 10,
-            'page' => isset($options['page']) ? $options['page'] : 1,
+            'limit' => $options['limit'] ?? 10,
+            'page' => $options['page'] ?? 1,
         ]);
         $data = $this->client->httpGet($api . $param);
         return $data;
@@ -133,8 +133,8 @@ class AclManagementClient
         $array = [
             'namespace' => $namespaceCode,
             'type' => $type,
-            'limit' => isset($limit) ? $limit : 10,
-            'page' => isset($page) ? $page : 1,
+            'limit' => $limit ?? 10,
+            'page' => $page ?? 1,
         ];
         $params = http_build_query($array);
         $data = $this->client->httpGet("/api/v2/resources?$params");
@@ -177,8 +177,8 @@ class AclManagementClient
         }
         $options = (object)$options;
         $appId = $options->appId;
-        $page = isset($options->page) ? $options->page : 1;
-        $limit = isset($options->limit) ? $options->limit : 10;
+        $page = $options->page ?? 1;
+        $limit = $options->limit ?? 10;
         $res = $this->client->httpGet("/api/v2/applications/$appId/authorization/records?page=$page&limit=$limit");
         return $res;
     }
@@ -199,9 +199,9 @@ class AclManagementClient
         extract($options, EXTR_OVERWRITE);
         $data = [
             'targetType' => $targetType,
-            'namespace' => isset($namespace) ? $namespace : null,
+            'namespace' => $namespace ?? null,
             'targetIdentifiers' => $targetIdentifiers,
-            'inheritByChildren' => isset($inheritByChildren) ? $inheritByChildren : null,
+            'inheritByChildren' => $inheritByChildren ?? null,
         ];
         $this->client->httpPost("/api/v2/applications/$appId/authorization/enable-effect", $data);
         return (object)[
@@ -226,9 +226,9 @@ class AclManagementClient
         extract($options, EXTR_OVERWRITE);
         $data = [
             'targetType' => $targetType,
-            'namespace' => isset($namespace) ? $namespace : null,
+            'namespace' => $namespace ?? null,
             'targetIdentifiers' => $targetIdentifiers,
-            'inheritByChildren' => isset($inheritByChildren) ? $inheritByChildren : null,
+            'inheritByChildren' => $inheritByChildren ?? null,
         ];
 
         $this->client->httpPost("/api/v2/applications/$appId/authorization/disable-effect", $data);
@@ -254,9 +254,9 @@ class AclManagementClient
         extract($options, EXTR_OVERWRITE);
         $data = [
             'targetType' => $targetType,
-            'namespace' => isset($namespace) ? $namespace : null,
+            'namespace' => $namespace ?? null,
             'targetIdentifiers' => $targetIdentifiers,
-            'inheritByChildren' => isset($inheritByChildren) ? $inheritByChildren : null,
+            'inheritByChildren' => $inheritByChildren ?? null,
         ];
 
         $this->client->httpPost("/api/v2/applications/$appId/authorization/revoke", $data);
@@ -282,9 +282,9 @@ class AclManagementClient
         extract($options, EXTR_OVERWRITE);
         $data = [
             'targetType' => $targetType,
-            'namespace' => isset($namespace) ? $namespace : null,
+            'namespace' => $namespace ?? null,
             'targetIdentifiers' => $targetIdentifiers,
-            'inheritByChildren' => isset($inheritByChildren) ? $inheritByChildren : null,
+            'inheritByChildren' => $inheritByChildren ?? null,
         ];
 
         $this->client->httpPost("/api/v2/applications/$appId/authorization/allow", $data);
@@ -310,9 +310,9 @@ class AclManagementClient
         extract($options, EXTR_OVERWRITE);
         $data = [
             'targetType' => $targetType,
-            'namespace' => isset($namespace) ? $namespace : null,
+            'namespace' => $namespace ?? null,
             'targetIdentifiers' => $targetIdentifiers,
-            'inheritByChildren' => isset($inheritByChildren) ? $inheritByChildren : null,
+            'inheritByChildren' => $inheritByChildren ?? null,
         ];
 
         $this->client->httpPost("/api/v2/applications/$appId/authorization/deny", $data);
@@ -360,11 +360,11 @@ class AclManagementClient
 
 
 
-    public function refreshProgrammaticAccessAccountSecret(string $programmaticAccessAccountId, string $programmaticAccessAccountSecret = randomString(32))
+    public function refreshProgrammaticAccessAccountSecret(string $programmaticAccessAccountId, string $programmaticAccessAccountSecret = '')
     {
-        // if (!isset($programmaticAccessAccountSecret) || $programmaticAccessAccountSecret === '') {
-        //     $programmaticAccessAccountSecret = randomString(32);
-        // }
+        if (!isset($programmaticAccessAccountSecret) || $programmaticAccessAccountSecret === '') {
+            $programmaticAccessAccountSecret = randomString(32);
+        }
         $res = $this->client->httpPatch('/api/v2/applications/programmatic-access-accounts', [
             'id' => $programmaticAccessAccountId,
             'secret' => $programmaticAccessAccountSecret,
@@ -423,10 +423,10 @@ class AclManagementClient
     {
         $api = '/api/v2/resources';
         $param = http_build_query([
-            'namespaceCode' => isset($options['namespace']) ? $options['namespace'] : (isset($options['namespaceCode']) ? $options['namespaceCode'] : null),
+            'namespaceCode' => $options['namespace'] ?? $options['namespaceCode'] ?? null,
             'type' => $options['type'],
-            'limit' => isset($options['limit']) ? $options['limit'] : 10,
-            'page' => isset($options['page']) ? $options['page'] : 1,
+            'limit' => $options['limit'] ?? 10,
+            'page' => $options['page'] ?? 1,
         ]);
         $this->client->httpGet($api . $param);
     }

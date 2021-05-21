@@ -26,8 +26,8 @@ class NamespaceManagementClient {
     public function list(array $params = [])
     {
         $userPoolId = $this->client->options->userPoolId;
-        $page = isset($params['page']) ? $params['page'] : 1;
-        $limit = isset($params['limit']) ? $params['limit'] : 10;
+        $page = $params['page'] ?? 1;
+        $limit = $params['limit'] ?? 10;
         $data = $this->client->httpGet("/api/v2/resource-namespace/$userPoolId/?page=$page&limit=$limit");
         return $data;
     }

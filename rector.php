@@ -53,7 +53,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         // SetList::PHP_54,
         // SetList::PHP_55,
         // SetList::PHP_56,
-        // SetList::PHP_70,
+        SetList::PHP_70,
         // SetList::PHP_71,
         // SetList::PHP_72,
 
@@ -84,14 +84,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     // $services->set(IssetOnPropertyObjectToPropertyExistsRector::class);
     // $services->set(ForToForeachRector::class);
     
-    $services->set(
-        AddMethodCallBasedStrictParamTypeRector::class);
-    $services->set(
-        ParamTypeDeclarationRector::class
-    );
-    $services->set(
-        ParamTypeFromStrictTypedPropertyRector::class
-    );
+    // $services->set(
+    //     AddMethodCallBasedStrictParamTypeRector::class);
+    // $services->set(
+    //     ParamTypeDeclarationRector::class
+    // );
+    // $services->set(
+    //     ParamTypeFromStrictTypedPropertyRector::class
+    // );
     
 
 };

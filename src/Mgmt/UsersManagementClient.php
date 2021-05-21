@@ -142,7 +142,7 @@ class UsersManagementClient
      */
     public function batch(array $identifiers, array $options = [])
     {
-        $queryField = isset($options['queryField']) ? $options['queryField'] : 'id';
+        $queryField = $options['queryField'] ?? 'id';
         $data = new stdClass();
         $data->ids = $identifiers;
         $data->type = $queryField;
@@ -207,7 +207,7 @@ class UsersManagementClient
     {
         // $username, $email, $phone, $externalId
         extract($options, EXTR_OVERWRITE);
-        $userParam = (new FindUserParam())->withEmail(isset($email) ? $email : "")->withPhone(isset($phone) ? $phone : "")->withUsername(isset($username) ? $username : "")->withExternalId(isset($externalId) ? $externalId : "");
+        $userParam = (new FindUserParam())->withEmail($email ?? "")->withPhone($phone ?? "")->withUsername($username ?? "")->withExternalId($externalId ?? "");
         $res = $this->client->request($userParam->createRequest());
         return $res;
     }
@@ -454,8 +454,8 @@ class UsersManagementClient
     {
         $api = '/api/v2/analysis/user-action';
         $param = http_build_query([
-            'page' => isset($options['page']) ? $options['page'] : 1,
-            'limit' => isset($options['limit']) ? $options['limit'] : 10,
+            'page' => $options['page'] ?? 1,
+            'limit' => $options['limit'] ?? 10,
             'clientip' => $options['clientip'],
             'operation_name' => $options['operationName'],
             'operator_arn' => $options['operatoArn'],

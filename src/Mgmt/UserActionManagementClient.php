@@ -29,8 +29,8 @@ class UserActionManagementClient {
     ])
     {
         $userPoolId = $this->client->options->userPoolId;
-        $page = isset($params['page']) ? $params['page'] : 1;
-        $limit = isset($params['limit']) ? $params['limit'] : 10;
+        $page = $params['page'] ?? 1;
+        $limit = $params['limit'] ?? 10;
         $att = [
             'page' => $page,
             'limit' => $limit,

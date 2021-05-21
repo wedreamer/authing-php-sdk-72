@@ -47,15 +47,9 @@ class ApplicationsManagementClient
 
     public function list($params = [])
     {
-        $page = isset($params['page']) ? $params['page'] : 1;
-        $limit = isset($params['limit']) ? $params['limit'] : 10;
+        $page = $params['page'] ?? 1;
+        $limit = $params['limit'] ?? 10;
         $data = $this->client->httpGet("/api/v2/applications?page=$page&limit=$limit");
-        return $data;
-    }
-
-    public function findById(string $id)
-    {
-        $data = $this->client->httpGet("/api/v2/applications/$id");
         return $data;
     }
 
@@ -71,16 +65,10 @@ class ApplicationsManagementClient
         return true;
     }
 
-    public function activeUsers(string $appId, int $page = 1, int $limit = 10)
+    public function findById(string $id)
     {
-        $res = $this->client->httpGet("/api/v2/applications/$appId/active-users?page=$page&limit=$limit");
-        return $res;
-    }
-
-    public function refreshApplicationSecret(string $appId)
-    {
-        $res = $this->client->httpPatch("/api/v2/application/$appId/refresh-secret");
-        return $res;
+        $data = $this->client->httpGet("/api/v2/applications/$id");
+        return $data;
     }
 
     public function listResources($appId, $options = [])
@@ -162,10 +150,13 @@ class ApplicationsManagementClient
         return $this->roles->create($options['code'], $options['description'], $appId);
     }
 
-    public function findRole($appId, $code)
+    public function deleteRole($appId, $code)
     {
-        return $this->roles->detail($code, $appId);
+        return $this->roles->delete($code, $appId);
     }
+
+    // TODO: 缺少 deleteRoles
+
 
     public function updateRole($appId, $options = [])
     {
@@ -173,10 +164,10 @@ class ApplicationsManagementClient
         return $this->roles->update($options['code'], $options);
     }
 
-    public function deleteRole($appId, $code)
+    public function findRole($appId, $code)
     {
-        return $this->roles->delete($code, $appId);
-    }
+        return $this->roles->detail($code, $appId);
+    }    
 
     public function getRoles($appId, $options = [])
     {
@@ -203,12 +194,6 @@ class ApplicationsManagementClient
         return $this->roles->listAuthorizedResources($code, $resourceType, $appId);
     }
 
-    public function listAgreement(string $appId)
-    {
-        $args = func_get_args();
-        return $this->agreements->list(...$args);
-    }
-
     public function createAgreement(string $appId, $options)
     {
         $args = func_get_args();
@@ -227,9 +212,27 @@ class ApplicationsManagementClient
         return $this->agreements->modify(...$args);
     }
 
+    public function listAgreement(string $appId)
+    {
+        $args = func_get_args();
+        return $this->agreements->list(...$args);
+    }
+
     public function sortAgreement(string $appId, $order)
     {
         $args = func_get_args();
         return $this->agreements->sort(...$args);
+    }
+
+    public function activeUsers(string $appId, int $page = 1, int $limit = 10)
+    {
+        $res = $this->client->httpGet("/api/v2/applications/$appId/active-users?page=$page&limit=$limit");
+        return $res;
+    }
+
+    public function refreshApplicationSecret(string $appId)
+    {
+        $res = $this->client->httpPatch("/api/v2/application/$appId/refresh-secret");
+        return $res;
     }
 }
