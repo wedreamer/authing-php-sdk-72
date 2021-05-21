@@ -144,9 +144,9 @@ class RolesManagementClient
      * @return Role
      * @throws Exception
      */
-    public function update(string $code, array $options)
+    public function update(string $code, array $input)
     {
-        $param = (new UpdateRoleParam($code))->withDescription($options['description'])->withNewCode($options['newCode'])->withNamespace($options['namespace']);
+        $param = (new UpdateRoleParam($code))->withDescription($input['description'])->withNewCode($input['newCode'])->withNamespace($input['namespace']);
         return $this->client->request($param->createRequest());
     }
 
@@ -180,7 +180,7 @@ class RolesManagementClient
      * @return PaginatedRoles
      * @throws Exception
      */
-    public function paginate(array $options)
+    public function paginate(array $options = [])
     {
         ['page' => $page, 'limit' => $limit, 'namespace' => $namespace] = $options;
         $param = (new RolesParam())->withPage($page ?? 1)->withLimit($limit ?? 10)->withNamespace($namespace);
@@ -197,7 +197,7 @@ class RolesManagementClient
     public function listUsers(string $code, array $options = [])
     {
         extract($options);
-        $param = (new RoleWithUsersParam($code))->withNamespace($namespace ?? 'default');
+        $param = (new RoleWithUsersParam($code))->withNamespace($namespace ?? '');
         return $this->client->request($param->createRequest());
     }
 
