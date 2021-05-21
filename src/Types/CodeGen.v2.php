@@ -4286,7 +4286,7 @@ class LoginByEmailInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByEmailInput
      */
-    public function withAutoRegister(bool $autoRegister)
+    public function withAutoRegister(string $autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4414,7 +4414,7 @@ class LoginByUsernameInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByUsernameInput
      */
-    public function withAutoRegister(bool $autoRegister)
+    public function withAutoRegister(string $autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4523,7 +4523,7 @@ class LoginByPhoneCodeInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByPhoneCodeInput
      */
-    public function withAutoRegister(bool $autoRegister)
+    public function withAutoRegister(string $autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4900,7 +4900,7 @@ class RegisterByUsernameInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByUsernameInput
      */
-    public function withForceLogin(bool $forceLogin)
+    public function withForceLogin(string $forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -4910,7 +4910,7 @@ class RegisterByUsernameInput
      * @param $generateToken bool generateToken
      * @return RegisterByUsernameInput
      */
-    public function withGenerateToken(bool $generateToken)
+    public function withGenerateToken(string $generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -5578,7 +5578,7 @@ class RegisterByEmailInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByEmailInput
      */
-    public function withForceLogin(bool $forceLogin)
+    public function withForceLogin(string $forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -5588,7 +5588,7 @@ class RegisterByEmailInput
      * @param $generateToken bool generateToken
      * @return RegisterByEmailInput
      */
-    public function withGenerateToken(bool $generateToken)
+    public function withGenerateToken(string $generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -5740,7 +5740,7 @@ class RegisterByPhoneCodeInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByPhoneCodeInput
      */
-    public function withForceLogin(bool $forceLogin)
+    public function withForceLogin(string $forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -5750,7 +5750,7 @@ class RegisterByPhoneCodeInput
      * @param $generateToken bool generateToken
      * @return RegisterByPhoneCodeInput
      */
-    public function withGenerateToken(bool $generateToken)
+    public function withGenerateToken(string $generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;

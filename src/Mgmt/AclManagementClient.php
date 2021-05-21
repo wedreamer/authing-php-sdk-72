@@ -133,7 +133,7 @@ class AclManagementClient
         $page = null;
         extract($options, EXTR_OVERWRITE);
         $array = [
-            'namespace' => $namespaceCode,
+            'namespace' => $namespace,
             'type' => $type,
             'limit' => $limit ?? 10,
             'page' => $page ?? 1,
@@ -143,7 +143,7 @@ class AclManagementClient
         return $data;
     }
 
-    public function createResource(array $options, $namespaceCode = 'default')
+    public function createResource(array $options)
     {
         if (!isset($options['code'])) {
             throw new Error('请为资源设定一个资源标识符');
@@ -153,7 +153,9 @@ class AclManagementClient
             throw new Error('请至少定义一个资源操作');
         }
 
-        $options['namespace'] = $namespaceCode;
+        if (isset($options['namespace'])) {
+            throw new Error('请传入权限分组标识符');
+        }
 
         $data = $this->client->httpPost('/api/v2/resources', $options);
 

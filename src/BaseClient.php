@@ -245,7 +245,7 @@ PUBLICKKEY;
         // return $this->arrayToObject($result);
     }
 
-    public function httpPut(string $path, array $data = [])
+    public function httpPut(string $path, array $data)
     {
         $result = $this->send($this->host . $path, $data, 'PUT');
         $res = json_decode(json_encode($result));

@@ -48,14 +48,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     // here we can define, what sets of rules will be applied
     $parameters->set(Option::SETS, [
         // DowngradeSetList::PHP_72,
-        SetList::PHP_52,
-        SetList::PHP_53,
-        SetList::PHP_54,
-        SetList::PHP_55,
-        SetList::PHP_56,
-        SetList::PHP_70,
-        SetList::PHP_71,
-        SetList::PHP_72,
+        // SetList::PHP_52,
+        // SetList::PHP_53,
+        // SetList::PHP_54,
+        // SetList::PHP_55,
+        // SetList::PHP_56,
+        // SetList::PHP_70,
+        // SetList::PHP_71,
+        // SetList::PHP_72,
 
         // SetList::PHP_73,
         // SetList::PHP_72,
@@ -84,14 +84,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     // $services->set(IssetOnPropertyObjectToPropertyExistsRector::class);
     // $services->set(ForToForeachRector::class);
     
-    // $services->set(
-    //     AddMethodCallBasedStrictParamTypeRector::class);
-    // $services->set(
-    //     ParamTypeDeclarationRector::class
-    // );
-    // $services->set(
-    //     ParamTypeFromStrictTypedPropertyRector::class
-    // );
+    $services->set(
+        AddMethodCallBasedStrictParamTypeRector::class);
+    $services->set(
+        ParamTypeDeclarationRector::class
+    );
+    $services->set(
+        ParamTypeFromStrictTypedPropertyRector::class
+    );
     
 
 };
