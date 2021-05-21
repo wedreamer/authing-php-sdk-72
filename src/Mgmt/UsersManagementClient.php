@@ -103,7 +103,7 @@ class UsersManagementClient
      * @return User
      * @throws Exception
      */
-    public function detail($userId)
+    public function detail(string $userId)
     {
         $param = (new UserParam())->withId($userId);
         return $this->client->request($param->createRequest());
@@ -197,7 +197,7 @@ class UsersManagementClient
      * @return boolean
      * @throws Exception
      */
-    public function exists($ops)
+    public function exists(IsUserExistsParam $ops)
     {
         $param = $ops;
         return $this->client->request($param->createRequest());
@@ -221,9 +221,11 @@ class UsersManagementClient
      * @return PaginatedUsers
      * @throws Exception
      */
-    public function search($query, array $opts = [], $page = 1, $limit = 10)
+    public function search(string $query, array $opts = [])
     {
         $opts = (object)$opts;
+        $limit = $opts->limit ?? 10;
+        $page = $opts->page ?? 1;
         $param = (new SearchUserParam($query))->withPage($page)->withLimit($limit)->withDepartmentOpts($opts->departmentOpts ?? null)->withFields($opts->fields)->withGroupOpts($opts->groupOpts)->withRoleOpts($opts->roleOpts);
         return $this->client->request($param->createRequest());
     }
@@ -233,7 +235,7 @@ class UsersManagementClient
      * @return RefreshToken
      * @throws Exception
      */
-    public function refreshToken($userId)
+    public function refreshToken(string $userId)
     {
         $param = (new RefreshTokenParam())->withId($userId);
         return $this->client->request($param->createRequest());
@@ -257,7 +259,7 @@ class UsersManagementClient
      * @return PaginatedGroups
      * @throws Exception
      */
-    public function listGroups($userId)
+    public function listGroups(string $userId)
     {
         $param = new GetUserGroupsParam($userId);
         return $this->client->request($param->createRequest());
@@ -271,7 +273,7 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function addGroup($userId, $group)
+    public function addGroup(string $userId, string $group)
     {
         $param = (new AddUserToGroupParam([$userId]))->withCode($group);
         return $this->client->request($param->createRequest());
@@ -285,7 +287,7 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function removeGroup($userId, $group)
+    public function removeGroup(string $userId, string $group)
     {
         $param = (new RemoveUserFromGroupParam([$userId]))->withCode($group);
         return $this->client->request($param->createRequest());
@@ -310,7 +312,7 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function addRoles($userId, $roles, $namespace = '')
+    public function addRoles(string $userId, array $roles,string $namespace = '')
     {
         $param = (new AssignRoleParam())->withUserIds([$userId])->withRoleCodes($roles)->withNamespace($namespace);
         return $this->client->request($param->createRequest());
@@ -322,7 +324,7 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function removeRoles($userId, $roles, $namespace = '')
+    public function removeRoles(string $userId, array $roles, string $namespace = '')
     {
         $param = (new RevokeRoleParam())->withUserIds([$userId])->withRoleCodes($roles)->withNamespace($namespace);
         return $this->client->request($param->createRequest());
@@ -341,7 +343,7 @@ class UsersManagementClient
         return $res;
     }
 
-    public function listAuthorizedResources(string $userId, string $namespace, $obj = [])
+    public function listAuthorizedResources(string $userId, string $namespace, ?array $obj = [])
     {
         $resourceType = null;
         if (count($obj) > 0) {
@@ -364,7 +366,7 @@ class UsersManagementClient
         return $res;
     }
 
-    public function getUdfValueBatch($userIds)
+    public function getUdfValueBatch(array $userIds)
     {
         if (!isset($userIds) && !is_array($userIds)) {
             throw new Error("userId 为数组 不能为空");
@@ -390,7 +392,7 @@ class UsersManagementClient
         return $res;
     }
 
-    public function setUdfValueBatch($input)
+    public function setUdfValueBatch(array $input)
     {
         if (!isset($input) && !is_array($input)) {
             throw new Error("userId 为数组 不能为空");
@@ -416,7 +418,7 @@ class UsersManagementClient
         return true;
     }
 
-    public function hasRole(string $userId, string $roleCode, string $namespace)
+    public function hasRole(string $userId, string $roleCode, string $namespace = '')
     {
         $roleList = $this->listRoles($userId, $namespace);
         if ($roleList->totalCount < 1) {

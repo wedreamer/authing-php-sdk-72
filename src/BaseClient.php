@@ -360,7 +360,7 @@ PUBLICKKEY;
      * @return mixed
      * @throws Exception
      */
-    private function send(string $url, array $data = '', string $method = 'POST', int $time = 30000)
+    private function send(string $url, array $data = [], string $method = 'POST', int $time = 30000)
     {
         $token = $this->getToken();
         // 如果是通过密钥刷新
