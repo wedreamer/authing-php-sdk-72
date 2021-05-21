@@ -178,21 +178,14 @@ class ManagementClient extends BaseClient
     }
 
 
-    /**
-     * @param string $email
-     * @param string $scene
-     */
-    public function sendEmail($email, $scene)
+    public function sendEmail(string $email, string $scene)
     {
         $param = new SendEmailParam($email, $scene);
         $data = $this->request($param->createRequest())->sendEmail;       
         return $data;
     }
 
-    /**
-     * @param string $token
-     */
-    public function checkLoginStatus($token, array $options = [])
+    public function checkLoginStatus(string $token, array $options = [])
     {
         $fetchUserDetail = isset($options['fetchUserDetail']) ? $options['fetchUserDetail'] : false;
         if (!$token) return null;
@@ -217,10 +210,7 @@ class ManagementClient extends BaseClient
         }
     }
 
-    /**
-     * @param string $password
-     */
-    public function isPasswordValid($password)
+    public function isPasswordValid(string $password)
     {
         return $this->httpPost('/api/v2/password/check', [
             'password' => $password

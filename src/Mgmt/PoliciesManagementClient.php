@@ -48,7 +48,7 @@ class PoliciesManagementClient
      * @return PaginatedPolicies
      * @throws Exception
      */
-    public function paginate($page = 1, $limit = 10, $excludeDefault = true)
+    public function paginate(int $page = 1, int $limit = 10, bool $excludeDefault = true)
     {
         // TODO： 这个方法有问题
         // $param = (new PoliciesParam())->withPage($page)->withLimit($limit)->withExcludeDefault($excludeDefault);
@@ -134,7 +134,7 @@ class PoliciesManagementClient
      * @return PaginatedPolicyAssignments
      * @throws Exception
      */
-    public function listAssignments($code, $page = 1, $limit = 10)
+    public function listAssignments($code, int $page = 1, int $limit = 10)
     {
         $param = (new PolicyAssignmentsParam())->withCode($code)->withPage($page)->withLimit($limit);
         return $this->client->request($param->createRequest());

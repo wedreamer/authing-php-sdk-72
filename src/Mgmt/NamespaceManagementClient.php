@@ -33,12 +33,7 @@ class NamespaceManagementClient {
     }
 
 
-    /**
-     * @param string $code
-     * @param string $name
-     * @param string $description
-     */
-    public function create($code, $name, $description = "")
+    public function create(string $code, string $name, string $description = "")
     {
         $res = $this->client->httpPost("/api/v2/resource-namespace/{$this->client->options->userPoolId}", (object)[
             'name' => $name,
@@ -48,19 +43,13 @@ class NamespaceManagementClient {
         return $res;
     }
 
-    /**
-     * @param string $code
-     */
-    public function delete($code)
+    public function delete(string $code)
     {
         $this->client->httpDelete("/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/$code");
         return true;
     }
 
-    /**
-     * @param string $code
-     */
-    public function update($code, array $updates)
+    public function update(string $code, array $updates)
     {
         $data = $this->client->httpPut("/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/{$code}", (object)$updates);
         return $data;

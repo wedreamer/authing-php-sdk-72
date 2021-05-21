@@ -46,7 +46,7 @@ class GroupsManagementClient
      * @return PaginatedGroups
      * @throws Exception
      */
-    public function paginate($page = 1, $limit = 10) {
+    public function paginate(int $page = 1, int $limit = 10) {
         $param = (new GroupsParam())->withPage($page)->withLimit($limit);
         return $this->client->request($param->createRequest());
     }
@@ -60,7 +60,7 @@ class GroupsManagementClient
      * @return Group
      * @throws Exception
      */
-    public function create($code, $name, $description = null) {
+    public function create($code, $name, string $description = null) {
         $param = (new CreateGroupParam($code, $name))->withDescription($description);
         return $this->client->request($param->createRequest());
     }
@@ -125,7 +125,7 @@ class GroupsManagementClient
      * @return PaginatedUsers
      * @throws Exception
      */
-    public function listUsers($code, $page = 1, $limit = 10) {
+    public function listUsers($code, int $page = 1, int $limit = 10) {
         $param = (new GroupWithUsersParam($code))->withPage($page)->withLimit($limit);
         return $this->client->request($param->createRequest());
     }

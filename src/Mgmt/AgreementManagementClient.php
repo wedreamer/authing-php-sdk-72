@@ -25,7 +25,7 @@ class AgreementManagementClient {
     /**
      * @param string $appId
      */
-    public function list($appId)
+    public function list(array $appId)
     {
         $data = $this->client->httpGet("/api/v2/applications/$appId/agreements");
         return $data;
@@ -34,7 +34,7 @@ class AgreementManagementClient {
     /**
      * @param string $appId
      */
-    public function create($appId, array $agreement)
+    public function create(array $appId, array $agreement)
     {
         $data = [
             'lang' => 'zh-CN',
@@ -49,9 +49,8 @@ class AgreementManagementClient {
 
     /**
      * @param string $appId
-     * @param int $agreementId
      */
-    public function delete($appId, $agreementId)
+    public function delete(array $appId, int $agreementId)
     {
         $this->client->httpDelete("/api/v2/applications/$appId/agreements/$agreementId");
         return true;
@@ -59,9 +58,8 @@ class AgreementManagementClient {
 
     /**
      * @param string $appId
-     * @param int $agreementId
      */
-    public function modify($appId, $agreementId, array $updates)
+    public function modify(array $appId, int $agreementId, array $updates)
     {
         $data = $this->client->httpPut("/api/v2/applications/$appId/agreements/$agreementId", $updates);
         return $data;
@@ -70,7 +68,7 @@ class AgreementManagementClient {
     /**
      * @param string $appId
      */
-    public function sort($appId, array $order)
+    public function sort(array $appId, array $order)
     {
         $this->client->httpPost("/api/v2/applications/$appId/agreements/sort", [
             'ids' => $order

@@ -53,7 +53,7 @@ class OrgManagementClient
      * @return Org
      * @throws Exception
      */
-    public function create($name, $description = null, $code = null)
+    public function create(string $name, string $description = null, string $code = null)
     {
         $param = (new CreateOrgParam($name))->withCode($code)->withDescription($description);
         return $this->client->request($param->createRequest());
@@ -81,12 +81,10 @@ class OrgManagementClient
     /**
      * 获取用户池组织机构列表
      *
-     * @param int $page
-     * @param int $limit
      * @return PaginatedOrgs
      * @throws Exception
      */
-    public function paginate($page = 1, $limit = 10)
+    public function paginate(int $page = 1, int $limit = 10)
     {
         $param = (new OrgsParam())->withPage($page)->withLimit($limit);
         // TODO: buildTree
@@ -231,10 +229,7 @@ class OrgManagementClient
         return $node;
     }
 
-    /**
-     * @param string $nodeId
-     */
-    public function getNodeById($nodeId)
+    public function getNodeById(string $nodeId)
     {
         $param = new NodeByIdParam($nodeId);
         $node = $this->client->request($param->createRequest());
@@ -247,31 +242,20 @@ class OrgManagementClient
         return $data;
     }
 
-    /**
-     * @param string $userId
-     * @param string $departmentId
-     */
-    public function setMainDepartment($userId, $departmentId)
+    public function setMainDepartment(string $userId, string $departmentId)
     {
         $param = (new SetMainDepartmentParam($userId))->withDepartmentId($departmentId);
         $data = $this->client->request($param->createRequest())->setMainDepartment;
         return $data;
     }
 
-    /**
-     * @param string $orgId
-     */
-    public function exportByOrgId($orgId)
+    public function exportByOrgId(string $orgId)
     {
         $data = $this->client->httpGet("/api/v2/orgs/export?org_id=$orgId");
         return $data;
     }
 
-    /**
-     * @param string $nodeId
-     * @param string $namespace
-     */
-    public function listAuthorizedResourcesByNodeId($nodeId, $namespace, array $options = [])
+    public function listAuthorizedResourcesByNodeId(string $nodeId, string $namespace, array $options = [])
     {
         $resourceType = isset($options['resourceType']) ? $options['resourceType'] : new stdClass;
         $param = (new ListNodeByIdAuthorizedResourcesParam($nodeId))->withNamespace($namespace)->withResourceType($resourceType);
@@ -289,12 +273,7 @@ class OrgManagementClient
         return $_;
     }
 
-    /**
-     * @param string $orgId
-     * @param string $code
-     * @param string $namespace
-     */
-    public function listAuthorizedResourcesByNodeCode($orgId, $code, $namespace, array $options = [])
+    public function listAuthorizedResourcesByNodeCode(string $orgId, string $code, string $namespace, array $options = [])
     {
         $resourceType = isset($options['resourceType']) ? $options['resourceType'] : new stdClass;
         $param = (new ListNodeByCodeAuthorizedResourcesParam($orgId, $code))->withNamespace($namespace)->withResourceType($resourceType);

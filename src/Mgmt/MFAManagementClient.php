@@ -21,20 +21,13 @@ class MFAManagementClient
         $this->client = $client;
     }
 
-    /**
-     * @param string $userId
-     */
-    public function getStatus($userId)
+    public function getStatus(string $userId)
     {
         $data = $this->client->httpGet("/api/v2/users/$userId/mfa-bound");
         return $data;
     }
 
-    /**
-     * @param string $userId
-     * @param string $type
-     */
-    public function unAssociateMfa($userId, $type)
+    public function unAssociateMfa(string $userId, string $type)
     {
         $data = $this->client->httpDelete("/api/v2/users/$userId/mfa-bound?type=$type");
         return true;

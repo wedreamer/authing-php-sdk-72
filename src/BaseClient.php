@@ -141,13 +141,11 @@ PUBLICKKEY;
     // {
     //     $this->accessToken = $token;
     // }
-
     /**
      * password Encrypt
-     * @param string $password
      * @return string
      */
-    public function encrypt($password)
+    public function encrypt(string $password)
     {
         if (!$password) {
             return null;
@@ -157,7 +155,7 @@ PUBLICKKEY;
         return base64_encode($newPassword);
     }
 
-    public function httpSend($req)
+    public function httpSend(\GuzzleHttp\Psr7\Request $req)
     {
 
         $res = $this->naiveHttpClient->send($req, ['http_errors' => false]);
@@ -210,7 +208,7 @@ PUBLICKKEY;
      * @return object
      * @throws Exception
      */
-    public function httpGet($path)
+    public function httpGet(string $path)
     {
         $result = $this->send($this->host . $path, null, 'GET');
         $res = json_decode(json_encode($result));
@@ -224,7 +222,7 @@ PUBLICKKEY;
      * @return object
      * @throws Exception
      */
-    public function httpPost($path, $data, $flag = '')
+    public function httpPost(string $path, $data, bool $flag = '')
     {
         if (isset($flag) && $flag) {
             $path = $path;
@@ -238,7 +236,7 @@ PUBLICKKEY;
         // return $this->arrayToObject($result);
     }
 
-    public function httpPatch($path, $data = [])
+    public function httpPatch(string $path, array $data = [])
     {
         $result = $this->send($this->host . $path, $data, 'PATCH');
         $res = json_decode(json_encode($result));
@@ -246,7 +244,7 @@ PUBLICKKEY;
         // return $this->arrayToObject($result);
     }
 
-    public function httpPut($path, $data = [])
+    public function httpPut(string $path, array|\stdClass $data = [])
     {
         $result = $this->send($this->host . $path, $data, 'PUT');
         $res = json_decode(json_encode($result));
@@ -259,7 +257,7 @@ PUBLICKKEY;
      * @return object
      * @throws Exception
      */
-    public function httpDelete($path)
+    public function httpDelete(string $path)
     {
         $result = $this->send($this->host . $path, null, 'DELETE');
         $res = json_decode(json_encode($result));
@@ -362,7 +360,7 @@ PUBLICKKEY;
      * @return mixed
      * @throws Exception
      */
-    private function send($url, $data = '', $method = 'POST', $time = 30000)
+    private function send(string $url, string|array $data = '', string $method = 'POST', int $time = 30000)
     {
         $token = $this->getToken();
         // 如果是通过密钥刷新

@@ -2329,7 +2329,7 @@ class SearchUserDepartmentOpt
      * @param $departmentId string departmentId
      * @return SearchUserDepartmentOpt
      */
-    public function withDepartmentId($departmentId)
+    public function withDepartmentId(string $departmentId)
     {
         $this->departmentId = $departmentId;
         return $this;
@@ -2339,7 +2339,7 @@ class SearchUserDepartmentOpt
      * @param $includeChildrenDepartments bool includeChildrenDepartments
      * @return SearchUserDepartmentOpt
      */
-    public function withIncludeChildrenDepartments($includeChildrenDepartments)
+    public function withIncludeChildrenDepartments(bool $includeChildrenDepartments)
     {
         $this->includeChildrenDepartments = $includeChildrenDepartments;
         return $this;
@@ -2370,7 +2370,7 @@ class SearchUserGroupOpt
      * @param $code string code
      * @return SearchUserGroupOpt
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -2412,7 +2412,7 @@ class SearchUserRoleOpt
      * @param $namespace string namespace
      * @return SearchUserRoleOpt
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -3802,7 +3802,7 @@ class AuthorizeResourceOpt
      * @param $actions string[] actions
      * @return AuthorizeResourceOpt
      */
-    public function withActions($actions)
+    public function withActions(array $actions)
     {
         $this->actions = $actions;
         return $this;
@@ -3845,7 +3845,7 @@ class CreateSocialConnectionInstanceInput
      * @param $fields CreateSocialConnectionInstanceFieldInput[] fields
      * @return CreateSocialConnectionInstanceInput
      */
-    public function withFields($fields)
+    public function withFields(array $fields)
     {
         $this->fields = $fields;
         return $this;
@@ -3985,7 +3985,7 @@ class ConfigEmailTemplateInput
      * @param $redirectTo string 重定向链接，操作成功后，用户将被重定向到此 URL。
      * @return ConfigEmailTemplateInput
      */
-    public function withRedirectTo($redirectTo)
+    public function withRedirectTo(string $redirectTo)
     {
         $this->redirectTo = $redirectTo;
         return $this;
@@ -3995,7 +3995,7 @@ class ConfigEmailTemplateInput
      * @param $hasURL bool hasURL
      * @return ConfigEmailTemplateInput
      */
-    public function withHasUrl($hasURL)
+    public function withHasUrl(bool $hasURL)
     {
         $this->hasURL = $hasURL;
         return $this;
@@ -4005,7 +4005,7 @@ class ConfigEmailTemplateInput
      * @param $expiresIn int 验证码过期时间（单位为秒）
      * @return ConfigEmailTemplateInput
      */
-    public function withExpiresIn($expiresIn)
+    public function withExpiresIn(int $expiresIn)
     {
         $this->expiresIn = $expiresIn;
         return $this;
@@ -4077,7 +4077,7 @@ class CreateFunctionInput
      * @param $description string 描述信息
      * @return CreateFunctionInput
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -4087,7 +4087,7 @@ class CreateFunctionInput
      * @param $url string 云函数链接
      * @return CreateFunctionInput
      */
-    public function withUrl($url)
+    public function withUrl(string $url)
     {
         $this->url = $url;
         return $this;
@@ -4158,7 +4158,7 @@ class UpdateFunctionInput
      * @param $name string 函数名称
      * @return UpdateFunctionInput
      */
-    public function withName($name)
+    public function withName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -4168,7 +4168,7 @@ class UpdateFunctionInput
      * @param $sourceCode string 源代码
      * @return UpdateFunctionInput
      */
-    public function withSourceCode($sourceCode)
+    public function withSourceCode(string $sourceCode)
     {
         $this->sourceCode = $sourceCode;
         return $this;
@@ -4178,7 +4178,7 @@ class UpdateFunctionInput
      * @param $description string 描述信息
      * @return UpdateFunctionInput
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -4188,7 +4188,7 @@ class UpdateFunctionInput
      * @param $url string 云函数链接
      * @return UpdateFunctionInput
      */
-    public function withUrl($url)
+    public function withUrl(string $url)
     {
         $this->url = $url;
         return $this;
@@ -4276,7 +4276,7 @@ class LoginByEmailInput
      * @param $captchaCode string 图形验证码
      * @return LoginByEmailInput
      */
-    public function withCaptchaCode($captchaCode)
+    public function withCaptchaCode(string $captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -4286,7 +4286,7 @@ class LoginByEmailInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByEmailInput
      */
-    public function withAutoRegister($autoRegister)
+    public function withAutoRegister(bool $autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4296,7 +4296,7 @@ class LoginByEmailInput
      * @param $clientIp string clientIp
      * @return LoginByEmailInput
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4306,7 +4306,7 @@ class LoginByEmailInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByEmailInput
      */
-    public function withParams($params)
+    public function withParams(string $params)
     {
         $this->params = $params;
         return $this;
@@ -4316,7 +4316,7 @@ class LoginByEmailInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByEmailInput
      */
-    public function withContext($context)
+    public function withContext(string $context)
     {
         $this->context = $context;
         return $this;
@@ -4404,7 +4404,7 @@ class LoginByUsernameInput
      * @param $captchaCode string 图形验证码
      * @return LoginByUsernameInput
      */
-    public function withCaptchaCode($captchaCode)
+    public function withCaptchaCode(string $captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -4414,7 +4414,7 @@ class LoginByUsernameInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByUsernameInput
      */
-    public function withAutoRegister($autoRegister)
+    public function withAutoRegister(bool $autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4424,7 +4424,7 @@ class LoginByUsernameInput
      * @param $clientIp string clientIp
      * @return LoginByUsernameInput
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4434,7 +4434,7 @@ class LoginByUsernameInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByUsernameInput
      */
-    public function withParams($params)
+    public function withParams(string $params)
     {
         $this->params = $params;
         return $this;
@@ -4444,7 +4444,7 @@ class LoginByUsernameInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByUsernameInput
      */
-    public function withContext($context)
+    public function withContext(string $context)
     {
         $this->context = $context;
         return $this;
@@ -4523,7 +4523,7 @@ class LoginByPhoneCodeInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByPhoneCodeInput
      */
-    public function withAutoRegister($autoRegister)
+    public function withAutoRegister(bool $autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4533,7 +4533,7 @@ class LoginByPhoneCodeInput
      * @param $clientIp string clientIp
      * @return LoginByPhoneCodeInput
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4543,7 +4543,7 @@ class LoginByPhoneCodeInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByPhoneCodeInput
      */
-    public function withParams($params)
+    public function withParams(string $params)
     {
         $this->params = $params;
         return $this;
@@ -4553,7 +4553,7 @@ class LoginByPhoneCodeInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByPhoneCodeInput
      */
-    public function withContext($context)
+    public function withContext(string $context)
     {
         $this->context = $context;
         return $this;
@@ -4641,7 +4641,7 @@ class LoginByPhonePasswordInput
      * @param $captchaCode string 图形验证码
      * @return LoginByPhonePasswordInput
      */
-    public function withCaptchaCode($captchaCode)
+    public function withCaptchaCode(string $captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -4651,7 +4651,7 @@ class LoginByPhonePasswordInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByPhonePasswordInput
      */
-    public function withAutoRegister($autoRegister)
+    public function withAutoRegister(bool $autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4661,7 +4661,7 @@ class LoginByPhonePasswordInput
      * @param $clientIp string clientIp
      * @return LoginByPhonePasswordInput
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4671,7 +4671,7 @@ class LoginByPhonePasswordInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByPhonePasswordInput
      */
-    public function withParams($params)
+    public function withParams(string $params)
     {
         $this->params = $params;
         return $this;
@@ -4681,7 +4681,7 @@ class LoginByPhonePasswordInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByPhonePasswordInput
      */
-    public function withContext($context)
+    public function withContext(string $context)
     {
         $this->context = $context;
         return $this;
@@ -4741,7 +4741,7 @@ class PolicyStatementInput
      * @param $effect PolicyEffect effect
      * @return PolicyStatementInput
      */
-    public function withEffect($effect)
+    public function withEffect(\Authing\Types\PolicyEffect $effect)
     {
         $this->effect = $effect;
         return $this;
@@ -4751,7 +4751,7 @@ class PolicyStatementInput
      * @param $condition PolicyStatementConditionInput[] condition
      * @return PolicyStatementInput
      */
-    public function withCondition($condition)
+    public function withCondition(array $condition)
     {
         $this->condition = $condition;
         return $this;
@@ -4890,7 +4890,7 @@ class RegisterByUsernameInput
      * @param $profile RegisterProfile profile
      * @return RegisterByUsernameInput
      */
-    public function withProfile($profile)
+    public function withProfile(\Authing\Types\RegisterProfile $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -4900,7 +4900,7 @@ class RegisterByUsernameInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByUsernameInput
      */
-    public function withForceLogin($forceLogin)
+    public function withForceLogin(bool $forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -4910,7 +4910,7 @@ class RegisterByUsernameInput
      * @param $generateToken bool generateToken
      * @return RegisterByUsernameInput
      */
-    public function withGenerateToken($generateToken)
+    public function withGenerateToken(bool $generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -4920,7 +4920,7 @@ class RegisterByUsernameInput
      * @param $clientIp string clientIp
      * @return RegisterByUsernameInput
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4930,7 +4930,7 @@ class RegisterByUsernameInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return RegisterByUsernameInput
      */
-    public function withParams($params)
+    public function withParams(string $params)
     {
         $this->params = $params;
         return $this;
@@ -4940,7 +4940,7 @@ class RegisterByUsernameInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return RegisterByUsernameInput
      */
-    public function withContext($context)
+    public function withContext(string $context)
     {
         $this->context = $context;
         return $this;
@@ -5179,7 +5179,7 @@ class RegisterProfile
      * @param $ip string ip
      * @return RegisterProfile
      */
-    public function withIp($ip)
+    public function withIp(string $ip)
     {
         $this->ip = $ip;
         return $this;
@@ -5189,7 +5189,7 @@ class RegisterProfile
      * @param $oauth string oauth
      * @return RegisterProfile
      */
-    public function withOauth($oauth)
+    public function withOauth(string $oauth)
     {
         $this->oauth = $oauth;
         return $this;
@@ -5199,7 +5199,7 @@ class RegisterProfile
      * @param $username string username
      * @return RegisterProfile
      */
-    public function withUsername($username)
+    public function withUsername(string $username)
     {
         $this->username = $username;
         return $this;
@@ -5209,7 +5209,7 @@ class RegisterProfile
      * @param $nickname string nickname
      * @return RegisterProfile
      */
-    public function withNickname($nickname)
+    public function withNickname(string $nickname)
     {
         $this->nickname = $nickname;
         return $this;
@@ -5219,7 +5219,7 @@ class RegisterProfile
      * @param $company string company
      * @return RegisterProfile
      */
-    public function withCompany($company)
+    public function withCompany(string $company)
     {
         $this->company = $company;
         return $this;
@@ -5229,7 +5229,7 @@ class RegisterProfile
      * @param $photo string photo
      * @return RegisterProfile
      */
-    public function withPhoto($photo)
+    public function withPhoto(string $photo)
     {
         $this->photo = $photo;
         return $this;
@@ -5239,7 +5239,7 @@ class RegisterProfile
      * @param $device string device
      * @return RegisterProfile
      */
-    public function withDevice($device)
+    public function withDevice(string $device)
     {
         $this->device = $device;
         return $this;
@@ -5249,7 +5249,7 @@ class RegisterProfile
      * @param $browser string browser
      * @return RegisterProfile
      */
-    public function withBrowser($browser)
+    public function withBrowser(string $browser)
     {
         $this->browser = $browser;
         return $this;
@@ -5259,7 +5259,7 @@ class RegisterProfile
      * @param $name string name
      * @return RegisterProfile
      */
-    public function withName($name)
+    public function withName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -5269,7 +5269,7 @@ class RegisterProfile
      * @param $givenName string givenName
      * @return RegisterProfile
      */
-    public function withGivenName($givenName)
+    public function withGivenName(string $givenName)
     {
         $this->givenName = $givenName;
         return $this;
@@ -5279,7 +5279,7 @@ class RegisterProfile
      * @param $familyName string familyName
      * @return RegisterProfile
      */
-    public function withFamilyName($familyName)
+    public function withFamilyName(string $familyName)
     {
         $this->familyName = $familyName;
         return $this;
@@ -5289,7 +5289,7 @@ class RegisterProfile
      * @param $middleName string middleName
      * @return RegisterProfile
      */
-    public function withMiddleName($middleName)
+    public function withMiddleName(string $middleName)
     {
         $this->middleName = $middleName;
         return $this;
@@ -5299,7 +5299,7 @@ class RegisterProfile
      * @param $profile string profile
      * @return RegisterProfile
      */
-    public function withProfile($profile)
+    public function withProfile(string $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -5309,7 +5309,7 @@ class RegisterProfile
      * @param $preferredUsername string preferredUsername
      * @return RegisterProfile
      */
-    public function withPreferredUsername($preferredUsername)
+    public function withPreferredUsername(string $preferredUsername)
     {
         $this->preferredUsername = $preferredUsername;
         return $this;
@@ -5319,7 +5319,7 @@ class RegisterProfile
      * @param $website string website
      * @return RegisterProfile
      */
-    public function withWebsite($website)
+    public function withWebsite(string $website)
     {
         $this->website = $website;
         return $this;
@@ -5329,7 +5329,7 @@ class RegisterProfile
      * @param $gender string gender
      * @return RegisterProfile
      */
-    public function withGender($gender)
+    public function withGender(string $gender)
     {
         $this->gender = $gender;
         return $this;
@@ -5339,7 +5339,7 @@ class RegisterProfile
      * @param $birthdate string birthdate
      * @return RegisterProfile
      */
-    public function withBirthdate($birthdate)
+    public function withBirthdate(string $birthdate)
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -5349,7 +5349,7 @@ class RegisterProfile
      * @param $zoneinfo string zoneinfo
      * @return RegisterProfile
      */
-    public function withZoneinfo($zoneinfo)
+    public function withZoneinfo(string $zoneinfo)
     {
         $this->zoneinfo = $zoneinfo;
         return $this;
@@ -5359,7 +5359,7 @@ class RegisterProfile
      * @param $locale string locale
      * @return RegisterProfile
      */
-    public function withLocale($locale)
+    public function withLocale(string $locale)
     {
         $this->locale = $locale;
         return $this;
@@ -5369,7 +5369,7 @@ class RegisterProfile
      * @param $address string address
      * @return RegisterProfile
      */
-    public function withAddress($address)
+    public function withAddress(string $address)
     {
         $this->address = $address;
         return $this;
@@ -5379,7 +5379,7 @@ class RegisterProfile
      * @param $formatted string formatted
      * @return RegisterProfile
      */
-    public function withFormatted($formatted)
+    public function withFormatted(string $formatted)
     {
         $this->formatted = $formatted;
         return $this;
@@ -5389,7 +5389,7 @@ class RegisterProfile
      * @param $streetAddress string streetAddress
      * @return RegisterProfile
      */
-    public function withStreetAddress($streetAddress)
+    public function withStreetAddress(string $streetAddress)
     {
         $this->streetAddress = $streetAddress;
         return $this;
@@ -5399,7 +5399,7 @@ class RegisterProfile
      * @param $locality string locality
      * @return RegisterProfile
      */
-    public function withLocality($locality)
+    public function withLocality(string $locality)
     {
         $this->locality = $locality;
         return $this;
@@ -5409,7 +5409,7 @@ class RegisterProfile
      * @param $region string region
      * @return RegisterProfile
      */
-    public function withRegion($region)
+    public function withRegion(string $region)
     {
         $this->region = $region;
         return $this;
@@ -5419,7 +5419,7 @@ class RegisterProfile
      * @param $postalCode string postalCode
      * @return RegisterProfile
      */
-    public function withPostalCode($postalCode)
+    public function withPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
         return $this;
@@ -5429,7 +5429,7 @@ class RegisterProfile
      * @param $country string country
      * @return RegisterProfile
      */
-    public function withCountry($country)
+    public function withCountry(string $country)
     {
         $this->country = $country;
         return $this;
@@ -5439,7 +5439,7 @@ class RegisterProfile
      * @param $udf UserDdfInput[] udf
      * @return RegisterProfile
      */
-    public function withUdf($udf)
+    public function withUdf(array $udf)
     {
         $this->udf = $udf;
         return $this;
@@ -5568,7 +5568,7 @@ class RegisterByEmailInput
      * @param $profile RegisterProfile profile
      * @return RegisterByEmailInput
      */
-    public function withProfile($profile)
+    public function withProfile(\Authing\Types\RegisterProfile $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -5578,7 +5578,7 @@ class RegisterByEmailInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByEmailInput
      */
-    public function withForceLogin($forceLogin)
+    public function withForceLogin(bool $forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -5588,7 +5588,7 @@ class RegisterByEmailInput
      * @param $generateToken bool generateToken
      * @return RegisterByEmailInput
      */
-    public function withGenerateToken($generateToken)
+    public function withGenerateToken(bool $generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -5598,7 +5598,7 @@ class RegisterByEmailInput
      * @param $clientIp string clientIp
      * @return RegisterByEmailInput
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -5608,7 +5608,7 @@ class RegisterByEmailInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return RegisterByEmailInput
      */
-    public function withParams($params)
+    public function withParams(string $params)
     {
         $this->params = $params;
         return $this;
@@ -5618,7 +5618,7 @@ class RegisterByEmailInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return RegisterByEmailInput
      */
-    public function withContext($context)
+    public function withContext(string $context)
     {
         $this->context = $context;
         return $this;
@@ -5720,7 +5720,7 @@ class RegisterByPhoneCodeInput
      * @param $password string password
      * @return RegisterByPhoneCodeInput
      */
-    public function withPassword($password)
+    public function withPassword(string $password)
     {
         $this->password = $password;
         return $this;
@@ -5730,7 +5730,7 @@ class RegisterByPhoneCodeInput
      * @param $profile RegisterProfile profile
      * @return RegisterByPhoneCodeInput
      */
-    public function withProfile($profile)
+    public function withProfile(\Authing\Types\RegisterProfile $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -5740,7 +5740,7 @@ class RegisterByPhoneCodeInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByPhoneCodeInput
      */
-    public function withForceLogin($forceLogin)
+    public function withForceLogin(bool $forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -5750,7 +5750,7 @@ class RegisterByPhoneCodeInput
      * @param $generateToken bool generateToken
      * @return RegisterByPhoneCodeInput
      */
-    public function withGenerateToken($generateToken)
+    public function withGenerateToken(bool $generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -5760,7 +5760,7 @@ class RegisterByPhoneCodeInput
      * @param $clientIp string clientIp
      * @return RegisterByPhoneCodeInput
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -5770,7 +5770,7 @@ class RegisterByPhoneCodeInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return RegisterByPhoneCodeInput
      */
-    public function withParams($params)
+    public function withParams(string $params)
     {
         $this->params = $params;
         return $this;
@@ -5780,7 +5780,7 @@ class RegisterByPhoneCodeInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return RegisterByPhoneCodeInput
      */
-    public function withContext($context)
+    public function withContext(string $context)
     {
         $this->context = $context;
         return $this;
@@ -5867,7 +5867,7 @@ class UserDefinedDataInput
      * @param $value string value
      * @return UserDefinedDataInput
      */
-    public function withValue($value)
+    public function withValue(string $value)
     {
         $this->value = $value;
         return $this;
@@ -6248,7 +6248,7 @@ class CreateUserInput
      * @param $username string 用户名，用户池内唯一
      * @return CreateUserInput
      */
-    public function withUsername($username)
+    public function withUsername(string $username)
     {
         $this->username = $username;
         return $this;
@@ -6258,7 +6258,7 @@ class CreateUserInput
      * @param $email string 邮箱，不区分大小写，如 Bob@example.com 和 bob@example.com 会识别为同一个邮箱。用户池内唯一。
      * @return CreateUserInput
      */
-    public function withEmail($email)
+    public function withEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -6268,7 +6268,7 @@ class CreateUserInput
      * @param $emailVerified bool 邮箱是否已验证
      * @return CreateUserInput
      */
-    public function withEmailVerified($emailVerified)
+    public function withEmailVerified(bool $emailVerified)
     {
         $this->emailVerified = $emailVerified;
         return $this;
@@ -6278,7 +6278,7 @@ class CreateUserInput
      * @param $phone string 手机号，用户池内唯一
      * @return CreateUserInput
      */
-    public function withPhone($phone)
+    public function withPhone(string $phone)
     {
         $this->phone = $phone;
         return $this;
@@ -6288,7 +6288,7 @@ class CreateUserInput
      * @param $phoneVerified bool 手机号是否已验证
      * @return CreateUserInput
      */
-    public function withPhoneVerified($phoneVerified)
+    public function withPhoneVerified(bool $phoneVerified)
     {
         $this->phoneVerified = $phoneVerified;
         return $this;
@@ -6298,7 +6298,7 @@ class CreateUserInput
      * @param $unionid string unionid
      * @return CreateUserInput
      */
-    public function withUnionid($unionid)
+    public function withUnionid(string $unionid)
     {
         $this->unionid = $unionid;
         return $this;
@@ -6308,7 +6308,7 @@ class CreateUserInput
      * @param $openid string openid
      * @return CreateUserInput
      */
-    public function withOpenid($openid)
+    public function withOpenid(string $openid)
     {
         $this->openid = $openid;
         return $this;
@@ -6318,7 +6318,7 @@ class CreateUserInput
      * @param $nickname string 昵称，该字段不唯一。
      * @return CreateUserInput
      */
-    public function withNickname($nickname)
+    public function withNickname(string $nickname)
     {
         $this->nickname = $nickname;
         return $this;
@@ -6328,7 +6328,7 @@ class CreateUserInput
      * @param $photo string 头像链接，默认为 https://usercontents.authing.cn/authing-avatar.png
      * @return CreateUserInput
      */
-    public function withPhoto($photo)
+    public function withPhoto(string $photo)
     {
         $this->photo = $photo;
         return $this;
@@ -6338,7 +6338,7 @@ class CreateUserInput
      * @param $password string password
      * @return CreateUserInput
      */
-    public function withPassword($password)
+    public function withPassword(string $password)
     {
         $this->password = $password;
         return $this;
@@ -6348,7 +6348,7 @@ class CreateUserInput
      * @param $registerSource string[] 注册方式
      * @return CreateUserInput
      */
-    public function withRegisterSource($registerSource)
+    public function withRegisterSource(array $registerSource)
     {
         $this->registerSource = $registerSource;
         return $this;
@@ -6358,7 +6358,7 @@ class CreateUserInput
      * @param $browser string browser
      * @return CreateUserInput
      */
-    public function withBrowser($browser)
+    public function withBrowser(string $browser)
     {
         $this->browser = $browser;
         return $this;
@@ -6368,7 +6368,7 @@ class CreateUserInput
      * @param $oauth string 用户社会化登录第三方身份提供商返回的原始用户信息，非社会化登录方式注册的用户此字段为空。
      * @return CreateUserInput
      */
-    public function withOauth($oauth)
+    public function withOauth(string $oauth)
     {
         $this->oauth = $oauth;
         return $this;
@@ -6378,7 +6378,7 @@ class CreateUserInput
      * @param $loginsCount int 用户累计登录次数，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return CreateUserInput
      */
-    public function withLoginsCount($loginsCount)
+    public function withLoginsCount(int $loginsCount)
     {
         $this->loginsCount = $loginsCount;
         return $this;
@@ -6388,7 +6388,7 @@ class CreateUserInput
      * @param $lastLogin string lastLogin
      * @return CreateUserInput
      */
-    public function withLastLogin($lastLogin)
+    public function withLastLogin(string $lastLogin)
     {
         $this->lastLogin = $lastLogin;
         return $this;
@@ -6398,7 +6398,7 @@ class CreateUserInput
      * @param $company string company
      * @return CreateUserInput
      */
-    public function withCompany($company)
+    public function withCompany(string $company)
     {
         $this->company = $company;
         return $this;
@@ -6408,7 +6408,7 @@ class CreateUserInput
      * @param $lastIP string lastIP
      * @return CreateUserInput
      */
-    public function withLastIp($lastIP)
+    public function withLastIp(string $lastIP)
     {
         $this->lastIP = $lastIP;
         return $this;
@@ -6418,7 +6418,7 @@ class CreateUserInput
      * @param $signedUp string 用户注册时间，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return CreateUserInput
      */
-    public function withSignedUp($signedUp)
+    public function withSignedUp(string $signedUp)
     {
         $this->signedUp = $signedUp;
         return $this;
@@ -6428,7 +6428,7 @@ class CreateUserInput
      * @param $blocked bool blocked
      * @return CreateUserInput
      */
-    public function withBlocked($blocked)
+    public function withBlocked(bool $blocked)
     {
         $this->blocked = $blocked;
         return $this;
@@ -6438,7 +6438,7 @@ class CreateUserInput
      * @param $isDeleted bool isDeleted
      * @return CreateUserInput
      */
-    public function withIsDeleted($isDeleted)
+    public function withIsDeleted(bool $isDeleted)
     {
         $this->isDeleted = $isDeleted;
         return $this;
@@ -6448,7 +6448,7 @@ class CreateUserInput
      * @param $device string device
      * @return CreateUserInput
      */
-    public function withDevice($device)
+    public function withDevice(string $device)
     {
         $this->device = $device;
         return $this;
@@ -6458,7 +6458,7 @@ class CreateUserInput
      * @param $name string name
      * @return CreateUserInput
      */
-    public function withName($name)
+    public function withName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -6468,7 +6468,7 @@ class CreateUserInput
      * @param $givenName string givenName
      * @return CreateUserInput
      */
-    public function withGivenName($givenName)
+    public function withGivenName(string $givenName)
     {
         $this->givenName = $givenName;
         return $this;
@@ -6478,7 +6478,7 @@ class CreateUserInput
      * @param $familyName string familyName
      * @return CreateUserInput
      */
-    public function withFamilyName($familyName)
+    public function withFamilyName(string $familyName)
     {
         $this->familyName = $familyName;
         return $this;
@@ -6488,7 +6488,7 @@ class CreateUserInput
      * @param $middleName string middleName
      * @return CreateUserInput
      */
-    public function withMiddleName($middleName)
+    public function withMiddleName(string $middleName)
     {
         $this->middleName = $middleName;
         return $this;
@@ -6498,7 +6498,7 @@ class CreateUserInput
      * @param $profile string profile
      * @return CreateUserInput
      */
-    public function withProfile($profile)
+    public function withProfile(string $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -6508,7 +6508,7 @@ class CreateUserInput
      * @param $preferredUsername string preferredUsername
      * @return CreateUserInput
      */
-    public function withPreferredUsername($preferredUsername)
+    public function withPreferredUsername(string $preferredUsername)
     {
         $this->preferredUsername = $preferredUsername;
         return $this;
@@ -6518,7 +6518,7 @@ class CreateUserInput
      * @param $website string website
      * @return CreateUserInput
      */
-    public function withWebsite($website)
+    public function withWebsite(string $website)
     {
         $this->website = $website;
         return $this;
@@ -6528,7 +6528,7 @@ class CreateUserInput
      * @param $gender string gender
      * @return CreateUserInput
      */
-    public function withGender($gender)
+    public function withGender(string $gender)
     {
         $this->gender = $gender;
         return $this;
@@ -6538,7 +6538,7 @@ class CreateUserInput
      * @param $birthdate string birthdate
      * @return CreateUserInput
      */
-    public function withBirthdate($birthdate)
+    public function withBirthdate(string $birthdate)
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -6548,7 +6548,7 @@ class CreateUserInput
      * @param $zoneinfo string zoneinfo
      * @return CreateUserInput
      */
-    public function withZoneinfo($zoneinfo)
+    public function withZoneinfo(string $zoneinfo)
     {
         $this->zoneinfo = $zoneinfo;
         return $this;
@@ -6558,7 +6558,7 @@ class CreateUserInput
      * @param $locale string locale
      * @return CreateUserInput
      */
-    public function withLocale($locale)
+    public function withLocale(string $locale)
     {
         $this->locale = $locale;
         return $this;
@@ -6568,7 +6568,7 @@ class CreateUserInput
      * @param $address string address
      * @return CreateUserInput
      */
-    public function withAddress($address)
+    public function withAddress(string $address)
     {
         $this->address = $address;
         return $this;
@@ -6578,7 +6578,7 @@ class CreateUserInput
      * @param $formatted string formatted
      * @return CreateUserInput
      */
-    public function withFormatted($formatted)
+    public function withFormatted(string $formatted)
     {
         $this->formatted = $formatted;
         return $this;
@@ -6588,7 +6588,7 @@ class CreateUserInput
      * @param $streetAddress string streetAddress
      * @return CreateUserInput
      */
-    public function withStreetAddress($streetAddress)
+    public function withStreetAddress(string $streetAddress)
     {
         $this->streetAddress = $streetAddress;
         return $this;
@@ -6598,7 +6598,7 @@ class CreateUserInput
      * @param $locality string locality
      * @return CreateUserInput
      */
-    public function withLocality($locality)
+    public function withLocality(string $locality)
     {
         $this->locality = $locality;
         return $this;
@@ -6608,7 +6608,7 @@ class CreateUserInput
      * @param $region string region
      * @return CreateUserInput
      */
-    public function withRegion($region)
+    public function withRegion(string $region)
     {
         $this->region = $region;
         return $this;
@@ -6618,7 +6618,7 @@ class CreateUserInput
      * @param $postalCode string postalCode
      * @return CreateUserInput
      */
-    public function withPostalCode($postalCode)
+    public function withPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
         return $this;
@@ -6628,7 +6628,7 @@ class CreateUserInput
      * @param $country string country
      * @return CreateUserInput
      */
-    public function withCountry($country)
+    public function withCountry(string $country)
     {
         $this->country = $country;
         return $this;
@@ -6638,7 +6638,7 @@ class CreateUserInput
      * @param $externalId string externalId
      * @return CreateUserInput
      */
-    public function withExternalId($externalId)
+    public function withExternalId(string $externalId)
     {
         $this->externalId = $externalId;
         return $this;
@@ -6992,7 +6992,7 @@ class UpdateUserInput
      * @param $email string 邮箱。直接修改用户邮箱需要管理员权限，普通用户修改邮箱请使用 **updateEmail** 接口。
      * @return UpdateUserInput
      */
-    public function withEmail($email)
+    public function withEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -7002,7 +7002,7 @@ class UpdateUserInput
      * @param $unionid string unionid
      * @return UpdateUserInput
      */
-    public function withUnionid($unionid)
+    public function withUnionid(string $unionid)
     {
         $this->unionid = $unionid;
         return $this;
@@ -7012,7 +7012,7 @@ class UpdateUserInput
      * @param $openid string openid
      * @return UpdateUserInput
      */
-    public function withOpenid($openid)
+    public function withOpenid(string $openid)
     {
         $this->openid = $openid;
         return $this;
@@ -7022,7 +7022,7 @@ class UpdateUserInput
      * @param $emailVerified bool 邮箱是否已验证。直接修改 emailVerified 需要管理员权限。
      * @return UpdateUserInput
      */
-    public function withEmailVerified($emailVerified)
+    public function withEmailVerified(bool $emailVerified)
     {
         $this->emailVerified = $emailVerified;
         return $this;
@@ -7032,7 +7032,7 @@ class UpdateUserInput
      * @param $phone string 手机号。直接修改用户手机号需要管理员权限，普通用户修改邮箱请使用 **updatePhone** 接口。
      * @return UpdateUserInput
      */
-    public function withPhone($phone)
+    public function withPhone(string $phone)
     {
         $this->phone = $phone;
         return $this;
@@ -7042,7 +7042,7 @@ class UpdateUserInput
      * @param $phoneVerified bool 手机号是否已验证。直接修改 **phoneVerified** 需要管理员权限。
      * @return UpdateUserInput
      */
-    public function withPhoneVerified($phoneVerified)
+    public function withPhoneVerified(bool $phoneVerified)
     {
         $this->phoneVerified = $phoneVerified;
         return $this;
@@ -7052,7 +7052,7 @@ class UpdateUserInput
      * @param $username string 用户名，用户池内唯一
      * @return UpdateUserInput
      */
-    public function withUsername($username)
+    public function withUsername(string $username)
     {
         $this->username = $username;
         return $this;
@@ -7062,7 +7062,7 @@ class UpdateUserInput
      * @param $nickname string 昵称，该字段不唯一。
      * @return UpdateUserInput
      */
-    public function withNickname($nickname)
+    public function withNickname(string $nickname)
     {
         $this->nickname = $nickname;
         return $this;
@@ -7072,7 +7072,7 @@ class UpdateUserInput
      * @param $password string 密码。直接修改用户密码需要管理员权限，普通用户修改邮箱请使用 **updatePassword** 接口。
      * @return UpdateUserInput
      */
-    public function withPassword($password)
+    public function withPassword(string $password)
     {
         $this->password = $password;
         return $this;
@@ -7082,7 +7082,7 @@ class UpdateUserInput
      * @param $photo string 头像链接，默认为 https://usercontents.authing.cn/authing-avatar.png
      * @return UpdateUserInput
      */
-    public function withPhoto($photo)
+    public function withPhoto(string $photo)
     {
         $this->photo = $photo;
         return $this;
@@ -7092,7 +7092,7 @@ class UpdateUserInput
      * @param $company string 注册方式
      * @return UpdateUserInput
      */
-    public function withCompany($company)
+    public function withCompany(string $company)
     {
         $this->company = $company;
         return $this;
@@ -7102,7 +7102,7 @@ class UpdateUserInput
      * @param $browser string browser
      * @return UpdateUserInput
      */
-    public function withBrowser($browser)
+    public function withBrowser(string $browser)
     {
         $this->browser = $browser;
         return $this;
@@ -7112,7 +7112,7 @@ class UpdateUserInput
      * @param $device string device
      * @return UpdateUserInput
      */
-    public function withDevice($device)
+    public function withDevice(string $device)
     {
         $this->device = $device;
         return $this;
@@ -7122,7 +7122,7 @@ class UpdateUserInput
      * @param $oauth string oauth
      * @return UpdateUserInput
      */
-    public function withOauth($oauth)
+    public function withOauth(string $oauth)
     {
         $this->oauth = $oauth;
         return $this;
@@ -7132,7 +7132,7 @@ class UpdateUserInput
      * @param $tokenExpiredAt string tokenExpiredAt
      * @return UpdateUserInput
      */
-    public function withTokenExpiredAt($tokenExpiredAt)
+    public function withTokenExpiredAt(string $tokenExpiredAt)
     {
         $this->tokenExpiredAt = $tokenExpiredAt;
         return $this;
@@ -7142,7 +7142,7 @@ class UpdateUserInput
      * @param $loginsCount int 用户累计登录次数，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return UpdateUserInput
      */
-    public function withLoginsCount($loginsCount)
+    public function withLoginsCount(int $loginsCount)
     {
         $this->loginsCount = $loginsCount;
         return $this;
@@ -7152,7 +7152,7 @@ class UpdateUserInput
      * @param $lastLogin string lastLogin
      * @return UpdateUserInput
      */
-    public function withLastLogin($lastLogin)
+    public function withLastLogin(string $lastLogin)
     {
         $this->lastLogin = $lastLogin;
         return $this;
@@ -7162,7 +7162,7 @@ class UpdateUserInput
      * @param $lastIP string lastIP
      * @return UpdateUserInput
      */
-    public function withLastIp($lastIP)
+    public function withLastIp(string $lastIP)
     {
         $this->lastIP = $lastIP;
         return $this;
@@ -7172,7 +7172,7 @@ class UpdateUserInput
      * @param $blocked bool 用户注册时间，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return UpdateUserInput
      */
-    public function withBlocked($blocked)
+    public function withBlocked(bool $blocked)
     {
         $this->blocked = $blocked;
         return $this;
@@ -7182,7 +7182,7 @@ class UpdateUserInput
      * @param $name string name
      * @return UpdateUserInput
      */
-    public function withName($name)
+    public function withName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -7192,7 +7192,7 @@ class UpdateUserInput
      * @param $givenName string givenName
      * @return UpdateUserInput
      */
-    public function withGivenName($givenName)
+    public function withGivenName(string $givenName)
     {
         $this->givenName = $givenName;
         return $this;
@@ -7202,7 +7202,7 @@ class UpdateUserInput
      * @param $familyName string familyName
      * @return UpdateUserInput
      */
-    public function withFamilyName($familyName)
+    public function withFamilyName(string $familyName)
     {
         $this->familyName = $familyName;
         return $this;
@@ -7212,7 +7212,7 @@ class UpdateUserInput
      * @param $middleName string middleName
      * @return UpdateUserInput
      */
-    public function withMiddleName($middleName)
+    public function withMiddleName(string $middleName)
     {
         $this->middleName = $middleName;
         return $this;
@@ -7222,7 +7222,7 @@ class UpdateUserInput
      * @param $profile string profile
      * @return UpdateUserInput
      */
-    public function withProfile($profile)
+    public function withProfile(string $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -7232,7 +7232,7 @@ class UpdateUserInput
      * @param $preferredUsername string preferredUsername
      * @return UpdateUserInput
      */
-    public function withPreferredUsername($preferredUsername)
+    public function withPreferredUsername(string $preferredUsername)
     {
         $this->preferredUsername = $preferredUsername;
         return $this;
@@ -7242,7 +7242,7 @@ class UpdateUserInput
      * @param $website string website
      * @return UpdateUserInput
      */
-    public function withWebsite($website)
+    public function withWebsite(string $website)
     {
         $this->website = $website;
         return $this;
@@ -7252,7 +7252,7 @@ class UpdateUserInput
      * @param $gender string gender
      * @return UpdateUserInput
      */
-    public function withGender($gender)
+    public function withGender(string $gender)
     {
         $this->gender = $gender;
         return $this;
@@ -7262,7 +7262,7 @@ class UpdateUserInput
      * @param $birthdate string birthdate
      * @return UpdateUserInput
      */
-    public function withBirthdate($birthdate)
+    public function withBirthdate(string $birthdate)
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -7272,7 +7272,7 @@ class UpdateUserInput
      * @param $zoneinfo string zoneinfo
      * @return UpdateUserInput
      */
-    public function withZoneinfo($zoneinfo)
+    public function withZoneinfo(string $zoneinfo)
     {
         $this->zoneinfo = $zoneinfo;
         return $this;
@@ -7282,7 +7282,7 @@ class UpdateUserInput
      * @param $locale string locale
      * @return UpdateUserInput
      */
-    public function withLocale($locale)
+    public function withLocale(string $locale)
     {
         $this->locale = $locale;
         return $this;
@@ -7292,7 +7292,7 @@ class UpdateUserInput
      * @param $address string address
      * @return UpdateUserInput
      */
-    public function withAddress($address)
+    public function withAddress(string $address)
     {
         $this->address = $address;
         return $this;
@@ -7302,7 +7302,7 @@ class UpdateUserInput
      * @param $formatted string formatted
      * @return UpdateUserInput
      */
-    public function withFormatted($formatted)
+    public function withFormatted(string $formatted)
     {
         $this->formatted = $formatted;
         return $this;
@@ -7312,7 +7312,7 @@ class UpdateUserInput
      * @param $streetAddress string streetAddress
      * @return UpdateUserInput
      */
-    public function withStreetAddress($streetAddress)
+    public function withStreetAddress(string $streetAddress)
     {
         $this->streetAddress = $streetAddress;
         return $this;
@@ -7322,7 +7322,7 @@ class UpdateUserInput
      * @param $locality string locality
      * @return UpdateUserInput
      */
-    public function withLocality($locality)
+    public function withLocality(string $locality)
     {
         $this->locality = $locality;
         return $this;
@@ -7332,7 +7332,7 @@ class UpdateUserInput
      * @param $region string region
      * @return UpdateUserInput
      */
-    public function withRegion($region)
+    public function withRegion(string $region)
     {
         $this->region = $region;
         return $this;
@@ -7342,7 +7342,7 @@ class UpdateUserInput
      * @param $postalCode string postalCode
      * @return UpdateUserInput
      */
-    public function withPostalCode($postalCode)
+    public function withPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
         return $this;
@@ -7352,7 +7352,7 @@ class UpdateUserInput
      * @param $city string city
      * @return UpdateUserInput
      */
-    public function withCity($city)
+    public function withCity(string $city)
     {
         $this->city = $city;
         return $this;
@@ -7362,7 +7362,7 @@ class UpdateUserInput
      * @param $province string province
      * @return UpdateUserInput
      */
-    public function withProvince($province)
+    public function withProvince(string $province)
     {
         $this->province = $province;
         return $this;
@@ -7372,7 +7372,7 @@ class UpdateUserInput
      * @param $country string country
      * @return UpdateUserInput
      */
-    public function withCountry($country)
+    public function withCountry(string $country)
     {
         $this->country = $country;
         return $this;
@@ -7382,7 +7382,7 @@ class UpdateUserInput
      * @param $externalId string externalId
      * @return UpdateUserInput
      */
-    public function withExternalId($externalId)
+    public function withExternalId(string $externalId)
     {
         $this->externalId = $externalId;
         return $this;
@@ -7575,7 +7575,7 @@ class UpdateUserpoolInput
      * @param $name string name
      * @return UpdateUserpoolInput
      */
-    public function withName($name)
+    public function withName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -7585,7 +7585,7 @@ class UpdateUserpoolInput
      * @param $logo string logo
      * @return UpdateUserpoolInput
      */
-    public function withLogo($logo)
+    public function withLogo(string $logo)
     {
         $this->logo = $logo;
         return $this;
@@ -7595,7 +7595,7 @@ class UpdateUserpoolInput
      * @param $domain string domain
      * @return UpdateUserpoolInput
      */
-    public function withDomain($domain)
+    public function withDomain(string $domain)
     {
         $this->domain = $domain;
         return $this;
@@ -7605,7 +7605,7 @@ class UpdateUserpoolInput
      * @param $description string description
      * @return UpdateUserpoolInput
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -7615,7 +7615,7 @@ class UpdateUserpoolInput
      * @param $userpoolTypes string[] userpoolTypes
      * @return UpdateUserpoolInput
      */
-    public function withUserpoolTypes($userpoolTypes)
+    public function withUserpoolTypes(array $userpoolTypes)
     {
         $this->userpoolTypes = $userpoolTypes;
         return $this;
@@ -7625,7 +7625,7 @@ class UpdateUserpoolInput
      * @param $emailVerifiedDefault bool emailVerifiedDefault
      * @return UpdateUserpoolInput
      */
-    public function withEmailVerifiedDefault($emailVerifiedDefault)
+    public function withEmailVerifiedDefault(bool $emailVerifiedDefault)
     {
         $this->emailVerifiedDefault = $emailVerifiedDefault;
         return $this;
@@ -7635,7 +7635,7 @@ class UpdateUserpoolInput
      * @param $sendWelcomeEmail bool sendWelcomeEmail
      * @return UpdateUserpoolInput
      */
-    public function withSendWelcomeEmail($sendWelcomeEmail)
+    public function withSendWelcomeEmail(bool $sendWelcomeEmail)
     {
         $this->sendWelcomeEmail = $sendWelcomeEmail;
         return $this;
@@ -7645,7 +7645,7 @@ class UpdateUserpoolInput
      * @param $registerDisabled bool registerDisabled
      * @return UpdateUserpoolInput
      */
-    public function withRegisterDisabled($registerDisabled)
+    public function withRegisterDisabled(bool $registerDisabled)
     {
         $this->registerDisabled = $registerDisabled;
         return $this;
@@ -7655,7 +7655,7 @@ class UpdateUserpoolInput
      * @param $appSsoEnabled bool appSsoEnabled
      * @return UpdateUserpoolInput
      */
-    public function withAppSsoEnabled($appSsoEnabled)
+    public function withAppSsoEnabled(bool $appSsoEnabled)
     {
         $this->appSsoEnabled = $appSsoEnabled;
         return $this;
@@ -7665,7 +7665,7 @@ class UpdateUserpoolInput
      * @param $allowedOrigins string allowedOrigins
      * @return UpdateUserpoolInput
      */
-    public function withAllowedOrigins($allowedOrigins)
+    public function withAllowedOrigins(string $allowedOrigins)
     {
         $this->allowedOrigins = $allowedOrigins;
         return $this;
@@ -7675,7 +7675,7 @@ class UpdateUserpoolInput
      * @param $tokenExpiresAfter int tokenExpiresAfter
      * @return UpdateUserpoolInput
      */
-    public function withTokenExpiresAfter($tokenExpiresAfter)
+    public function withTokenExpiresAfter(int $tokenExpiresAfter)
     {
         $this->tokenExpiresAfter = $tokenExpiresAfter;
         return $this;
@@ -7685,7 +7685,7 @@ class UpdateUserpoolInput
      * @param $frequentRegisterCheck FrequentRegisterCheckConfigInput frequentRegisterCheck
      * @return UpdateUserpoolInput
      */
-    public function withFrequentRegisterCheck($frequentRegisterCheck)
+    public function withFrequentRegisterCheck(\Authing\Types\FrequentRegisterCheckConfigInput $frequentRegisterCheck)
     {
         $this->frequentRegisterCheck = $frequentRegisterCheck;
         return $this;
@@ -7695,7 +7695,7 @@ class UpdateUserpoolInput
      * @param $loginFailCheck LoginFailCheckConfigInput loginFailCheck
      * @return UpdateUserpoolInput
      */
-    public function withLoginFailCheck($loginFailCheck)
+    public function withLoginFailCheck(\Authing\Types\LoginFailCheckConfigInput $loginFailCheck)
     {
         $this->loginFailCheck = $loginFailCheck;
         return $this;
@@ -7705,7 +7705,7 @@ class UpdateUserpoolInput
      * @param $changePhoneStrategy ChangePhoneStrategyInput changePhoneStrategy
      * @return UpdateUserpoolInput
      */
-    public function withChangePhoneStrategy($changePhoneStrategy)
+    public function withChangePhoneStrategy(\Authing\Types\ChangePhoneStrategyInput $changePhoneStrategy)
     {
         $this->changePhoneStrategy = $changePhoneStrategy;
         return $this;
@@ -7715,7 +7715,7 @@ class UpdateUserpoolInput
      * @param $changeEmailStrategy ChangeEmailStrategyInput changeEmailStrategy
      * @return UpdateUserpoolInput
      */
-    public function withChangeEmailStrategy($changeEmailStrategy)
+    public function withChangeEmailStrategy(\Authing\Types\ChangeEmailStrategyInput $changeEmailStrategy)
     {
         $this->changeEmailStrategy = $changeEmailStrategy;
         return $this;
@@ -7725,7 +7725,7 @@ class UpdateUserpoolInput
      * @param $qrcodeLoginStrategy QrcodeLoginStrategyInput qrcodeLoginStrategy
      * @return UpdateUserpoolInput
      */
-    public function withQrcodeLoginStrategy($qrcodeLoginStrategy)
+    public function withQrcodeLoginStrategy(\Authing\Types\QrcodeLoginStrategyInput $qrcodeLoginStrategy)
     {
         $this->qrcodeLoginStrategy = $qrcodeLoginStrategy;
         return $this;
@@ -7735,7 +7735,7 @@ class UpdateUserpoolInput
      * @param $app2WxappLoginStrategy App2WxappLoginStrategyInput app2WxappLoginStrategy
      * @return UpdateUserpoolInput
      */
-    public function withApp2WxappLoginStrategy($app2WxappLoginStrategy)
+    public function withApp2WxappLoginStrategy(\Authing\Types\App2WxappLoginStrategyInput $app2WxappLoginStrategy)
     {
         $this->app2WxappLoginStrategy = $app2WxappLoginStrategy;
         return $this;
@@ -7745,7 +7745,7 @@ class UpdateUserpoolInput
      * @param $whitelist RegisterWhiteListConfigInput whitelist
      * @return UpdateUserpoolInput
      */
-    public function withWhitelist($whitelist)
+    public function withWhitelist(\Authing\Types\RegisterWhiteListConfigInput $whitelist)
     {
         $this->whitelist = $whitelist;
         return $this;
@@ -7755,7 +7755,7 @@ class UpdateUserpoolInput
      * @param $customSMSProvider CustomSmsProviderInput 自定义短信服务商配置
      * @return UpdateUserpoolInput
      */
-    public function withCustomSmsProvider($customSMSProvider)
+    public function withCustomSmsProvider(\Authing\Types\CustomSmsProviderInput $customSMSProvider)
     {
         $this->customSMSProvider = $customSMSProvider;
         return $this;
@@ -7765,7 +7765,7 @@ class UpdateUserpoolInput
      * @param $loginRequireEmailVerified bool 是否要求邮箱必须验证才能登录（如果是通过邮箱登录的话）
      * @return UpdateUserpoolInput
      */
-    public function withLoginRequireEmailVerified($loginRequireEmailVerified)
+    public function withLoginRequireEmailVerified(bool $loginRequireEmailVerified)
     {
         $this->loginRequireEmailVerified = $loginRequireEmailVerified;
         return $this;
@@ -7775,7 +7775,7 @@ class UpdateUserpoolInput
      * @param $verifyCodeLength int verifyCodeLength
      * @return UpdateUserpoolInput
      */
-    public function withVerifyCodeLength($verifyCodeLength)
+    public function withVerifyCodeLength(int $verifyCodeLength)
     {
         $this->verifyCodeLength = $verifyCodeLength;
         return $this;
@@ -7822,7 +7822,7 @@ class FrequentRegisterCheckConfigInput
      * @param $timeInterval int timeInterval
      * @return FrequentRegisterCheckConfigInput
      */
-    public function withTimeInterval($timeInterval)
+    public function withTimeInterval(int $timeInterval)
     {
         $this->timeInterval = $timeInterval;
         return $this;
@@ -7832,7 +7832,7 @@ class FrequentRegisterCheckConfigInput
      * @param $limit int limit
      * @return FrequentRegisterCheckConfigInput
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -7842,7 +7842,7 @@ class FrequentRegisterCheckConfigInput
      * @param $enabled bool enabled
      * @return FrequentRegisterCheckConfigInput
      */
-    public function withEnabled($enabled)
+    public function withEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -7889,7 +7889,7 @@ class LoginFailCheckConfigInput
      * @param $timeInterval int timeInterval
      * @return LoginFailCheckConfigInput
      */
-    public function withTimeInterval($timeInterval)
+    public function withTimeInterval(int $timeInterval)
     {
         $this->timeInterval = $timeInterval;
         return $this;
@@ -7899,7 +7899,7 @@ class LoginFailCheckConfigInput
      * @param $limit int limit
      * @return LoginFailCheckConfigInput
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -7909,7 +7909,7 @@ class LoginFailCheckConfigInput
      * @param $enabled bool enabled
      * @return LoginFailCheckConfigInput
      */
-    public function withEnabled($enabled)
+    public function withEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -7940,7 +7940,7 @@ class ChangePhoneStrategyInput
      * @param $verifyOldPhone bool verifyOldPhone
      * @return ChangePhoneStrategyInput
      */
-    public function withVerifyOldPhone($verifyOldPhone)
+    public function withVerifyOldPhone(bool $verifyOldPhone)
     {
         $this->verifyOldPhone = $verifyOldPhone;
         return $this;
@@ -7971,7 +7971,7 @@ class ChangeEmailStrategyInput
      * @param $verifyOldEmail bool verifyOldEmail
      * @return ChangeEmailStrategyInput
      */
-    public function withVerifyOldEmail($verifyOldEmail)
+    public function withVerifyOldEmail(bool $verifyOldEmail)
     {
         $this->verifyOldEmail = $verifyOldEmail;
         return $this;
@@ -8026,7 +8026,7 @@ class QrcodeLoginStrategyInput
      * @param $qrcodeExpiresAfter int qrcodeExpiresAfter
      * @return QrcodeLoginStrategyInput
      */
-    public function withQrcodeExpiresAfter($qrcodeExpiresAfter)
+    public function withQrcodeExpiresAfter(int $qrcodeExpiresAfter)
     {
         $this->qrcodeExpiresAfter = $qrcodeExpiresAfter;
         return $this;
@@ -8036,7 +8036,7 @@ class QrcodeLoginStrategyInput
      * @param $returnFullUserInfo bool returnFullUserInfo
      * @return QrcodeLoginStrategyInput
      */
-    public function withReturnFullUserInfo($returnFullUserInfo)
+    public function withReturnFullUserInfo(bool $returnFullUserInfo)
     {
         $this->returnFullUserInfo = $returnFullUserInfo;
         return $this;
@@ -8046,7 +8046,7 @@ class QrcodeLoginStrategyInput
      * @param $allowExchangeUserInfoFromBrowser bool allowExchangeUserInfoFromBrowser
      * @return QrcodeLoginStrategyInput
      */
-    public function withAllowExchangeUserInfoFromBrowser($allowExchangeUserInfoFromBrowser)
+    public function withAllowExchangeUserInfoFromBrowser(bool $allowExchangeUserInfoFromBrowser)
     {
         $this->allowExchangeUserInfoFromBrowser = $allowExchangeUserInfoFromBrowser;
         return $this;
@@ -8056,7 +8056,7 @@ class QrcodeLoginStrategyInput
      * @param $ticketExpiresAfter int ticketExpiresAfter
      * @return QrcodeLoginStrategyInput
      */
-    public function withTicketExpiresAfter($ticketExpiresAfter)
+    public function withTicketExpiresAfter(int $ticketExpiresAfter)
     {
         $this->ticketExpiresAfter = $ticketExpiresAfter;
         return $this;
@@ -8095,7 +8095,7 @@ class App2WxappLoginStrategyInput
      * @param $ticketExpriresAfter int ticketExpriresAfter
      * @return App2WxappLoginStrategyInput
      */
-    public function withTicketExpriresAfter($ticketExpriresAfter)
+    public function withTicketExpriresAfter(int $ticketExpriresAfter)
     {
         $this->ticketExpriresAfter = $ticketExpriresAfter;
         return $this;
@@ -8105,7 +8105,7 @@ class App2WxappLoginStrategyInput
      * @param $ticketExchangeUserInfoNeedSecret bool ticketExchangeUserInfoNeedSecret
      * @return App2WxappLoginStrategyInput
      */
-    public function withTicketExchangeUserInfoNeedSecret($ticketExchangeUserInfoNeedSecret)
+    public function withTicketExchangeUserInfoNeedSecret(bool $ticketExchangeUserInfoNeedSecret)
     {
         $this->ticketExchangeUserInfoNeedSecret = $ticketExchangeUserInfoNeedSecret;
         return $this;
@@ -8152,7 +8152,7 @@ class RegisterWhiteListConfigInput
      * @param $phoneEnabled bool phoneEnabled
      * @return RegisterWhiteListConfigInput
      */
-    public function withPhoneEnabled($phoneEnabled)
+    public function withPhoneEnabled(bool $phoneEnabled)
     {
         $this->phoneEnabled = $phoneEnabled;
         return $this;
@@ -8162,7 +8162,7 @@ class RegisterWhiteListConfigInput
      * @param $emailEnabled bool emailEnabled
      * @return RegisterWhiteListConfigInput
      */
-    public function withEmailEnabled($emailEnabled)
+    public function withEmailEnabled(bool $emailEnabled)
     {
         $this->emailEnabled = $emailEnabled;
         return $this;
@@ -8172,7 +8172,7 @@ class RegisterWhiteListConfigInput
      * @param $usernameEnabled bool usernameEnabled
      * @return RegisterWhiteListConfigInput
      */
-    public function withUsernameEnabled($usernameEnabled)
+    public function withUsernameEnabled(bool $usernameEnabled)
     {
         $this->usernameEnabled = $usernameEnabled;
         return $this;
@@ -8219,7 +8219,7 @@ class CustomSmsProviderInput
      * @param $enabled bool enabled
      * @return CustomSmsProviderInput
      */
-    public function withEnabled($enabled)
+    public function withEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -8229,7 +8229,7 @@ class CustomSmsProviderInput
      * @param $provider string provider
      * @return CustomSmsProviderInput
      */
-    public function withProvider($provider)
+    public function withProvider(string $provider)
     {
         $this->provider = $provider;
         return $this;
@@ -8239,7 +8239,7 @@ class CustomSmsProviderInput
      * @param $config string config
      * @return CustomSmsProviderInput
      */
-    public function withConfig($config)
+    public function withConfig(string $config)
     {
         $this->config = $config;
         return $this;
@@ -8388,7 +8388,7 @@ class SocialConnectionFieldInput
      * @param $key string key
      * @return SocialConnectionFieldInput
      */
-    public function withKey($key)
+    public function withKey(string $key)
     {
         $this->key = $key;
         return $this;
@@ -8398,7 +8398,7 @@ class SocialConnectionFieldInput
      * @param $label string label
      * @return SocialConnectionFieldInput
      */
-    public function withLabel($label)
+    public function withLabel(string $label)
     {
         $this->label = $label;
         return $this;
@@ -8408,7 +8408,7 @@ class SocialConnectionFieldInput
      * @param $type string type
      * @return SocialConnectionFieldInput
      */
-    public function withType($type)
+    public function withType(string $type)
     {
         $this->type = $type;
         return $this;
@@ -8418,7 +8418,7 @@ class SocialConnectionFieldInput
      * @param $placeholder string placeholder
      * @return SocialConnectionFieldInput
      */
-    public function withPlaceholder($placeholder)
+    public function withPlaceholder(string $placeholder)
     {
         $this->placeholder = $placeholder;
         return $this;
@@ -8428,7 +8428,7 @@ class SocialConnectionFieldInput
      * @param $children SocialConnectionFieldInput[] children
      * @return SocialConnectionFieldInput
      */
-    public function withChildren($children)
+    public function withChildren(array $children)
     {
         $this->children = $children;
         return $this;
@@ -8498,7 +8498,7 @@ class CreateSocialConnectionInput
      * @param $description string description
      * @return CreateSocialConnectionInput
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -8508,7 +8508,7 @@ class CreateSocialConnectionInput
      * @param $fields SocialConnectionFieldInput[] fields
      * @return CreateSocialConnectionInput
      */
-    public function withFields($fields)
+    public function withFields(array $fields)
     {
         $this->fields = $fields;
         return $this;
@@ -8603,7 +8603,7 @@ class AddMemberParam
      * @param $page int
      * @return AddMemberParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -8613,7 +8613,7 @@ class AddMemberParam
      * @param $limit int
      * @return AddMemberParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -8623,7 +8623,7 @@ class AddMemberParam
      * @param $sortBy SortByEnum
      * @return AddMemberParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -8633,7 +8633,7 @@ class AddMemberParam
      * @param $includeChildrenNodes bool
      * @return AddMemberParam
      */
-    public function withIncludeChildrenNodes($includeChildrenNodes)
+    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -8643,7 +8643,7 @@ class AddMemberParam
      * @param $nodeId string
      * @return AddMemberParam
      */
-    public function withNodeId($nodeId)
+    public function withNodeId(string $nodeId)
     {
         $this->nodeId = $nodeId;
         return $this;
@@ -8653,7 +8653,7 @@ class AddMemberParam
      * @param $orgId string
      * @return AddMemberParam
      */
-    public function withOrgId($orgId)
+    public function withOrgId(string $orgId)
     {
         $this->orgId = $orgId;
         return $this;
@@ -8663,7 +8663,7 @@ class AddMemberParam
      * @param $nodeCode string
      * @return AddMemberParam
      */
-    public function withNodeCode($nodeCode)
+    public function withNodeCode(string $nodeCode)
     {
         $this->nodeCode = $nodeCode;
         return $this;
@@ -8673,7 +8673,7 @@ class AddMemberParam
      * @param $isLeader bool
      * @return AddMemberParam
      */
-    public function withIsLeader($isLeader)
+    public function withIsLeader(bool $isLeader)
     {
         $this->isLeader = $isLeader;
         return $this;
@@ -8848,7 +8848,7 @@ class AddNodeParam
      * @param $parentNodeId string
      * @return AddNodeParam
      */
-    public function withParentNodeId($parentNodeId)
+    public function withParentNodeId(string $parentNodeId)
     {
         $this->parentNodeId = $parentNodeId;
         return $this;
@@ -8858,7 +8858,7 @@ class AddNodeParam
      * @param $nameI18n string
      * @return AddNodeParam
      */
-    public function withNameI18n($nameI18n)
+    public function withNameI18n(string $nameI18n)
     {
         $this->nameI18n = $nameI18n;
         return $this;
@@ -8868,7 +8868,7 @@ class AddNodeParam
      * @param $description string
      * @return AddNodeParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -8878,7 +8878,7 @@ class AddNodeParam
      * @param $descriptionI18n string
      * @return AddNodeParam
      */
-    public function withDescriptionI18n($descriptionI18n)
+    public function withDescriptionI18n(string $descriptionI18n)
     {
         $this->descriptionI18n = $descriptionI18n;
         return $this;
@@ -8888,7 +8888,7 @@ class AddNodeParam
      * @param $order int
      * @return AddNodeParam
      */
-    public function withOrder($order)
+    public function withOrder(int $order)
     {
         $this->order = $order;
         return $this;
@@ -8898,7 +8898,7 @@ class AddNodeParam
      * @param $code string
      * @return AddNodeParam
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -9037,7 +9037,7 @@ class AddNodeV2Param
      * @param $parentNodeId string
      * @return AddNodeV2Param
      */
-    public function withParentNodeId($parentNodeId)
+    public function withParentNodeId(string $parentNodeId)
     {
         $this->parentNodeId = $parentNodeId;
         return $this;
@@ -9047,7 +9047,7 @@ class AddNodeV2Param
      * @param $nameI18n string
      * @return AddNodeV2Param
      */
-    public function withNameI18n($nameI18n)
+    public function withNameI18n(string $nameI18n)
     {
         $this->nameI18n = $nameI18n;
         return $this;
@@ -9057,7 +9057,7 @@ class AddNodeV2Param
      * @param $description string
      * @return AddNodeV2Param
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -9067,7 +9067,7 @@ class AddNodeV2Param
      * @param $descriptionI18n string
      * @return AddNodeV2Param
      */
-    public function withDescriptionI18n($descriptionI18n)
+    public function withDescriptionI18n(string $descriptionI18n)
     {
         $this->descriptionI18n = $descriptionI18n;
         return $this;
@@ -9077,7 +9077,7 @@ class AddNodeV2Param
      * @param $order int
      * @return AddNodeV2Param
      */
-    public function withOrder($order)
+    public function withOrder(int $order)
     {
         $this->order = $order;
         return $this;
@@ -9087,7 +9087,7 @@ class AddNodeV2Param
      * @param $code string
      * @return AddNodeV2Param
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -9186,7 +9186,7 @@ class AddPolicyAssignmentsParam
      * @param $targetIdentifiers string[]
      * @return AddPolicyAssignmentsParam
      */
-    public function withTargetIdentifiers($targetIdentifiers)
+    public function withTargetIdentifiers(array $targetIdentifiers)
     {
         $this->targetIdentifiers = $targetIdentifiers;
         return $this;
@@ -9196,7 +9196,7 @@ class AddPolicyAssignmentsParam
      * @param $inheritByChildren bool
      * @return AddPolicyAssignmentsParam
      */
-    public function withInheritByChildren($inheritByChildren)
+    public function withInheritByChildren(bool $inheritByChildren)
     {
         $this->inheritByChildren = $inheritByChildren;
         return $this;
@@ -9206,7 +9206,7 @@ class AddPolicyAssignmentsParam
      * @param $namespace string
      * @return AddPolicyAssignmentsParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -9270,7 +9270,7 @@ class AddUserToGroupParam
      * @param $code string
      * @return AddUserToGroupParam
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -9428,7 +9428,7 @@ class AllowParam
      * @param $userId string
      * @return AllowParam
      */
-    public function withUserId($userId)
+    public function withUserId(string $userId)
     {
         $this->userId = $userId;
         return $this;
@@ -9438,7 +9438,7 @@ class AllowParam
      * @param $userIds string[]
      * @return AllowParam
      */
-    public function withUserIds($userIds)
+    public function withUserIds(array $userIds)
     {
         $this->userIds = $userIds;
         return $this;
@@ -9448,7 +9448,7 @@ class AllowParam
      * @param $roleCode string
      * @return AllowParam
      */
-    public function withRoleCode($roleCode)
+    public function withRoleCode(string $roleCode)
     {
         $this->roleCode = $roleCode;
         return $this;
@@ -9458,7 +9458,7 @@ class AllowParam
      * @param $roleCodes string[]
      * @return AllowParam
      */
-    public function withRoleCodes($roleCodes)
+    public function withRoleCodes(array $roleCodes)
     {
         $this->roleCodes = $roleCodes;
         return $this;
@@ -9468,7 +9468,7 @@ class AllowParam
      * @param $namespace string
      * @return AllowParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -9557,7 +9557,7 @@ class AssignRoleParam
      * @param $namespace string
      * @return AssignRoleParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -9567,7 +9567,7 @@ class AssignRoleParam
      * @param $roleCode string
      * @return AssignRoleParam
      */
-    public function withRoleCode($roleCode)
+    public function withRoleCode(string $roleCode)
     {
         $this->roleCode = $roleCode;
         return $this;
@@ -9577,7 +9577,7 @@ class AssignRoleParam
      * @param $roleCodes string[]
      * @return AssignRoleParam
      */
-    public function withRoleCodes($roleCodes)
+    public function withRoleCodes(array $roleCodes)
     {
         $this->roleCodes = $roleCodes;
         return $this;
@@ -9587,7 +9587,7 @@ class AssignRoleParam
      * @param $userIds string[]
      * @return AssignRoleParam
      */
-    public function withUserIds($userIds)
+    public function withUserIds(array $userIds)
     {
         $this->userIds = $userIds;
         return $this;
@@ -9597,7 +9597,7 @@ class AssignRoleParam
      * @param $groupCodes string[]
      * @return AssignRoleParam
      */
-    public function withGroupCodes($groupCodes)
+    public function withGroupCodes(array $groupCodes)
     {
         $this->groupCodes = $groupCodes;
         return $this;
@@ -9607,7 +9607,7 @@ class AssignRoleParam
      * @param $nodeCodes string[]
      * @return AssignRoleParam
      */
-    public function withNodeCodes($nodeCodes)
+    public function withNodeCodes(array $nodeCodes)
     {
         $this->nodeCodes = $nodeCodes;
         return $this;
@@ -9682,7 +9682,7 @@ class AuthorizeResourceParam
      * @param $namespace string
      * @return AuthorizeResourceParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -9692,7 +9692,7 @@ class AuthorizeResourceParam
      * @param $resource string
      * @return AuthorizeResourceParam
      */
-    public function withResource($resource)
+    public function withResource(string $resource)
     {
         $this->resource = $resource;
         return $this;
@@ -9702,7 +9702,7 @@ class AuthorizeResourceParam
      * @param $resourceType ResourceType
      * @return AuthorizeResourceParam
      */
-    public function withResourceType($resourceType)
+    public function withResourceType(\Authing\Types\ResourceType $resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -9712,7 +9712,7 @@ class AuthorizeResourceParam
      * @param $opts AuthorizeResourceOpt[]
      * @return AuthorizeResourceParam
      */
-    public function withOpts($opts)
+    public function withOpts(array $opts)
     {
         $this->opts = $opts;
         return $this;
@@ -10000,7 +10000,7 @@ class ChangeMfaParam
      * @param $enable bool
      * @return ChangeMfaParam
      */
-    public function withEnable($enable)
+    public function withEnable(bool $enable)
     {
         $this->enable = $enable;
         return $this;
@@ -10010,7 +10010,7 @@ class ChangeMfaParam
      * @param $id string
      * @return ChangeMfaParam
      */
-    public function withId($id)
+    public function withId(string $id)
     {
         $this->id = $id;
         return $this;
@@ -10020,7 +10020,7 @@ class ChangeMfaParam
      * @param $userId string
      * @return ChangeMfaParam
      */
-    public function withUserId($userId)
+    public function withUserId(string $userId)
     {
         $this->userId = $userId;
         return $this;
@@ -10030,7 +10030,7 @@ class ChangeMfaParam
      * @param $userPoolId string
      * @return ChangeMfaParam
      */
-    public function withUserPoolId($userPoolId)
+    public function withUserPoolId(string $userPoolId)
     {
         $this->userPoolId = $userPoolId;
         return $this;
@@ -10040,7 +10040,7 @@ class ChangeMfaParam
      * @param $refresh bool
      * @return ChangeMfaParam
      */
-    public function withRefresh($refresh)
+    public function withRefresh(bool $refresh)
     {
         $this->refresh = $refresh;
         return $this;
@@ -10221,7 +10221,7 @@ class CreateGroupParam
      * @param $description string
      * @return CreateGroupParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -10295,7 +10295,7 @@ class CreateOrgParam
      * @param $code string
      * @return CreateOrgParam
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -10305,7 +10305,7 @@ class CreateOrgParam
      * @param $description string
      * @return CreateOrgParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -10416,7 +10416,7 @@ class CreatePolicyParam
      * @param $namespace string
      * @return CreatePolicyParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -10426,7 +10426,7 @@ class CreatePolicyParam
      * @param $description string
      * @return CreatePolicyParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -10519,7 +10519,7 @@ class CreateRoleParam
      * @param $namespace string
      * @return CreateRoleParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -10529,7 +10529,7 @@ class CreateRoleParam
      * @param $description string
      * @return CreateRoleParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -10539,7 +10539,7 @@ class CreateRoleParam
      * @param $parent string
      * @return CreateRoleParam
      */
-    public function withParent($parent)
+    public function withParent(string $parent)
     {
         $this->parent = $parent;
         return $this;
@@ -10666,7 +10666,7 @@ class CreateUserParam
      * @param $keepPassword bool
      * @return CreateUserParam
      */
-    public function withKeepPassword($keepPassword)
+    public function withKeepPassword(bool $keepPassword)
     {
         $this->keepPassword = $keepPassword;
         return $this;
@@ -10801,7 +10801,7 @@ class CreateUserpoolParam
      * @param $description string
      * @return CreateUserpoolParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -10811,7 +10811,7 @@ class CreateUserpoolParam
      * @param $logo string
      * @return CreateUserpoolParam
      */
-    public function withLogo($logo)
+    public function withLogo(string $logo)
     {
         $this->logo = $logo;
         return $this;
@@ -10821,7 +10821,7 @@ class CreateUserpoolParam
      * @param $userpoolTypes string[]
      * @return CreateUserpoolParam
      */
-    public function withUserpoolTypes($userpoolTypes)
+    public function withUserpoolTypes(array $userpoolTypes)
     {
         $this->userpoolTypes = $userpoolTypes;
         return $this;
@@ -11140,7 +11140,7 @@ class DeletePoliciesParam
      * @param $namespace string
      * @return DeletePoliciesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -11204,7 +11204,7 @@ class DeletePolicyParam
      * @param $namespace string
      * @return DeletePolicyParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -11268,7 +11268,7 @@ class DeleteRoleParam
      * @param $namespace string
      * @return DeleteRoleParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -11332,7 +11332,7 @@ class DeleteRolesParam
      * @param $namespace string
      * @return DeleteRolesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -11647,7 +11647,7 @@ class DisbalePolicyAssignmentParam
      * @param $namespace string
      * @return DisbalePolicyAssignmentParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -11784,7 +11784,7 @@ class EnablePolicyAssignmentParam
      * @param $namespace string
      * @return EnablePolicyAssignmentParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -12200,7 +12200,7 @@ class LoginBySubAccountParam
      * @param $captchaCode string
      * @return LoginBySubAccountParam
      */
-    public function withCaptchaCode($captchaCode)
+    public function withCaptchaCode(string $captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -12210,7 +12210,7 @@ class LoginBySubAccountParam
      * @param $clientIp string
      * @return LoginBySubAccountParam
      */
-    public function withClientIp($clientIp)
+    public function withClientIp(string $clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -12503,7 +12503,7 @@ class RefreshAccessTokenParam
      * @param $accessToken string
      * @return RefreshAccessTokenParam
      */
-    public function withAccessToken($accessToken)
+    public function withAccessToken(string $accessToken)
     {
         $this->accessToken = $accessToken;
         return $this;
@@ -12558,7 +12558,7 @@ class RefreshTokenParam
      * @param $id string
      * @return RefreshTokenParam
      */
-    public function withId($id)
+    public function withId(string $id)
     {
         $this->id = $id;
         return $this;
@@ -12980,7 +12980,7 @@ class RemoveMemberParam
      * @param $page int
      * @return RemoveMemberParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -12990,7 +12990,7 @@ class RemoveMemberParam
      * @param $limit int
      * @return RemoveMemberParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -13000,7 +13000,7 @@ class RemoveMemberParam
      * @param $sortBy SortByEnum
      * @return RemoveMemberParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -13010,7 +13010,7 @@ class RemoveMemberParam
      * @param $includeChildrenNodes bool
      * @return RemoveMemberParam
      */
-    public function withIncludeChildrenNodes($includeChildrenNodes)
+    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -13020,7 +13020,7 @@ class RemoveMemberParam
      * @param $nodeId string
      * @return RemoveMemberParam
      */
-    public function withNodeId($nodeId)
+    public function withNodeId(string $nodeId)
     {
         $this->nodeId = $nodeId;
         return $this;
@@ -13030,7 +13030,7 @@ class RemoveMemberParam
      * @param $orgId string
      * @return RemoveMemberParam
      */
-    public function withOrgId($orgId)
+    public function withOrgId(string $orgId)
     {
         $this->orgId = $orgId;
         return $this;
@@ -13040,7 +13040,7 @@ class RemoveMemberParam
      * @param $nodeCode string
      * @return RemoveMemberParam
      */
-    public function withNodeCode($nodeCode)
+    public function withNodeCode(string $nodeCode)
     {
         $this->nodeCode = $nodeCode;
         return $this;
@@ -13184,7 +13184,7 @@ class RemovePolicyAssignmentsParam
      * @param $targetIdentifiers string[]
      * @return RemovePolicyAssignmentsParam
      */
-    public function withTargetIdentifiers($targetIdentifiers)
+    public function withTargetIdentifiers(array $targetIdentifiers)
     {
         $this->targetIdentifiers = $targetIdentifiers;
         return $this;
@@ -13194,7 +13194,7 @@ class RemovePolicyAssignmentsParam
      * @param $namespace string
      * @return RemovePolicyAssignmentsParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -13381,7 +13381,7 @@ class RemoveUserFromGroupParam
      * @param $code string
      * @return RemoveUserFromGroupParam
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -13518,7 +13518,7 @@ class ResetPasswordParam
      * @param $phone string
      * @return ResetPasswordParam
      */
-    public function withPhone($phone)
+    public function withPhone(string $phone)
     {
         $this->phone = $phone;
         return $this;
@@ -13528,7 +13528,7 @@ class ResetPasswordParam
      * @param $email string
      * @return ResetPasswordParam
      */
-    public function withEmail($email)
+    public function withEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -13617,7 +13617,7 @@ class RevokeRoleParam
      * @param $namespace string
      * @return RevokeRoleParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -13627,7 +13627,7 @@ class RevokeRoleParam
      * @param $roleCode string
      * @return RevokeRoleParam
      */
-    public function withRoleCode($roleCode)
+    public function withRoleCode(string $roleCode)
     {
         $this->roleCode = $roleCode;
         return $this;
@@ -13637,7 +13637,7 @@ class RevokeRoleParam
      * @param $roleCodes string[]
      * @return RevokeRoleParam
      */
-    public function withRoleCodes($roleCodes)
+    public function withRoleCodes(array $roleCodes)
     {
         $this->roleCodes = $roleCodes;
         return $this;
@@ -13647,7 +13647,7 @@ class RevokeRoleParam
      * @param $userIds string[]
      * @return RevokeRoleParam
      */
-    public function withUserIds($userIds)
+    public function withUserIds(array $userIds)
     {
         $this->userIds = $userIds;
         return $this;
@@ -13657,7 +13657,7 @@ class RevokeRoleParam
      * @param $groupCodes string[]
      * @return RevokeRoleParam
      */
-    public function withGroupCodes($groupCodes)
+    public function withGroupCodes(array $groupCodes)
     {
         $this->groupCodes = $groupCodes;
         return $this;
@@ -13667,7 +13667,7 @@ class RevokeRoleParam
      * @param $nodeCodes string[]
      * @return RevokeRoleParam
      */
-    public function withNodeCodes($nodeCodes)
+    public function withNodeCodes(array $nodeCodes)
     {
         $this->nodeCodes = $nodeCodes;
         return $this;
@@ -13787,7 +13787,7 @@ class SetMainDepartmentParam
      * @param $departmentId string
      * @return SetMainDepartmentParam
      */
-    public function withDepartmentId($departmentId)
+    public function withDepartmentId(string $departmentId)
     {
         $this->departmentId = $departmentId;
         return $this;
@@ -13878,7 +13878,7 @@ class SetUdfParam
      * @param $options string
      * @return SetUdfParam
      */
-    public function withOptions($options)
+    public function withOptions(string $options)
     {
         $this->options = $options;
         return $this;
@@ -14086,7 +14086,7 @@ class SetUdvBatchParam
      * @param $udvList UserDefinedDataInput[]
      * @return SetUdvBatchParam
      */
-    public function withUdvList($udvList)
+    public function withUdvList(array $udvList)
     {
         $this->udvList = $udvList;
         return $this;
@@ -14328,7 +14328,7 @@ class UpdateEmailParam
      * @param $oldEmail string
      * @return UpdateEmailParam
      */
-    public function withOldEmail($oldEmail)
+    public function withOldEmail(string $oldEmail)
     {
         $this->oldEmail = $oldEmail;
         return $this;
@@ -14338,7 +14338,7 @@ class UpdateEmailParam
      * @param $oldEmailCode string
      * @return UpdateEmailParam
      */
-    public function withOldEmailCode($oldEmailCode)
+    public function withOldEmailCode(string $oldEmailCode)
     {
         $this->oldEmailCode = $oldEmailCode;
         return $this;
@@ -14513,7 +14513,7 @@ class UpdateGroupParam
      * @param $name string
      * @return UpdateGroupParam
      */
-    public function withName($name)
+    public function withName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -14523,7 +14523,7 @@ class UpdateGroupParam
      * @param $description string
      * @return UpdateGroupParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -14533,7 +14533,7 @@ class UpdateGroupParam
      * @param $newCode string
      * @return UpdateGroupParam
      */
-    public function withNewCode($newCode)
+    public function withNewCode(string $newCode)
     {
         $this->newCode = $newCode;
         return $this;
@@ -14642,7 +14642,7 @@ class UpdateNodeParam
      * @param $page int
      * @return UpdateNodeParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -14652,7 +14652,7 @@ class UpdateNodeParam
      * @param $limit int
      * @return UpdateNodeParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -14662,7 +14662,7 @@ class UpdateNodeParam
      * @param $sortBy SortByEnum
      * @return UpdateNodeParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -14672,7 +14672,7 @@ class UpdateNodeParam
      * @param $includeChildrenNodes bool
      * @return UpdateNodeParam
      */
-    public function withIncludeChildrenNodes($includeChildrenNodes)
+    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -14682,7 +14682,7 @@ class UpdateNodeParam
      * @param $name string
      * @return UpdateNodeParam
      */
-    public function withName($name)
+    public function withName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -14692,7 +14692,7 @@ class UpdateNodeParam
      * @param $code string
      * @return UpdateNodeParam
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -14702,7 +14702,7 @@ class UpdateNodeParam
      * @param $description string
      * @return UpdateNodeParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -14781,7 +14781,7 @@ class UpdatePasswordParam
      * @param $oldPassword string
      * @return UpdatePasswordParam
      */
-    public function withOldPassword($oldPassword)
+    public function withOldPassword(string $oldPassword)
     {
         $this->oldPassword = $oldPassword;
         return $this;
@@ -14908,7 +14908,7 @@ class UpdatePhoneParam
      * @param $oldPhone string
      * @return UpdatePhoneParam
      */
-    public function withOldPhone($oldPhone)
+    public function withOldPhone(string $oldPhone)
     {
         $this->oldPhone = $oldPhone;
         return $this;
@@ -14918,7 +14918,7 @@ class UpdatePhoneParam
      * @param $oldPhoneCode string
      * @return UpdatePhoneParam
      */
-    public function withOldPhoneCode($oldPhoneCode)
+    public function withOldPhoneCode(string $oldPhoneCode)
     {
         $this->oldPhoneCode = $oldPhoneCode;
         return $this;
@@ -15050,7 +15050,7 @@ class UpdatePolicyParam
      * @param $namespace string
      * @return UpdatePolicyParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -15060,7 +15060,7 @@ class UpdatePolicyParam
      * @param $description string
      * @return UpdatePolicyParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -15070,7 +15070,7 @@ class UpdatePolicyParam
      * @param $statements PolicyStatementInput[]
      * @return UpdatePolicyParam
      */
-    public function withStatements($statements)
+    public function withStatements(array $statements)
     {
         $this->statements = $statements;
         return $this;
@@ -15080,7 +15080,7 @@ class UpdatePolicyParam
      * @param $newCode string
      * @return UpdatePolicyParam
      */
-    public function withNewCode($newCode)
+    public function withNewCode(string $newCode)
     {
         $this->newCode = $newCode;
         return $this;
@@ -15171,7 +15171,7 @@ class UpdateRoleParam
      * @param $description string
      * @return UpdateRoleParam
      */
-    public function withDescription($description)
+    public function withDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -15181,7 +15181,7 @@ class UpdateRoleParam
      * @param $newCode string
      * @return UpdateRoleParam
      */
-    public function withNewCode($newCode)
+    public function withNewCode(string $newCode)
     {
         $this->newCode = $newCode;
         return $this;
@@ -15191,7 +15191,7 @@ class UpdateRoleParam
      * @param $namespace string
      * @return UpdateRoleParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -15267,7 +15267,7 @@ class UpdateUserParam
      * @param $id string
      * @return UpdateUserParam
      */
-    public function withId($id)
+    public function withId(string $id)
     {
         $this->id = $id;
         return $this;
@@ -15542,7 +15542,7 @@ class ArchivedUsersParam
      * @param $page int
      * @return ArchivedUsersParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -15552,7 +15552,7 @@ class ArchivedUsersParam
      * @param $limit int
      * @return ArchivedUsersParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -15692,7 +15692,7 @@ class AuthorizedTargetsParam
      * @param $targetType PolicyAssignmentTargetType
      * @return AuthorizedTargetsParam
      */
-    public function withTargetType($targetType)
+    public function withTargetType(\Authing\Types\PolicyAssignmentTargetType $targetType)
     {
         $this->targetType = $targetType;
         return $this;
@@ -15702,7 +15702,7 @@ class AuthorizedTargetsParam
      * @param $actions AuthorizedTargetsActionsInput
      * @return AuthorizedTargetsParam
      */
-    public function withActions($actions)
+    public function withActions(\Authing\Types\AuthorizedTargetsActionsInput $actions)
     {
         $this->actions = $actions;
         return $this;
@@ -15760,7 +15760,7 @@ class CheckLoginStatusParam
      * @param $token string
      * @return CheckLoginStatusParam
      */
-    public function withToken($token)
+    public function withToken(string $token)
     {
         $this->token = $token;
         return $this;
@@ -15999,7 +15999,7 @@ class FindUserParam
      * @param $email string
      * @return FindUserParam
      */
-    public function withEmail($email)
+    public function withEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -16009,7 +16009,7 @@ class FindUserParam
      * @param $phone string
      * @return FindUserParam
      */
-    public function withPhone($phone)
+    public function withPhone(string $phone)
     {
         $this->phone = $phone;
         return $this;
@@ -16019,7 +16019,7 @@ class FindUserParam
      * @param $username string
      * @return FindUserParam
      */
-    public function withUsername($username)
+    public function withUsername(string $username)
     {
         $this->username = $username;
         return $this;
@@ -16029,7 +16029,7 @@ class FindUserParam
      * @param $externalId string
      * @return FindUserParam
      */
-    public function withExternalId($externalId)
+    public function withExternalId(string $externalId)
     {
         $this->externalId = $externalId;
         return $this;
@@ -16131,7 +16131,7 @@ class FunctionParam
      * @param $id string
      * @return FunctionParam
      */
-    public function withId($id)
+    public function withId(string $id)
     {
         $this->id = $id;
         return $this;
@@ -16202,7 +16202,7 @@ class FunctionsParam
      * @param $page int
      * @return FunctionsParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -16212,7 +16212,7 @@ class FunctionsParam
      * @param $limit int
      * @return FunctionsParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -16222,7 +16222,7 @@ class FunctionsParam
      * @param $sortBy SortByEnum
      * @return FunctionsParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -16292,7 +16292,7 @@ class GetUserDepartmentsParam
      * @param $orgId string
      * @return GetUserDepartmentsParam
      */
-    public function withOrgId($orgId)
+    public function withOrgId(string $orgId)
     {
         $this->orgId = $orgId;
         return $this;
@@ -16434,7 +16434,7 @@ class GetUserRolesParam
      * @param $namespace string
      * @return GetUserRolesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -16572,7 +16572,7 @@ class GroupWithUsersParam
      * @param $page int
      * @return GroupWithUsersParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -16582,7 +16582,7 @@ class GroupWithUsersParam
      * @param $limit int
      * @return GroupWithUsersParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -16709,7 +16709,7 @@ class GroupsParam
      * @param $userId string
      * @return GroupsParam
      */
-    public function withUserId($userId)
+    public function withUserId(string $userId)
     {
         $this->userId = $userId;
         return $this;
@@ -16719,7 +16719,7 @@ class GroupsParam
      * @param $page int
      * @return GroupsParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -16729,7 +16729,7 @@ class GroupsParam
      * @param $limit int
      * @return GroupsParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -16739,7 +16739,7 @@ class GroupsParam
      * @param $sortBy SortByEnum
      * @return GroupsParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -16827,7 +16827,7 @@ class IsActionAllowedParam
      * @param $namespace string
      * @return IsActionAllowedParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17058,7 +17058,7 @@ class IsUserExistsParam
      * @param $email string
      * @return IsUserExistsParam
      */
-    public function withEmail($email)
+    public function withEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -17068,7 +17068,7 @@ class IsUserExistsParam
      * @param $phone string
      * @return IsUserExistsParam
      */
-    public function withPhone($phone)
+    public function withPhone(string $phone)
     {
         $this->phone = $phone;
         return $this;
@@ -17078,7 +17078,7 @@ class IsUserExistsParam
      * @param $username string
      * @return IsUserExistsParam
      */
-    public function withUsername($username)
+    public function withUsername(string $username)
     {
         $this->username = $username;
         return $this;
@@ -17088,7 +17088,7 @@ class IsUserExistsParam
      * @param $externalId string
      * @return IsUserExistsParam
      */
-    public function withExternalId($externalId)
+    public function withExternalId(string $externalId)
     {
         $this->externalId = $externalId;
         return $this;
@@ -17160,7 +17160,7 @@ class AuthorizedResourcesParam
      * @param $targetType PolicyAssignmentTargetType
      * @return AuthorizedResourcesParam
      */
-    public function withTargetType($targetType)
+    public function withTargetType(\Authing\Types\PolicyAssignmentTargetType $targetType)
     {
         $this->targetType = $targetType;
         return $this;
@@ -17170,7 +17170,7 @@ class AuthorizedResourcesParam
      * @param $targetIdentifier string
      * @return AuthorizedResourcesParam
      */
-    public function withTargetIdentifier($targetIdentifier)
+    public function withTargetIdentifier(string $targetIdentifier)
     {
         $this->targetIdentifier = $targetIdentifier;
         return $this;
@@ -17180,7 +17180,7 @@ class AuthorizedResourcesParam
      * @param $namespace string
      * @return AuthorizedResourcesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17190,7 +17190,7 @@ class AuthorizedResourcesParam
      * @param $resourceType string
      * @return AuthorizedResourcesParam
      */
-    public function withResourceType($resourceType)
+    public function withResourceType(string $resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -17265,7 +17265,7 @@ class ListGroupAuthorizedResourcesParam
      * @param $namespace string
      * @return ListGroupAuthorizedResourcesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17275,7 +17275,7 @@ class ListGroupAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListGroupAuthorizedResourcesParam
      */
-    public function withResourceType($resourceType)
+    public function withResourceType(string $resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -17361,7 +17361,7 @@ class ListNodeByCodeAuthorizedResourcesParam
      * @param $namespace string
      * @return ListNodeByCodeAuthorizedResourcesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17371,7 +17371,7 @@ class ListNodeByCodeAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListNodeByCodeAuthorizedResourcesParam
      */
-    public function withResourceType($resourceType)
+    public function withResourceType(string $resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -17448,7 +17448,7 @@ class ListNodeByIdAuthorizedResourcesParam
      * @param $namespace string
      * @return ListNodeByIdAuthorizedResourcesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17458,7 +17458,7 @@ class ListNodeByIdAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListNodeByIdAuthorizedResourcesParam
      */
-    public function withResourceType($resourceType)
+    public function withResourceType(string $resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -17535,7 +17535,7 @@ class ListRoleAuthorizedResourcesParam
      * @param $namespace string
      * @return ListRoleAuthorizedResourcesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17545,7 +17545,7 @@ class ListRoleAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListRoleAuthorizedResourcesParam
      */
-    public function withResourceType($resourceType)
+    public function withResourceType(string $resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -17622,7 +17622,7 @@ class ListUserAuthorizedResourcesParam
      * @param $namespace string
      * @return ListUserAuthorizedResourcesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17632,7 +17632,7 @@ class ListUserAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListUserAuthorizedResourcesParam
      */
-    public function withResourceType($resourceType)
+    public function withResourceType(string $resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -17800,7 +17800,7 @@ class NodeByCodeWithMembersParam
      * @param $page int
      * @return NodeByCodeWithMembersParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -17810,7 +17810,7 @@ class NodeByCodeWithMembersParam
      * @param $limit int
      * @return NodeByCodeWithMembersParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -17820,7 +17820,7 @@ class NodeByCodeWithMembersParam
      * @param $sortBy SortByEnum
      * @return NodeByCodeWithMembersParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -17830,7 +17830,7 @@ class NodeByCodeWithMembersParam
      * @param $includeChildrenNodes bool
      * @return NodeByCodeWithMembersParam
      */
-    public function withIncludeChildrenNodes($includeChildrenNodes)
+    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -18040,7 +18040,7 @@ class NodeByIdWithMembersParam
      * @param $page int
      * @return NodeByIdWithMembersParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -18050,7 +18050,7 @@ class NodeByIdWithMembersParam
      * @param $limit int
      * @return NodeByIdWithMembersParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18060,7 +18060,7 @@ class NodeByIdWithMembersParam
      * @param $sortBy SortByEnum
      * @return NodeByIdWithMembersParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -18070,7 +18070,7 @@ class NodeByIdWithMembersParam
      * @param $includeChildrenNodes bool
      * @return NodeByIdWithMembersParam
      */
-    public function withIncludeChildrenNodes($includeChildrenNodes)
+    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -18282,7 +18282,7 @@ class OrgsParam
      * @param $page int
      * @return OrgsParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -18292,7 +18292,7 @@ class OrgsParam
      * @param $limit int
      * @return OrgsParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18302,7 +18302,7 @@ class OrgsParam
      * @param $sortBy SortByEnum
      * @return OrgsParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -18402,7 +18402,7 @@ class PoliciesParam
      * @param $page int
      * @return PoliciesParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -18412,7 +18412,7 @@ class PoliciesParam
      * @param $limit int
      * @return PoliciesParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18422,7 +18422,7 @@ class PoliciesParam
      * @param $namespace string
      * @return PoliciesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -18502,7 +18502,7 @@ class PolicyParam
      * @param $namespace string
      * @return PolicyParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -18605,7 +18605,7 @@ class PolicyAssignmentsParam
      * @param $namespace string
      * @return PolicyAssignmentsParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -18615,7 +18615,7 @@ class PolicyAssignmentsParam
      * @param $code string
      * @return PolicyAssignmentsParam
      */
-    public function withCode($code)
+    public function withCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -18625,7 +18625,7 @@ class PolicyAssignmentsParam
      * @param $targetType PolicyAssignmentTargetType
      * @return PolicyAssignmentsParam
      */
-    public function withTargetType($targetType)
+    public function withTargetType(string $targetType)
     {
         $this->targetType = $targetType;
         return $this;
@@ -18635,7 +18635,7 @@ class PolicyAssignmentsParam
      * @param $targetIdentifier string
      * @return PolicyAssignmentsParam
      */
-    public function withTargetIdentifier($targetIdentifier)
+    public function withTargetIdentifier(string $targetIdentifier)
     {
         $this->targetIdentifier = $targetIdentifier;
         return $this;
@@ -18645,7 +18645,7 @@ class PolicyAssignmentsParam
      * @param $page int
      * @return PolicyAssignmentsParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -18655,7 +18655,7 @@ class PolicyAssignmentsParam
      * @param $limit int
      * @return PolicyAssignmentsParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18730,7 +18730,7 @@ class PolicyWithAssignmentsParam
      * @param $page int
      * @return PolicyWithAssignmentsParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -18740,7 +18740,7 @@ class PolicyWithAssignmentsParam
      * @param $limit int
      * @return PolicyWithAssignmentsParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18852,7 +18852,7 @@ class QiniuUptokenParam
      * @param $type string
      * @return QiniuUptokenParam
      */
-    public function withType($type)
+    public function withType(string $type)
     {
         $this->type = $type;
         return $this;
@@ -18917,7 +18917,7 @@ class QueryMfaParam
      * @param $id string
      * @return QueryMfaParam
      */
-    public function withId($id)
+    public function withId(string $id)
     {
         $this->id = $id;
         return $this;
@@ -18927,7 +18927,7 @@ class QueryMfaParam
      * @param $userId string
      * @return QueryMfaParam
      */
-    public function withUserId($userId)
+    public function withUserId(string $userId)
     {
         $this->userId = $userId;
         return $this;
@@ -18937,7 +18937,7 @@ class QueryMfaParam
      * @param $userPoolId string
      * @return QueryMfaParam
      */
-    public function withUserPoolId($userPoolId)
+    public function withUserPoolId(string $userPoolId)
     {
         $this->userPoolId = $userPoolId;
         return $this;
@@ -19004,7 +19004,7 @@ class RoleParam
      * @param $namespace string
      * @return RoleParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -19080,7 +19080,7 @@ class RoleWithUsersParam
      * @param $namespace string
      * @return RoleWithUsersParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -19208,7 +19208,7 @@ class RolesParam
      * @param $namespace string
      * @return RolesParam
      */
-    public function withNamespace($namespace)
+    public function withNamespace(string $namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -19218,7 +19218,7 @@ class RolesParam
      * @param $page int
      * @return RolesParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -19228,7 +19228,7 @@ class RolesParam
      * @param $limit int
      * @return RolesParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -19238,7 +19238,7 @@ class RolesParam
      * @param $sortBy SortByEnum
      * @return RolesParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -19466,7 +19466,7 @@ class SearchUserParam
      * @param $fields string[]
      * @return SearchUserParam
      */
-    public function withFields($fields)
+    public function withFields(array $fields)
     {
         $this->fields = $fields;
         return $this;
@@ -19476,7 +19476,7 @@ class SearchUserParam
      * @param $page int
      * @return SearchUserParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -19486,7 +19486,7 @@ class SearchUserParam
      * @param $limit int
      * @return SearchUserParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -19496,7 +19496,7 @@ class SearchUserParam
      * @param $departmentOpts SearchUserDepartmentOpt[]
      * @return SearchUserParam
      */
-    public function withDepartmentOpts($departmentOpts)
+    public function withDepartmentOpts(array $departmentOpts)
     {
         $this->departmentOpts = $departmentOpts;
         return $this;
@@ -19506,7 +19506,7 @@ class SearchUserParam
      * @param $groupOpts SearchUserGroupOpt[]
      * @return SearchUserParam
      */
-    public function withGroupOpts($groupOpts)
+    public function withGroupOpts(array $groupOpts)
     {
         $this->groupOpts = $groupOpts;
         return $this;
@@ -19516,7 +19516,7 @@ class SearchUserParam
      * @param $roleOpts SearchUserRoleOpt[]
      * @return SearchUserParam
      */
-    public function withRoleOpts($roleOpts)
+    public function withRoleOpts(array $roleOpts)
     {
         $this->roleOpts = $roleOpts;
         return $this;
@@ -20004,7 +20004,7 @@ class UserParam
      * @param $id string
      * @return UserParam
      */
-    public function withId($id)
+    public function withId(string $id)
     {
         $this->id = $id;
         return $this;
@@ -20356,7 +20356,7 @@ class UserpoolsParam
      * @param $page int
      * @return UserpoolsParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -20366,7 +20366,7 @@ class UserpoolsParam
      * @param $limit int
      * @return UserpoolsParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -20376,7 +20376,7 @@ class UserpoolsParam
      * @param $sortBy SortByEnum
      * @return UserpoolsParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -20467,7 +20467,7 @@ class UsersParam
      * @param $page int
      * @return UsersParam
      */
-    public function withPage($page)
+    public function withPage(int $page)
     {
         $this->page = $page;
         return $this;
@@ -20477,7 +20477,7 @@ class UsersParam
      * @param $limit int
      * @return UsersParam
      */
-    public function withLimit($limit)
+    public function withLimit(int $limit)
     {
         $this->limit = $limit;
         return $this;
@@ -20487,7 +20487,7 @@ class UsersParam
      * @param $sortBy SortByEnum
      * @return UsersParam
      */
-    public function withSortBy($sortBy)
+    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;

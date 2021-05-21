@@ -131,7 +131,7 @@ class AuthenticationClient extends BaseClient
      * @author Xintao Li
      * @since 4.2
      */
-    public function setToken($accessToken)
+    public function setToken(string $accessToken)
     {
         parent::setAccessToken($accessToken);
     }
@@ -146,7 +146,7 @@ class AuthenticationClient extends BaseClient
      * @author Xintao Li
      * @since 4.2
      */
-    public function setMfaAuthorizationHeader($token)
+    public function setMfaAuthorizationHeader(string $token)
     {
         $this->mfaToken = $token;
     }
@@ -212,7 +212,7 @@ class AuthenticationClient extends BaseClient
      * @throws Exception
      * @param object $user
      */
-    public function setCurrentUser($user)
+    public function setCurrentUser(object $user)
     {
         $this->user = $user;
         $this->accessToken = $user->token;
@@ -419,11 +419,7 @@ class AuthenticationClient extends BaseClient
         return $user;
     }
 
-    /**
-     * @param string $account
-     * @param string $password
-     */
-    public function loginBySubAccount($account, $password, array $options = [])
+    public function loginBySubAccount(string $account, string $password, array $options = [])
     {
         list($captchaCode, $clientIp) = $options;
         // build getPublicKey
@@ -437,11 +433,10 @@ class AuthenticationClient extends BaseClient
     /**
      * 检查登录状态
      *
-     * @param string $token
      * @return JWTTokenStatus
      * @throws Exception
      */
-    public function checkLoginStatus($token = null)
+    public function checkLoginStatus(string $token = null)
     {
         $param = (new CheckLoginStatusParam())->withToken($token);
         return $this->request($param->createRequest());
@@ -817,17 +812,13 @@ class AuthenticationClient extends BaseClient
         return formatAuthorizedResources($this->request($param->createRequest()));
     }
 
-    public function _generateTokenRequest($params)
+    public function _generateTokenRequest(array $params)
     {
         $p = http_build_query($params);
         return $p;
     }
 
-    /**
-     * @param string $code
-     * @param string $codeVerifier
-     */
-    public function _getAccessTokenByCodeWithClientSecretPost($code, $codeVerifier = '')
+    public function _getAccessTokenByCodeWithClientSecretPost(string $code, string $codeVerifier = '')
     {
         $data = $this->_generateTokenRequest([
             'client_id' => $this->options->appId,
@@ -858,11 +849,7 @@ class AuthenticationClient extends BaseClient
         return json_decode($stringBody);
     }
 
-    /**
-     * @param string $appId
-     * @param string $secret
-     */
-    public function _generateBasicAuthToken($appId = "", $secret = "")
+    public function _generateBasicAuthToken(string $appId = "", string $secret = "")
     {
         if ($appId) {
             $id = $appId;
@@ -878,11 +865,7 @@ class AuthenticationClient extends BaseClient
         return $token;
     }
 
-    /**
-     * @param string $code
-     * @param string $codeVerifier
-     */
-    public function _getAccessTokenByCodeWithClientSecretBasic($code, $codeVerifier = null)
+    public function _getAccessTokenByCodeWithClientSecretBasic(string $code, string $codeVerifier = null)
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
@@ -921,11 +904,7 @@ class AuthenticationClient extends BaseClient
         return json_decode($stringBody);
     }
 
-    /**
-     * @param string $code
-     * @param string $codeVerifier
-     */
-    public function _getAccessTokenByCodeWithNone($code, $codeVerifier = '')
+    public function _getAccessTokenByCodeWithNone(string $code, string $codeVerifier = '')
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
@@ -957,10 +936,7 @@ class AuthenticationClient extends BaseClient
         return json_decode($stringBody);
     }
 
-    /**
-     * @param string $code
-     */
-    public function getAccessTokenByCode($code, array $options = [])
+    public function getAccessTokenByCode(string $code, array $options = [])
     {
         if (
             (!isset($this->options->secret) ||
@@ -1017,10 +993,7 @@ class AuthenticationClient extends BaseClient
         throw new Error('不支持的 options.method，可选值为 S256、plain');
     }
 
-    /**
-     * @param string $scope
-     */
-    public function getAccessTokenByClientCredentials($scope, array $options)
+    public function getAccessTokenByClientCredentials(string $scope, array $options)
     {
         if (!isset($scope) || $scope) {
             throw new Error(
@@ -1202,10 +1175,7 @@ class AuthenticationClient extends BaseClient
         return $this->_buildEasyLogoutUrl($options);
     }
 
-    /**
-     * @param string $accessToken
-     */
-    public function getUserInfoByAccessToken($accessToken)
+    public function getUserInfoByAccessToken(string $accessToken)
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
@@ -1238,10 +1208,7 @@ class AuthenticationClient extends BaseClient
         ];
     }
 
-    /**
-     * @param string $refreshToken
-     */
-    public function _getNewAccessTokenByRefreshTokenWithClientSecretPost($refreshToken)
+    public function _getNewAccessTokenByRefreshTokenWithClientSecretPost(string $refreshToken)
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
@@ -1265,10 +1232,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $refreshToken
-     */
-    function _getNewAccessTokenByRefreshTokenWithClientSecretBasic($refreshToken)
+    function _getNewAccessTokenByRefreshTokenWithClientSecretBasic(string $refreshToken)
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
@@ -1292,10 +1256,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $refreshToken
-     */
-    function _getNewAccessTokenByRefreshTokenWithNone($refreshToken)
+    function _getNewAccessTokenByRefreshTokenWithNone(string $refreshToken)
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
@@ -1316,10 +1277,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $refreshToken
-     */
-    public function getNewAccessTokenByRefreshToken($refreshToken)
+    public function getNewAccessTokenByRefreshToken(string $refreshToken)
     {
         if (!in_array($this->options->protocol, ['oauth', 'oidc'])) {
             throw new Error(
@@ -1345,10 +1303,7 @@ class AuthenticationClient extends BaseClient
         }
     }
 
-    /**
-     * @param string $token
-     */
-    public function _introspectTokenWithClientSecretPost($token)
+    public function _introspectTokenWithClientSecretPost(string $token)
     {
         $qstr = $this->_generateTokenRequest([
             'client_id' => $this->options->appId,
@@ -1372,10 +1327,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $token
-     */
-    public function _introspectTokenWithClientSecretBasic($token)
+    public function _introspectTokenWithClientSecretBasic(string $token)
     {
         $qstr = $this->_generateTokenRequest([
             'token' => $token,
@@ -1397,10 +1349,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $token
-     */
-    public function _introspectTokenWithNone($token)
+    public function _introspectTokenWithNone(string $token)
     {
         $qstr = $this->_generateTokenRequest([
             'client_id' => $this->options->appId,
@@ -1419,10 +1368,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $token
-     */
-    public function introspectToken($token)
+    public function introspectToken(string $token)
     {
         if (!in_array($this->options->protocol, ['oauth', 'oidc'])) {
             throw new Error(
@@ -1459,20 +1405,13 @@ class AuthenticationClient extends BaseClient
         return $data;
     }
 
-    /**
-     * @param string $email
-     * @param string $emailCode
-     */
-    public function bindEmail($email, $emailCode)
+    public function bindEmail(string $email, string $emailCode)
     {
         $param = new BindEmailParam($email, $emailCode);
         return $this->request($param->createRequest());
     }
 
-    /**
-     * @param string $token
-     */
-    public function revokeToken($token)
+    public function revokeToken(string $token)
     {
         if (!in_array($this->options->protocol, ['oauth', 'oidc'])) {
             throw new Error('初始化 AuthenticationClient 时传入的 protocol 参数必须为 oauth 或 oidc，请检查参数');
@@ -1496,10 +1435,7 @@ class AuthenticationClient extends BaseClient
         }
     }
 
-    /**
-     * @param string $token
-     */
-    public function _revokeTokenWithClientSecretPost($token)
+    public function _revokeTokenWithClientSecretPost(string $token)
     {
         $qstr = $this->_generateTokenRequest([
             'client_id' => $this->options->appId,
@@ -1523,10 +1459,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $token
-     */
-    public function _revokeTokenWithClientSecretBasic($token)
+    public function _revokeTokenWithClientSecretBasic(string $token)
     {
         $qstr = $this->_generateTokenRequest([
             'client_id' => $this->options->appId,
@@ -1545,10 +1478,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $token
-     */
-    public function _revokeTokenWithNone($token)
+    public function _revokeTokenWithNone(string $token)
     {
         $qstr = $this->_generateTokenRequest([
             'token' => $token,
@@ -1572,11 +1502,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    /**
-     * @param string $ticket
-     * @param string $service
-     */
-    public function validateTicketV1($ticket, $service)
+    public function validateTicketV1(string $ticket, string $service)
     {
         $api = '/cas-idp/' . $this->options->appId . '/validate?service=' . $service . '&ticket=' . $ticket;
         $req = new Request('GET', $api, [
@@ -1615,10 +1541,7 @@ class AuthenticationClient extends BaseClient
         return $user;
     }
 
-    /**
-     * @param string $key
-     */
-    public function removeUdfValue($key)
+    public function removeUdfValue(string $key)
     {
         $userId = $this->checkLoggedIn();
         $param = new RemoveUdvParam(UDFTargetType::USER, $userId, $key);
@@ -1649,11 +1572,7 @@ class AuthenticationClient extends BaseClient
         return $this->accessToken;
     }
 
-    /**
-     * @param string $rolecode
-     * @param string $namespace
-     */
-    public function hasRole($rolecode, $namespace = 'default')
+    public function hasRole(string $rolecode, string $namespace = 'default')
     {
         $param = (new GetUserRolesParam($this->checkLoggedIn()))->withNamespace($namespace);
         $user = $this->request($param->createRequest());

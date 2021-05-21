@@ -53,10 +53,7 @@ class ApplicationsManagementClient
         return $data;
     }
 
-    /**
-     * @param string $id
-     */
-    public function findById($id)
+    public function findById(string $id)
     {
         $data = $this->client->httpGet("/api/v2/applications/$id");
         return $data;
@@ -68,30 +65,19 @@ class ApplicationsManagementClient
         return $res;
     }
 
-    /**
-     * @param string $appId
-     */
-    public function delete($appId)
+    public function delete(string $appId)
     {
         $this->client->httpDelete("/api/v2/applications/$appId");
         return true;
     }
 
-    /**
-     * @param string $appId
-     * @param int $page
-     * @param int $limit
-     */
-    public function activeUsers($appId, $page = 1, $limit = 10)
+    public function activeUsers(string $appId, int $page = 1, int $limit = 10)
     {
         $res = $this->client->httpGet("/api/v2/applications/$appId/active-users?page=$page&limit=$limit");
         return $res;
     }
 
-    /**
-     * @param string $appId
-     */
-    public function refreshApplicationSecret($appId)
+    public function refreshApplicationSecret(string $appId)
     {
         $res = $this->client->httpPatch("/api/v2/application/$appId/refresh-secret");
         return $res;
@@ -107,20 +93,16 @@ class ApplicationsManagementClient
         return $this->acl->createResource($options, $appId);
     }
 
-    /**
-     * @param string $code
-     */
-    public function updateResource($appId, $code, $options = [])
+    public function updateResource($appId, string $code, $options = [])
     {
         $options['namespace'] = $appId;
         return $this->acl->updateResource($code, $options);
     }
 
     /**
-     * @param string $code
      * @param string $namespaceCode
      */
-    public function deleteResource($appId, $code)
+    public function deleteResource($appId, string $code)
     {
         return $this->acl->deleteResource($code, $appId);
     }
@@ -221,48 +203,31 @@ class ApplicationsManagementClient
         return $this->roles->listAuthorizedResources($code, $resourceType, $appId);
     }
 
-    /**
-     * @param string $appId
-     */
-    public function listAgreement($appId)
+    public function listAgreement(string $appId)
     {
         $args = func_get_args();
         return $this->agreements->list(...$args);
     }
 
-    /**
-     * @param string $appId
-     */
-    public function createAgreement($appId, $options)
+    public function createAgreement(string $appId, $options)
     {
         $args = func_get_args();
         return $this->agreements->create(...$args);
     }
 
-    /**
-     * @param string $appId
-     * @param int $agreementId
-     */
-    public function deleteAgreement($appId, $agreementId)
+    public function deleteAgreement(string $appId, int $agreementId)
     {
         $args = func_get_args();
         return $this->agreements->delete(...$args);
     }
 
-    /**
-     * @param string $appId
-     * @param int $agreementId
-     */
-    public function modifyAgreement($appId, $agreementId, $updates)
+    public function modifyAgreement(string $appId, int $agreementId, $updates)
     {
         $args = func_get_args();
         return $this->agreements->modify(...$args);
     }
 
-    /**
-     * @param string $appId
-     */
-    public function sortAgreement($appId, $order)
+    public function sortAgreement(string $appId, $order)
     {
         $args = func_get_args();
         return $this->agreements->sort(...$args);

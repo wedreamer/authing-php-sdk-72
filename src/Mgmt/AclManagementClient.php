@@ -15,10 +15,7 @@ use Error;
 use Exception;
 use stdClass;
 
-/**
- * @param int $randomLenth
- */
-function randomString($randomLenth = 32)
+function randomString(int $randomLenth = 32)
 {
     $randomLenth = isset($randomLenth) ? $randomLenth : 32;
     $t = 'abcdefhijkmnprstwxyz2345678';
@@ -79,12 +76,7 @@ class AclManagementClient
         return $this->client->request($param->createRequest());
     }
 
-    /**
-     * @param string $targetType
-     * @param string $targetIdentifier
-     * @param string $namespace
-     */
-    public function listAuthorizedResources($targetType, $targetIdentifier, $namespace, $ops = [])
+    public function listAuthorizedResources(string $targetType, string $targetIdentifier, string $namespace, $ops = [])
     {
         $resourceType = null;
         if (count($ops) > 0) {
@@ -126,49 +118,31 @@ class AclManagementClient
         return $data;
     }
 
-    /**
-     * @param string $code
-     */
-    public function updateResource($code, array $options)
+    public function updateResource(string $code, array $options)
     {
         $data = $this->client->httpPost("/api/v2/resources/$code", $options);
         return $data;
     }
 
-    /**
-     * @param string $code
-     * @param string $namespaceCode
-     */
-    public function deleteResource($code, $namespaceCode = 'default')
+    public function deleteResource(string $code, string $namespaceCode = 'default')
     {
         $data = $this->client->httpDelete("/api/v2/resources/$code?namespace=$namespaceCode");
         return true;
     }
 
-    /**
-     * @param string $appId
-     * @param int $page
-     * @param int $limit
-     */
-    public function programmaticAccessAccountList($appId, $page = 1, $limit = 10)
+    public function programmaticAccessAccountList(string $appId, int $page = 1, int $limit = 10)
     {
         $res = $this->client->httpGet("/api/v2/applications/$appId/programmatic-access-accounts?limit=$limit&page=$page");
         return $res;
     }
 
-    /**
-     * @param string $appId
-     */
-    public function createProgrammaticAccessAccount($appId, array $options = ["tokenLifetime" => 600])
+    public function createProgrammaticAccessAccount(string $appId, array $options = ["tokenLifetime" => 600])
     {
         $res = $this->client->httpPost("/api/v2/applications/$appId/programmatic-access-accounts", $options);
         return $res;
     }
 
-    /**
-     * @param string $programmaticAccessAccountId
-     */
-    public function disableProgrammaticAccessAccount($programmaticAccessAccountId)
+    public function disableProgrammaticAccessAccount(string $programmaticAccessAccountId)
     {
         $res = $this->client->httpPatch('/api/v2/applications/programmatic-access-accounts', [
             'id' => $programmaticAccessAccountId,
@@ -177,11 +151,7 @@ class AclManagementClient
         return $res;
     }
 
-    /**
-     * @param int $page
-     * @param int $limit
-     */
-    public function listNamespaces($page = 1, $limit = 10)
+    public function listNamespaces(int $page = 1, int $limit = 10)
     {
         $api = "/api/v2/resource-namespace/{$this->options->userPoolId}";
         $param = http_build_query([
@@ -192,22 +162,14 @@ class AclManagementClient
         return $data;
     }
 
-    /**
-     * @param string $code
-     */
-    public function deleteNamespace($code)
+    public function deleteNamespace(string $code)
     {
         $api = "/api/v2/resource-namespace/{$this->options->userPoolId}/code/$code";
         $this->client->httpDelete($api);
         return true;
     }
 
-    /**
-     * @param string $code
-     * @param string $name
-     * @param string $description
-     */
-    public function createNamespace($code, $name, $description = '')
+    public function createNamespace(string $code, string $name, string $description = '')
     {
         $api = "/api/v2/resource-namespace/{$this->options->userPoolId}";
         $data = $this->client->httpPost($api, [
@@ -218,29 +180,20 @@ class AclManagementClient
         return $data;
     }
 
-    /**
-     * @param string $code
-     */
-    public function updateNamespace($code, array $updates)
+    public function updateNamespace(string $code, array $updates)
     {
         $api = "/api/v2/resource-namespace/{$this->options->userPoolId}/code/$code";
         $res = $this->client->httpPut($api, $updates);
         return $res;
     }
 
-    /**
-     * @param string $programmaticAccessAccountId
-     */
-    public function deleteProgrammaticAccessAccount($programmaticAccessAccountId)
+    public function deleteProgrammaticAccessAccount(string $programmaticAccessAccountId)
     {
         $this->client->httpDelete("/api/v2/applications/programmatic-access-accounts?id=$programmaticAccessAccountId");
         return true;
     }
 
-    /**
-     * @param string $programmaticAccessAccountId
-     */
-    public function enableProgrammaticAccessAccount($programmaticAccessAccountId)
+    public function enableProgrammaticAccessAccount(string $programmaticAccessAccountId)
     {
         $res = $this->client->httpPatch("/api/v2/applications/programmatic-access-accounts", [
             'id' => $programmaticAccessAccountId,
@@ -249,11 +202,7 @@ class AclManagementClient
         return $res;
     }
 
-    /**
-     * @param string $programmaticAccessAccountId
-     * @param string $programmaticAccessAccountSecret
-     */
-    public function refreshProgrammaticAccessAccountSecret($programmaticAccessAccountId, $programmaticAccessAccountSecret = '')
+    public function refreshProgrammaticAccessAccountSecret(string $programmaticAccessAccountId, string $programmaticAccessAccountSecret = '')
     {
         if (!isset($programmaticAccessAccountSecret) || $programmaticAccessAccountSecret === '') {
             $programmaticAccessAccountSecret = randomString(32);

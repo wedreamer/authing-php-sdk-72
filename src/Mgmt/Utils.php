@@ -29,10 +29,7 @@ class Utils
         return $data;
     }
 
-    /**
-     * @param string $jwt
-     */
-    public static function getTokenPlayloadData($jwt)
+    public static function getTokenPlayloadData(string $jwt)
     {
         $tks = explode('.', $jwt);
         list($headb64, $bodyb64, $cryptob64) = $tks;
@@ -68,7 +65,7 @@ class Utils
     /**
      * @param int $randomLenth
      */
-    public static function randomString($randomLenth = 32)
+    public static function randomString(int $randomLenth = 32)
     {
         $randomLenth = isset($randomLenth) ? $randomLenth : 32;
         $t = 'abcdefhijkmnprstwxyz2345678';

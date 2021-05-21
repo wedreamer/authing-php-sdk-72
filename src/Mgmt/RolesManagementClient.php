@@ -136,10 +136,9 @@ class RolesManagementClient
     }
 
     /**
-     * @param string $code
      * @param string $namespace
      */
-    public function findByCode($code, $namespaceCode = 'default')
+    public function findByCode(string $code, $namespaceCode = 'default')
     {
         $param = (new RoleParam($code))->withNamespace($namespaceCode);
         return $this->client->request($param->createRequest());
@@ -279,12 +278,11 @@ class RolesManagementClient
     /**
      * 获取角色被授权的所有资源列表
      * @param $roleCode
-     * @param string $namespaceCode
      * @param null $resourceType
      * @return stdClass
      * @throws Exception
      */
-    public function listAuthorizedResources($roleCode, $resourceType = null, $namespaceCode = 'default')
+    public function listAuthorizedResources($roleCode, $resourceType = null, string $namespaceCode = 'default')
     {
         $param = (new ListRoleAuthorizedResourcesParam($roleCode))->withNamespace($namespaceCode);
 
@@ -297,10 +295,7 @@ class RolesManagementClient
         return Utils::formatAuthorizedResources($data->authorizedResources);
     }
 
-    /**
-     * @param string $roleId
-     */
-    public function getUdfValue($roleId)
+    public function getUdfValue(string $roleId)
     {
         $param = (new UdvParam('ROLE', $roleId));
         $data = $this->client->request($param->createRequest());
@@ -308,11 +303,7 @@ class RolesManagementClient
         return convertUdvToKeyValuePair($list);
     }
 
-    /**
-     * @param string $roleId
-     * @param string $udfKey
-     */
-    public function getSpecificUdfValue($roleId, $udfKey)
+    public function getSpecificUdfValue(string $roleId, string $udfKey)
     {
         $param = new UdvParam(UDFTargetType::ROLE, $roleId);
         $data = $this->client->request($param->createRequest())->udv;
@@ -348,10 +339,7 @@ class RolesManagementClient
         return $ret;
     }
 
-    /**
-     * @param string $roleId
-     */
-    public function setUdfValue($roleId, array $data)
+    public function setUdfValue(string $roleId, array $data)
     {
         if (count($data) === 0) {
             throw new Error('empty udf value list');
@@ -379,11 +367,7 @@ class RolesManagementClient
         $this->client->request($param->createRequest());
     }
 
-    /**
-     * @param string $roleId
-     * @param string $key
-     */
-    public function removeUdfValue($roleId, $key)
+    public function removeUdfValue(string $roleId, string $key)
     {
         $param = new RemoveUdvParam(UDFTargetType::ROLE, $roleId, $key);
         $this->client->request($param->createRequest());
