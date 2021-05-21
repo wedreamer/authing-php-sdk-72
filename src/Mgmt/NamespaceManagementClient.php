@@ -51,7 +51,7 @@ class NamespaceManagementClient {
 
     public function update(string $code, array $updates)
     {
-        $data = $this->client->httpPut("/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/{$code}", (object)$updates);
+        $data = $this->client->httpPut("/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/{$code}", $updates);
         return $data;
     }
 }

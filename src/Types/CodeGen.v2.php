@@ -10221,7 +10221,7 @@ class CreateGroupParam
      * @param $description string
      * @return CreateGroupParam
      */
-    public function withDescription(string $description)
+    public function withDescription(?string $description)
     {
         $this->description = $description;
         return $this;
@@ -10295,7 +10295,7 @@ class CreateOrgParam
      * @param $code string
      * @return CreateOrgParam
      */
-    public function withCode(string $code)
+    public function withCode(?string $code)
     {
         $this->code = $code;
         return $this;
@@ -10305,7 +10305,7 @@ class CreateOrgParam
      * @param $description string
      * @return CreateOrgParam
      */
-    public function withDescription(string $description)
+    public function withDescription(?string $description)
     {
         $this->description = $description;
         return $this;
@@ -15760,7 +15760,7 @@ class CheckLoginStatusParam
      * @param $token string
      * @return CheckLoginStatusParam
      */
-    public function withToken(string $token)
+    public function withToken(?string $token)
     {
         $this->token = $token;
         return $this;
@@ -17160,7 +17160,7 @@ class AuthorizedResourcesParam
      * @param $targetType PolicyAssignmentTargetType
      * @return AuthorizedResourcesParam
      */
-    public function withTargetType(\Authing\Types\PolicyAssignmentTargetType $targetType)
+    public function withTargetType(string $targetType)
     {
         $this->targetType = $targetType;
         return $this;

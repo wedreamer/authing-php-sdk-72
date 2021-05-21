@@ -345,7 +345,7 @@ class RolesManagementClient
             throw new Error('empty udf value list');
         }
 
-        $param = (new SetUdvBatchParam(UDFTargetType::ROLE, $roleId))->withUdvList((object)$data);
+        $param = (new SetUdvBatchParam(UDFTargetType::ROLE, $roleId))->withUdvList($data);
         $this->client->request($param->createRequest());
     }
 

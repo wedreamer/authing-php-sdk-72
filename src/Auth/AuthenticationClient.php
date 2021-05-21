@@ -231,11 +231,11 @@ class AuthenticationClient extends BaseClient
         $password = $this->encrypt($password);
         $input = (new RegisterByEmailInput($email, $password))
             ->withProfile(isset($profile) ? $profile : null)
-            ->withClientIp(isset($clientIp) ? $clientIp : null)
-            ->withContext(isset($context) ? $context : null)
-            ->withGenerateToken(isset($generateToken) ? $generateToken : null)
-            ->withParams(isset($params) ? $params : null)
-            ->withForceLogin(isset($forceLogin) ? $forceLogin : null);
+            ->withClientIp(isset($clientIp) ? $clientIp : '')
+            ->withContext(isset($context) ? $context : '')
+            ->withGenerateToken(isset($generateToken) ? $generateToken : '')
+            ->withParams(isset($params) ? $params : '')
+            ->withForceLogin(isset($forceLogin) ? $forceLogin : '');
         $param = new RegisterByEmailParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -255,11 +255,11 @@ class AuthenticationClient extends BaseClient
         $password = $this->encrypt($password);
         $input = (new RegisterByUsernameInput($username, $password))
             ->withProfile(isset($profile) ? $profile : null)
-            ->withClientIp(isset($clientIp) ? $clientIp : null)
-            ->withContext(isset($context) ? $context : null)
-            ->withGenerateToken(isset($generateToken) ? $generateToken : null)
-            ->withParams(isset($params) ? $params : null)
-            ->withForceLogin(isset($forceLogin) ? $forceLogin : null);
+            ->withClientIp(isset($clientIp) ? $clientIp : '')
+            ->withContext(isset($context) ? $context : '')
+            ->withGenerateToken(isset($generateToken) ? $generateToken : '')
+            ->withParams(isset($params) ? $params : '')
+            ->withForceLogin(isset($forceLogin) ? $forceLogin : '');
         $param = new RegisterByUsernameParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -285,11 +285,11 @@ class AuthenticationClient extends BaseClient
         $input = (new RegisterByPhoneCodeInput($username, $code))
             ->withPassword(isset($password) ? $password : null)
             ->withProfile(isset($profile) ? $profile : null)
-            ->withClientIp(isset($clientIp) ? $clientIp : null)
-            ->withContext(isset($context) ? $context : null)
-            ->withGenerateToken(isset($generateToken) ? $generateToken : null)
-            ->withParams(isset($params) ? $params : null)
-            ->withForceLogin(isset($forceLogin) ? $forceLogin : null);
+            ->withClientIp(isset($clientIp) ? $clientIp : '')
+            ->withContext(isset($context) ? $context : '')
+            ->withGenerateToken(isset($generateToken) ? $generateToken : '')
+            ->withParams(isset($params) ? $params : '')
+            ->withForceLogin(isset($forceLogin) ? $forceLogin : '');
 
         $param = new RegisterByPhoneCodeParam($input);
         $user = $this->request($param->createRequest());
@@ -339,11 +339,11 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByEmailInput($email, $password))
-            ->withClientIp(isset($clientIp) ? $clientIp : null)
-            ->withContext(isset($context) ? $context : null)
-            ->withParams(isset($params) ? $params : null)
-            ->withAutoRegister(isset($autoRegister) ? $autoRegister : null)
-            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : null);
+            ->withClientIp(isset($clientIp) ? $clientIp : '')
+            ->withContext(isset($context) ? $context : '')
+            ->withParams(isset($params) ? $params : '')
+            ->withAutoRegister(isset($autoRegister) ? $autoRegister : '')
+            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : '');
         $param = new LoginByEmailParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -362,11 +362,11 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByUsernameInput($username, $password))
-            ->withClientIp(isset($clientIp) ? $clientIp : null)
-            ->withContext(isset($context) ? $context : null)
-            ->withParams(isset($params) ? $params : null)
-            ->withAutoRegister(isset($autoRegister) ? $autoRegister : null)
-            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : null);
+            ->withClientIp(isset($clientIp) ? $clientIp : '')
+            ->withContext(isset($context) ? $context : '')
+            ->withParams(isset($params) ? $params : '')
+            ->withAutoRegister(isset($autoRegister) ? $autoRegister : '')
+            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : '');
 
         $param = new LoginByUsernameParam($input);
         $user = $this->request($param->createRequest());
@@ -385,10 +385,10 @@ class AuthenticationClient extends BaseClient
     {
         extract($options);
         $input = (new LoginByPhoneCodeInput($phone, $code))
-            ->withClientIp(isset($clientIp) ? $clientIp : null)
-            ->withContext(isset($context) ? $context : null)
-            ->withParams(isset($params) ? $params : null)
-            ->withAutoRegister(isset($autoRegister) ? $autoRegister : null);
+            ->withClientIp(isset($clientIp) ? $clientIp : '')
+            ->withContext(isset($context) ? $context : '')
+            ->withParams(isset($params) ? $params : '')
+            ->withAutoRegister(isset($autoRegister) ? $autoRegister : '');
         $param = new LoginByPhoneCodeParam($input);
         $user = $this->request($param->createRequest());
         $this->setCurrentUser($user);
@@ -407,11 +407,11 @@ class AuthenticationClient extends BaseClient
         extract($options);
         $password = $this->encrypt($password);
         $input = (new LoginByPhonePasswordInput($phone, $password))
-            ->withClientIp(isset($clientIp) ? $clientIp : null)
-            ->withContext(isset($context) ? $context : null)
-            ->withParams(isset($params) ? $params : null)
+            ->withClientIp(isset($clientIp) ? $clientIp : '')
+            ->withContext(isset($context) ? $context : '')
+            ->withParams(isset($params) ? $params : '')
             ->withAutoRegister(isset($autoRegister) ? $autoRegister : false)
-            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : null);
+            ->withCaptchaCode(isset($captchaCode) ? $captchaCode : '');
 
         $param = new LoginByPhonePasswordParam($input);
         $user = $this->request($param->createRequest());

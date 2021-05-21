@@ -210,7 +210,7 @@ PUBLICKKEY;
      */
     public function httpGet(string $path)
     {
-        $result = $this->send($this->host . $path, null, 'GET');
+        $result = $this->send($this->host . $path, [], 'GET');
         $res = json_decode(json_encode($result));
         return isset($res->data) ? $res->data : $res;
         // return $this->arrayToObject($result);
@@ -222,7 +222,7 @@ PUBLICKKEY;
      * @return object
      * @throws Exception
      */
-    public function httpPost(string $path, $data, bool $flag = '')
+    public function httpPost(string $path, $data, bool $flag = false)
     {
         if (isset($flag) && $flag) {
             $path = $path;
@@ -244,7 +244,7 @@ PUBLICKKEY;
         // return $this->arrayToObject($result);
     }
 
-    public function httpPut(string $path, array|\stdClass $data = [])
+    public function httpPut(string $path, array $data = [])
     {
         $result = $this->send($this->host . $path, $data, 'PUT');
         $res = json_decode(json_encode($result));
@@ -259,7 +259,7 @@ PUBLICKKEY;
      */
     public function httpDelete(string $path)
     {
-        $result = $this->send($this->host . $path, null, 'DELETE');
+        $result = $this->send($this->host . $path, [], 'DELETE');
         $res = json_decode(json_encode($result));
         return isset($res->data) ? $res->data : $res;
         // return $this->arrayToObject($result);
@@ -360,7 +360,7 @@ PUBLICKKEY;
      * @return mixed
      * @throws Exception
      */
-    private function send(string $url, string|array $data = '', string $method = 'POST', int $time = 30000)
+    private function send(string $url, array $data = '', string $method = 'POST', int $time = 30000)
     {
         $token = $this->getToken();
         // 如果是通过密钥刷新

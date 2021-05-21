@@ -72,7 +72,7 @@ class UsersManagementClient
      * @return User
      * @throws Exception
      */
-    public function create($input, array $options = [])
+    public function create(CreateUserInput $input, array $options = [])
     {
         $keepPassword = $options['keepPassword'] ?? false;
         $input->password = $this->client->encrypt($input->password);
@@ -116,7 +116,7 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function delete($userId)
+    public function delete(string $userId)
     {
         $param = new DeleteUserParam($userId);
         return $this->client->request($param->createRequest());
@@ -127,7 +127,7 @@ class UsersManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function deleteMany($userIds)
+    public function deleteMany(array $userIds)
     {
         $param = new DeleteUsersParam($userIds);
         return $this->client->request($param->createRequest());
@@ -298,7 +298,7 @@ class UsersManagementClient
      * @return PaginatedRoles
      * @throws Exception
      */
-    public function listRoles($userId, $namespace = '')
+    public function listRoles(string $userId, string $namespace = '')
     {
         $param = (new GetUserRolesParam($userId))->withNamespace($namespace);
         return $this->client->request($param->createRequest())->roles;
