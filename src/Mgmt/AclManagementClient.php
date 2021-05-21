@@ -72,7 +72,7 @@ class AclManagementClient
      */
     public function isAllowed(string $userId, string $resource, string $action, array $options = [])
     {
-        $namespace = $options['namespace'];
+        $namespace = $options['namespace'] ?? null;
         $param = (new IsActionAllowedParam($resource, $action, $userId))->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }
@@ -150,7 +150,7 @@ class AclManagementClient
             throw new Error('请至少定义一个资源操作');
         }
 
-        if (isset($options['namespace'])) {
+        if (!isset($options['namespace'])) {
             throw new Error('请传入权限分组标识符');
         }
 
@@ -167,7 +167,8 @@ class AclManagementClient
 
     public function deleteResource(string $code, string $namespace)
     {
-        $data = $this->client->httpDelete("/api/v2/resources/$code?namespace=$namespace");
+        $api = "/api/v2/resources/$code?namespace=$namespace";
+        $this->client->httpDelete($api);
         return true;
     }
 
@@ -401,7 +402,7 @@ class AclManagementClient
 
     public function listNamespaces(int $page = 1, int $limit = 10)
     {
-        $api = "/api/v2/resource-namespace/{$this->options->userPoolId}";
+        $api = "/api/v2/resource-namespace/{$this->client->options->userPoolId}";
         $param = http_build_query([
             "page" => $page,
             "limit" => $limit,
@@ -412,14 +413,14 @@ class AclManagementClient
 
     public function deleteNamespace(string $code)
     {
-        $api = "/api/v2/resource-namespace/{$this->options->userPoolId}/code/$code";
+        $api = "/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/$code";
         $this->client->httpDelete($api);
         return true;
     }
 
     public function createNamespace(string $code, string $name, string $description = null)
     {
-        $api = "/api/v2/resource-namespace/{$this->options->userPoolId}";
+        $api = "/api/v2/resource-namespace/{$this->client->options->userPoolId}";
         $data = $this->client->httpPost($api, [
             'name' => $name,
             'code' => $code,
@@ -430,7 +431,7 @@ class AclManagementClient
 
     public function updateNamespace(string $code, array $updates)
     {
-        $api = "/api/v2/resource-namespace/{$this->options->userPoolId}/code/$code";
+        $api = "/api/v2/resource-namespace/{$this->client->options->userPoolId}/code/$code";
         $res = $this->client->httpPut($api, $updates);
         return $res;
     }

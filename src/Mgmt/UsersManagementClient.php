@@ -354,7 +354,7 @@ class UsersManagementClient
         $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace)->withResourceType($resourceType);
         $resUser = $this->client->request($param->createRequest());
         if ($resUser) {
-            $res = Utils::formatAuthorizedResources($resUser);
+            $res = Utils::formatAuthorizedResources($resUser->authorizedResources);
             return $res;
         } else {
             throw new Exception("用户不存在");

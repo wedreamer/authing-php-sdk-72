@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '../../../vendor/autoload.php';
+
 use Authing\Mgmt\ManagementClient;
 
 
@@ -17,45 +19,54 @@ $aclManagement = $management->acls();
 
 // 创建权限分组
 // AclManagementClient->createNamespace(string $code, string $name, string $description = null)
-// $aclManagement->createNamespace();
+// $res = $aclManagement->createNamespace('mycode', 'codename', 'ok');
+
+// "{"userPoolId":"5f819ffdaaf252c4df2c9266","name":"codename","code":"mycode","description":"ok","status":1,"applicationId":null,"id":32638}"
 
 // 获取权限分组列表
 // AclManagementClient->listNamespaces(int $page = 1, int $limit = 10)
-// $aclManagement->listNamespace(1, 10);
+// $res = $aclManagement->listNamespaces(1, 10);
+
+// {"total":0,"list":[]}
+
 
 // 更新权限分组
 // AclManagementClient->updateNamespace(string $code, array $updates)
-// $aclManagement->updateNamespace('testNamesapce', [
-//     'name' => 'A New Name',
+// $res = $aclManagement->updateNamespace('mycode', [
+//     'name' => 'new codename',
 // ]);
 
 // 删除权限分组
 // AclManagementClient->deleteNamespace(string $code)
-// $aclManagement->deleteNamespace('testNamesapce');
+// $res = $aclManagement->deleteNamespace('mycode');
 
 // 获取资源列表
 // AclManagementClient->getResources(array $options = [])
-// $res = $aclManageClient->getResources([
-//     'namespaceCode' => 'namespace',
+// $res = $aclManagement->getResources([
+//     'namespace' => 'mycode',
 //     'type' => 'DATA',
 // ]);
 
+// {"list":[{"id":"60a80d980ad35323242fcd8b","createdAt":"2021-05-21T19:44:24.272Z","updatedAt":"2021-05-21T19:44:24.272Z","userPoolId":"5f819ffdaaf252c4df2c9266","code":"5584","actions":[],"type":"DATA","description":"\u8fd9\u662f\u6839\u7ec4\u7ec7","namespaceId":32638,"apiIdentifier":null,"namespace":"mycode"}],"totalCount":1}
+
 // 创建资源
 // AclManagementClient->createResource(array $options)
-// $res = $aclManageClient->createResource([
-//     'code' => 'code',
+// $res = $aclManagement->createResource([
+//     'code' => 'createResource',
 //     'actions' => [
 //         (object)[
-//             'name' => 'name',
-//             'description' => 'description'
+//             'name' => 'this is name',
+//             'description' => 'this is description'
 //         ]
 //     ],
-//     'namespace' => 'namespace'
+//     'namespace' => 'mycode'
 // ]);
+
+// {"userPoolId":"5f819ffdaaf252c4df2c9266","code":"createResource","actions":[{"name":"this is name","description":"this is description"}],"namespaceId":32638,"createdAt":"2021-05-21T19:51:19.395Z","updatedAt":"2021-05-21T19:51:19.395Z","id":"60a80f37f4d83bc683c7f932","type":null,"description":null,"apiIdentifier":null}
 
 // 更新资源
 // AclManagementClient->updateResource(string $code, array $options)
-// $res = $aclManageClient->updateResource('code', [
+// $res = $aclManagement->updateResource('createResource', [
 //     'description' => '新的描述',
 //     'type' => 'DATA',
 //     'actions' => [
@@ -68,55 +79,60 @@ $aclManagement = $management->acls();
 //             'description' => 'new description1'
 //         ],
 //     ],
-//     'namespace' => 'namespace'
+//     'namespace' => 'mycode'
 // ]);
+
+// {"id":"60a80f37f4d83bc683c7f932","createdAt":"2021-05-21T19:51:19.395Z","updatedAt":"2021-05-21T19:53:14.921Z","userPoolId":"5f819ffdaaf252c4df2c9266","code":"createResource","actions":[{"name":"write","description":"new description"},{"name":"read","description":"new description1"}],"type":"DATA","description":"\u65b0\u7684\u63cf\u8ff0","namespaceId":32638,"apiIdentifier":null}
 
 // 删除资源
 // AclManagementClient->deleteResource(string $code, string $namespace)
-// $res = $aclManageClient->deleteResource('code1', '5f88506c705dc7fa80e5f39e');
+// $res = $aclManagement->deleteResource('createResource', 'mycode');
+
+// true
 
 // 允许某个用户对某个资源进行某个操作
 // AclManagementClient->allow(string $userId, string $resource, string $action)
-// $managementClient->acl()->allow("resource", "action", "user id");
+// $res = $aclManagement->allow("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read");
+
+// {"message":"\u6388\u6743\u6210\u529f\uff01","code":200}
 
 // 判断某个用户是否对某个资源有某个操作权限
 // AclManagementClient->isAllowed(string $userId, string $resource, string $action, array $options = [])
-// $managementClient->acl()->isAllowed("user id", "action", "resource");
+// $res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read", [
+//     'namespace' => 'mycode'
+// ]);
+
+// null
+
 
 // 获取用户被授权的所有资源列表
 // UsersManagementClient->listAuthorizedResources(string $userId, string $namespace, string $resourceType = null)
-// use Authing\Mgmt\RolesManagementClient;
-// use Authing\Mgmt\UsersManagementClient;
 // use Authing\Types\ResourceType;
 
-// $managementClient = new ManagementClient('USERPOOL_ID', 'SECRET');
+// $userManagementClient = $management->users();
 
-// $userManagementClient = $managementClient->users;
+// $res = $userManagementClient->listAuthorizedResources('60754ba9ab2e824c8e47f08c', 'mycode',ResourceType::DATA);
 
-// $data = $userManagementClient->listAuthorizedResources('userId', ResourceType::DATA);
+// {"list":[{"code":"5584:*","type":"DATA","actions":["*"]}],"totalCount":1}
+
+
 
 // 获取角色被授权的所有资源列表
 // RolesManagementClient->listAuthorizedResources(string $roleCode, string $namespace, string $resourceType = null)
-// use Authing\Mgmt\RolesManagementClient;
-// use Authing\Mgmt\ManagementClient;
 // use Authing\Types\ResourceType;
 
-// $managementClient = new ManagementClient('USERPOOL_ID', 'SECRET');
+// $rolesManagementClient = $management->roles();
 
-// $rolesManagementClient = new RolesManagementClient($managementClient);
+// $res = $rolesManagementClient->listAuthorizedResources('juese_code', 'mycode', ResourceType::DATA);
 
-// $data = $rolesManagementClient->listAuthorizedResources('roleCode', ResourceType::DATA);
+// {"list":[{"code":"5584:*","type":"DATA","actions":["*"]}],"totalCount":1}
 
 // 获取分组被授权的所有资源列表
 // GroupsManagementClient->listAuthorizedResources(string $groupCode, string $namespace, string $resourceType = null)
-// use Authing\Mgmt\GroupsManagementClient;
-// use Authing\Mgmt\ManagementClient;
-// use Authing\Types\ResourceType;
+use Authing\Types\ResourceType;
 
-// $managementClient = new ManagementClient('USERPOOL_ID', 'SECRET');
-
-// $groupsManagementClient = $managementClient->groups();
-// $data = $groupsManagementClient->listAuthorizedResources('groupCode', 'namespace', ResourceType::MENU);
+$groupsManagementClient = $management->groups();
+$res = $groupsManagementClient->listAuthorizedResources('group_code', 'mycode', ResourceType::MENU);
 
 // 获取部门被授权的所有资源列表
 // OrgManagementClient->listAuthorizedResourcesByNodeId(string $nodeId, string $namespace, string $resourceType = null)
@@ -150,3 +166,8 @@ $aclManagement = $management->acls();
 //         'targetType' => 'USER'
 //     ]
 // );
+
+echo json_encode($res);
+
+
+echo '';

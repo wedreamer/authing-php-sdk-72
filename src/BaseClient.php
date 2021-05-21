@@ -3,8 +3,6 @@
 declare(strict_types=1);
 namespace Authing;
 
-// require_once __DIR__ . '/../vendor/autoload.php';
-
 use DateTime;
 use stdClass;
 use Exception;
@@ -22,7 +20,7 @@ abstract class BaseClient
      * @var Client
      */
     protected $naiveHttpClient;
-    protected $options;
+    public $options;
 
     protected $userPoolId;
     protected $appId;
