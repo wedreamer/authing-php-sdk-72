@@ -65,7 +65,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         // SetList::PHP_72,
     ]);
 
-    // vendor/bin/rector process --dry-run
+    // vendor/bin/rector process --dry-run --set php72
     // is your PHP version different from the one your refactor to? [default: your PHP version]
     $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_80);
 
@@ -73,17 +73,25 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
 
     // register a single rule
-    $services->set(AddArrayParamDocTypeRector::class);
-    // $services->set(ParamTypeDeclarationRector::class);
-    $services->set(ArrayMergeOfNonArraysToSimpleArrayRector::class);
-    $services->set(ChangeArrayPushToArrayAssignRector::class);
-    $services->set(CompactToVariablesRector::class);
-    $services->set(CompleteDynamicPropertiesRector::class);
-    $services->set(ForRepeatedCountToOwnVariableRector::class);
-    $services->set(ForToForeachRector::class);
-    $services->set(IssetOnPropertyObjectToPropertyExistsRector::class);
+    // $services->set(AddArrayParamDocTypeRector::class);
+    // // $services->set(ParamTypeDeclarationRector::class);
+    // $services->set(ArrayMergeOfNonArraysToSimpleArrayRector::class);
+    // $services->set(ChangeArrayPushToArrayAssignRector::class);
+    // $services->set(CompactToVariablesRector::class);
+    // $services->set(CompleteDynamicPropertiesRector::class);
+    // $services->set(ForRepeatedCountToOwnVariableRector::class);
+    // $services->set(ForToForeachRector::class);
+    // $services->set(IssetOnPropertyObjectToPropertyExistsRector::class);
     // $services->set(ForToForeachRector::class);
     
-    // $services->set(
-    //     ParamTypeDeclarationRector::class);
+    $services->set(
+        AddMethodCallBasedStrictParamTypeRector::class);
+    $services->set(
+        ParamTypeDeclarationRector::class
+    );
+    $services->set(
+        ParamTypeFromStrictTypedPropertyRector::class
+    );
+    
+
 };
