@@ -7,6 +7,7 @@ use Authing\Mgmt\ManagementClient;
 use Authing\Mgmt\AclManagementClient;
 use Authing\Mgmt\AgreementManagementClient;
 use Authing\Mgmt\RolesManagementClient;
+use Authing\Types\ResourceType;
 
 class ApplicationsManagementClient
 {
@@ -57,9 +58,9 @@ class ApplicationsManagementClient
         return $data;
     }
 
-    public function create(array $options)
+    public function create(array $params)
     {
-        $res = $this->client->httpPost('/api/v2/applications', (object)$options);
+        $res = $this->client->httpPost('/api/v2/applications', (object)$params);
         return $res;
     }
 
@@ -81,13 +82,13 @@ class ApplicationsManagementClient
         return $this->acl->getResources($options);
     }
 
-    public function createResource(string $appId, array $options = [])
+    public function createResource(string $appId, array $options)
     {
         $options['namespace'] = $appId;
         return $this->acl->createResource($options);
     }
 
-    public function updateResource(string $appId, array $options = [])
+    public function updateResource(string $appId, array $options)
     {
         $options['namespace'] = $appId;
         return $this->acl->updateResource($options['code'], $options);
@@ -107,7 +108,7 @@ class ApplicationsManagementClient
         return $this->acl->getAccessPolicies($options);
     }
 
-    public function enableAccessPolicy(string $appId, array $options = [])
+    public function enableAccessPolicy(string $appId, array $options)
     {
         $options['appId'] = $appId;
         $options['namespace'] = $appId;
@@ -128,7 +129,7 @@ class ApplicationsManagementClient
         return $this->acl->deleteAccessPolicy($options);
     }
 
-    public function allowAccess(string $appId, array $options = [])
+    public function allowAccess(string $appId, array $options)
     {
         $options['appId'] = $appId;
         $options['namespace'] = $appId;
@@ -151,7 +152,7 @@ class ApplicationsManagementClient
         return $this->acl->updateDefaultAccessPolicy($options);
     }
 
-    public function createRole(string $appId, array $options = [])
+    public function createRole(string $appId, array $options )
     {
         return $this->roles->create($options['code'], $options['description'], $appId);
     }
@@ -164,7 +165,7 @@ class ApplicationsManagementClient
     // TODO: 缺少 deleteRoles
 
 
-    public function updateRole(string $appId, array $options = [])
+    public function updateRole(string $appId, array $options )
     {
         $options['namespace'] = $appId;
         return $this->roles->update($options['code'], $options);
@@ -200,10 +201,11 @@ class ApplicationsManagementClient
 
     public function listAuthorizedResourcesByRole(string $appId, string $code, string $resourceType = null)
     {
+        
         return $this->roles->listAuthorizedResources($code, $appId, $resourceType);
     }
 
-    public function createAgreement(string $appId, array $options)
+    public function createAgreement(string $appId, array $agreement)
     {
         $args = func_get_args();
         return $this->agreements->create(...$args);
@@ -215,7 +217,7 @@ class ApplicationsManagementClient
         return $this->agreements->delete(...$args);
     }
 
-    public function modifyAgreement(string $appId, int $agreementId, $updates)
+    public function modifyAgreement(string $appId, int $agreementId, array $updates)
     {
         $args = func_get_args();
         return $this->agreements->modify(...$args);
