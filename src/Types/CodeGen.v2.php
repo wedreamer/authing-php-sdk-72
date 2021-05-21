@@ -15693,7 +15693,7 @@ class AuthorizedTargetsParam
      * @param $targetType PolicyAssignmentTargetType
      * @return AuthorizedTargetsParam
      */
-    public function withTargetType(\Authing\Types\PolicyAssignmentTargetType $targetType)
+    public function withTargetType(string $targetType)
     {
         $this->targetType = $targetType;
         return $this;

@@ -14,15 +14,15 @@ $usersManagementClient = $managementClient->users();
 // 创建用户
 // UsersManagementClient->create(CreateUserInput $userInfo)
 
-// use Authing\Types\CreateUserInput;
+use Authing\Types\CreateUserInput;
 
-// $email = "test@example.com";
-// $password = '123456';
-// $user = $managementClient->users()->create(
-//     (new CreateUserInput())
-//         ->withEmail($email)
-//         ->withPassword($password)
-// );
+$email = "test@example.com";
+$password = '123456';
+$res = $managementClient->users()->create(
+    (new CreateUserInput())
+        ->withEmail($email)
+        ->withPassword($password)
+);
 
 
 // 修改用户资料
@@ -208,5 +208,7 @@ $usersManagementClient = $managementClient->users();
 // UsersManagementClient->listArchivedUsers(int $page = 1, int $limit = 10)
 // $usersManagementClient->listArchivedUsers();
 
+echo json_encode($res);
 
 
+echo '';

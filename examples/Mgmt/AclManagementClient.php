@@ -129,43 +129,44 @@ $aclManagement = $management->acls();
 
 // 获取分组被授权的所有资源列表
 // GroupsManagementClient->listAuthorizedResources(string $groupCode, string $namespace, string $resourceType = null)
-use Authing\Types\ResourceType;
+// use Authing\Types\ResourceType;
 
-$groupsManagementClient = $management->groups();
-$res = $groupsManagementClient->listAuthorizedResources('group_code', 'mycode', ResourceType::MENU);
+// $groupsManagementClient = $management->groups();
+// $res = $groupsManagementClient->listAuthorizedResources('group_code', 'mycode', ResourceType::MENU);
+
+// {"list":[{"code":"5584","type":"MENU","actions":null}],"totalCount":1}
 
 // 获取部门被授权的所有资源列表
 // OrgManagementClient->listAuthorizedResourcesByNodeId(string $nodeId, string $namespace, string $resourceType = null)
 // use Authing\Types\ResourceType;
 
-// $managementClient->orgs()->listAuthorizedResourcesByNodeId(
-//     'NODE_ID',
-//     'NAMESPACE_CODE',
+// $orgsManagementClient = $management->orgs();
+// $res = $management->orgs()->listAuthorizedResourcesByNodeId(
+//     '604ef025b441024739f5ce58',
+//     'mycode',
 //     ResourceType::MENU
 // );
 
+// {"list":{"list":[{"code":"5584","type":"MENU","actions":null}],"totalCount":1},"totalCount":1}
+
 // 获取具备某些资源操作权限的主体
 // AclManagementClient->getAuthorizedTargets(array $options)
-// use Authing\Mgmt\RolesManagementClient;
-// use Authing\Mgmt\AclManagementClient;
-// use Authing\Types\PolicyAssignmentTargetType;
+use Authing\Types\ResourceType;
+use Authing\Types\AuthorizedTargetsActionsInput;
+use Authing\Types\Operator;
+use Authing\Types\PolicyAssignmentTargetType;
 
-// $managementClient = new ManagementClient('USERPOOL_ID', 'SECRET');
+$res = $aclManagement->getAuthorizedTargets(
+    [
+        'namespace' => 'mycode',
+        'resource' => '5584',
+        'resourceType' => ResourceType::MENU,
+        'actions' => new AuthorizedTargetsActionsInput(Operator::OR, ['read']),
+        'targetType' => PolicyAssignmentTargetType::USER
+    ]
+);
 
-// $aclManagementClient = $managementClient->acls();
-
-// $data = $aclManagementClient->getAuthorizedTargets(
-//     [
-//         'namespace' => '6063f88dabb536e9a23a6c80',
-//         'resource' => 'book',
-//         'resourceType' => 'DATA',
-//         'actions' => (object)[
-//             'op' => 'OR',
-//             'list' => ['write', 'read']
-//         ],
-//         'targetType' => 'USER'
-//     ]
-// );
+// {"totalCount":0,"list":[]}
 
 echo json_encode($res);
 

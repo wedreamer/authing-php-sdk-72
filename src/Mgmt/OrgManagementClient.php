@@ -259,14 +259,13 @@ class OrgManagementClient
     public function listAuthorizedResourcesByNodeId(string $nodeId, string $namespace, string $resourceType = null)
     {
         $param = (new ListNodeByIdAuthorizedResourcesParam($nodeId))->withNamespace($namespace)->withResourceType($resourceType);
-        $node = $this->client->request($param->createRequest())->nodeById;
+        $node = $this->client->request($param->createRequest());
         if (!$node) {
             throw new Error('组织机构节点不存在');
         }
-        $list = $node->authorizedResources->list;
         $totalCount = $node->authorizedResources->totalCount;
 
-        $list = Utils::formatAuthorizedResources($list);
+        $list = Utils::formatAuthorizedResources($node->authorizedResources);
         $_ = new stdClass;
         $_->list = $list;
         $_->totalCount = $totalCount;

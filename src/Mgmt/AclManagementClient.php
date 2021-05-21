@@ -105,7 +105,7 @@ class AclManagementClient
         if (empty($options['resourceType'])) {
             throw new Error('请传入 options.resourceType，含义为资源类型');
         }
-        [$namespace, $resourceType, $resource] = $options;
+        ['namespace' => $namespace, 'resourceType' => $resourceType, 'resource' => $resource] = $options;
         $params = (new AuthorizedTargetsParam($namespace, $resourceType, $resource))->withActions($options['actions'] ?? null)->withTargetType($options['targetType'] ?? null);
         $data = $this->client->request($params->createRequest());
         return $data;

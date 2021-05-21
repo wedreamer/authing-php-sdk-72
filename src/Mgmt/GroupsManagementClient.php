@@ -161,6 +161,6 @@ class GroupsManagementClient
         $param = (new ListGroupAuthorizedResourcesParam($groupCode))->withNamespace($namespace)->withResourceType($resourceType);
         $data = $this->client->request($param->createRequest());
          
-        return Utils::formatAuthorizedResources($data);
+        return Utils::formatAuthorizedResources($data->authorizedResources);
     }
 }
