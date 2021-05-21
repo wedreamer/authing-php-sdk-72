@@ -108,7 +108,7 @@ class AclManagementClient
         if (empty($options['resourceType'])) {
             throw new Error('请传入 options.resourceType，含义为资源类型');
         }
-        list($namespace, $resourceType, $resource) = $options;
+        [$namespace, $resourceType, $resource] = $options;
         $params = (new AuthorizedTargetsParam($namespace, $resourceType, $resource))->withActions($options['actions'] ?? null)->withTargetType($options['targetType'] ?? null);
         $data = $this->client->request($params->createRequest());
         return $data;
@@ -147,7 +147,7 @@ class AclManagementClient
             throw new Error('请为资源设定一个资源标识符');
         }
 
-        if (!isset($options['actions']) || count($options['actions']) === 0) {
+        if (!isset($options['actions']) || (is_countable($options['actions']) ? count($options['actions']) : 0) === 0) {
             throw new Error('请至少定义一个资源操作');
         }
 

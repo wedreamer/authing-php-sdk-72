@@ -133,7 +133,7 @@ class MFAAuthenticationClient
         $_ = new stdClass;
         $cb($_);
         if (isset($_->type) && is_string($_->type)) {
-            $data = $this->client->httpGet('/api/v2/mfa/authenticator', $_);
+            $data = $this->client->httpGet('/api/v2/mfa/authenticator');
             return $data;
         } else {
             throw new Error('type 需要被设置为字符串');

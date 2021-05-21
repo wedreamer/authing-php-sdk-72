@@ -73,7 +73,7 @@ class ApplicationsManagementClient
 
     public function listResources($appId, $options = [])
     {
-        return $this->acl->getResources($options, $appId);
+        return $this->acl->getResources($options);
     }
 
     public function createResource($appId, $options = [])

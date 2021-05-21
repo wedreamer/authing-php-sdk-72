@@ -32,7 +32,7 @@ class Utils
     public static function getTokenPlayloadData(string $jwt)
     {
         $tks = explode('.', $jwt);
-        list($headb64, $bodyb64, $cryptob64) = $tks;
+        [$headb64, $bodyb64, $cryptob64] = $tks;
         $playLoadData = JWT::jsonDecode(JWT::urlsafeB64Decode($bodyb64));
         return $playLoadData;
     }

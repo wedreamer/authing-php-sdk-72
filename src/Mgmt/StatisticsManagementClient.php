@@ -43,7 +43,7 @@ class StatisticsManagementClient
         $requestParam->limit = $options->limit ?? 10;
         $params = http_build_query($requestParam);
         $data = $this->client->httpGet("/api/v2/analysis/user-action?$params");
-        list($list, $totalCount) = (array)$data->data;
+        [$list, $totalCount] = (array)$data->data;
         array_map(function ($item) {
             return (object) [
                 'userpoolId' => $item->userpool_id,
@@ -84,7 +84,7 @@ class StatisticsManagementClient
         $params = http_build_query($requestParam);
         $data = $this->client->httpGet("/api/v2/analysis/user-action?$params");
 
-        list($list, $totalCount) = (array)$data->data;
+        [$list, $totalCount] = (array)$data->data;
         array_map(function ($item) {
             return (object) [
                 'userpoolId' => $item->userpool_id,

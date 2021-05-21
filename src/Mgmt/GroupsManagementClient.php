@@ -159,7 +159,7 @@ class GroupsManagementClient
     function listAuthorizedResources($groupCode, $namespace, $opts = [])
     {
         $resourceType = null;
-        if (count($opts) > 0) {
+        if ((is_countable($opts) ? count($opts) : 0) > 0) {
             $resourceType = $opts['resourceType'];
         }
         $param = (new ListGroupAuthorizedResourcesParam($groupCode))->withNamespace($namespace)->withResourceType($resourceType);

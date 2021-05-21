@@ -421,7 +421,7 @@ class AuthenticationClient extends BaseClient
 
     public function loginBySubAccount(string $account, string $password, array $options = [])
     {
-        list($captchaCode, $clientIp) = $options;
+        [$captchaCode, $clientIp] = $options;
         // build getPublicKey
         // $password = $this->options->encryptFunction($password, getPublicKey());
         $params = (new LoginBySubAccountParam($account, $password))->withCaptchaCode($captchaCode)->withClientIp($clientIp);
@@ -798,7 +798,7 @@ class AuthenticationClient extends BaseClient
     public function listAuthorizedResources($namespace, $opts = [])
     {
         $resourceType = null;
-        if (count($opts) > 0) {
+        if ((is_countable($opts) ? count($opts) : 0) > 0) {
             $resourceType = $opts['resourceType'];
         }
         $user = $this->getCurrentUser();
@@ -1512,7 +1512,7 @@ class AuthenticationClient extends BaseClient
         ]);
 
         $res = $this->httpSend($req);
-        list($valid, $username) = explode('\n', $res);
+        [$valid, $username] = explode('\n', $res);
         if ($valid === 'yes') {
             if ($username) {
                 return [
@@ -1580,7 +1580,7 @@ class AuthenticationClient extends BaseClient
             return false;
         }
         $roleList = $user->roles->list;
-        if (count($roleList) == 0) {
+        if ((is_countable($roleList) ? count($roleList) : 0) == 0) {
             return false;
         }
         $hasRole = false;

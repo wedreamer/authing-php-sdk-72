@@ -346,7 +346,7 @@ class UsersManagementClient
     public function listAuthorizedResources(string $userId, string $namespace, ?array $obj = [])
     {
         $resourceType = null;
-        if (count($obj) > 0) {
+        if (count((array) $obj) > 0) {
             $resourceType = $obj['resourceType'];
         }
         $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace)->withResourceType($resourceType);

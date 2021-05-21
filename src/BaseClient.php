@@ -275,7 +275,7 @@ PUBLICKKEY;
             $errors = $result['errors'];
         }
 
-        if (!empty($errors) && count($errors) > 0) {
+        if (!empty($errors) && (is_countable($errors) ? count($errors) : 0) > 0) {
             foreach($errors as $error) {
                 $error = (object)$error;
                 $data = (object)($error->message);
