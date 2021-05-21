@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 namespace Authing\Mgmt;
 use Authing\Mgmt\ManagementClient;
 

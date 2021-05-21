@@ -1,5 +1,6 @@
 <?php /** @noinspection PhpMultipleClassesDeclarationsInOneFile */
 
+declare(strict_types=1);
 namespace Authing\Types;
 
 class Query

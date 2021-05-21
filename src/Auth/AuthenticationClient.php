@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 namespace Authing\Auth;
 
 use Authing\Auth\Types;
@@ -1548,7 +1549,7 @@ class AuthenticationClient extends BaseClient
         ]);
 
         $res = $this->httpSend($req);
-        [$valid, $username] = explode('\n', $res);
+        [$valid, $username] = explode('\n', (string)$res);
         if ($valid === 'yes') {
             if ($username) {
                 return [
