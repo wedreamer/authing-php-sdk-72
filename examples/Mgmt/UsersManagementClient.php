@@ -19,7 +19,7 @@ $userManageClient = $management->users();
 // $usersManagementClient->detail // 获取用户详情
 
 
-$res = $userManageClient->listArchivedUsers();
+$res = $userManageClient->listUserActions();
 echo json_encode($res);
 // 创建用户
 // UsersManagementClient->create(CreateUserInput $userInfo)

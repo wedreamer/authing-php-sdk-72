@@ -115,14 +115,14 @@ class ApplicationsManagementClient
         return $this->acl->enableAccessPolicy($options);
     }
 
-    public function disableAccessPolicy(string $appId, array $options = [])
+    public function disableAccessPolicy(string $appId, array $options)
     {
         $options['appId'] = $appId;
         $options['namespace'] = $appId;
         return $this->acl->disableAccessPolicy($options);
     }
 
-    public function deleteAccessPolicy(string $appId, array $options = [])
+    public function deleteAccessPolicy(string $appId, array $options)
     {
         $options['appId'] = $appId;
         $options['namespace'] = $appId;
@@ -136,7 +136,7 @@ class ApplicationsManagementClient
         return $this->acl->allowAccess($options);
     }
 
-    public function denyAccess(string $appId, array $options = [])
+    public function denyAccess(string $appId, array $options)
     {
         $options['appId'] = $appId;
         $options['namespace'] = $appId;
@@ -162,7 +162,10 @@ class ApplicationsManagementClient
         return $this->roles->delete($code, $appId);
     }
 
-    // TODO: 缺少 deleteRoles
+    public function deleteRoles(string $appId, array $codes)
+    {
+        return $this->roles->deleteMany($codes, $appId);
+    }
 
 
     public function updateRole(string $appId, array $options )
@@ -199,7 +202,7 @@ class ApplicationsManagementClient
         return $this->roles->removeUsers($code, $userIds, $appId);
     }
 
-    public function listAuthorizedResourcesByRole(string $appId, string $code, string $resourceType = null)
+    public function listAuthorizedResourcesByRole(string $appId, string $code, string $resourceType = '')
     {
         
         return $this->roles->listAuthorizedResources($code, $appId, $resourceType);

@@ -418,7 +418,7 @@ class AclManagementClient
         return true;
     }
 
-    public function createNamespace(string $code, string $name, string $description = null)
+    public function createNamespace(string $code, string $name, string $description = '')
     {
         $api = "/api/v2/resource-namespace/{$this->client->options->userPoolId}";
         $data = $this->client->httpPost($api, [

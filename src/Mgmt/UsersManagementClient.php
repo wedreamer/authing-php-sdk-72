@@ -204,9 +204,9 @@ class UsersManagementClient
      * @return boolean
      * @throws Exception
      */
-    public function exists(IsUserExistsParam $ops)
+    public function exists(IsUserExistsParam $options)
     {
-        $param = $ops;
+        $param = $options;
         return $this->client->request($param->createRequest());
     }
 
@@ -232,7 +232,10 @@ class UsersManagementClient
      * @return PaginatedUsers
      * @throws Exception
      */
-    public function search(string $query, array $opts = [])
+    public function search(string $query, array $opts = [
+        'page' => 1,
+        'limit' => 10
+    ])
     {
         $opts = (object)$opts;
         $limit = $opts->ilmit ?? 10;
@@ -358,7 +361,7 @@ class UsersManagementClient
         return $res;
     }
 
-    public function listAuthorizedResources(string $userId, string $namespace, ?string $resourceType = null)
+    public function listAuthorizedResources(string $userId, string $namespace, string $resourceType = '')
     {
         $param = (new ListUserAuthorizedResourcesParam($userId))->withNamespace($namespace);
         $resourceType && $param->withResourceType($resourceType);
@@ -470,11 +473,11 @@ class UsersManagementClient
         $param = http_build_query([
             'page' => $options['page'] ?? 1,
             'limit' => $options['limit'] ?? 10,
-            'clientip' => $options['clientip'],
-            'operation_name' => $options['operationName'],
-            'operator_arn' => $options['operatoArn'],
+            'clientip' => $options['clientip'] ?? null,
+            'operation_name' => $options['operationName'] ?? null,
+            'operator_arn' => $options['operatoArn'] ?? null,
         ]);
-        $data = $this->client->httpGet($api . $param);
+        $data = $this->client->httpGet($api . '?'.$param);
         return $data;
     }
 
