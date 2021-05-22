@@ -141,7 +141,7 @@ $aclManagement = $management->acls();
 // use Authing\Types\ResourceType;
 
 // $orgsManagementClient = $management->orgs();
-// $res = $management->orgs()->listAuthorizedResourcesByNodeId(
+// $res = $orgsManagementClient->listAuthorizedResourcesByNodeId(
 //     '604ef025b441024739f5ce58',
 //     'mycode',
 //     ResourceType::MENU
