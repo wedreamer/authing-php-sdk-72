@@ -235,9 +235,13 @@ class UsersManagementClient
     public function search(string $query, array $opts = [])
     {
         $opts = (object)$opts;
-        $limit = $opts->limit ?? 10;
+        $limit = $opts->ilmit ?? 10;
         $page = $opts->page ?? 1;
-        $param = (new SearchUserParam($query))->withPage($page)->withLimit($limit)->withDepartmentOpts($opts->departmentOpts ?? null)->withFields($opts->fields)->withGroupOpts($opts->groupOpts)->withRoleOpts($opts->roleOpts);
+        $param = (new SearchUserParam($query))->withPage($page)->withLimit($limit);
+        isset($opts->departmentOpts) && $param->withDepartmentOpts($opts->departmentOpts);
+        isset($opts->fields) && $param->withFields($opts->fields);
+        isset($opts->groupOpts) && $param->withGroupOpts($opts->groupOpts);
+        isset($opts->roleOpts) && $param->withRoleOpts($opts->roleOpts);
         return $this->client->request($param->createRequest());
     }
 

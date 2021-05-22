@@ -266,10 +266,7 @@ class OrgManagementClient
         $totalCount = $node->authorizedResources->totalCount;
 
         $list = Utils::formatAuthorizedResources($node->authorizedResources);
-        $_ = new stdClass;
-        $_->list = $list;
-        $_->totalCount = $totalCount;
-        return $_;
+        return $list;
     }
 
     public function listAuthorizedResourcesByNodeCode(string $orgId, string $code, string $namespace, array $options = [])

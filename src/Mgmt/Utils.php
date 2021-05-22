@@ -41,6 +41,7 @@ class Utils
     public static function convertUdvToKeyValuePair(array $data)
     {
         foreach ($data as $item) {
+            $item = (object)$item;
             $dataType = $item->dataType;
             $value = $item->value;
             if ($dataType === UDFDataType::NUMBER) {
@@ -57,6 +58,7 @@ class Utils
 
         $ret = new stdClass();
         foreach ($data as $item) {
+            $item = (object)$item;
             $key = $item->key;
             $ret->$key = $item->value;
         }

@@ -72,7 +72,7 @@ class AclManagementClient
      */
     public function isAllowed(string $userId, string $resource, string $action, array $options = [])
     {
-        $namespace = $options['namespace'] ?? null;
+        $namespace = $options['namespace'] ?? '';
         $param = (new IsActionAllowedParam($resource, $action, $userId))->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }

@@ -39,19 +39,6 @@ class GroupsManagementClient
     }
 
     /**
-     * 获取分组列表
-     *
-     * @param int $page 分页页数，默认为 1
-     * @param int $limit 分页大小，默认为 10
-     * @return PaginatedGroups
-     * @throws Exception
-     */
-    public function paginate(int $page = 1, int $limit = 10) {
-        $param = (new GroupsParam())->withPage($page)->withLimit($limit);
-        return $this->client->request($param->createRequest());
-    }
-
-    /**
      * 创建分组
      *
      * @param $code string 分组唯一标志符
@@ -60,10 +47,25 @@ class GroupsManagementClient
      * @return Group
      * @throws Exception
      */
-    public function create($code, $name, string $description = null) {
+    public function create($code, $name, string $description = null)
+    {
         $param = (new CreateGroupParam($code, $name))->withDescription($description);
         return $this->client->request($param->createRequest());
     }
+
+    /**
+     * 删除分组
+     *
+     * @param $code string 分组 code
+     * @return CommonMessage
+     * @throws Exception
+     */
+    public function delete($code)
+    {
+        $param = new DeleteGroupsParam([$code]);;
+        return $this->client->request($param->createRequest());
+    }
+
 
     /**
      * 更新分组
@@ -75,10 +77,12 @@ class GroupsManagementClient
      * @return Group
      * @throws Exception
      */
-    public function update($code, $name = null, $description = null, $newCode = null) {
+    public function update($code, $name = null, $description = null, $newCode = null)
+    {
         $param = (new UpdateGroupParam($code))->withName($name)->withDescription($description)->withNewCode($newCode);
         return $this->client->request($param->createRequest());
     }
+
 
     /**
      * 获取分组信息
@@ -87,20 +91,23 @@ class GroupsManagementClient
      * @return Group
      * @throws Exception
      */
-    public function detail($code) {
+    public function detail($code)
+    {
         $param = new GroupParam($code);
         return $this->client->request($param->createRequest());
     }
 
+
     /**
-     * 删除分组
+     * 获取分组列表
      *
-     * @param $code string 分组 code
-     * @return CommonMessage
+     * @param int $page 分页页数，默认为 1
+     * @param int $limit 分页大小，默认为 10
+     * @return PaginatedGroups
      * @throws Exception
      */
-    public function delete($code) {
-        $param = new DeleteGroupsParam([$code]);;
+    public function paginate(int $page = 1, int $limit = 10) {
+        $param = (new GroupsParam())->withPage($page)->withLimit($limit);
         return $this->client->request($param->createRequest());
     }
 
@@ -151,12 +158,12 @@ class GroupsManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function removeUsers($code, $userIds) {
+    public function removeUsers(string $code, array $userIds) {
         $param = (new RemoveUserFromGroupParam($userIds))->withCode($code);
         return $this->client->request($param->createRequest());
     }
 
-    function listAuthorizedResources($groupCode, $namespace, string $resourceType = null)
+    function listAuthorizedResources($groupCode, $namespace, string $resourceType = '')
     {
         $param = (new ListGroupAuthorizedResourcesParam($groupCode))->withNamespace($namespace)->withResourceType($resourceType);
         $data = $this->client->request($param->createRequest());

@@ -60,6 +60,7 @@ function convertUdv(array $data)
 function convertUdvToKeyValuePair(array $data)
 {
     foreach ($data as $item) {
+        $item = (object)$item;
         $dataType = $item->dataType;
         $value = $item->value;
         if ($dataType === UDFDataType::NUMBER) {
@@ -76,6 +77,7 @@ function convertUdvToKeyValuePair(array $data)
 
     $ret = new stdClass();
     foreach ($data as $item) {
+        $item = (object)$item;
         $key = $item->key;
         $ret->$key = $item->value;
     }
@@ -107,7 +109,7 @@ class RolesManagementClient
      * @return Role
      * @throws Exception
      */
-    public function create(string $code, string $description = null, string $namespace = null)
+    public function create(string $code, string $description = '', string $namespace = '')
     {
         $param = (new CreateRoleParam($code));
         $description && $param->withDescription($description);
@@ -125,7 +127,8 @@ class RolesManagementClient
     public function delete(string $code, string $namespace = null)
     {
         $param = new DeleteRoleParam($code);
-        return $this->client->request($param->withNamespace($namespace)->createRequest());
+        $namespace && $param->withNamespace($namespace);
+        return $this->client->request($param->createRequest());
     }
 
     /**
@@ -137,7 +140,8 @@ class RolesManagementClient
      */
     public function deleteMany(array $codeList, string $namespace = null)
     {
-        $param = (new DeleteRolesParam($codeList))->withNamespace($namespace);
+        $param = (new DeleteRolesParam($codeList));
+        $namespace && $param->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }
 
@@ -351,11 +355,11 @@ class RolesManagementClient
         $param = new UdfValueBatchParam(UDFTargetType::ROLE, $roleIds);
         $data = $this->client->request($param->createRequest());
 
-        $ret = new stdClass();
+        $ret = (object)[];
         foreach ($data as $value) {
             $targetId = $value->targetId;
             $_data = $value->data;
-            $ret->$targetId = convertUdvToKeyValuePair($data);
+            $ret->$targetId = Utils::convertUdvToKeyValuePair($_data);
         }
 
         return $ret;
@@ -387,17 +391,18 @@ class RolesManagementClient
             $userId = $item->roleId;
             $data = $item->data;
             foreach ($data as $key => $value) {
-                $param = new SetUdfValueBatchInput($userId, $key, $value);
-                array_push($params, $param);
+                $param = new SetUdfValueBatchInput($userId, $key, json_encode($value));
+                $params[] = $param;
             }
         }
         $param = new SetUdfValueBatchParam(UDFTargetType::ROLE, $params);
-        $this->client->request($param->createRequest());
+        return $this->client->request($param->createRequest());
     }
 
     public function removeUdfValue(string $roleId, string $key)
     {
         $param = new RemoveUdvParam(UDFTargetType::ROLE, $roleId, $key);
-        return $this->client->request($param->createRequest());
+        $this->client->request($param->createRequest());
+        return true;
     }
 }

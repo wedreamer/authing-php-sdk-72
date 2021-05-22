@@ -17,9 +17,14 @@ $management = new ManagementClient(function ($options) {
 
 $aclManagement = $management->acls();
 
+$res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read", [
+    'namespace' => 'mycode'
+]);
+
+
 // 创建权限分组
 // AclManagementClient->createNamespace(string $code, string $name, string $description = null)
-// $res = $aclManagement->createNamespace('mycode', 'codename', 'ok');
+$res = $aclManagement->createNamespace('mycode', 'codename', 'ok');
 
 // "{"userPoolId":"5f819ffdaaf252c4df2c9266","name":"codename","code":"mycode","description":"ok","status":1,"applicationId":null,"id":32638}"
 
@@ -98,9 +103,10 @@ $aclManagement = $management->acls();
 
 // 判断某个用户是否对某个资源有某个操作权限
 // AclManagementClient->isAllowed(string $userId, string $resource, string $action, array $options = [])
-// $res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read", [
-//     'namespace' => 'mycode'
-// ]);
+// TODO: 有问题
+$res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read", [
+    'namespace' => 'mycode'
+]);
 
 // null
 

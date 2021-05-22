@@ -25,27 +25,27 @@ $udfsManagementClient = $management->udfs();
 use Authing\Types\UDFTargetType;
 use Authing\Types\UDFDataType;
 
-// $res = $udfsManagementClient->set(
-//     UDFTargetType::USER,
-//     "setkey",
-//     UDFDataType::STRING,
-//     "test set user udf"
-// );
+$res = $udfsManagementClient->set(
+    UDFTargetType::USER,
+    "setkey",
+    UDFDataType::STRING,
+    "test set user udf"
+);
 
 // {"targetType":"USER","dataType":"STRING","key":"setkey","label":"test set user udf","options":null}
 
 // 删除自定义字段
 // UdfManagementClient->remove(string $targetType, string $key)
-// $res = $udfsManagementClient->remove(
-//     UDFTargetType::USER, 
-//     "setkey"
-// );
+$res = $udfsManagementClient->remove(
+    UDFTargetType::USER, 
+    "setkey"
+);
 
 // {"message":null,"code":200}
 
 // 获取自定义字段定义
 // UdfManagementClient->paginate(string $targetType)
-// $res = $udfsManagementClient->paginate(UDFTargetType::USER);
+$res = $udfsManagementClient->paginate(UDFTargetType::USER);
 
 // [{"targetType":"USER","dataType":"STRING","key":"key","label":"key","options":null},{"targetType":"USER","dataType":"STRING","key":"test","label":"test","options":null},{"targetType":"USER","dataType":"STRING","key":"school","label":"\u5b66\u6821","options":null},{"targetType":"USER","dataType":"STRING","key":"age","label":"\u5e74\u9f84","options":null},{"targetType":"USER","dataType":"STRING","key":"6082607a3d19e39ae3b8ea7e","label":"test set user udf","options":null}]
 
@@ -53,7 +53,7 @@ use Authing\Types\UDFDataType;
 // UdfManagementClient->listUdv(string $targetType, string $targetId)
 // use Authing\Types\UDFTargetType;
 
-// $res = $udfsManagementClient->listUdv(UDFTargetType::USER, '6082607a3d19e39ae3b8ea7e');
+$res = $udfsManagementClient->listUdv(UDFTargetType::USER, '6082607a3d19e39ae3b8ea7e');
 
 // [{"key":"key","dataType":"STRING","value":"","label":"key"},{"key":"test","dataType":"STRING","value":"","label":"test"},{"key":"school","dataType":"STRING","value":"","label":"\u5b66\u6821"},{"key":"age","dataType":"STRING","value":"","label":"\u5e74\u9f84"},{"key":"6082607a3d19e39ae3b8ea7e","dataType":"STRING","value":"","label":"test set user udf"}]
 
