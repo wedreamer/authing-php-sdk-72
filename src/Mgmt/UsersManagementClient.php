@@ -94,12 +94,12 @@ class UsersManagementClient
      * @return User
      * @throws Exception
      */
-    public function update(string $userId, UpdateUserInput $input)
+    public function update(string $userId, UpdateUserInput $updates)
     {
-        if(isset($input->password)) {
-            $input->password = $this->client->encrypt($input->password);
+        if(isset($updates->password)) {
+            $updates->password = $this->client->encrypt($updates->password);
         }
-        $param = (new UpdateUserParam($input))->withId($userId);
+        $param = (new UpdateUserParam($updates))->withId($userId);
         return $this->client->request($param->createRequest());
     }
 

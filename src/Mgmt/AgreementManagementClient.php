@@ -51,7 +51,7 @@ class AgreementManagementClient {
     /**
      * @param string $appId
      */
-    public function delete(array $appId, int $agreementId)
+    public function delete(array $appId, string $agreementId)
     {
         $this->client->httpDelete("/api/v2/applications/$appId/agreements/$agreementId");
         return true;
@@ -60,7 +60,7 @@ class AgreementManagementClient {
     /**
      * @param string $appId
      */
-    public function modify(array $appId, int $agreementId, array $updates)
+    public function modify(array $appId, string $agreementId, array $updates)
     {
         $data = $this->client->httpPut("/api/v2/applications/$appId/agreements/$agreementId", $updates);
         return $data;

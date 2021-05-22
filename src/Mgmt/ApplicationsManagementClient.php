@@ -214,13 +214,13 @@ class ApplicationsManagementClient
         return $this->agreements->create(...$args);
     }
 
-    public function deleteAgreement(string $appId, int $agreementId)
+    public function deleteAgreement(string $appId, string $agreementId)
     {
         $args = func_get_args();
         return $this->agreements->delete(...$args);
     }
 
-    public function modifyAgreement(string $appId, int $agreementId, array $updates)
+    public function modifyAgreement(string $appId, string $agreementId, array $updates)
     {
         $args = func_get_args();
         return $this->agreements->modify(...$args);
