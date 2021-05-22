@@ -33,6 +33,10 @@ use Authing\Types\PaginatedPolicyAssignments;
 use Authing\Types\PolicyAssignmentTargetType;
 use Authing\Types\RemovePolicyAssignmentsParam;
 use Authing\Types\ListRoleAuthorizedResourcesParam;
+use Authing\Types\UserDefinedDataInput;
+
+
+use function PHPUnit\Framework\isEmpty;
 
 function convertUdv(array $data)
 {
@@ -105,7 +109,9 @@ class RolesManagementClient
      */
     public function create(string $code, string $description = null, string $namespace = null)
     {
-        $param = (new CreateRoleParam($code))->withDescription($description)->withNamespace($namespace);
+        $param = (new CreateRoleParam($code));
+        $description && $param->withDescription($description);
+        $namespace && $param->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }
 
@@ -146,7 +152,10 @@ class RolesManagementClient
      */
     public function update(string $code, array $input)
     {
-        $param = (new UpdateRoleParam($code))->withDescription($input['description'])->withNewCode($input['newCode'])->withNamespace($input['namespace']);
+        $param = (new UpdateRoleParam($code));
+        isset($input['description']) && $param->withDescription($input['description']);
+        isset($input['newCode']) && $param->withNewCode($input['newCode']);
+        isset($input['namespace']) && $param->withNamespace($input['namespace']);
         return $this->client->request($param->createRequest());
     }
 
@@ -160,7 +169,8 @@ class RolesManagementClient
     public function detail(string $code, string $namespace = null)
     {
         $param = new RoleParam($code);
-        return $this->client->request($param->withNamespace($namespace)->createRequest());
+        $namespace && $param->withNamespace($namespace);
+        return $this->client->request($param->createRequest());
     }
 
     /**
@@ -182,8 +192,11 @@ class RolesManagementClient
      */
     public function paginate(array $options = [])
     {
-        ['page' => $page, 'limit' => $limit, 'namespace' => $namespace] = $options;
-        $param = (new RolesParam())->withPage($page ?? 1)->withLimit($limit ?? 10)->withNamespace($namespace);
+        $page = $options['page'] ?? 1;
+        $limit = $options['limit'] ?? 10;
+        $namespace = $options['namespace'] ?? null;
+        $param = (new RolesParam())->withPage($page)->withLimit($limit);
+        $namespace && $param->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }
 
@@ -198,7 +211,8 @@ class RolesManagementClient
     {
         extract($options);
         $param = (new RoleWithUsersParam($code))->withNamespace($namespace ?? '');
-        return $this->client->request($param->createRequest());
+        $users = ($this->client->request($param->createRequest()))->users;
+        return $users;
     }
 
     /**
@@ -209,9 +223,9 @@ class RolesManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function addUsers(string $code, array $userIds, string $namespace = null)
+    public function addUsers(string $code, array $userIds, string $namespace = '')
     {
-        $param = (new AssignRoleParam())->withUserIds($userIds)->withRoleCodes([$code])->withNamespace($namespace ?? null);
+        $param = (new AssignRoleParam())->withUserIds($userIds)->withRoleCodes([$code])->withNamespace($namespace);
         return $this->client->request($param->createRequest());
     }
 
@@ -223,9 +237,9 @@ class RolesManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function removeUsers(string $code, array $userIds, string $namespace = null)
+    public function removeUsers(string $code, array $userIds, string $namespace = '')
     {
-        $param = (new RevokeRoleParam())->withNamespace($namespace ?? null)->withUserIds($userIds)->withRoleCodes([$code]);
+        $param = (new RevokeRoleParam())->withNamespace($namespace)->withUserIds($userIds)->withRoleCodes([$code]);
         return $this->client->request($param->createRequest());
     }
 
@@ -285,7 +299,7 @@ class RolesManagementClient
      * @return stdClass
      * @throws Exception
      */
-    public function listAuthorizedResources(string $roleCode, string $namespace, string $resourceType = null)
+    public function listAuthorizedResources(string $roleCode, string $namespace, string $resourceType = '')
     {
         $param = (new ListRoleAuthorizedResourcesParam($roleCode))->withNamespace($namespace);
 
@@ -302,15 +316,19 @@ class RolesManagementClient
     {
         $param = (new UdvParam('ROLE', $roleId));
         $data = $this->client->request($param->createRequest());
-        $list = $data->udv;
-        return convertUdvToKeyValuePair($list);
+        $list = $data ? $data->udv: $data;
+        if (empty($list)) {
+            return $list;
+        } else {
+            return convertUdvToKeyValuePair($list);
+        }
     }
 
     
     public function getSpecificUdfValue(string $roleId, string $udfKey)
     {
         $param = new UdvParam(UDFTargetType::ROLE, $roleId);
-        $data = $this->client->request($param->createRequest())->udv;
+        $data = $this->client->request($param->createRequest());
 
         $udfMap = convertUdvToKeyValuePair($data);
         $udfValue = new stdClass();
@@ -331,7 +349,7 @@ class RolesManagementClient
         }
 
         $param = new UdfValueBatchParam(UDFTargetType::ROLE, $roleIds);
-        $data = $this->client->request($param->createRequest())->udfValueBatch;
+        $data = $this->client->request($param->createRequest());
 
         $ret = new stdClass();
         foreach ($data as $value) {
@@ -349,8 +367,14 @@ class RolesManagementClient
             throw new Error('empty udf value list');
         }
 
-        $param = (new SetUdvBatchParam(UDFTargetType::ROLE, $roleId))->withUdvList($data);
-        $this->client->request($param->createRequest());
+        $input = [];
+
+        foreach ($data as $key => $value) {
+            $input [] = (new UserDefinedDataInput($key))->withValue($value);
+        }
+
+        $param = (new SetUdvBatchParam(UDFTargetType::ROLE, $roleId))->withUdvList($input);
+        return $this->client->request($param->createRequest());
     }
 
     public function setUdfValueBatch(array $input)
@@ -374,6 +398,6 @@ class RolesManagementClient
     public function removeUdfValue(string $roleId, string $key)
     {
         $param = new RemoveUdvParam(UDFTargetType::ROLE, $roleId, $key);
-        $this->client->request($param->createRequest());
+        return $this->client->request($param->createRequest());
     }
 }
