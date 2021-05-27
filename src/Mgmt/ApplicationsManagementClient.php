@@ -88,6 +88,12 @@ class ApplicationsManagementClient
         return $this->acl->createResource($options);
     }
 
+    public function createResourceBetch(string $appId, array $resources)
+    {
+        $options['namespace'] = $appId;
+        return $this->acl->createResourceBetch($options);
+    }
+
     public function updateResource(string $appId, array $options)
     {
         $options['namespace'] = $appId;
@@ -152,7 +158,7 @@ class ApplicationsManagementClient
         return $this->acl->updateDefaultAccessPolicy($options);
     }
 
-    public function createRole(string $appId, array $options )
+    public function createRole(string $appId, array $options)
     {
         return $this->roles->create($options['code'], $options['description'], $appId);
     }
@@ -168,7 +174,7 @@ class ApplicationsManagementClient
     }
 
 
-    public function updateRole(string $appId, array $options )
+    public function updateRole(string $appId, array $options)
     {
         $options['namespace'] = $appId;
         return $this->roles->update($options['code'], $options);
@@ -177,7 +183,7 @@ class ApplicationsManagementClient
     public function findRole(string $appId, string $code)
     {
         return $this->roles->detail($code, $appId);
-    }    
+    }
 
     public function getRoles(string $appId, array $options = [])
     {
@@ -204,7 +210,6 @@ class ApplicationsManagementClient
 
     public function listAuthorizedResourcesByRole(string $appId, string $code, string $resourceType = '')
     {
-        
         return $this->roles->listAuthorizedResources($code, $appId, $resourceType);
     }
 

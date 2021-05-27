@@ -53,7 +53,6 @@ PUBLICKKEY;
      */
     public function __construct($userPoolIdOrFunc)
     {
-
         if (!isset($userPoolIdOrFunc)) {
             throw new InvalidArgumentException("Invalid userPoolIdOrFunc");
         }
@@ -83,6 +82,10 @@ PUBLICKKEY;
 
             if (isset($this->options->appId)) {
                 $this->appId = $this->options->appId;
+            }
+
+            if (isset($this->options->host)) {
+                $this->host = $this->options->host;
             }
         }
         if (is_null($this->userPoolId) && is_null($this->appId)) {
@@ -156,12 +159,12 @@ PUBLICKKEY;
 
     public function httpSend(\GuzzleHttp\Psr7\Request $req)
     {
-
         $code = null;
         $res = $this->naiveHttpClient->send($req, ['http_errors' => false]);
 
-        if ($res->getStatusCode() != 200)
-        $code = $res->getStatusCode();
+        if ($res->getStatusCode() != 200) {
+            $code = $res->getStatusCode();
+        }
         $body = $res->getBody();
         if ($code != 200) {
             throw new Exception($body, $code);
@@ -206,7 +209,6 @@ PUBLICKKEY;
                 return $attOrObj;
             }
         }
-        
     }
 
     /**
@@ -283,10 +285,10 @@ PUBLICKKEY;
         }
 
         if (!empty($errors) && (is_countable($errors) ? count($errors) : 0) > 0) {
-            foreach($errors as $error) {
+            foreach ($errors as $error) {
                 $error = (object)$error;
                 $data = (object)($error->message);
-                throw new Exception($data->message, $data->code);    
+                throw new Exception($data->message, $data->code);
             }
         }
     }
@@ -354,7 +356,7 @@ PUBLICKKEY;
             $this->accessToken && ($this->_accessTokenExpriredAt > (time() + 3600))
         ) {
             return $this->accessToken;
-        } else if (isset($this->_accessTokenExpriredAt) && ($this->_accessTokenExpriredAt < (time() + 3600))) {
+        } elseif (isset($this->_accessTokenExpriredAt) && ($this->_accessTokenExpriredAt < (time() + 3600))) {
             return $this->requestToken();
         }
     }

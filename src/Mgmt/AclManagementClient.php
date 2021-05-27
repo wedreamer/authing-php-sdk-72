@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Authing\Mgmt;
 
 use Authing\Types\AllowParam;
@@ -155,6 +156,33 @@ class AclManagementClient
         }
 
         $data = $this->client->httpPost('/api/v2/resources', $options);
+
+        return $data;
+    }
+
+    public function createResourceBetch(array $resources)
+    {
+        foreach ($resources as $resource) {
+            if (!isset($resource['code'])) {
+                throw new Error('请为资源设定一个资源标识符');
+            }
+
+            if (!isset($resource['actions']) || (is_countable($resource['actions']) ? count($resource['actions']) : 0) === 0) {
+                throw new Error('请至少定义一个资源操作');
+            }
+
+            if (!isset($resource['namespace'])) {
+                throw new Error('请传入权限分组标识符');
+            }
+        }
+
+
+        $data = $this->client->httpPost(
+            '/api/v2/resources/bulk',
+            [
+                'bulk' => $resources
+            ]
+        );
 
         return $data;
     }

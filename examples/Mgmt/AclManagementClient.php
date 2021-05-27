@@ -1,30 +1,29 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . '../../../vendor/autoload.php';
 
 use Authing\Mgmt\ManagementClient;
 
-
 // 初始化资源与权限客户端
 // 通过用户池 id 与 用户池密码进行初始化
 // 通过回调函数进行初始化
 // $management = new ManagementClient("5f819ffdaaf252c4df2c9266", "06eca4ed85c807db9fc6a9d5483a4dc7");
 $management = new ManagementClient(function ($options) {
-    $options->userPoolId = '5f819ffdaaf252c4df2c9266';
-    $options->secret = '06eca4ed85c807db9fc6a9d5483a4dc7';
+    $options->userPoolId = '59f86b4832eb28071bdd9214';
+    $options->secret = '7df9c8af6934c5008ce30d53c08b6903';
+    $options->host = 'http://localhost:3000';
 });
 
-$aclManagement = $management->acls();
+// $management->setHost('http://localhost:3000');
 
-$res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read", [
-    'namespace' => 'mycode'
-]);
+$aclManagement = $management->acls();
 
 
 // 创建权限分组
 // AclManagementClient->createNamespace(string $code, string $name, string $description = null)
-$res = $aclManagement->createNamespace('mycode', 'codename', 'ok');
+// $res = $aclManagement->createNamespace('mycode', 'codename', 'ok');
 
 // "{"userPoolId":"5f819ffdaaf252c4df2c9266","name":"codename","code":"mycode","description":"ok","status":1,"applicationId":null,"id":32638}"
 
@@ -69,6 +68,68 @@ $res = $aclManagement->createNamespace('mycode', 'codename', 'ok');
 
 // {"userPoolId":"5f819ffdaaf252c4df2c9266","code":"createResource","actions":[{"name":"this is name","description":"this is description"}],"namespaceId":32638,"createdAt":"2021-05-21T19:51:19.395Z","updatedAt":"2021-05-21T19:51:19.395Z","id":"60a80f37f4d83bc683c7f932","type":null,"description":null,"apiIdentifier":null}
 
+// 批量创建资源
+// AclManagementClient->createResourceBetch(array $resource)
+$res = $aclManagement->createResourceBetch([
+    [
+        'code' => 'mycode1',
+        'actions' => [
+            (object)[
+                'name' => 'this is name',
+                'description' => 'this is description'
+            ]
+        ],
+        'namespace' => 'mycode'
+    ],
+    [
+        'code' => 'mycode2',
+        'actions' => [
+            (object)[
+                'name' => 'this is name',
+                'description' => 'this is description'
+            ]
+        ],
+        'namespace' => 'mycode'
+    ]
+]);
+
+// 示例数据 [
+//     {
+//         "userPoolId": "59f86b4832eb28071bdd9214",
+//         "code": "mycode1",
+//         "actions": [
+//             {
+//                 "name": "this is name",
+//                 "description": "this is description"
+//             }
+//         ],
+//         "namespaceId": 11,
+//         "createdAt": "2021-05-27T10:49:58.889Z",
+//         "updatedAt": "2021-05-27T10:49:58.889Z",
+//         "id": "60af7956ba4bcde01d225b16",
+//         "type": null,
+//         "description": null,
+//         "apiIdentifier": null
+//     },
+//     {
+//         "userPoolId": "59f86b4832eb28071bdd9214",
+//         "code": "mycode2",
+//         "actions": [
+//             {
+//                 "name": "this is name",
+//                 "description": "this is description"
+//             }
+//         ],
+//         "namespaceId": 11,
+//         "createdAt": "2021-05-27T10:49:58.935Z",
+//         "updatedAt": "2021-05-27T10:49:58.935Z",
+//         "id": "60af795647ec42ccff815d85",
+//         "type": null,
+//         "description": null,
+//         "apiIdentifier": null
+//     }
+// ]
+
 // 更新资源
 // AclManagementClient->updateResource(string $code, array $options)
 // $res = $aclManagement->updateResource('createResource', [
@@ -103,10 +164,10 @@ $res = $aclManagement->createNamespace('mycode', 'codename', 'ok');
 
 // 判断某个用户是否对某个资源有某个操作权限
 // AclManagementClient->isAllowed(string $userId, string $resource, string $action, array $options = [])
-// TODO: 有问题
-$res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read", [
-    'namespace' => 'mycode'
-]);
+// TODO: 有问题， 已解决
+// $res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35323242fcd8b", "5584:read", [
+//     'namespace' => 'mycode'
+// ]);
 
 // null
 
@@ -157,20 +218,20 @@ $res = $aclManagement->isAllowed("608bd543d56f1f0def27c228", "DATA:60a80d980ad35
 
 // 获取具备某些资源操作权限的主体
 // AclManagementClient->getAuthorizedTargets(array $options)
-use Authing\Types\ResourceType;
-use Authing\Types\AuthorizedTargetsActionsInput;
-use Authing\Types\Operator;
-use Authing\Types\PolicyAssignmentTargetType;
+// use Authing\Types\ResourceType;
+// use Authing\Types\AuthorizedTargetsActionsInput;
+// use Authing\Types\Operator;
+// use Authing\Types\PolicyAssignmentTargetType;
 
-$res = $aclManagement->getAuthorizedTargets(
-    [
-        'namespace' => 'mycode',
-        'resource' => '5584',
-        'resourceType' => ResourceType::MENU,
-        'actions' => new AuthorizedTargetsActionsInput(Operator::OR, ['read']),
-        'targetType' => PolicyAssignmentTargetType::USER
-    ]
-);
+// $res = $aclManagement->getAuthorizedTargets(
+//     [
+//         'namespace' => 'mycode',
+//         'resource' => '5584',
+//         'resourceType' => ResourceType::MENU,
+//         'actions' => new AuthorizedTargetsActionsInput(Operator::OR, ['read']),
+//         'targetType' => PolicyAssignmentTargetType::USER
+//     ]
+// );
 
 // {"totalCount":0,"list":[]}
 
