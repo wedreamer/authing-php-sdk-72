@@ -59,7 +59,6 @@ use GuzzleHttp\Psr7\Request;
 use InvalidArgumentException;
 use stdClass;
 
-
 class AuthenticationClient extends BaseClient
 {
     /**
@@ -67,7 +66,7 @@ class AuthenticationClient extends BaseClient
      *
      * @var User
      * @Description 当用户成功登录之后，用户信息会存储到当前变量中
-     * @example  
+     * @example
      * @throws
      * @return User
      */
@@ -80,7 +79,7 @@ class AuthenticationClient extends BaseClient
      *
      * @param Callback | string $userPoolIdOrFunc
      * @Description 传入 userPoolId 或者一个回调函数
-     * @example 
+     * @example
      * // 通过传入委托函数，初始化认证客户端
      * $authenticationClient = new AuthenticationClient(
      * function ($options) {
@@ -330,7 +329,7 @@ class AuthenticationClient extends BaseClient
      * @Description
      * @example
      * @throws
-     * @version ${4.2.0}
+     * @version ${4.1.22}
      * @author Xintao Li -- lixintao2@authing.cn
      * @since 4.2.0
      */
@@ -1238,7 +1237,7 @@ class AuthenticationClient extends BaseClient
 
     public function getOidcHeaders()
     {
-        $SDK_VERSION = "4.1.12";
+        $SDK_VERSION = "4.1.22";
         return [
             'x-authing-sdk-version' => 'php:' . $SDK_VERSION,
             'x-authing-userpool-id' => ($this->options->userPoolId ?? ""),
@@ -1271,7 +1270,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    function _getNewAccessTokenByRefreshTokenWithClientSecretBasic(string $refreshToken)
+    public function _getNewAccessTokenByRefreshTokenWithClientSecretBasic(string $refreshToken)
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
@@ -1295,7 +1294,7 @@ class AuthenticationClient extends BaseClient
         return $tokenSet;
     }
 
-    function _getNewAccessTokenByRefreshTokenWithNone(string $refreshToken)
+    public function _getNewAccessTokenByRefreshTokenWithNone(string $refreshToken)
     {
         $api = '';
         if ($this->options->protocol === 'oidc') {
