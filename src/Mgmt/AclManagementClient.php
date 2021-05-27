@@ -147,7 +147,7 @@ class AclManagementClient
             throw new Error('请为资源设定一个资源标识符');
         }
 
-        if (!isset($options['actions']) || (is_countable($options['actions']) ? count($options['actions']) : 0) === 0) {
+        if (!isset($options['actions']) || (is_array($options['actions']) ? count($options['actions']) : 0) === 0) {
             throw new Error('请至少定义一个资源操作');
         }
 
@@ -167,7 +167,7 @@ class AclManagementClient
                 throw new Error('请为资源设定一个资源标识符');
             }
 
-            if (!isset($resource['actions']) || (is_countable($resource['actions']) ? count($resource['actions']) : 0) === 0) {
+            if (!isset($resource['actions']) || (is_array($resource['actions']) ? count($resource['actions']) : 0) === 0) {
                 throw new Error('请至少定义一个资源操作');
             }
 

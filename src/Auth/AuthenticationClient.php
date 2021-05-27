@@ -836,7 +836,7 @@ class AuthenticationClient extends BaseClient
     public function listAuthorizedResources($namespace, $opts = [])
     {
         $resourceType = null;
-        if ((is_countable($opts) ? count($opts) : 0) > 0) {
+        if ((is_array($opts) ? count($opts) : 0) > 0) {
             $resourceType = $opts['resourceType'];
         }
         $user = $this->getCurrentUser();
@@ -1618,7 +1618,7 @@ class AuthenticationClient extends BaseClient
             return false;
         }
         $roleList = $user->roles->list;
-        if ((is_countable($roleList) ? count($roleList) : 0) == 0) {
+        if ((is_array($roleList) ? count($roleList) : 0) == 0) {
             return false;
         }
         $hasRole = false;
