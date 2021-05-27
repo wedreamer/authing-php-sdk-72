@@ -90,8 +90,10 @@ class ApplicationsManagementClient
 
     public function createResourceBetch(string $appId, array $resources)
     {
-        $options['namespace'] = $appId;
-        return $this->acl->createResourceBetch($options);
+        foreach ($resources as $resource) {
+            $resource['namespace'] = $appId;
+        }
+        return $this->acl->createResourceBetch($resources);
     }
 
     public function updateResource(string $appId, array $options)
