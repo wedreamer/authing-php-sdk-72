@@ -160,7 +160,7 @@ class AclManagementClient
         return $data;
     }
 
-    public function createResourceBetch(array $resources)
+    public function createResourceBatch(array $resources)
     {
         foreach ($resources as $resource) {
             if (!isset($resource['code'])) {

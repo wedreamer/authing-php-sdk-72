@@ -88,12 +88,12 @@ class ApplicationsManagementClient
         return $this->acl->createResource($options);
     }
 
-    public function createResourceBetch(string $appId, array $resources)
+    public function createResourceBatch(string $appId, array $resources)
     {
         foreach ($resources as $resource) {
             $resource['namespace'] = $appId;
         }
-        return $this->acl->createResourceBetch($resources);
+        return $this->acl->createResourceBatch($resources);
     }
 
     public function updateResource(string $appId, array $options)

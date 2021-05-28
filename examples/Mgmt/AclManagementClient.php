@@ -69,8 +69,8 @@ $aclManagement = $management->acls();
 // {"userPoolId":"5f819ffdaaf252c4df2c9266","code":"createResource","actions":[{"name":"this is name","description":"this is description"}],"namespaceId":32638,"createdAt":"2021-05-21T19:51:19.395Z","updatedAt":"2021-05-21T19:51:19.395Z","id":"60a80f37f4d83bc683c7f932","type":null,"description":null,"apiIdentifier":null}
 
 // 批量创建资源
-// AclManagementClient->createResourceBetch(array $resource)
-$res = $aclManagement->createResourceBetch([
+// AclManagementClient->createResourceBatch(array $resource)
+$res = $aclManagement->createResourceBatch([
     [
         'code' => 'mycode1',
         'actions' => [
