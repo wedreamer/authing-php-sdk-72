@@ -90,9 +90,10 @@ class ApplicationsManagementClient
 
     public function createResourceBatch(string $appId, array $resources)
     {
-        foreach ($resources as $resource) {
+        foreach ($resources as &$resource) {
             $resource['namespace'] = $appId;
         }
+        unset($resource);
         return $this->acl->createResourceBatch($resources);
     }
 

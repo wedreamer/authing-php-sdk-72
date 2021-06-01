@@ -11,9 +11,9 @@ use Authing\Mgmt\ManagementClient;
 // 通过回调函数进行初始化
 // $management = new ManagementClient("5f819ffdaaf252c4df2c9266", "06eca4ed85c807db9fc6a9d5483a4dc7");
 $management = new ManagementClient(function ($options) {
-    $options->userPoolId = '59f86b4832eb28071bdd9214';
-    $options->secret = '7df9c8af6934c5008ce30d53c08b6903';
-    $options->host = 'http://localhost:3000';
+    $options->userPoolId = '5f819ffdaaf252c4df2c9266';
+    $options->secret = '06eca4ed85c807db9fc6a9d5483a4dc7';
+    // $options->host = 'http://localhost:3000';
 });
 
 // $management->setHost('http://localhost:3000');
@@ -70,26 +70,59 @@ $aclManagement = $management->acls();
 
 // 批量创建资源
 // AclManagementClient->createResourceBatch(array $resource)
-$res = $aclManagement->createResourceBatch([
+use Authing\Types\ResourceType;
+// $res = $aclManagement->createResourceBatch([
+//     [
+//         'code' => 'mycode1',
+//         'description' => '这是一段描述',
+//         'actions' => [
+//             (object)[
+//                 'name' => 'mycode8:write',
+//                 'description' => 'this is description'
+//             ]
+//         ],
+//         'type' => ResourceType::DATA,
+//         'namespace' => 'mycode'
+//     ],
+//     [
+//         'code' => 'mycode2',
+//         'description' => '这是一段描述',
+//         'actions' => [
+//             (object)[
+//                 'name' => 'mycode8::read',
+//                 'description' => 'this is description'
+//             ]
+//         ],
+//         'type' => ResourceType::DATA,
+//         'namespace' => 'mycode'
+//     ]
+// ]);
+
+// 应用管理 -> 批量创建资源
+$appManagement = $management->applications();
+
+$res = $appManagement->createResourceBatch('mycode', [
     [
-        'code' => 'mycode1',
+        'code' => 'default1',
+        'description' => '这是一段描述',
         'actions' => [
             (object)[
-                'name' => 'this is name',
+                'name' => 'default1:write',
                 'description' => 'this is description'
             ]
         ],
-        'namespace' => 'mycode'
+        'type' => ResourceType::DATA,
     ],
     [
-        'code' => 'mycode2',
+        'code' => 'default2',
+        'description' => '这是一段描述',
         'actions' => [
             (object)[
-                'name' => 'this is name',
+                'name' => 'default2:write',
                 'description' => 'this is description'
             ]
         ],
-        'namespace' => 'mycode'
+        'type' => ResourceType::DATA,
     ]
 ]);
 
