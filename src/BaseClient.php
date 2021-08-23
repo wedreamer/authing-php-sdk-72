@@ -3,14 +3,15 @@
 declare(strict_types=1);
 namespace Authing;
 
+use Error;
 use DateTime;
 use stdClass;
 use Exception;
 use GuzzleHttp\Client;
 use Authing\Mgmt\Utils;
 use GuzzleHttp\Psr7\Message;
+use GuzzleHttp\Psr7\Request;
 use Authing\Types\AccessTokenParam;
-use Error;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
 
@@ -157,19 +158,19 @@ PUBLICKKEY;
         return base64_encode($newPassword);
     }
 
-    public function httpSend(\GuzzleHttp\Psr7\Request $req)
+    public function httpSend(Request $req)
     {
         $code = null;
         $res = $this->naiveHttpClient->send($req, ['http_errors' => false]);
 
-        if ($res->getStatusCode() != 200) {
+        if ($res->getStatusCode() == 200) {
             $code = $res->getStatusCode();
         }
         $body = $res->getBody();
         if ($code != 200) {
             throw new Exception($body, $code);
         }
-        return $body;
+        return json_decode($body->__toString());
     }
 
     public function httpRequest()

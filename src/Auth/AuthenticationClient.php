@@ -1652,12 +1652,12 @@ class AuthenticationClient extends BaseClient
             throw new Error('accessToken 和 idToken 只能传入一个，不能同时传入');
         }
         if (!empty($options->idToken)) {
-            $api = "/api/v2/oidc/validate_token?id_token=$$options->idToken";
+            $api = "/api/v2/oidc/validate_token?id_token={$options->idToken}";
             $req = new Request('GET', $api);
             $data = $this->httpSend($req);
             return $data;
         } elseif (!empty($options->accessToken)) {
-            $api = "/api/v2/oidc/validate_token?access_token=$$options->accessToken";
+            $api = "/api/v2/oidc/validate_token?access_token={$options->accessToken}";
             $req = new Request('GET', $api);
             $data = $this->httpSend($req);
             return $data;
