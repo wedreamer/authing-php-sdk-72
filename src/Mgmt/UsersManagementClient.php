@@ -112,8 +112,8 @@ class UsersManagementClient
      */
     public function detail(string $userId)
     {
-        $param = (new UserParam())->withId($userId);
-        return $this->client->request($param->createRequest());
+        $res = $this->client->httpGet("/api/v2/users/$userId");
+        return $res;
     }
 
     /**
@@ -150,9 +150,10 @@ class UsersManagementClient
     public function batch(array $identifiers, array $options = [])
     {
         $queryField = $options['queryField'] ?? 'id';
-        $data = new stdClass();
-        $data->ids = $identifiers;
-        $data->type = $queryField;
+        $data = [
+            'ids' => $identifiers,
+            'type' => $queryField
+        ];
         $users = $this->client->httpPost('/api/v2/users/batch', $data);
         return $users;
     }
