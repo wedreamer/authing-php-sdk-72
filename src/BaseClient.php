@@ -22,6 +22,12 @@ abstract class BaseClient
      */
     protected $naiveHttpClient;
     public $options;
+    private static $defaultOptions = [
+        "protocol" => "oidc",
+        "tokenEndPointAuthMethod" => "client_secret_post",
+        "introspectionEndPointAuthMethod" => "client_secret_post",
+        "revocationEndPointAuthMethod" => "client_secret_post"
+    ];
 
     protected $userPoolId;
     protected $appId;
@@ -92,7 +98,19 @@ PUBLICKKEY;
         if (is_null($this->userPoolId) && is_null($this->appId)) {
             throw new InvalidArgumentException("Invalid userPoolIdOrFunc");
         }
+
+        // 设置默认值
+        self::initDefaultOptions($this->options);
+
         $this->naiveHttpClient = new Client(['base_uri' => $this->options->host ?? $this->host]);
+    }
+
+    private static function initDefaultOptions($options) {
+        foreach (self::$defaultOptions as $key => $value) {
+            if (!isset($options->$key)) {
+                $options->$key = $value;
+            }
+        }
     }
 
     /**
@@ -137,13 +155,6 @@ PUBLICKKEY;
         return $res;
     }
 
-    // /**
-    //  * @param $token string
-    //  */
-    // public function setToken($token)
-    // {
-    //     $this->accessToken = $token;
-    // }
     /**
      * password Encrypt
      * @return string

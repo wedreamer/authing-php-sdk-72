@@ -9,6 +9,8 @@ $authentication = new AuthenticationClient(function ($opts) {
     $opts->appId = "6116252a007c0a175af1636c";
 });
 
+var_dump($authentication->options);
+
 $obj = $authentication->loginByEmail("lixintao2@authing.cn", "lixintao2@authing.cn");
 
 try {
