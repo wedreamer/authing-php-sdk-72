@@ -329,7 +329,7 @@ class AuthenticationClient extends BaseClient
      * @Description
      * @example
      * @throws
-     * @version ${4.1.22}
+     * @version ${4.1.27}
      * @author Xintao Li -- lixintao2@authing.cn
      * @since 4.2.0
      */
@@ -1237,7 +1237,7 @@ class AuthenticationClient extends BaseClient
 
     public function getOidcHeaders()
     {
-        $SDK_VERSION = "4.1.22";
+        $SDK_VERSION = "4.1.27";
         return [
             'x-authing-sdk-version' => 'php:' . $SDK_VERSION,
             'x-authing-userpool-id' => ($this->options->userPoolId ?? ""),
