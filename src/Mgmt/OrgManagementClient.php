@@ -89,8 +89,7 @@ class OrgManagementClient
     {
         $param = (new OrgsParam())->withPage($page)->withLimit($limit);
         // TODO: buildTree
-        $data = $this->client->request($param->createRequest());
-        $orgs = $data->orgs;
+        $orgs = $this->client->request($param->createRequest());
         $list = $orgs->list;
         array_map(function ($org) {
             $this->buildTree($org);

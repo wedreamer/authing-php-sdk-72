@@ -1,15 +1,49 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Authing\Mgmt;
 
 use stdClass;
 
 use Firebase\JWT\JWT;
 use Authing\Types\UDFDataType;
+use FluentTraversable\Semantics\is;
+use FluentTraversable\FluentTraversable;
 
 class Utils
 {
+    public static function buildTree($data)
+    {
+        $rootNodes = array_filter($data, function ($item) {
+            if (!isset($item->root)) {
+                return false;
+            }
+            return $item->root == true;
+        }, ARRAY_FILTER_USE_KEY);
+        $mapChildren = function ($childId) use ($data, &$mapChildren) {
+            $node = array_filter($data, function ($item) use ($childId) {
+                return $item->id == $childId;
+            });
+            if (is_array($node->children) && $node->children->length > 0) {
+                $childs = array_map($mapChildren, $node->children);
+                $childs = array_filter($childs, function ($item) {
+                    return $item;
+                });
+            }
+            return $node;
+        };
+        $tree = FluentTraversable::from($rootNodes)
+            ->map(function ($node) use(&$mapChildren) {
+                FluentTraversable::from($node->children)
+                    ->map($mapChildren)
+                    ->filter(is::notNull())
+                    ->toArray();
+            });
+        return $tree[0];
+    }
+
+
     public static function convertUdv($data)
     {
         $data = (array)$data;
@@ -50,7 +84,7 @@ class Utils
                 $item->value = json_encode($value);
             } elseif ($dataType === UDFDataType::DATETIME) {
                 // set data time
-            // $item->value = intval($value);
+                // $item->value = intval($value);
             } elseif ($dataType === UDFDataType::OBJECT) {
                 $item->value = json_encode($value);
             }
