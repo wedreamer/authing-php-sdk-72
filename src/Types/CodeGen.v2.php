@@ -1,412 +1,421 @@
-<?php /** @noinspection PhpMultipleClassesDeclarationsInOneFile */
+<?php
 
-declare(strict_types=1);
+/** @noinspection PhpMultipleClassesDeclarationsInOneFile */
+
 namespace Authing\Types;
 
 class Query
 {
     /**
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isActionAllowed;
 
     /**
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isActionDenied;
 
     /**
      * Optional
-     *
+     * 
      * @var PaginatedAuthorizedTargets
-     *
+     * 
      */
     public $authorizedTargets;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $qiniuUptoken;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isDomainAvaliable;
 
     /**
      * 获取社会化登录定义
      * Optional
-     *
+     * 
      * @var SocialConnection
-     *
+     * 
      */
     public $socialConnection;
 
     /**
      * 获取所有社会化登录定义
      * Required
-     *
+     * 
      * @var SocialConnection[]
-     *
+     * 
      */
     public $socialConnections;
 
     /**
      * 获取当前用户池的社会化登录配置
      * Required
-     *
+     * 
      * @var SocialConnectionInstance
-     *
+     * 
      */
     public $socialConnectionInstance;
 
     /**
      * 获取当前用户池的所有社会化登录配置
      * Required
-     *
+     * 
      * @var SocialConnectionInstance[]
-     *
+     * 
      */
     public $socialConnectionInstances;
 
     /**
      * Required
-     *
+     * 
      * @var EmailTemplate[]
-     *
+     * 
      */
     public $emailTemplates;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $previewEmail;
 
     /**
      * 获取函数模版
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $templateCode;
 
     /**
      * Optional
-     *
+     * 
      * @var Function
-     *
+     * 
      */
     public $function;
 
     /**
      * Required
-     *
+     * 
      * @var PaginatedFunctions
-     *
+     * 
      */
     public $functions;
 
     /**
      * Optional
-     *
+     * 
      * @var Group
-     *
+     * 
      */
     public $group;
 
     /**
      * Required
-     *
+     * 
      * @var PaginatedGroups
-     *
+     * 
      */
     public $groups;
 
     /**
      * 查询 MFA 信息
      * Optional
-     *
+     * 
      * @var Mfa
-     *
+     * 
      */
     public $queryMfa;
 
     /**
      * Optional
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $nodeById;
 
     /**
      * 通过 code 查询节点
      * Optional
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $nodeByCode;
 
     /**
      * 查询组织机构详情
      * Required
-     *
+     * 
      * @var Org
-     *
+     * 
      */
     public $org;
 
     /**
      * 查询用户池组织机构列表
      * Required
-     *
+     * 
      * @var PaginatedOrgs
-     *
+     * 
      */
     public $orgs;
 
     /**
      * 查询子节点列表
      * Required
-     *
+     * 
      * @var Node[]
-     *
+     * 
      */
     public $childrenNodes;
 
     /**
      * Required
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $rootNode;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isRootNode;
 
     /**
      * Required
-     *
+     * 
      * @var Node[]
-     *
+     * 
      */
     public $searchNodes;
 
     /**
      * Required
-     *
+     * 
      * @var CheckPasswordStrengthResult
-     *
+     * 
      */
     public $checkPasswordStrength;
 
     /**
      * Optional
-     *
+     * 
      * @var Policy
-     *
+     * 
      */
     public $policy;
 
     /**
      * Required
-     *
+     * 
      * @var PaginatedPolicies
-     *
+     * 
      */
     public $policies;
 
     /**
      * Required
-     *
+     * 
      * @var PaginatedPolicyAssignments
-     *
+     * 
      */
     public $policyAssignments;
 
     /**
      * 获取一个对象被授权的资源列表
      * Optional
-     *
+     * 
      * @var PaginatedAuthorizedResources
-     *
+     * 
      */
     public $authorizedResources;
 
     /**
      * 通过 **code** 查询角色详情
      * Optional
-     *
+     * 
      * @var Role
-     *
+     * 
      */
     public $role;
 
     /**
      * 获取角色列表
      * Required
-     *
+     * 
      * @var PaginatedRoles
-     *
+     * 
      */
     public $roles;
 
     /**
      * 查询某个实体定义的自定义数据
      * Required
-     *
+     * 
      * @var UserDefinedData[]
-     *
+     * 
      */
     public $udv;
 
     /**
      * 查询用户池定义的自定义字段
      * Required
-     *
+     * 
      * @var UserDefinedField[]
-     *
+     * 
      */
     public $udf;
 
     /**
      * 批量查询多个对象的自定义数据
      * Required
-     *
+     * 
      * @var UserDefinedDataMap[]
-     *
+     * 
      */
     public $udfValueBatch;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $user;
 
     /**
      * Required
-     *
+     * 
      * @var User[]
-     *
+     * 
      */
     public $userBatch;
 
     /**
      * Required
-     *
+     * 
      * @var PaginatedUsers
-     *
+     * 
      */
     public $users;
 
     /**
      * 已归档的用户列表
      * Required
-     *
+     * 
      * @var PaginatedUsers
-     *
+     * 
      */
     public $archivedUsers;
 
     /**
      * Required
-     *
+     * 
      * @var PaginatedUsers
-     *
+     * 
      */
     public $searchUser;
 
     /**
      * Optional
-     *
+     * 
      * @var JWTTokenStatus
-     *
+     * 
      */
     public $checkLoginStatus;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isUserExists;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $findUser;
 
     /**
+     * Optional
+     * 
+     * @var CheckPasswordResult
+     * 
+     */
+    public $checkPassword;
+
+    /**
      * 查询用户池详情
      * Required
-     *
+     * 
      * @var UserPool
-     *
+     * 
      */
     public $userpool;
 
     /**
      * 查询用户池列表
      * Required
-     *
+     * 
      * @var PaginatedUserpool
-     *
+     * 
      */
     public $userpools;
 
     /**
      * Required
-     *
+     * 
      * @var UserPoolType[]
-     *
+     * 
      */
     public $userpoolTypes;
 
     /**
      * 获取 accessToken ，如 SDK 初始化
      * Required
-     *
+     * 
      * @var AccessTokenRes
-     *
+     * 
      */
     public $accessToken;
 
     /**
      * 用户池注册白名单列表
      * Required
-     *
+     * 
      * @var WhiteList[]
-     *
+     * 
      */
     public $whitelist;
 }
@@ -436,17 +445,17 @@ class AuthorizedTargetsActionsInput
 {
     /**
      * Required
-     *
+     * 
      * @var Operator
-     *
+     * 
      */
     public $op;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $list;
 
@@ -460,7 +469,6 @@ class AuthorizedTargetsActionsInput
         $this->op = $op;
         $this->list = $list;
     }
-
 }
 
 
@@ -474,17 +482,17 @@ class PaginatedAuthorizedTargets
 {
     /**
      * Optional
-     *
+     * 
      * @var ResourcePermissionAssignment[]
-     *
+     * 
      */
     public $list;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 }
@@ -493,25 +501,25 @@ class ResourcePermissionAssignment
 {
     /**
      * Optional
-     *
+     * 
      * @var PolicyAssignmentTargetType
-     *
+     * 
      */
     public $targetType;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $targetIdentifier;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $actions;
 }
@@ -521,45 +529,45 @@ class SocialConnection
     /**
      * 社会化登录服务商唯一标志
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $provider;
 
     /**
      * 名称
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * logo
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $logo;
 
     /**
      * 描述信息
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * 表单字段
      * Optional
-     *
+     * 
      * @var SocialConnectionField[]
-     *
+     * 
      */
     public $fields;
 }
@@ -568,41 +576,41 @@ class SocialConnectionField
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $label;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $type;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $placeholder;
 
     /**
      * Optional
-     *
+     * 
      * @var SocialConnectionField[]
-     *
+     * 
      */
     public $children;
 }
@@ -611,25 +619,25 @@ class SocialConnectionInstance
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $provider;
 
     /**
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enabled;
 
     /**
      * Optional
-     *
+     * 
      * @var SocialConnectionInstanceField[]
-     *
+     * 
      */
     public $fields;
 }
@@ -638,17 +646,17 @@ class SocialConnectionInstanceField
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 }
@@ -658,89 +666,89 @@ class EmailTemplate
     /**
      * 邮件模版类型
      * Required
-     *
+     * 
      * @var EmailTemplateType
-     *
+     * 
      */
     public $type;
 
     /**
      * 模版名称
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * 邮件主题
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $subject;
 
     /**
      * 显示的邮件发送人
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $sender;
 
     /**
      * 邮件模版内容
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $content;
 
     /**
      * 重定向链接，操作成功后，用户将被重定向到此 URL。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $redirectTo;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $hasURL;
 
     /**
      * 验证码过期时间（单位为秒）
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $expiresIn;
 
     /**
      * 是否开启（自定义模版）
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enabled;
 
     /**
      * 是否是系统默认模版
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isSystem;
 }
@@ -763,45 +771,45 @@ class FunctionType
     /**
      * ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * 函数名称
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * 源代码
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $sourceCode;
 
     /**
      * 描述信息
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * 云函数链接
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $url;
 }
@@ -818,17 +826,17 @@ class PaginatedFunctions
 {
     /**
      * Required
-     *
+     * 
      * @var Function[]
-     *
+     * 
      */
     public $list;
 
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 }
@@ -838,63 +846,63 @@ class Group
     /**
      * 唯一标志 code
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * 名称
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * 描述
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * 创建时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $createdAt;
 
     /**
      * 修改时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $updatedAt;
 
     /**
      * 包含的用户列表
      * Required
-     *
+     * 
      * @var PaginatedUsers
-     *
+     * 
      */
     public $users;
 
     /**
      * 被授权访问的所有资源
      * Optional
-     *
+     * 
      * @var PaginatedAuthorizedResources
-     *
+     * 
      */
     public $authorizedResources;
 }
@@ -903,17 +911,17 @@ class PaginatedUsers
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var User[]
-     *
+     * 
      */
     public $list;
 }
@@ -923,469 +931,478 @@ class User
     /**
      * 用户 ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $arn;
 
     /**
      * 用户在组织机构中的状态
      * Optional
-     *
+     * 
      * @var UserStatus
-     *
+     * 
      */
     public $status;
 
     /**
      * 用户池 ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $userPoolId;
 
     /**
      * 用户名，用户池内唯一
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $username;
 
     /**
      * 邮箱，用户池内唯一
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $email;
 
     /**
      * 邮箱是否已验证
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $emailVerified;
 
     /**
      * 手机号，用户池内唯一
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $phone;
 
     /**
      * 手机号是否已验证
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $phoneVerified;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $unionid;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $openid;
 
     /**
      * 用户的身份信息
      * Optional
-     *
+     * 
      * @var Identity[]
-     *
+     * 
      */
     public $identities;
 
     /**
      * 昵称，该字段不唯一。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $nickname;
 
     /**
      * 注册方式
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $registerSource;
 
     /**
      * 头像链接，默认为 https://usercontents.authing.cn/authing-avatar.png
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $photo;
 
     /**
      * 用户密码，数据库使用密钥加 salt 进行加密，非原文密码。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * 用户社会化登录第三方身份提供商返回的原始用户信息，非社会化登录方式注册的用户此字段为空。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $oauth;
 
     /**
      * 用户登录凭证，开发者可以在后端检验该 token 的合法性，从而验证用户身份。详细文档请见：[验证 Token](https://docs.authing.co/advanced/verify-jwt-token.html)
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $token;
 
     /**
      * token 过期时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $tokenExpiredAt;
 
     /**
      * 用户登录总次数
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $loginsCount;
 
     /**
      * 用户最近一次登录时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $lastLogin;
 
     /**
      * 用户上一次登录时使用的 IP
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $lastIP;
 
     /**
      * 用户注册时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $signedUp;
 
     /**
      * 该账号是否被禁用
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $blocked;
 
     /**
      * 账号是否被软删除
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isDeleted;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $device;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $browser;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $company;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $givenName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $familyName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $middleName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $profile;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $preferredUsername;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $website;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $gender;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $birthdate;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $zoneinfo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locale;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $address;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $formatted;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $streetAddress;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locality;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $region;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $postalCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $city;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $province;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $country;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $createdAt;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $updatedAt;
 
     /**
-     * 用户所在的角色列表
+     * 授权的角色列表
      * Optional
-     *
+     * 
      * @var PaginatedRoles
-     *
+     * 
      */
     public $roles;
 
     /**
      * 用户所在的分组列表
      * Optional
-     *
+     * 
      * @var PaginatedGroups
-     *
+     * 
      */
     public $groups;
 
     /**
      * 用户所在的部门列表
      * Optional
-     *
+     * 
      * @var PaginatedDepartments
-     *
+     * 
      */
     public $departments;
 
     /**
      * 被授权访问的所有资源
      * Optional
-     *
+     * 
      * @var PaginatedAuthorizedResources
-     *
+     * 
      */
     public $authorizedResources;
 
     /**
      * 用户外部 ID
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $externalId;
+
+    /**
+     * 用户自定义数据
+     * Optional
+     * 
+     * @var UserCustomData[]
+     * 
+     */
+    public $customData;
 }
 
 class UserStatus
@@ -1400,92 +1417,100 @@ class Identity
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $openid;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $userIdInIdp;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $userId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $connectionId;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isSocial;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $provider;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $userPoolId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $refreshToken;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $accessToken;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $type;
 }
 
 class PaginatedRoles
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var Role[]
-     *
+     * 
      */
     public $list;
 }
@@ -1493,92 +1518,100 @@ class PaginatedRoles
 class Role
 {
     /**
+     * Required
+     * 
+     * @var string
+     * 
+     */
+    public $id;
+
+    /**
      * 权限组 code
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $namespace;
 
     /**
      * 唯一标志 code
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * 资源描述符 arn
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $arn;
 
     /**
      * 角色描述
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * 是否为系统内建，系统内建的角色不能删除
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isSystem;
 
     /**
      * 创建时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $createdAt;
 
     /**
      * 修改时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $updatedAt;
 
     /**
      * 被授予此角色的用户列表
      * Required
-     *
+     * 
      * @var PaginatedUsers
-     *
+     * 
      */
     public $users;
 
     /**
      * 被授权访问的所有资源
      * Optional
-     *
+     * 
      * @var PaginatedAuthorizedResources
-     *
+     * 
      */
     public $authorizedResources;
 
     /**
      * 父角色
      * Optional
-     *
+     * 
      * @var Role
-     *
+     * 
      */
     public $parent;
 }
@@ -1587,17 +1620,17 @@ class PaginatedAuthorizedResources
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var AuthorizedResource[]
-     *
+     * 
      */
     public $list;
 }
@@ -1606,25 +1639,25 @@ class AuthorizedResource
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var ResourceType
-     *
+     * 
      */
     public $type;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $actions;
 }
@@ -1633,17 +1666,17 @@ class PaginatedGroups
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var Group[]
-     *
+     * 
      */
     public $list;
 }
@@ -1652,17 +1685,17 @@ class PaginatedDepartments
 {
     /**
      * Required
-     *
+     * 
      * @var UserDepartment[]
-     *
+     * 
      */
     public $list;
 
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 }
@@ -1671,27 +1704,27 @@ class UserDepartment
 {
     /**
      * Required
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $department;
 
     /**
      * 是否为主部门
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isMainDepartment;
 
     /**
      * 加入该部门的时间
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $joinedAt;
 }
@@ -1700,159 +1733,212 @@ class Node
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * 组织机构 ID
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $orgId;
 
     /**
      * 节点名称
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * 多语言名称，**key** 为标准 **i18n** 语言编码，**value** 为对应语言的名称。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $nameI18n;
 
     /**
      * 描述信息
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * 多语言描述信息
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $descriptionI18n;
 
     /**
      * 在父节点中的次序值。**order** 值大的排序靠前。有效的值范围是[0, 2^32)
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $order;
 
     /**
      * 节点唯一标志码，可以通过 code 进行搜索
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * 是否为根节点
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $root;
 
     /**
      * 距离父节点的深度（如果是查询整棵树，返回的 **depth** 为距离根节点的深度，如果是查询某个节点的子节点，返回的 **depth** 指的是距离该节点的深度。）
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $depth;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $path;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $codePath;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $namePath;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $createdAt;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $updatedAt;
 
     /**
      * 该节点的子节点 **ID** 列表
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $children;
 
     /**
      * 节点的用户列表
      * Required
-     *
+     * 
      * @var PaginatedUsers
-     *
+     * 
      */
     public $users;
 
     /**
+     * 授权的角色列表
+     * Optional
+     * 
+     * @var PaginatedRoles
+     * 
+     */
+    public $roles;
+
+    /**
      * 被授权访问的所有资源
      * Optional
-     *
+     * 
      * @var PaginatedAuthorizedResources
-     *
+     * 
      */
     public $authorizedResources;
+}
+
+class UserCustomData
+{
+    /**
+     * Required
+     * 
+     * @var string
+     * 
+     */
+    public $key;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $value;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $label;
+
+    /**
+     * Required
+     * 
+     * @var UdfDataType
+     * 
+     */
+    public $dataType;
+}
+
+class UDFDataType
+{
+    const STRING = 'STRING';
+    const NUMBER = 'NUMBER';
+    const DATETIME = 'DATETIME';
+    const BOOLEAN = 'BOOLEAN';
+    const OBJECT = 'OBJECT';
 }
 
 class Mfa
@@ -1860,45 +1946,45 @@ class Mfa
     /**
      * MFA ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * 用户 ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $userId;
 
     /**
      * 用户池 ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $userPoolId;
 
     /**
      * 是否开启 MFA
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enable;
 
     /**
      * 密钥
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $secret;
 }
@@ -1908,27 +1994,27 @@ class Org
     /**
      * 组织机构 ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * 根节点
      * Required
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $rootNode;
 
     /**
      * 组织机构节点列表
      * Required
-     *
+     * 
      * @var Node[]
-     *
+     * 
      */
     public $nodes;
 }
@@ -1937,17 +2023,17 @@ class PaginatedOrgs
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var Org[]
-     *
+     * 
      */
     public $list;
 }
@@ -1956,17 +2042,17 @@ class CheckPasswordStrengthResult
 {
     /**
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $valid;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $message;
 }
@@ -1976,75 +2062,75 @@ class Policy
     /**
      * 权限组 code
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $namespace;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isDefault;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyStatement[]
-     *
+     * 
      */
     public $statements;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $createdAt;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $updatedAt;
 
     /**
      * 被授权次数
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $assignmentsCount;
 
     /**
      * 授权记录
      * Required
-     *
+     * 
      * @var PolicyAssignment[]
-     *
+     * 
      */
     public $assignments;
 }
@@ -2053,33 +2139,33 @@ class PolicyStatement
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $resource;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $actions;
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyEffect
-     *
+     * 
      */
     public $effect;
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyStatementCondition[]
-     *
+     * 
      */
     public $condition;
 }
@@ -2094,25 +2180,25 @@ class PolicyStatementCondition
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $param;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $operator;
 
     /**
      * Required
-     *
+     * 
      * @var any
-     *
+     * 
      */
     public $value;
 }
@@ -2121,25 +2207,25 @@ class PolicyAssignment
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyAssignmentTargetType
-     *
+     * 
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $targetIdentifier;
 }
@@ -2148,17 +2234,17 @@ class PaginatedPolicies
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var Policy[]
-     *
+     * 
      */
     public $list;
 }
@@ -2167,17 +2253,17 @@ class PaginatedPolicyAssignments
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyAssignment[]
-     *
+     * 
      */
     public $list;
 }
@@ -2197,85 +2283,76 @@ class UserDefinedData
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var UdfDataType
-     *
+     * 
      */
     public $dataType;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $label;
-}
-
-class UDFDataType
-{
-    const STRING = 'STRING';
-    const NUMBER = 'NUMBER';
-    const DATETIME = 'DATETIME';
-    const BOOLEAN = 'BOOLEAN';
-    const OBJECT = 'OBJECT';
 }
 
 class UserDefinedField
 {
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
-     *
+     * 
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var UdfDataType
-     *
+     * 
      */
     public $dataType;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $label;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $options;
 }
@@ -2284,17 +2361,17 @@ class UserDefinedDataMap
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $targetId;
 
     /**
      * Required
-     *
+     * 
      * @var UserDefinedData[]
-     *
+     * 
      */
     public $data;
 }
@@ -2306,31 +2383,30 @@ class SearchUserDepartmentOpt
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $departmentId;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $includeChildrenDepartments;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $departmentId string departmentId
      * @return SearchUserDepartmentOpt
      */
-    public function withDepartmentId(string $departmentId)
+    public function withDepartmentId($departmentId)
     {
         $this->departmentId = $departmentId;
         return $this;
@@ -2340,7 +2416,7 @@ class SearchUserDepartmentOpt
      * @param $includeChildrenDepartments bool includeChildrenDepartments
      * @return SearchUserDepartmentOpt
      */
-    public function withIncludeChildrenDepartments(bool $includeChildrenDepartments)
+    public function withIncludeChildrenDepartments($includeChildrenDepartments)
     {
         $this->includeChildrenDepartments = $includeChildrenDepartments;
         return $this;
@@ -2355,23 +2431,22 @@ class SearchUserGroupOpt
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $code string code
      * @return SearchUserGroupOpt
      */
-    public function withCode(string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
@@ -2386,17 +2461,17 @@ class SearchUserRoleOpt
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $namespace;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
@@ -2413,7 +2488,7 @@ class SearchUserRoleOpt
      * @param $namespace string namespace
      * @return SearchUserRoleOpt
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -2425,49 +2500,49 @@ class JWTTokenStatus
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $message;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $status;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $exp;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $iat;
 
     /**
      * Optional
-     *
+     * 
      * @var JWTTokenStatusDetail
-     *
+     * 
      */
     public $data;
 }
@@ -2476,152 +2551,205 @@ class JWTTokenStatusDetail
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $userPoolId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $arn;
+}
+
+/**
+ * FindUserByIdentityInput
+ */
+class FindUserByIdentityInput
+{
+    /**
+     * Required
+     * 
+     * @var string
+     * 
+     */
+    public $provider;
+
+    /**
+     * Required
+     * 
+     * @var string
+     * 
+     */
+    public $userIdInIdp;
+
+    /**
+     * @param $provider string provider
+     * @param $userIdInIdp string userIdInIdp
+     */
+
+    public function __construct($provider, $userIdInIdp)
+    {
+        $this->provider = $provider;
+        $this->userIdInIdp = $userIdInIdp;
+    }
+}
+
+
+class CheckPasswordResult
+{
+    /**
+     * Required
+     * 
+     * @var int
+     * 
+     */
+    public $code;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $message;
 }
 
 class UserPool
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $domain;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $secret;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $jwtSecret;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $ownerId;
 
     /**
      * Optional
-     *
+     * 
      * @var UserPoolType[]
-     *
+     * 
      */
     public $userpoolTypes;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $logo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $createdAt;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $updatedAt;
 
     /**
      * 用户邮箱是否验证（用户的 emailVerified 字段）默认值，默认为 false
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $emailVerifiedDefault;
 
     /**
      * 用户注册之后是否发送欢迎邮件
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $sendWelcomeEmail;
 
     /**
      * 是否关闭注册
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $registerDisabled;
 
     /**
-     * 是否开启用户池下应用间单点登录
+     * @deprecated 是否开启用户池下应用间单点登录
      * Required
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $appSsoEnabled;
 
@@ -2629,144 +2757,171 @@ class UserPool
      * 用户池禁止注册后，是否还显示微信小程序扫码登录。当 **showWXMPQRCode** 为 **true** 时，
      * 前端显示小程序码，此时只有以前允许注册时，扫码登录过的用户可以继续登录；新用户扫码无法登录。
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $showWxQRCodeWhenRegisterDisabled;
 
     /**
      * 前端跨域请求白名单
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $allowedOrigins;
 
     /**
      * 用户 **token** 有效时间，单位为秒，默认为 15 天。
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $tokenExpiresAfter;
 
     /**
      * 是否已删除
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isDeleted;
 
     /**
      * 注册频繁检测
      * Optional
-     *
+     * 
      * @var FrequentRegisterCheckConfig
-     *
+     * 
      */
     public $frequentRegisterCheck;
 
     /**
      * 登录失败检测
      * Optional
-     *
+     * 
      * @var LoginFailCheckConfig
-     *
+     * 
      */
     public $loginFailCheck;
 
     /**
+     * 密码重置策略
+     * Optional
+     * 
+     * @var PasswordUpdatePolicyConfig
+     * 
+     */
+    public $passwordUpdatePolicy;
+
+    /**
+     * 登录失败检测
+     * Optional
+     * 
+     * @var LoginPasswordFailCheckConfig
+     * 
+     */
+    public $loginPasswordFailCheck;
+
+    /**
+     * 密码安全策略
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $loginFailStrategy;
+
+    /**
      * 手机号修改策略
      * Optional
-     *
+     * 
      * @var ChangePhoneStrategy
-     *
+     * 
      */
     public $changePhoneStrategy;
 
     /**
      * 邮箱修改策略
      * Optional
-     *
+     * 
      * @var ChangeEmailStrategy
-     *
+     * 
      */
     public $changeEmailStrategy;
 
     /**
      * APP 扫码登录配置
      * Optional
-     *
+     * 
      * @var QrcodeLoginStrategy
-     *
+     * 
      */
     public $qrcodeLoginStrategy;
 
     /**
      * APP 拉起小程序登录配置
      * Optional
-     *
+     * 
      * @var App2WxappLoginStrategy
-     *
+     * 
      */
     public $app2WxappLoginStrategy;
 
     /**
      * 注册白名单配置
      * Optional
-     *
+     * 
      * @var RegisterWhiteListConfig
-     *
+     * 
      */
     public $whitelist;
 
     /**
      * 自定义短信服务商配置
      * Optional
-     *
+     * 
      * @var CustomSMSProvider
-     *
+     * 
      */
     public $customSMSProvider;
 
     /**
      * 用户池套餐类型
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $packageType;
 
     /**
      * 是否使用自定义数据库 CUSTOM_USER_STORE 模式
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $useCustomUserStore;
 
     /**
      * 是否要求邮箱必须验证才能登录（如果是通过邮箱登录的话）
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $loginRequireEmailVerified;
 
     /**
      * 短信验证码长度
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $verifyCodeLength;
 }
@@ -2775,41 +2930,41 @@ class UserPoolType
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $image;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $sdks;
 }
@@ -2818,25 +2973,25 @@ class FrequentRegisterCheckConfig
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $timeInterval;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enabled;
 }
@@ -2845,25 +3000,79 @@ class LoginFailCheckConfig
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $timeInterval;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
+     */
+    public $enabled;
+}
+
+class PasswordUpdatePolicyConfig
+{
+    /**
+     * Optional
+     * 
+     * @var bool
+     * 
+     */
+    public $enabled;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $forcedCycle;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $differenceCycle;
+}
+
+class LoginPasswordFailCheckConfig
+{
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $timeInterval;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $limit;
+
+    /**
+     * Optional
+     * 
+     * @var bool
+     * 
      */
     public $enabled;
 }
@@ -2872,9 +3081,9 @@ class ChangePhoneStrategy
 {
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $verifyOldPhone;
 }
@@ -2883,9 +3092,9 @@ class ChangeEmailStrategy
 {
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $verifyOldEmail;
 }
@@ -2894,33 +3103,33 @@ class QrcodeLoginStrategy
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $qrcodeExpiresAfter;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $returnFullUserInfo;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $allowExchangeUserInfoFromBrowser;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $ticketExpiresAfter;
 }
@@ -2929,17 +3138,17 @@ class App2WxappLoginStrategy
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $ticketExpriresAfter;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $ticketExchangeUserInfoNeedSecret;
 }
@@ -2949,27 +3158,27 @@ class RegisterWhiteListConfig
     /**
      * 是否开启手机号注册白名单
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $phoneEnabled;
 
     /**
      * 是否开启邮箱注册白名单
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $emailEnabled;
 
     /**
      * 是否开用户名注册白名单
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $usernameEnabled;
 }
@@ -2978,25 +3187,25 @@ class CustomSMSProvider
 {
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enabled;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $provider;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $config;
 }
@@ -3005,17 +3214,17 @@ class PaginatedUserpool
 {
     /**
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $totalCount;
 
     /**
      * Required
-     *
+     * 
      * @var UserPool[]
-     *
+     * 
      */
     public $list;
 }
@@ -3024,25 +3233,25 @@ class AccessTokenRes
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $accessToken;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $exp;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $iat;
 }
@@ -3058,25 +3267,25 @@ class WhiteList
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $createdAt;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $updatedAt;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 }
@@ -3086,653 +3295,688 @@ class Mutation
     /**
      * 允许操作某个资源
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $allow;
 
     /**
      * 将一个（类）资源授权给用户、角色、分组、组织机构，且可以分别指定不同的操作权限。
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $authorizeResource;
 
     /**
      * 配置社会化登录
      * Required
-     *
+     * 
      * @var SocialConnectionInstance
-     *
+     * 
      */
     public $createSocialConnectionInstance;
 
     /**
      * 开启社会化登录
      * Required
-     *
+     * 
      * @var SocialConnectionInstance
-     *
+     * 
      */
     public $enableSocialConnectionInstance;
 
     /**
      * 关闭社会化登录
      * Required
-     *
+     * 
      * @var SocialConnectionInstance
-     *
+     * 
      */
     public $disableSocialConnectionInstance;
 
     /**
      * 设置用户在某个组织机构内所在的主部门
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $setMainDepartment;
 
     /**
      * 配置自定义邮件模版
      * Required
-     *
+     * 
      * @var EmailTemplate
-     *
+     * 
      */
     public $configEmailTemplate;
 
     /**
      * 启用自定义邮件模版
      * Required
-     *
+     * 
      * @var EmailTemplate
-     *
+     * 
      */
     public $enableEmailTemplate;
 
     /**
      * 停用自定义邮件模版（将会使用系统默认邮件模版）
      * Required
-     *
+     * 
      * @var EmailTemplate
-     *
+     * 
      */
     public $disableEmailTemplate;
 
     /**
      * 发送邮件
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $sendEmail;
 
     /**
+     * 管理员发送首次登录验证邮件
+     * Required
+     * 
+     * @var CommonMessage
+     * 
+     */
+    public $sendFirstLoginVerifyEmail;
+
+    /**
      * 创建函数
      * Optional
-     *
+     * 
      * @var Function
-     *
+     * 
      */
     public $createFunction;
 
     /**
      * 修改函数
      * Required
-     *
+     * 
      * @var Function
-     *
+     * 
      */
     public $updateFunction;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteFunction;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $addUserToGroup;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $removeUserFromGroup;
 
     /**
      * 创建角色
      * Required
-     *
+     * 
      * @var Group
-     *
+     * 
      */
     public $createGroup;
 
     /**
      * 修改角色
      * Required
-     *
+     * 
      * @var Group
-     *
+     * 
      */
     public $updateGroup;
 
     /**
      * 批量删除角色
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteGroups;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $loginByEmail;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $loginByUsername;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $loginByPhoneCode;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $loginByPhonePassword;
 
     /**
      * 修改 MFA 信息
      * Optional
-     *
+     * 
      * @var Mfa
-     *
+     * 
      */
     public $changeMfa;
 
     /**
      * 创建组织机构
      * Required
-     *
+     * 
      * @var Org
-     *
+     * 
      */
     public $createOrg;
 
     /**
      * 删除组织机构
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteOrg;
 
     /**
      * 添加子节点
      * Required
-     *
+     * 
      * @var Org
-     *
+     * 
      */
     public $addNode;
 
     /**
      * 添加子节点
      * Required
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $addNodeV2;
 
     /**
      * 修改节点
      * Required
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $updateNode;
 
     /**
      * 删除节点（会一并删掉子节点）
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteNode;
 
     /**
      * （批量）将成员添加到节点中
      * Required
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $addMember;
 
     /**
      * （批量）将成员从节点中移除
      * Required
-     *
+     * 
      * @var Node
-     *
+     * 
      */
     public $removeMember;
 
     /**
+     * Optional
+     * 
+     * @var CommonMessage
+     * 
+     */
+    public $moveMembers;
+
+    /**
      * Required
-     *
+     * 
      * @var Org
-     *
+     * 
      */
     public $moveNode;
 
     /**
      * Optional
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $resetPassword;
 
     /**
+     * 通过首次登录的 Token 重置密码
+     * Optional
+     * 
+     * @var CommonMessage
+     * 
+     */
+    public $resetPasswordByFirstLoginToken;
+
+    /**
+     * 通过密码强制更新临时 Token 修改密码
+     * Optional
+     * 
+     * @var CommonMessage
+     * 
+     */
+    public $resetPasswordByForceResetToken;
+
+    /**
      * Required
-     *
+     * 
      * @var Policy
-     *
+     * 
      */
     public $createPolicy;
 
     /**
      * Required
-     *
+     * 
      * @var Policy
-     *
+     * 
      */
     public $updatePolicy;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deletePolicy;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deletePolicies;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $addPolicyAssignments;
 
     /**
      * 开启授权
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $enablePolicyAssignment;
 
     /**
      * 开启授权
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $disbalePolicyAssignment;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $removePolicyAssignments;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $registerByUsername;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $registerByEmail;
 
     /**
      * Optional
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $registerByPhoneCode;
 
     /**
      * 创建角色
      * Required
-     *
+     * 
      * @var Role
-     *
+     * 
      */
     public $createRole;
 
     /**
      * 修改角色
      * Required
-     *
+     * 
      * @var Role
-     *
+     * 
      */
     public $updateRole;
 
     /**
      * 删除角色
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteRole;
 
     /**
      * 批量删除角色
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteRoles;
 
     /**
      * 给用户授权角色
      * Optional
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $assignRole;
 
     /**
      * 撤销角色
      * Optional
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $revokeRole;
 
     /**
      * 使用子账号登录
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $loginBySubAccount;
 
     /**
      * Required
-     *
+     * 
      * @var UserDefinedField
-     *
+     * 
      */
     public $setUdf;
 
     /**
      * Optional
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $removeUdf;
 
     /**
      * Optional
-     *
+     * 
      * @var UserDefinedData[]
-     *
+     * 
      */
     public $setUdv;
 
     /**
      * Optional
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $setUdfValueBatch;
 
     /**
      * Optional
-     *
+     * 
      * @var UserDefinedData[]
-     *
+     * 
      */
     public $removeUdv;
 
     /**
      * Optional
-     *
+     * 
      * @var UserDefinedData[]
-     *
+     * 
      */
     public $setUdvBatch;
 
     /**
      * Optional
-     *
+     * 
      * @var RefreshToken
-     *
+     * 
      */
     public $refreshToken;
 
     /**
      * 创建用户。此接口需要管理员权限，普通用户注册请使用 **register** 接口。
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $createUser;
 
     /**
      * 更新用户信息。
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $updateUser;
 
     /**
      * 修改用户密码，此接口需要验证原始密码，管理员直接修改请使用 **updateUser** 接口。
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $updatePassword;
 
     /**
      * 绑定手机号，调用此接口需要当前用户未绑定手机号
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $bindPhone;
 
     /**
      * 绑定邮箱
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $bindEmail;
 
     /**
      * 解绑定手机号，调用此接口需要当前用户已绑定手机号并且绑定了其他登录方式
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $unbindPhone;
 
     /**
      * 修改手机号。此接口需要验证手机号验证码，管理员直接修改请使用 **updateUser** 接口。
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $updatePhone;
 
     /**
      * 修改邮箱。此接口需要验证邮箱验证码，管理员直接修改请使用 updateUser 接口。
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $updateEmail;
 
     /**
      * 解绑定邮箱
      * Required
-     *
+     * 
      * @var User
-     *
+     * 
      */
     public $unbindEmail;
 
     /**
      * 删除用户
      * Optional
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteUser;
 
     /**
      * 批量删除用户
      * Optional
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteUsers;
 
     /**
      * 创建用户池
      * Required
-     *
+     * 
      * @var UserPool
-     *
+     * 
      */
     public $createUserpool;
 
     /**
      * Required
-     *
+     * 
      * @var UserPool
-     *
+     * 
      */
     public $updateUserpool;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $refreshUserpoolSecret;
 
     /**
      * Required
-     *
+     * 
      * @var CommonMessage
-     *
+     * 
      */
     public $deleteUserpool;
 
     /**
      * Required
-     *
+     * 
      * @var RefreshAccessTokenRes
-     *
+     * 
      */
     public $refreshAccessToken;
 
     /**
      * Required
-     *
+     * 
      * @var WhiteList[]
-     *
+     * 
      */
     public $addWhitelist;
 
     /**
      * Required
-     *
+     * 
      * @var WhiteList[]
-     *
+     * 
      */
     public $removeWhitelist;
 }
@@ -3742,9 +3986,9 @@ class CommonMessage
     /**
      * 可读的接口响应说明，请以业务状态码 code 作为判断业务是否成功的标志
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $message;
 
@@ -3752,9 +3996,9 @@ class CommonMessage
      * 业务状态码（与 HTTP 响应码不同），但且仅当为 200 的时候表示操作成功表示，详细说明请见：
      * [Authing 错误代码列表](https://docs.authing.co/advanced/error-code.html)
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $code;
 }
@@ -3766,25 +4010,25 @@ class AuthorizeResourceOpt
 {
     /**
      * Required
-     *
+     * 
      * @var PolicyAssignmentTargetType
-     *
+     * 
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $targetIdentifier;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $actions;
 
@@ -3803,7 +4047,7 @@ class AuthorizeResourceOpt
      * @param $actions string[] actions
      * @return AuthorizeResourceOpt
      */
-    public function withActions(array $actions)
+    public function withActions($actions)
     {
         $this->actions = $actions;
         return $this;
@@ -3819,17 +4063,17 @@ class CreateSocialConnectionInstanceInput
     /**
      * 社会化登录 provider
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $provider;
 
     /**
      * Optional
-     *
+     * 
      * @var CreateSocialConnectionInstanceFieldInput[]
-     *
+     * 
      */
     public $fields;
 
@@ -3846,7 +4090,7 @@ class CreateSocialConnectionInstanceInput
      * @param $fields CreateSocialConnectionInstanceFieldInput[] fields
      * @return CreateSocialConnectionInstanceInput
      */
-    public function withFields(array $fields)
+    public function withFields($fields)
     {
         $this->fields = $fields;
         return $this;
@@ -3861,17 +4105,17 @@ class CreateSocialConnectionInstanceFieldInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 
@@ -3885,7 +4129,6 @@ class CreateSocialConnectionInstanceFieldInput
         $this->key = $key;
         $this->value = $value;
     }
-
 }
 
 
@@ -3897,71 +4140,71 @@ class ConfigEmailTemplateInput
     /**
      * 邮件模版类型
      * Required
-     *
+     * 
      * @var EmailTemplateType
-     *
+     * 
      */
     public $type;
 
     /**
      * 模版名称
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * 邮件主题
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $subject;
 
     /**
      * 显示的邮件发送人
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $sender;
 
     /**
      * 邮件模版内容
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $content;
 
     /**
      * 重定向链接，操作成功后，用户将被重定向到此 URL。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $redirectTo;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $hasURL;
 
     /**
      * 验证码过期时间（单位为秒）
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $expiresIn;
 
@@ -3986,7 +4229,7 @@ class ConfigEmailTemplateInput
      * @param $redirectTo string 重定向链接，操作成功后，用户将被重定向到此 URL。
      * @return ConfigEmailTemplateInput
      */
-    public function withRedirectTo(string $redirectTo)
+    public function withRedirectTo($redirectTo)
     {
         $this->redirectTo = $redirectTo;
         return $this;
@@ -3996,7 +4239,7 @@ class ConfigEmailTemplateInput
      * @param $hasURL bool hasURL
      * @return ConfigEmailTemplateInput
      */
-    public function withHasUrl(bool $hasURL)
+    public function withHasUrl($hasURL)
     {
         $this->hasURL = $hasURL;
         return $this;
@@ -4006,7 +4249,7 @@ class ConfigEmailTemplateInput
      * @param $expiresIn int 验证码过期时间（单位为秒）
      * @return ConfigEmailTemplateInput
      */
-    public function withExpiresIn(int $expiresIn)
+    public function withExpiresIn($expiresIn)
     {
         $this->expiresIn = $expiresIn;
         return $this;
@@ -4030,36 +4273,36 @@ class CreateFunctionInput
     /**
      * 函数名称
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * 源代码
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $sourceCode;
 
     /**
      * 描述信息
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * 云函数链接
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $url;
 
@@ -4078,7 +4321,7 @@ class CreateFunctionInput
      * @param $description string 描述信息
      * @return CreateFunctionInput
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -4088,7 +4331,7 @@ class CreateFunctionInput
      * @param $url string 云函数链接
      * @return CreateFunctionInput
      */
-    public function withUrl(string $url)
+    public function withUrl($url)
     {
         $this->url = $url;
         return $this;
@@ -4104,45 +4347,45 @@ class UpdateFunctionInput
     /**
      * ID
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $id;
 
     /**
      * 函数名称
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * 源代码
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $sourceCode;
 
     /**
      * 描述信息
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * 云函数链接
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $url;
 
@@ -4159,7 +4402,7 @@ class UpdateFunctionInput
      * @param $name string 函数名称
      * @return UpdateFunctionInput
      */
-    public function withName(string $name)
+    public function withName($name)
     {
         $this->name = $name;
         return $this;
@@ -4169,7 +4412,7 @@ class UpdateFunctionInput
      * @param $sourceCode string 源代码
      * @return UpdateFunctionInput
      */
-    public function withSourceCode(string $sourceCode)
+    public function withSourceCode($sourceCode)
     {
         $this->sourceCode = $sourceCode;
         return $this;
@@ -4179,7 +4422,7 @@ class UpdateFunctionInput
      * @param $description string 描述信息
      * @return UpdateFunctionInput
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -4189,7 +4432,7 @@ class UpdateFunctionInput
      * @param $url string 云函数链接
      * @return UpdateFunctionInput
      */
-    public function withUrl(string $url)
+    public function withUrl($url)
     {
         $this->url = $url;
         return $this;
@@ -4204,61 +4447,61 @@ class LoginByEmailInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $email;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * 图形验证码
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $captchaCode;
 
     /**
      * 如果用户不存在，是否自动创建一个账号
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $autoRegister;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $clientIp;
 
     /**
      * 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $params;
 
     /**
      * 请求上下文信息，将会传递到 pipeline 中
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $context;
 
@@ -4277,7 +4520,7 @@ class LoginByEmailInput
      * @param $captchaCode string 图形验证码
      * @return LoginByEmailInput
      */
-    public function withCaptchaCode(string $captchaCode)
+    public function withCaptchaCode($captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -4287,7 +4530,7 @@ class LoginByEmailInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByEmailInput
      */
-    public function withAutoRegister(string $autoRegister)
+    public function withAutoRegister($autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4297,7 +4540,7 @@ class LoginByEmailInput
      * @param $clientIp string clientIp
      * @return LoginByEmailInput
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4307,7 +4550,7 @@ class LoginByEmailInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByEmailInput
      */
-    public function withParams(string $params)
+    public function withParams($params)
     {
         $this->params = $params;
         return $this;
@@ -4317,7 +4560,7 @@ class LoginByEmailInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByEmailInput
      */
-    public function withContext(string $context)
+    public function withContext($context)
     {
         $this->context = $context;
         return $this;
@@ -4332,61 +4575,61 @@ class LoginByUsernameInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $username;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * 图形验证码
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $captchaCode;
 
     /**
      * 如果用户不存在，是否自动创建一个账号
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $autoRegister;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $clientIp;
 
     /**
      * 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $params;
 
     /**
      * 请求上下文信息，将会传递到 pipeline 中
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $context;
 
@@ -4405,7 +4648,7 @@ class LoginByUsernameInput
      * @param $captchaCode string 图形验证码
      * @return LoginByUsernameInput
      */
-    public function withCaptchaCode(string $captchaCode)
+    public function withCaptchaCode($captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -4415,7 +4658,7 @@ class LoginByUsernameInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByUsernameInput
      */
-    public function withAutoRegister(string $autoRegister)
+    public function withAutoRegister($autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4425,7 +4668,7 @@ class LoginByUsernameInput
      * @param $clientIp string clientIp
      * @return LoginByUsernameInput
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4435,7 +4678,7 @@ class LoginByUsernameInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByUsernameInput
      */
-    public function withParams(string $params)
+    public function withParams($params)
     {
         $this->params = $params;
         return $this;
@@ -4445,7 +4688,7 @@ class LoginByUsernameInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByUsernameInput
      */
-    public function withContext(string $context)
+    public function withContext($context)
     {
         $this->context = $context;
         return $this;
@@ -4460,52 +4703,52 @@ class LoginByPhoneCodeInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $phone;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * 如果用户不存在，是否自动创建一个账号
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $autoRegister;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $clientIp;
 
     /**
      * 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $params;
 
     /**
      * 请求上下文信息，将会传递到 pipeline 中
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $context;
 
@@ -4524,7 +4767,7 @@ class LoginByPhoneCodeInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByPhoneCodeInput
      */
-    public function withAutoRegister(string $autoRegister)
+    public function withAutoRegister($autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4534,7 +4777,7 @@ class LoginByPhoneCodeInput
      * @param $clientIp string clientIp
      * @return LoginByPhoneCodeInput
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4544,7 +4787,7 @@ class LoginByPhoneCodeInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByPhoneCodeInput
      */
-    public function withParams(string $params)
+    public function withParams($params)
     {
         $this->params = $params;
         return $this;
@@ -4554,7 +4797,7 @@ class LoginByPhoneCodeInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByPhoneCodeInput
      */
-    public function withContext(string $context)
+    public function withContext($context)
     {
         $this->context = $context;
         return $this;
@@ -4569,61 +4812,61 @@ class LoginByPhonePasswordInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $phone;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * 图形验证码
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $captchaCode;
 
     /**
      * 如果用户不存在，是否自动创建一个账号
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $autoRegister;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $clientIp;
 
     /**
      * 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $params;
 
     /**
      * 请求上下文信息，将会传递到 pipeline 中
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $context;
 
@@ -4642,7 +4885,7 @@ class LoginByPhonePasswordInput
      * @param $captchaCode string 图形验证码
      * @return LoginByPhonePasswordInput
      */
-    public function withCaptchaCode(string $captchaCode)
+    public function withCaptchaCode($captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -4652,7 +4895,7 @@ class LoginByPhonePasswordInput
      * @param $autoRegister bool 如果用户不存在，是否自动创建一个账号
      * @return LoginByPhonePasswordInput
      */
-    public function withAutoRegister(bool $autoRegister)
+    public function withAutoRegister($autoRegister)
     {
         $this->autoRegister = $autoRegister;
         return $this;
@@ -4662,7 +4905,7 @@ class LoginByPhonePasswordInput
      * @param $clientIp string clientIp
      * @return LoginByPhonePasswordInput
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4672,7 +4915,7 @@ class LoginByPhonePasswordInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return LoginByPhonePasswordInput
      */
-    public function withParams(string $params)
+    public function withParams($params)
     {
         $this->params = $params;
         return $this;
@@ -4682,7 +4925,7 @@ class LoginByPhonePasswordInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return LoginByPhonePasswordInput
      */
-    public function withContext(string $context)
+    public function withContext($context)
     {
         $this->context = $context;
         return $this;
@@ -4697,33 +4940,33 @@ class PolicyStatementInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $resource;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $actions;
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyEffect
-     *
+     * 
      */
     public $effect;
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyStatementConditionInput[]
-     *
+     * 
      */
     public $condition;
 
@@ -4742,7 +4985,7 @@ class PolicyStatementInput
      * @param $effect PolicyEffect effect
      * @return PolicyStatementInput
      */
-    public function withEffect(\Authing\Types\PolicyEffect $effect)
+    public function withEffect($effect)
     {
         $this->effect = $effect;
         return $this;
@@ -4752,7 +4995,7 @@ class PolicyStatementInput
      * @param $condition PolicyStatementConditionInput[] condition
      * @return PolicyStatementInput
      */
-    public function withCondition(array $condition)
+    public function withCondition($condition)
     {
         $this->condition = $condition;
         return $this;
@@ -4767,25 +5010,25 @@ class PolicyStatementConditionInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $param;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $operator;
 
     /**
      * Required
-     *
+     * 
      * @var any
-     *
+     * 
      */
     public $value;
 
@@ -4801,7 +5044,6 @@ class PolicyStatementConditionInput
         $this->operator = $operator;
         $this->value = $value;
     }
-
 }
 
 
@@ -4812,67 +5054,67 @@ class RegisterByUsernameInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $username;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * Optional
-     *
+     * 
      * @var RegisterProfile
-     *
+     * 
      */
     public $profile;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $forceLogin;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $generateToken;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $clientIp;
 
     /**
      * 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $params;
 
     /**
      * 请求上下文信息，将会传递到 pipeline 中
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $context;
 
@@ -4891,7 +5133,7 @@ class RegisterByUsernameInput
      * @param $profile RegisterProfile profile
      * @return RegisterByUsernameInput
      */
-    public function withProfile(\Authing\Types\RegisterProfile $profile)
+    public function withProfile($profile)
     {
         $this->profile = $profile;
         return $this;
@@ -4901,7 +5143,7 @@ class RegisterByUsernameInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByUsernameInput
      */
-    public function withForceLogin(string $forceLogin)
+    public function withForceLogin($forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -4911,7 +5153,7 @@ class RegisterByUsernameInput
      * @param $generateToken bool generateToken
      * @return RegisterByUsernameInput
      */
-    public function withGenerateToken(string $generateToken)
+    public function withGenerateToken($generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -4921,7 +5163,7 @@ class RegisterByUsernameInput
      * @param $clientIp string clientIp
      * @return RegisterByUsernameInput
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -4931,7 +5173,7 @@ class RegisterByUsernameInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return RegisterByUsernameInput
      */
-    public function withParams(string $params)
+    public function withParams($params)
     {
         $this->params = $params;
         return $this;
@@ -4941,7 +5183,7 @@ class RegisterByUsernameInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return RegisterByUsernameInput
      */
-    public function withContext(string $context)
+    public function withContext($context)
     {
         $this->context = $context;
         return $this;
@@ -4956,231 +5198,230 @@ class RegisterProfile
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $ip;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $oauth;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $username;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $nickname;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $company;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $photo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $device;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $browser;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $givenName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $familyName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $middleName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $profile;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $preferredUsername;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $website;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $gender;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $birthdate;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $zoneinfo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locale;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $address;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $formatted;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $streetAddress;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locality;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $region;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $postalCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $country;
 
     /**
      * Optional
-     *
+     * 
      * @var UserDdfInput[]
-     *
+     * 
      */
     public $udf;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $ip string ip
      * @return RegisterProfile
      */
-    public function withIp(string $ip)
+    public function withIp($ip)
     {
         $this->ip = $ip;
         return $this;
@@ -5190,7 +5431,7 @@ class RegisterProfile
      * @param $oauth string oauth
      * @return RegisterProfile
      */
-    public function withOauth(string $oauth)
+    public function withOauth($oauth)
     {
         $this->oauth = $oauth;
         return $this;
@@ -5200,7 +5441,7 @@ class RegisterProfile
      * @param $username string username
      * @return RegisterProfile
      */
-    public function withUsername(string $username)
+    public function withUsername($username)
     {
         $this->username = $username;
         return $this;
@@ -5210,7 +5451,7 @@ class RegisterProfile
      * @param $nickname string nickname
      * @return RegisterProfile
      */
-    public function withNickname(string $nickname)
+    public function withNickname($nickname)
     {
         $this->nickname = $nickname;
         return $this;
@@ -5220,7 +5461,7 @@ class RegisterProfile
      * @param $company string company
      * @return RegisterProfile
      */
-    public function withCompany(string $company)
+    public function withCompany($company)
     {
         $this->company = $company;
         return $this;
@@ -5230,7 +5471,7 @@ class RegisterProfile
      * @param $photo string photo
      * @return RegisterProfile
      */
-    public function withPhoto(string $photo)
+    public function withPhoto($photo)
     {
         $this->photo = $photo;
         return $this;
@@ -5240,7 +5481,7 @@ class RegisterProfile
      * @param $device string device
      * @return RegisterProfile
      */
-    public function withDevice(string $device)
+    public function withDevice($device)
     {
         $this->device = $device;
         return $this;
@@ -5250,7 +5491,7 @@ class RegisterProfile
      * @param $browser string browser
      * @return RegisterProfile
      */
-    public function withBrowser(string $browser)
+    public function withBrowser($browser)
     {
         $this->browser = $browser;
         return $this;
@@ -5260,7 +5501,7 @@ class RegisterProfile
      * @param $name string name
      * @return RegisterProfile
      */
-    public function withName(string $name)
+    public function withName($name)
     {
         $this->name = $name;
         return $this;
@@ -5270,7 +5511,7 @@ class RegisterProfile
      * @param $givenName string givenName
      * @return RegisterProfile
      */
-    public function withGivenName(string $givenName)
+    public function withGivenName($givenName)
     {
         $this->givenName = $givenName;
         return $this;
@@ -5280,7 +5521,7 @@ class RegisterProfile
      * @param $familyName string familyName
      * @return RegisterProfile
      */
-    public function withFamilyName(string $familyName)
+    public function withFamilyName($familyName)
     {
         $this->familyName = $familyName;
         return $this;
@@ -5290,7 +5531,7 @@ class RegisterProfile
      * @param $middleName string middleName
      * @return RegisterProfile
      */
-    public function withMiddleName(string $middleName)
+    public function withMiddleName($middleName)
     {
         $this->middleName = $middleName;
         return $this;
@@ -5300,7 +5541,7 @@ class RegisterProfile
      * @param $profile string profile
      * @return RegisterProfile
      */
-    public function withProfile(string $profile)
+    public function withProfile($profile)
     {
         $this->profile = $profile;
         return $this;
@@ -5310,7 +5551,7 @@ class RegisterProfile
      * @param $preferredUsername string preferredUsername
      * @return RegisterProfile
      */
-    public function withPreferredUsername(string $preferredUsername)
+    public function withPreferredUsername($preferredUsername)
     {
         $this->preferredUsername = $preferredUsername;
         return $this;
@@ -5320,7 +5561,7 @@ class RegisterProfile
      * @param $website string website
      * @return RegisterProfile
      */
-    public function withWebsite(string $website)
+    public function withWebsite($website)
     {
         $this->website = $website;
         return $this;
@@ -5330,7 +5571,7 @@ class RegisterProfile
      * @param $gender string gender
      * @return RegisterProfile
      */
-    public function withGender(string $gender)
+    public function withGender($gender)
     {
         $this->gender = $gender;
         return $this;
@@ -5340,7 +5581,7 @@ class RegisterProfile
      * @param $birthdate string birthdate
      * @return RegisterProfile
      */
-    public function withBirthdate(string $birthdate)
+    public function withBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -5350,7 +5591,7 @@ class RegisterProfile
      * @param $zoneinfo string zoneinfo
      * @return RegisterProfile
      */
-    public function withZoneinfo(string $zoneinfo)
+    public function withZoneinfo($zoneinfo)
     {
         $this->zoneinfo = $zoneinfo;
         return $this;
@@ -5360,7 +5601,7 @@ class RegisterProfile
      * @param $locale string locale
      * @return RegisterProfile
      */
-    public function withLocale(string $locale)
+    public function withLocale($locale)
     {
         $this->locale = $locale;
         return $this;
@@ -5370,7 +5611,7 @@ class RegisterProfile
      * @param $address string address
      * @return RegisterProfile
      */
-    public function withAddress(string $address)
+    public function withAddress($address)
     {
         $this->address = $address;
         return $this;
@@ -5380,7 +5621,7 @@ class RegisterProfile
      * @param $formatted string formatted
      * @return RegisterProfile
      */
-    public function withFormatted(string $formatted)
+    public function withFormatted($formatted)
     {
         $this->formatted = $formatted;
         return $this;
@@ -5390,7 +5631,7 @@ class RegisterProfile
      * @param $streetAddress string streetAddress
      * @return RegisterProfile
      */
-    public function withStreetAddress(string $streetAddress)
+    public function withStreetAddress($streetAddress)
     {
         $this->streetAddress = $streetAddress;
         return $this;
@@ -5400,7 +5641,7 @@ class RegisterProfile
      * @param $locality string locality
      * @return RegisterProfile
      */
-    public function withLocality(string $locality)
+    public function withLocality($locality)
     {
         $this->locality = $locality;
         return $this;
@@ -5410,7 +5651,7 @@ class RegisterProfile
      * @param $region string region
      * @return RegisterProfile
      */
-    public function withRegion(string $region)
+    public function withRegion($region)
     {
         $this->region = $region;
         return $this;
@@ -5420,7 +5661,7 @@ class RegisterProfile
      * @param $postalCode string postalCode
      * @return RegisterProfile
      */
-    public function withPostalCode(string $postalCode)
+    public function withPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
         return $this;
@@ -5430,7 +5671,7 @@ class RegisterProfile
      * @param $country string country
      * @return RegisterProfile
      */
-    public function withCountry(string $country)
+    public function withCountry($country)
     {
         $this->country = $country;
         return $this;
@@ -5440,7 +5681,7 @@ class RegisterProfile
      * @param $udf UserDdfInput[] udf
      * @return RegisterProfile
      */
-    public function withUdf(array $udf)
+    public function withUdf($udf)
     {
         $this->udf = $udf;
         return $this;
@@ -5455,17 +5696,17 @@ class UserDdfInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 
@@ -5479,7 +5720,6 @@ class UserDdfInput
         $this->key = $key;
         $this->value = $value;
     }
-
 }
 
 
@@ -5490,67 +5730,67 @@ class RegisterByEmailInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $email;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * Optional
-     *
+     * 
      * @var RegisterProfile
-     *
+     * 
      */
     public $profile;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $forceLogin;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $generateToken;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $clientIp;
 
     /**
      * 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $params;
 
     /**
      * 请求上下文信息，将会传递到 pipeline 中
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $context;
 
@@ -5569,7 +5809,7 @@ class RegisterByEmailInput
      * @param $profile RegisterProfile profile
      * @return RegisterByEmailInput
      */
-    public function withProfile(\Authing\Types\RegisterProfile $profile)
+    public function withProfile($profile)
     {
         $this->profile = $profile;
         return $this;
@@ -5579,7 +5819,7 @@ class RegisterByEmailInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByEmailInput
      */
-    public function withForceLogin(string $forceLogin)
+    public function withForceLogin($forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -5589,7 +5829,7 @@ class RegisterByEmailInput
      * @param $generateToken bool generateToken
      * @return RegisterByEmailInput
      */
-    public function withGenerateToken(string $generateToken)
+    public function withGenerateToken($generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -5599,7 +5839,7 @@ class RegisterByEmailInput
      * @param $clientIp string clientIp
      * @return RegisterByEmailInput
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -5609,7 +5849,7 @@ class RegisterByEmailInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return RegisterByEmailInput
      */
-    public function withParams(string $params)
+    public function withParams($params)
     {
         $this->params = $params;
         return $this;
@@ -5619,7 +5859,7 @@ class RegisterByEmailInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return RegisterByEmailInput
      */
-    public function withContext(string $context)
+    public function withContext($context)
     {
         $this->context = $context;
         return $this;
@@ -5634,75 +5874,75 @@ class RegisterByPhoneCodeInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $phone;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * Optional
-     *
+     * 
      * @var RegisterProfile
-     *
+     * 
      */
     public $profile;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $forceLogin;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $generateToken;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $clientIp;
 
     /**
      * 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $params;
 
     /**
      * 请求上下文信息，将会传递到 pipeline 中
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $context;
 
@@ -5721,7 +5961,7 @@ class RegisterByPhoneCodeInput
      * @param $password string password
      * @return RegisterByPhoneCodeInput
      */
-    public function withPassword(string $password)
+    public function withPassword($password)
     {
         $this->password = $password;
         return $this;
@@ -5731,7 +5971,7 @@ class RegisterByPhoneCodeInput
      * @param $profile RegisterProfile profile
      * @return RegisterByPhoneCodeInput
      */
-    public function withProfile(\Authing\Types\RegisterProfile $profile)
+    public function withProfile($profile)
     {
         $this->profile = $profile;
         return $this;
@@ -5741,7 +5981,7 @@ class RegisterByPhoneCodeInput
      * @param $forceLogin bool forceLogin
      * @return RegisterByPhoneCodeInput
      */
-    public function withForceLogin(string $forceLogin)
+    public function withForceLogin($forceLogin)
     {
         $this->forceLogin = $forceLogin;
         return $this;
@@ -5751,7 +5991,7 @@ class RegisterByPhoneCodeInput
      * @param $generateToken bool generateToken
      * @return RegisterByPhoneCodeInput
      */
-    public function withGenerateToken(string $generateToken)
+    public function withGenerateToken($generateToken)
     {
         $this->generateToken = $generateToken;
         return $this;
@@ -5761,7 +6001,7 @@ class RegisterByPhoneCodeInput
      * @param $clientIp string clientIp
      * @return RegisterByPhoneCodeInput
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
@@ -5771,7 +6011,7 @@ class RegisterByPhoneCodeInput
      * @param $params string 设置用户自定义字段，要求符合 Array<{ key: string; value: string }> 格式
      * @return RegisterByPhoneCodeInput
      */
-    public function withParams(string $params)
+    public function withParams($params)
     {
         $this->params = $params;
         return $this;
@@ -5781,7 +6021,7 @@ class RegisterByPhoneCodeInput
      * @param $context string 请求上下文信息，将会传递到 pipeline 中
      * @return RegisterByPhoneCodeInput
      */
-    public function withContext(string $context)
+    public function withContext($context)
     {
         $this->context = $context;
         return $this;
@@ -5796,25 +6036,25 @@ class SetUdfValueBatchInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $targetId;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 
@@ -5830,7 +6070,6 @@ class SetUdfValueBatchInput
         $this->key = $key;
         $this->value = $value;
     }
-
 }
 
 
@@ -5841,17 +6080,17 @@ class UserDefinedDataInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 
@@ -5868,7 +6107,7 @@ class UserDefinedDataInput
      * @param $value string value
      * @return UserDefinedDataInput
      */
-    public function withValue(string $value)
+    public function withValue($value)
     {
         $this->value = $value;
         return $this;
@@ -5880,25 +6119,25 @@ class RefreshToken
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $token;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $iat;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $exp;
 }
@@ -5911,345 +6150,344 @@ class CreateUserInput
     /**
      * 用户名，用户池内唯一
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $username;
 
     /**
      * 邮箱，不区分大小写，如 Bob@example.com 和 bob@example.com 会识别为同一个邮箱。用户池内唯一。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $email;
 
     /**
      * 邮箱是否已验证
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $emailVerified;
 
     /**
      * 手机号，用户池内唯一
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $phone;
 
     /**
      * 手机号是否已验证
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $phoneVerified;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $unionid;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $openid;
 
     /**
      * 昵称，该字段不唯一。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $nickname;
 
     /**
      * 头像链接，默认为 https://usercontents.authing.cn/authing-avatar.png
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $photo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * 注册方式
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $registerSource;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $browser;
 
     /**
      * 用户社会化登录第三方身份提供商返回的原始用户信息，非社会化登录方式注册的用户此字段为空。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $oauth;
 
     /**
      * 用户累计登录次数，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $loginsCount;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $lastLogin;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $company;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $lastIP;
 
     /**
      * 用户注册时间，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $signedUp;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $blocked;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $isDeleted;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $device;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $givenName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $familyName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $middleName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $profile;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $preferredUsername;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $website;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $gender;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $birthdate;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $zoneinfo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locale;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $address;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $formatted;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $streetAddress;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locality;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $region;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $postalCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $country;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $externalId;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $username string 用户名，用户池内唯一
      * @return CreateUserInput
      */
-    public function withUsername(string $username)
+    public function withUsername($username)
     {
         $this->username = $username;
         return $this;
@@ -6259,7 +6497,7 @@ class CreateUserInput
      * @param $email string 邮箱，不区分大小写，如 Bob@example.com 和 bob@example.com 会识别为同一个邮箱。用户池内唯一。
      * @return CreateUserInput
      */
-    public function withEmail(string $email)
+    public function withEmail($email)
     {
         $this->email = $email;
         return $this;
@@ -6269,7 +6507,7 @@ class CreateUserInput
      * @param $emailVerified bool 邮箱是否已验证
      * @return CreateUserInput
      */
-    public function withEmailVerified(bool $emailVerified)
+    public function withEmailVerified($emailVerified)
     {
         $this->emailVerified = $emailVerified;
         return $this;
@@ -6279,7 +6517,7 @@ class CreateUserInput
      * @param $phone string 手机号，用户池内唯一
      * @return CreateUserInput
      */
-    public function withPhone(string $phone)
+    public function withPhone($phone)
     {
         $this->phone = $phone;
         return $this;
@@ -6289,7 +6527,7 @@ class CreateUserInput
      * @param $phoneVerified bool 手机号是否已验证
      * @return CreateUserInput
      */
-    public function withPhoneVerified(bool $phoneVerified)
+    public function withPhoneVerified($phoneVerified)
     {
         $this->phoneVerified = $phoneVerified;
         return $this;
@@ -6299,7 +6537,7 @@ class CreateUserInput
      * @param $unionid string unionid
      * @return CreateUserInput
      */
-    public function withUnionid(string $unionid)
+    public function withUnionid($unionid)
     {
         $this->unionid = $unionid;
         return $this;
@@ -6309,7 +6547,7 @@ class CreateUserInput
      * @param $openid string openid
      * @return CreateUserInput
      */
-    public function withOpenid(string $openid)
+    public function withOpenid($openid)
     {
         $this->openid = $openid;
         return $this;
@@ -6319,7 +6557,7 @@ class CreateUserInput
      * @param $nickname string 昵称，该字段不唯一。
      * @return CreateUserInput
      */
-    public function withNickname(string $nickname)
+    public function withNickname($nickname)
     {
         $this->nickname = $nickname;
         return $this;
@@ -6329,7 +6567,7 @@ class CreateUserInput
      * @param $photo string 头像链接，默认为 https://usercontents.authing.cn/authing-avatar.png
      * @return CreateUserInput
      */
-    public function withPhoto(string $photo)
+    public function withPhoto($photo)
     {
         $this->photo = $photo;
         return $this;
@@ -6339,7 +6577,7 @@ class CreateUserInput
      * @param $password string password
      * @return CreateUserInput
      */
-    public function withPassword(string $password)
+    public function withPassword($password)
     {
         $this->password = $password;
         return $this;
@@ -6349,7 +6587,7 @@ class CreateUserInput
      * @param $registerSource string[] 注册方式
      * @return CreateUserInput
      */
-    public function withRegisterSource(array $registerSource)
+    public function withRegisterSource($registerSource)
     {
         $this->registerSource = $registerSource;
         return $this;
@@ -6359,7 +6597,7 @@ class CreateUserInput
      * @param $browser string browser
      * @return CreateUserInput
      */
-    public function withBrowser(string $browser)
+    public function withBrowser($browser)
     {
         $this->browser = $browser;
         return $this;
@@ -6369,7 +6607,7 @@ class CreateUserInput
      * @param $oauth string 用户社会化登录第三方身份提供商返回的原始用户信息，非社会化登录方式注册的用户此字段为空。
      * @return CreateUserInput
      */
-    public function withOauth(string $oauth)
+    public function withOauth($oauth)
     {
         $this->oauth = $oauth;
         return $this;
@@ -6379,7 +6617,7 @@ class CreateUserInput
      * @param $loginsCount int 用户累计登录次数，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return CreateUserInput
      */
-    public function withLoginsCount(int $loginsCount)
+    public function withLoginsCount($loginsCount)
     {
         $this->loginsCount = $loginsCount;
         return $this;
@@ -6389,7 +6627,7 @@ class CreateUserInput
      * @param $lastLogin string lastLogin
      * @return CreateUserInput
      */
-    public function withLastLogin(string $lastLogin)
+    public function withLastLogin($lastLogin)
     {
         $this->lastLogin = $lastLogin;
         return $this;
@@ -6399,7 +6637,7 @@ class CreateUserInput
      * @param $company string company
      * @return CreateUserInput
      */
-    public function withCompany(string $company)
+    public function withCompany($company)
     {
         $this->company = $company;
         return $this;
@@ -6409,7 +6647,7 @@ class CreateUserInput
      * @param $lastIP string lastIP
      * @return CreateUserInput
      */
-    public function withLastIp(string $lastIP)
+    public function withLastIp($lastIP)
     {
         $this->lastIP = $lastIP;
         return $this;
@@ -6419,7 +6657,7 @@ class CreateUserInput
      * @param $signedUp string 用户注册时间，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return CreateUserInput
      */
-    public function withSignedUp(string $signedUp)
+    public function withSignedUp($signedUp)
     {
         $this->signedUp = $signedUp;
         return $this;
@@ -6429,7 +6667,7 @@ class CreateUserInput
      * @param $blocked bool blocked
      * @return CreateUserInput
      */
-    public function withBlocked(bool $blocked)
+    public function withBlocked($blocked)
     {
         $this->blocked = $blocked;
         return $this;
@@ -6439,7 +6677,7 @@ class CreateUserInput
      * @param $isDeleted bool isDeleted
      * @return CreateUserInput
      */
-    public function withIsDeleted(bool $isDeleted)
+    public function withIsDeleted($isDeleted)
     {
         $this->isDeleted = $isDeleted;
         return $this;
@@ -6449,7 +6687,7 @@ class CreateUserInput
      * @param $device string device
      * @return CreateUserInput
      */
-    public function withDevice(string $device)
+    public function withDevice($device)
     {
         $this->device = $device;
         return $this;
@@ -6459,7 +6697,7 @@ class CreateUserInput
      * @param $name string name
      * @return CreateUserInput
      */
-    public function withName(string $name)
+    public function withName($name)
     {
         $this->name = $name;
         return $this;
@@ -6469,7 +6707,7 @@ class CreateUserInput
      * @param $givenName string givenName
      * @return CreateUserInput
      */
-    public function withGivenName(string $givenName)
+    public function withGivenName($givenName)
     {
         $this->givenName = $givenName;
         return $this;
@@ -6479,7 +6717,7 @@ class CreateUserInput
      * @param $familyName string familyName
      * @return CreateUserInput
      */
-    public function withFamilyName(string $familyName)
+    public function withFamilyName($familyName)
     {
         $this->familyName = $familyName;
         return $this;
@@ -6489,7 +6727,7 @@ class CreateUserInput
      * @param $middleName string middleName
      * @return CreateUserInput
      */
-    public function withMiddleName(string $middleName)
+    public function withMiddleName($middleName)
     {
         $this->middleName = $middleName;
         return $this;
@@ -6499,7 +6737,7 @@ class CreateUserInput
      * @param $profile string profile
      * @return CreateUserInput
      */
-    public function withProfile(string $profile)
+    public function withProfile($profile)
     {
         $this->profile = $profile;
         return $this;
@@ -6509,7 +6747,7 @@ class CreateUserInput
      * @param $preferredUsername string preferredUsername
      * @return CreateUserInput
      */
-    public function withPreferredUsername(string $preferredUsername)
+    public function withPreferredUsername($preferredUsername)
     {
         $this->preferredUsername = $preferredUsername;
         return $this;
@@ -6519,7 +6757,7 @@ class CreateUserInput
      * @param $website string website
      * @return CreateUserInput
      */
-    public function withWebsite(string $website)
+    public function withWebsite($website)
     {
         $this->website = $website;
         return $this;
@@ -6529,7 +6767,7 @@ class CreateUserInput
      * @param $gender string gender
      * @return CreateUserInput
      */
-    public function withGender(string $gender)
+    public function withGender($gender)
     {
         $this->gender = $gender;
         return $this;
@@ -6539,7 +6777,7 @@ class CreateUserInput
      * @param $birthdate string birthdate
      * @return CreateUserInput
      */
-    public function withBirthdate(string $birthdate)
+    public function withBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -6549,7 +6787,7 @@ class CreateUserInput
      * @param $zoneinfo string zoneinfo
      * @return CreateUserInput
      */
-    public function withZoneinfo(string $zoneinfo)
+    public function withZoneinfo($zoneinfo)
     {
         $this->zoneinfo = $zoneinfo;
         return $this;
@@ -6559,7 +6797,7 @@ class CreateUserInput
      * @param $locale string locale
      * @return CreateUserInput
      */
-    public function withLocale(string $locale)
+    public function withLocale($locale)
     {
         $this->locale = $locale;
         return $this;
@@ -6569,7 +6807,7 @@ class CreateUserInput
      * @param $address string address
      * @return CreateUserInput
      */
-    public function withAddress(string $address)
+    public function withAddress($address)
     {
         $this->address = $address;
         return $this;
@@ -6579,7 +6817,7 @@ class CreateUserInput
      * @param $formatted string formatted
      * @return CreateUserInput
      */
-    public function withFormatted(string $formatted)
+    public function withFormatted($formatted)
     {
         $this->formatted = $formatted;
         return $this;
@@ -6589,7 +6827,7 @@ class CreateUserInput
      * @param $streetAddress string streetAddress
      * @return CreateUserInput
      */
-    public function withStreetAddress(string $streetAddress)
+    public function withStreetAddress($streetAddress)
     {
         $this->streetAddress = $streetAddress;
         return $this;
@@ -6599,7 +6837,7 @@ class CreateUserInput
      * @param $locality string locality
      * @return CreateUserInput
      */
-    public function withLocality(string $locality)
+    public function withLocality($locality)
     {
         $this->locality = $locality;
         return $this;
@@ -6609,7 +6847,7 @@ class CreateUserInput
      * @param $region string region
      * @return CreateUserInput
      */
-    public function withRegion(string $region)
+    public function withRegion($region)
     {
         $this->region = $region;
         return $this;
@@ -6619,7 +6857,7 @@ class CreateUserInput
      * @param $postalCode string postalCode
      * @return CreateUserInput
      */
-    public function withPostalCode(string $postalCode)
+    public function withPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
         return $this;
@@ -6629,7 +6867,7 @@ class CreateUserInput
      * @param $country string country
      * @return CreateUserInput
      */
-    public function withCountry(string $country)
+    public function withCountry($country)
     {
         $this->country = $country;
         return $this;
@@ -6639,9 +6877,133 @@ class CreateUserInput
      * @param $externalId string externalId
      * @return CreateUserInput
      */
-    public function withExternalId(string $externalId)
+    public function withExternalId($externalId)
     {
         $this->externalId = $externalId;
+        return $this;
+    }
+}
+
+
+/**
+ * CreateUserIdentityInput
+ */
+class CreateUserIdentityInput
+{
+    /**
+     * Required
+     * 
+     * @var string
+     * 
+     */
+    public $provider;
+
+    /**
+     * Required
+     * 
+     * @var string
+     * 
+     */
+    public $userIdInIdp;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $openid;
+
+    /**
+     * Optional
+     * 
+     * @var bool
+     * 
+     */
+    public $isSocial;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $connectionId;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $accessToken;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $refreshToken;
+
+    /**
+     * @param $provider string provider
+     * @param $userIdInIdp string userIdInIdp
+     */
+
+    public function __construct($provider, $userIdInIdp)
+    {
+        $this->provider = $provider;
+        $this->userIdInIdp = $userIdInIdp;
+    }
+
+    /**
+     * @param $openid string openid
+     * @return CreateUserIdentityInput
+     */
+    public function withOpenid($openid)
+    {
+        $this->openid = $openid;
+        return $this;
+    }
+
+    /**
+     * @param $isSocial bool isSocial
+     * @return CreateUserIdentityInput
+     */
+    public function withIsSocial($isSocial)
+    {
+        $this->isSocial = $isSocial;
+        return $this;
+    }
+
+    /**
+     * @param $connectionId string connectionId
+     * @return CreateUserIdentityInput
+     */
+    public function withConnectionId($connectionId)
+    {
+        $this->connectionId = $connectionId;
+        return $this;
+    }
+
+    /**
+     * @param $accessToken string accessToken
+     * @return CreateUserIdentityInput
+     */
+    public function withAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+        return $this;
+    }
+
+    /**
+     * @param $refreshToken string refreshToken
+     * @return CreateUserIdentityInput
+     */
+    public function withRefreshToken($refreshToken)
+    {
+        $this->refreshToken = $refreshToken;
         return $this;
     }
 }
@@ -6655,345 +7017,344 @@ class UpdateUserInput
     /**
      * 邮箱。直接修改用户邮箱需要管理员权限，普通用户修改邮箱请使用 **updateEmail** 接口。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $email;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $unionid;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $openid;
 
     /**
      * 邮箱是否已验证。直接修改 emailVerified 需要管理员权限。
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $emailVerified;
 
     /**
      * 手机号。直接修改用户手机号需要管理员权限，普通用户修改邮箱请使用 **updatePhone** 接口。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $phone;
 
     /**
      * 手机号是否已验证。直接修改 **phoneVerified** 需要管理员权限。
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $phoneVerified;
 
     /**
      * 用户名，用户池内唯一
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $username;
 
     /**
      * 昵称，该字段不唯一。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $nickname;
 
     /**
      * 密码。直接修改用户密码需要管理员权限，普通用户修改邮箱请使用 **updatePassword** 接口。
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $password;
 
     /**
      * 头像链接，默认为 https://usercontents.authing.cn/authing-avatar.png
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $photo;
 
     /**
      * 注册方式
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $company;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $browser;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $device;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $oauth;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $tokenExpiredAt;
 
     /**
      * 用户累计登录次数，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $loginsCount;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $lastLogin;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $lastIP;
 
     /**
      * 用户注册时间，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $blocked;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $givenName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $familyName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $middleName;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $profile;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $preferredUsername;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $website;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $gender;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $birthdate;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $zoneinfo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locale;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $address;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $formatted;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $streetAddress;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $locality;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $region;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $postalCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $city;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $province;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $country;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $externalId;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $email string 邮箱。直接修改用户邮箱需要管理员权限，普通用户修改邮箱请使用 **updateEmail** 接口。
      * @return UpdateUserInput
      */
-    public function withEmail(string $email)
+    public function withEmail($email)
     {
         $this->email = $email;
         return $this;
@@ -7003,7 +7364,7 @@ class UpdateUserInput
      * @param $unionid string unionid
      * @return UpdateUserInput
      */
-    public function withUnionid(string $unionid)
+    public function withUnionid($unionid)
     {
         $this->unionid = $unionid;
         return $this;
@@ -7013,7 +7374,7 @@ class UpdateUserInput
      * @param $openid string openid
      * @return UpdateUserInput
      */
-    public function withOpenid(string $openid)
+    public function withOpenid($openid)
     {
         $this->openid = $openid;
         return $this;
@@ -7023,7 +7384,7 @@ class UpdateUserInput
      * @param $emailVerified bool 邮箱是否已验证。直接修改 emailVerified 需要管理员权限。
      * @return UpdateUserInput
      */
-    public function withEmailVerified(bool $emailVerified)
+    public function withEmailVerified($emailVerified)
     {
         $this->emailVerified = $emailVerified;
         return $this;
@@ -7033,7 +7394,7 @@ class UpdateUserInput
      * @param $phone string 手机号。直接修改用户手机号需要管理员权限，普通用户修改邮箱请使用 **updatePhone** 接口。
      * @return UpdateUserInput
      */
-    public function withPhone(string $phone)
+    public function withPhone($phone)
     {
         $this->phone = $phone;
         return $this;
@@ -7043,7 +7404,7 @@ class UpdateUserInput
      * @param $phoneVerified bool 手机号是否已验证。直接修改 **phoneVerified** 需要管理员权限。
      * @return UpdateUserInput
      */
-    public function withPhoneVerified(bool $phoneVerified)
+    public function withPhoneVerified($phoneVerified)
     {
         $this->phoneVerified = $phoneVerified;
         return $this;
@@ -7053,7 +7414,7 @@ class UpdateUserInput
      * @param $username string 用户名，用户池内唯一
      * @return UpdateUserInput
      */
-    public function withUsername(string $username)
+    public function withUsername($username)
     {
         $this->username = $username;
         return $this;
@@ -7063,7 +7424,7 @@ class UpdateUserInput
      * @param $nickname string 昵称，该字段不唯一。
      * @return UpdateUserInput
      */
-    public function withNickname(string $nickname)
+    public function withNickname($nickname)
     {
         $this->nickname = $nickname;
         return $this;
@@ -7073,7 +7434,7 @@ class UpdateUserInput
      * @param $password string 密码。直接修改用户密码需要管理员权限，普通用户修改邮箱请使用 **updatePassword** 接口。
      * @return UpdateUserInput
      */
-    public function withPassword(string $password)
+    public function withPassword($password)
     {
         $this->password = $password;
         return $this;
@@ -7083,7 +7444,7 @@ class UpdateUserInput
      * @param $photo string 头像链接，默认为 https://usercontents.authing.cn/authing-avatar.png
      * @return UpdateUserInput
      */
-    public function withPhoto(string $photo)
+    public function withPhoto($photo)
     {
         $this->photo = $photo;
         return $this;
@@ -7093,7 +7454,7 @@ class UpdateUserInput
      * @param $company string 注册方式
      * @return UpdateUserInput
      */
-    public function withCompany(string $company)
+    public function withCompany($company)
     {
         $this->company = $company;
         return $this;
@@ -7103,7 +7464,7 @@ class UpdateUserInput
      * @param $browser string browser
      * @return UpdateUserInput
      */
-    public function withBrowser(string $browser)
+    public function withBrowser($browser)
     {
         $this->browser = $browser;
         return $this;
@@ -7113,7 +7474,7 @@ class UpdateUserInput
      * @param $device string device
      * @return UpdateUserInput
      */
-    public function withDevice(string $device)
+    public function withDevice($device)
     {
         $this->device = $device;
         return $this;
@@ -7123,7 +7484,7 @@ class UpdateUserInput
      * @param $oauth string oauth
      * @return UpdateUserInput
      */
-    public function withOauth(string $oauth)
+    public function withOauth($oauth)
     {
         $this->oauth = $oauth;
         return $this;
@@ -7133,7 +7494,7 @@ class UpdateUserInput
      * @param $tokenExpiredAt string tokenExpiredAt
      * @return UpdateUserInput
      */
-    public function withTokenExpiredAt(string $tokenExpiredAt)
+    public function withTokenExpiredAt($tokenExpiredAt)
     {
         $this->tokenExpiredAt = $tokenExpiredAt;
         return $this;
@@ -7143,7 +7504,7 @@ class UpdateUserInput
      * @param $loginsCount int 用户累计登录次数，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return UpdateUserInput
      */
-    public function withLoginsCount(int $loginsCount)
+    public function withLoginsCount($loginsCount)
     {
         $this->loginsCount = $loginsCount;
         return $this;
@@ -7153,7 +7514,7 @@ class UpdateUserInput
      * @param $lastLogin string lastLogin
      * @return UpdateUserInput
      */
-    public function withLastLogin(string $lastLogin)
+    public function withLastLogin($lastLogin)
     {
         $this->lastLogin = $lastLogin;
         return $this;
@@ -7163,7 +7524,7 @@ class UpdateUserInput
      * @param $lastIP string lastIP
      * @return UpdateUserInput
      */
-    public function withLastIp(string $lastIP)
+    public function withLastIp($lastIP)
     {
         $this->lastIP = $lastIP;
         return $this;
@@ -7173,7 +7534,7 @@ class UpdateUserInput
      * @param $blocked bool 用户注册时间，当你从你原有用户系统向 Authing 迁移的时候可以设置此字段。
      * @return UpdateUserInput
      */
-    public function withBlocked(bool $blocked)
+    public function withBlocked($blocked)
     {
         $this->blocked = $blocked;
         return $this;
@@ -7183,7 +7544,7 @@ class UpdateUserInput
      * @param $name string name
      * @return UpdateUserInput
      */
-    public function withName(string $name)
+    public function withName($name)
     {
         $this->name = $name;
         return $this;
@@ -7193,7 +7554,7 @@ class UpdateUserInput
      * @param $givenName string givenName
      * @return UpdateUserInput
      */
-    public function withGivenName(string $givenName)
+    public function withGivenName($givenName)
     {
         $this->givenName = $givenName;
         return $this;
@@ -7203,7 +7564,7 @@ class UpdateUserInput
      * @param $familyName string familyName
      * @return UpdateUserInput
      */
-    public function withFamilyName(string $familyName)
+    public function withFamilyName($familyName)
     {
         $this->familyName = $familyName;
         return $this;
@@ -7213,7 +7574,7 @@ class UpdateUserInput
      * @param $middleName string middleName
      * @return UpdateUserInput
      */
-    public function withMiddleName(string $middleName)
+    public function withMiddleName($middleName)
     {
         $this->middleName = $middleName;
         return $this;
@@ -7223,7 +7584,7 @@ class UpdateUserInput
      * @param $profile string profile
      * @return UpdateUserInput
      */
-    public function withProfile(string $profile)
+    public function withProfile($profile)
     {
         $this->profile = $profile;
         return $this;
@@ -7233,7 +7594,7 @@ class UpdateUserInput
      * @param $preferredUsername string preferredUsername
      * @return UpdateUserInput
      */
-    public function withPreferredUsername(string $preferredUsername)
+    public function withPreferredUsername($preferredUsername)
     {
         $this->preferredUsername = $preferredUsername;
         return $this;
@@ -7243,7 +7604,7 @@ class UpdateUserInput
      * @param $website string website
      * @return UpdateUserInput
      */
-    public function withWebsite(string $website)
+    public function withWebsite($website)
     {
         $this->website = $website;
         return $this;
@@ -7253,7 +7614,7 @@ class UpdateUserInput
      * @param $gender string gender
      * @return UpdateUserInput
      */
-    public function withGender(string $gender)
+    public function withGender($gender)
     {
         $this->gender = $gender;
         return $this;
@@ -7263,7 +7624,7 @@ class UpdateUserInput
      * @param $birthdate string birthdate
      * @return UpdateUserInput
      */
-    public function withBirthdate(string $birthdate)
+    public function withBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -7273,7 +7634,7 @@ class UpdateUserInput
      * @param $zoneinfo string zoneinfo
      * @return UpdateUserInput
      */
-    public function withZoneinfo(string $zoneinfo)
+    public function withZoneinfo($zoneinfo)
     {
         $this->zoneinfo = $zoneinfo;
         return $this;
@@ -7283,7 +7644,7 @@ class UpdateUserInput
      * @param $locale string locale
      * @return UpdateUserInput
      */
-    public function withLocale(string $locale)
+    public function withLocale($locale)
     {
         $this->locale = $locale;
         return $this;
@@ -7293,7 +7654,7 @@ class UpdateUserInput
      * @param $address string address
      * @return UpdateUserInput
      */
-    public function withAddress(string $address)
+    public function withAddress($address)
     {
         $this->address = $address;
         return $this;
@@ -7303,7 +7664,7 @@ class UpdateUserInput
      * @param $formatted string formatted
      * @return UpdateUserInput
      */
-    public function withFormatted(string $formatted)
+    public function withFormatted($formatted)
     {
         $this->formatted = $formatted;
         return $this;
@@ -7313,7 +7674,7 @@ class UpdateUserInput
      * @param $streetAddress string streetAddress
      * @return UpdateUserInput
      */
-    public function withStreetAddress(string $streetAddress)
+    public function withStreetAddress($streetAddress)
     {
         $this->streetAddress = $streetAddress;
         return $this;
@@ -7323,7 +7684,7 @@ class UpdateUserInput
      * @param $locality string locality
      * @return UpdateUserInput
      */
-    public function withLocality(string $locality)
+    public function withLocality($locality)
     {
         $this->locality = $locality;
         return $this;
@@ -7333,7 +7694,7 @@ class UpdateUserInput
      * @param $region string region
      * @return UpdateUserInput
      */
-    public function withRegion(string $region)
+    public function withRegion($region)
     {
         $this->region = $region;
         return $this;
@@ -7343,7 +7704,7 @@ class UpdateUserInput
      * @param $postalCode string postalCode
      * @return UpdateUserInput
      */
-    public function withPostalCode(string $postalCode)
+    public function withPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
         return $this;
@@ -7353,7 +7714,7 @@ class UpdateUserInput
      * @param $city string city
      * @return UpdateUserInput
      */
-    public function withCity(string $city)
+    public function withCity($city)
     {
         $this->city = $city;
         return $this;
@@ -7363,7 +7724,7 @@ class UpdateUserInput
      * @param $province string province
      * @return UpdateUserInput
      */
-    public function withProvince(string $province)
+    public function withProvince($province)
     {
         $this->province = $province;
         return $this;
@@ -7373,7 +7734,7 @@ class UpdateUserInput
      * @param $country string country
      * @return UpdateUserInput
      */
-    public function withCountry(string $country)
+    public function withCountry($country)
     {
         $this->country = $country;
         return $this;
@@ -7383,7 +7744,7 @@ class UpdateUserInput
      * @param $externalId string externalId
      * @return UpdateUserInput
      */
-    public function withExternalId(string $externalId)
+    public function withExternalId($externalId)
     {
         $this->externalId = $externalId;
         return $this;
@@ -7398,185 +7759,210 @@ class UpdateUserpoolInput
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $logo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $domain;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $userpoolTypes;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $emailVerifiedDefault;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $sendWelcomeEmail;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $registerDisabled;
 
     /**
+     * @deprecated
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $appSsoEnabled;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $allowedOrigins;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $tokenExpiresAfter;
 
     /**
      * Optional
-     *
+     * 
      * @var FrequentRegisterCheckConfigInput
-     *
+     * 
      */
     public $frequentRegisterCheck;
 
     /**
      * Optional
-     *
+     * 
      * @var LoginFailCheckConfigInput
-     *
+     * 
      */
     public $loginFailCheck;
 
     /**
+     * 密码重置策略
      * Optional
-     *
+     * 
+     * @var PasswordUpdatePolicyInput
+     * 
+     */
+    public $passwordUpdatePolicy;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     * 
+     */
+    public $loginFailStrategy;
+
+    /**
+     * Optional
+     * 
+     * @var LoginPasswordFailCheckConfigInput
+     * 
+     */
+    public $loginPasswordFailCheck;
+
+    /**
+     * Optional
+     * 
      * @var ChangePhoneStrategyInput
-     *
+     * 
      */
     public $changePhoneStrategy;
 
     /**
      * Optional
-     *
+     * 
      * @var ChangeEmailStrategyInput
-     *
+     * 
      */
     public $changeEmailStrategy;
 
     /**
      * Optional
-     *
+     * 
      * @var QrcodeLoginStrategyInput
-     *
+     * 
      */
     public $qrcodeLoginStrategy;
 
     /**
      * Optional
-     *
+     * 
      * @var App2WxappLoginStrategyInput
-     *
+     * 
      */
     public $app2WxappLoginStrategy;
 
     /**
      * Optional
-     *
+     * 
      * @var RegisterWhiteListConfigInput
-     *
+     * 
      */
     public $whitelist;
 
     /**
      * 自定义短信服务商配置
      * Optional
-     *
+     * 
      * @var CustomSmsProviderInput
-     *
+     * 
      */
     public $customSMSProvider;
 
     /**
      * 是否要求邮箱必须验证才能登录（如果是通过邮箱登录的话）
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $loginRequireEmailVerified;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $verifyCodeLength;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $name string name
      * @return UpdateUserpoolInput
      */
-    public function withName(string $name)
+    public function withName($name)
     {
         $this->name = $name;
         return $this;
@@ -7586,7 +7972,7 @@ class UpdateUserpoolInput
      * @param $logo string logo
      * @return UpdateUserpoolInput
      */
-    public function withLogo(string $logo)
+    public function withLogo($logo)
     {
         $this->logo = $logo;
         return $this;
@@ -7596,7 +7982,7 @@ class UpdateUserpoolInput
      * @param $domain string domain
      * @return UpdateUserpoolInput
      */
-    public function withDomain(string $domain)
+    public function withDomain($domain)
     {
         $this->domain = $domain;
         return $this;
@@ -7606,7 +7992,7 @@ class UpdateUserpoolInput
      * @param $description string description
      * @return UpdateUserpoolInput
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -7616,7 +8002,7 @@ class UpdateUserpoolInput
      * @param $userpoolTypes string[] userpoolTypes
      * @return UpdateUserpoolInput
      */
-    public function withUserpoolTypes(array $userpoolTypes)
+    public function withUserpoolTypes($userpoolTypes)
     {
         $this->userpoolTypes = $userpoolTypes;
         return $this;
@@ -7626,7 +8012,7 @@ class UpdateUserpoolInput
      * @param $emailVerifiedDefault bool emailVerifiedDefault
      * @return UpdateUserpoolInput
      */
-    public function withEmailVerifiedDefault(bool $emailVerifiedDefault)
+    public function withEmailVerifiedDefault($emailVerifiedDefault)
     {
         $this->emailVerifiedDefault = $emailVerifiedDefault;
         return $this;
@@ -7636,7 +8022,7 @@ class UpdateUserpoolInput
      * @param $sendWelcomeEmail bool sendWelcomeEmail
      * @return UpdateUserpoolInput
      */
-    public function withSendWelcomeEmail(bool $sendWelcomeEmail)
+    public function withSendWelcomeEmail($sendWelcomeEmail)
     {
         $this->sendWelcomeEmail = $sendWelcomeEmail;
         return $this;
@@ -7646,17 +8032,17 @@ class UpdateUserpoolInput
      * @param $registerDisabled bool registerDisabled
      * @return UpdateUserpoolInput
      */
-    public function withRegisterDisabled(bool $registerDisabled)
+    public function withRegisterDisabled($registerDisabled)
     {
         $this->registerDisabled = $registerDisabled;
         return $this;
     }
 
     /**
-     * @param $appSsoEnabled bool appSsoEnabled
+     * @param $appSsoEnabled bool @deprecated
      * @return UpdateUserpoolInput
      */
-    public function withAppSsoEnabled(bool $appSsoEnabled)
+    public function withAppSsoEnabled($appSsoEnabled)
     {
         $this->appSsoEnabled = $appSsoEnabled;
         return $this;
@@ -7666,7 +8052,7 @@ class UpdateUserpoolInput
      * @param $allowedOrigins string allowedOrigins
      * @return UpdateUserpoolInput
      */
-    public function withAllowedOrigins(string $allowedOrigins)
+    public function withAllowedOrigins($allowedOrigins)
     {
         $this->allowedOrigins = $allowedOrigins;
         return $this;
@@ -7676,7 +8062,7 @@ class UpdateUserpoolInput
      * @param $tokenExpiresAfter int tokenExpiresAfter
      * @return UpdateUserpoolInput
      */
-    public function withTokenExpiresAfter(int $tokenExpiresAfter)
+    public function withTokenExpiresAfter($tokenExpiresAfter)
     {
         $this->tokenExpiresAfter = $tokenExpiresAfter;
         return $this;
@@ -7686,7 +8072,7 @@ class UpdateUserpoolInput
      * @param $frequentRegisterCheck FrequentRegisterCheckConfigInput frequentRegisterCheck
      * @return UpdateUserpoolInput
      */
-    public function withFrequentRegisterCheck(\Authing\Types\FrequentRegisterCheckConfigInput $frequentRegisterCheck)
+    public function withFrequentRegisterCheck($frequentRegisterCheck)
     {
         $this->frequentRegisterCheck = $frequentRegisterCheck;
         return $this;
@@ -7696,9 +8082,39 @@ class UpdateUserpoolInput
      * @param $loginFailCheck LoginFailCheckConfigInput loginFailCheck
      * @return UpdateUserpoolInput
      */
-    public function withLoginFailCheck(\Authing\Types\LoginFailCheckConfigInput $loginFailCheck)
+    public function withLoginFailCheck($loginFailCheck)
     {
         $this->loginFailCheck = $loginFailCheck;
+        return $this;
+    }
+
+    /**
+     * @param $passwordUpdatePolicy PasswordUpdatePolicyInput 密码重置策略
+     * @return UpdateUserpoolInput
+     */
+    public function withPasswordUpdatePolicy($passwordUpdatePolicy)
+    {
+        $this->passwordUpdatePolicy = $passwordUpdatePolicy;
+        return $this;
+    }
+
+    /**
+     * @param $loginFailStrategy string loginFailStrategy
+     * @return UpdateUserpoolInput
+     */
+    public function withLoginFailStrategy($loginFailStrategy)
+    {
+        $this->loginFailStrategy = $loginFailStrategy;
+        return $this;
+    }
+
+    /**
+     * @param $loginPasswordFailCheck LoginPasswordFailCheckConfigInput loginPasswordFailCheck
+     * @return UpdateUserpoolInput
+     */
+    public function withLoginPasswordFailCheck($loginPasswordFailCheck)
+    {
+        $this->loginPasswordFailCheck = $loginPasswordFailCheck;
         return $this;
     }
 
@@ -7706,7 +8122,7 @@ class UpdateUserpoolInput
      * @param $changePhoneStrategy ChangePhoneStrategyInput changePhoneStrategy
      * @return UpdateUserpoolInput
      */
-    public function withChangePhoneStrategy(\Authing\Types\ChangePhoneStrategyInput $changePhoneStrategy)
+    public function withChangePhoneStrategy($changePhoneStrategy)
     {
         $this->changePhoneStrategy = $changePhoneStrategy;
         return $this;
@@ -7716,7 +8132,7 @@ class UpdateUserpoolInput
      * @param $changeEmailStrategy ChangeEmailStrategyInput changeEmailStrategy
      * @return UpdateUserpoolInput
      */
-    public function withChangeEmailStrategy(\Authing\Types\ChangeEmailStrategyInput $changeEmailStrategy)
+    public function withChangeEmailStrategy($changeEmailStrategy)
     {
         $this->changeEmailStrategy = $changeEmailStrategy;
         return $this;
@@ -7726,7 +8142,7 @@ class UpdateUserpoolInput
      * @param $qrcodeLoginStrategy QrcodeLoginStrategyInput qrcodeLoginStrategy
      * @return UpdateUserpoolInput
      */
-    public function withQrcodeLoginStrategy(\Authing\Types\QrcodeLoginStrategyInput $qrcodeLoginStrategy)
+    public function withQrcodeLoginStrategy($qrcodeLoginStrategy)
     {
         $this->qrcodeLoginStrategy = $qrcodeLoginStrategy;
         return $this;
@@ -7736,7 +8152,7 @@ class UpdateUserpoolInput
      * @param $app2WxappLoginStrategy App2WxappLoginStrategyInput app2WxappLoginStrategy
      * @return UpdateUserpoolInput
      */
-    public function withApp2WxappLoginStrategy(\Authing\Types\App2WxappLoginStrategyInput $app2WxappLoginStrategy)
+    public function withApp2WxappLoginStrategy($app2WxappLoginStrategy)
     {
         $this->app2WxappLoginStrategy = $app2WxappLoginStrategy;
         return $this;
@@ -7746,7 +8162,7 @@ class UpdateUserpoolInput
      * @param $whitelist RegisterWhiteListConfigInput whitelist
      * @return UpdateUserpoolInput
      */
-    public function withWhitelist(\Authing\Types\RegisterWhiteListConfigInput $whitelist)
+    public function withWhitelist($whitelist)
     {
         $this->whitelist = $whitelist;
         return $this;
@@ -7756,7 +8172,7 @@ class UpdateUserpoolInput
      * @param $customSMSProvider CustomSmsProviderInput 自定义短信服务商配置
      * @return UpdateUserpoolInput
      */
-    public function withCustomSmsProvider(\Authing\Types\CustomSmsProviderInput $customSMSProvider)
+    public function withCustomSmsProvider($customSMSProvider)
     {
         $this->customSMSProvider = $customSMSProvider;
         return $this;
@@ -7766,7 +8182,7 @@ class UpdateUserpoolInput
      * @param $loginRequireEmailVerified bool 是否要求邮箱必须验证才能登录（如果是通过邮箱登录的话）
      * @return UpdateUserpoolInput
      */
-    public function withLoginRequireEmailVerified(bool $loginRequireEmailVerified)
+    public function withLoginRequireEmailVerified($loginRequireEmailVerified)
     {
         $this->loginRequireEmailVerified = $loginRequireEmailVerified;
         return $this;
@@ -7776,7 +8192,7 @@ class UpdateUserpoolInput
      * @param $verifyCodeLength int verifyCodeLength
      * @return UpdateUserpoolInput
      */
-    public function withVerifyCodeLength(int $verifyCodeLength)
+    public function withVerifyCodeLength($verifyCodeLength)
     {
         $this->verifyCodeLength = $verifyCodeLength;
         return $this;
@@ -7791,39 +8207,38 @@ class FrequentRegisterCheckConfigInput
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $timeInterval;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enabled;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $timeInterval int timeInterval
      * @return FrequentRegisterCheckConfigInput
      */
-    public function withTimeInterval(int $timeInterval)
+    public function withTimeInterval($timeInterval)
     {
         $this->timeInterval = $timeInterval;
         return $this;
@@ -7833,7 +8248,7 @@ class FrequentRegisterCheckConfigInput
      * @param $limit int limit
      * @return FrequentRegisterCheckConfigInput
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -7843,7 +8258,7 @@ class FrequentRegisterCheckConfigInput
      * @param $enabled bool enabled
      * @return FrequentRegisterCheckConfigInput
      */
-    public function withEnabled(bool $enabled)
+    public function withEnabled($enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -7858,39 +8273,38 @@ class LoginFailCheckConfigInput
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $timeInterval;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enabled;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $timeInterval int timeInterval
      * @return LoginFailCheckConfigInput
      */
-    public function withTimeInterval(int $timeInterval)
+    public function withTimeInterval($timeInterval)
     {
         $this->timeInterval = $timeInterval;
         return $this;
@@ -7900,7 +8314,7 @@ class LoginFailCheckConfigInput
      * @param $limit int limit
      * @return LoginFailCheckConfigInput
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -7910,7 +8324,139 @@ class LoginFailCheckConfigInput
      * @param $enabled bool enabled
      * @return LoginFailCheckConfigInput
      */
-    public function withEnabled(bool $enabled)
+    public function withEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+        return $this;
+    }
+}
+
+
+/**
+ * PasswordUpdatePolicyInput
+ */
+class PasswordUpdatePolicyInput
+{
+    /**
+     * Optional
+     * 
+     * @var bool
+     * 
+     */
+    public $enabled;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $forcedCycle;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $differenceCycle;
+
+
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param $enabled bool enabled
+     * @return PasswordUpdatePolicyInput
+     */
+    public function withEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+        return $this;
+    }
+
+    /**
+     * @param $forcedCycle int forcedCycle
+     * @return PasswordUpdatePolicyInput
+     */
+    public function withForcedCycle($forcedCycle)
+    {
+        $this->forcedCycle = $forcedCycle;
+        return $this;
+    }
+
+    /**
+     * @param $differenceCycle int differenceCycle
+     * @return PasswordUpdatePolicyInput
+     */
+    public function withDifferenceCycle($differenceCycle)
+    {
+        $this->differenceCycle = $differenceCycle;
+        return $this;
+    }
+}
+
+
+/**
+ * LoginPasswordFailCheckConfigInput
+ */
+class LoginPasswordFailCheckConfigInput
+{
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $timeInterval;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $limit;
+
+    /**
+     * Optional
+     * 
+     * @var bool
+     * 
+     */
+    public $enabled;
+
+
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param $timeInterval int timeInterval
+     * @return LoginPasswordFailCheckConfigInput
+     */
+    public function withTimeInterval($timeInterval)
+    {
+        $this->timeInterval = $timeInterval;
+        return $this;
+    }
+
+    /**
+     * @param $limit int limit
+     * @return LoginPasswordFailCheckConfigInput
+     */
+    public function withLimit($limit)
+    {
+        $this->limit = $limit;
+        return $this;
+    }
+
+    /**
+     * @param $enabled bool enabled
+     * @return LoginPasswordFailCheckConfigInput
+     */
+    public function withEnabled($enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -7925,23 +8471,22 @@ class ChangePhoneStrategyInput
 {
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $verifyOldPhone;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $verifyOldPhone bool verifyOldPhone
      * @return ChangePhoneStrategyInput
      */
-    public function withVerifyOldPhone(bool $verifyOldPhone)
+    public function withVerifyOldPhone($verifyOldPhone)
     {
         $this->verifyOldPhone = $verifyOldPhone;
         return $this;
@@ -7956,23 +8501,22 @@ class ChangeEmailStrategyInput
 {
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $verifyOldEmail;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $verifyOldEmail bool verifyOldEmail
      * @return ChangeEmailStrategyInput
      */
-    public function withVerifyOldEmail(bool $verifyOldEmail)
+    public function withVerifyOldEmail($verifyOldEmail)
     {
         $this->verifyOldEmail = $verifyOldEmail;
         return $this;
@@ -7987,47 +8531,46 @@ class QrcodeLoginStrategyInput
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $qrcodeExpiresAfter;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $returnFullUserInfo;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $allowExchangeUserInfoFromBrowser;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $ticketExpiresAfter;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $qrcodeExpiresAfter int qrcodeExpiresAfter
      * @return QrcodeLoginStrategyInput
      */
-    public function withQrcodeExpiresAfter(int $qrcodeExpiresAfter)
+    public function withQrcodeExpiresAfter($qrcodeExpiresAfter)
     {
         $this->qrcodeExpiresAfter = $qrcodeExpiresAfter;
         return $this;
@@ -8037,7 +8580,7 @@ class QrcodeLoginStrategyInput
      * @param $returnFullUserInfo bool returnFullUserInfo
      * @return QrcodeLoginStrategyInput
      */
-    public function withReturnFullUserInfo(bool $returnFullUserInfo)
+    public function withReturnFullUserInfo($returnFullUserInfo)
     {
         $this->returnFullUserInfo = $returnFullUserInfo;
         return $this;
@@ -8047,7 +8590,7 @@ class QrcodeLoginStrategyInput
      * @param $allowExchangeUserInfoFromBrowser bool allowExchangeUserInfoFromBrowser
      * @return QrcodeLoginStrategyInput
      */
-    public function withAllowExchangeUserInfoFromBrowser(bool $allowExchangeUserInfoFromBrowser)
+    public function withAllowExchangeUserInfoFromBrowser($allowExchangeUserInfoFromBrowser)
     {
         $this->allowExchangeUserInfoFromBrowser = $allowExchangeUserInfoFromBrowser;
         return $this;
@@ -8057,7 +8600,7 @@ class QrcodeLoginStrategyInput
      * @param $ticketExpiresAfter int ticketExpiresAfter
      * @return QrcodeLoginStrategyInput
      */
-    public function withTicketExpiresAfter(int $ticketExpiresAfter)
+    public function withTicketExpiresAfter($ticketExpiresAfter)
     {
         $this->ticketExpiresAfter = $ticketExpiresAfter;
         return $this;
@@ -8072,31 +8615,30 @@ class App2WxappLoginStrategyInput
 {
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $ticketExpriresAfter;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $ticketExchangeUserInfoNeedSecret;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $ticketExpriresAfter int ticketExpriresAfter
      * @return App2WxappLoginStrategyInput
      */
-    public function withTicketExpriresAfter(int $ticketExpriresAfter)
+    public function withTicketExpriresAfter($ticketExpriresAfter)
     {
         $this->ticketExpriresAfter = $ticketExpriresAfter;
         return $this;
@@ -8106,7 +8648,7 @@ class App2WxappLoginStrategyInput
      * @param $ticketExchangeUserInfoNeedSecret bool ticketExchangeUserInfoNeedSecret
      * @return App2WxappLoginStrategyInput
      */
-    public function withTicketExchangeUserInfoNeedSecret(bool $ticketExchangeUserInfoNeedSecret)
+    public function withTicketExchangeUserInfoNeedSecret($ticketExchangeUserInfoNeedSecret)
     {
         $this->ticketExchangeUserInfoNeedSecret = $ticketExchangeUserInfoNeedSecret;
         return $this;
@@ -8121,39 +8663,38 @@ class RegisterWhiteListConfigInput
 {
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $phoneEnabled;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $emailEnabled;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $usernameEnabled;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $phoneEnabled bool phoneEnabled
      * @return RegisterWhiteListConfigInput
      */
-    public function withPhoneEnabled(bool $phoneEnabled)
+    public function withPhoneEnabled($phoneEnabled)
     {
         $this->phoneEnabled = $phoneEnabled;
         return $this;
@@ -8163,7 +8704,7 @@ class RegisterWhiteListConfigInput
      * @param $emailEnabled bool emailEnabled
      * @return RegisterWhiteListConfigInput
      */
-    public function withEmailEnabled(bool $emailEnabled)
+    public function withEmailEnabled($emailEnabled)
     {
         $this->emailEnabled = $emailEnabled;
         return $this;
@@ -8173,7 +8714,7 @@ class RegisterWhiteListConfigInput
      * @param $usernameEnabled bool usernameEnabled
      * @return RegisterWhiteListConfigInput
      */
-    public function withUsernameEnabled(bool $usernameEnabled)
+    public function withUsernameEnabled($usernameEnabled)
     {
         $this->usernameEnabled = $usernameEnabled;
         return $this;
@@ -8188,39 +8729,38 @@ class CustomSmsProviderInput
 {
     /**
      * Optional
-     *
+     * 
      * @var bool
-     *
+     * 
      */
     public $enabled;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $provider;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $config;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $enabled bool enabled
      * @return CustomSmsProviderInput
      */
-    public function withEnabled(bool $enabled)
+    public function withEnabled($enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -8230,7 +8770,7 @@ class CustomSmsProviderInput
      * @param $provider string provider
      * @return CustomSmsProviderInput
      */
-    public function withProvider(string $provider)
+    public function withProvider($provider)
     {
         $this->provider = $provider;
         return $this;
@@ -8240,7 +8780,7 @@ class CustomSmsProviderInput
      * @param $config string config
      * @return CustomSmsProviderInput
      */
-    public function withConfig(string $config)
+    public function withConfig($config)
     {
         $this->config = $config;
         return $this;
@@ -8252,25 +8792,25 @@ class RefreshAccessTokenRes
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $accessToken;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $exp;
 
     /**
      * Optional
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $iat;
 }
@@ -8283,34 +8823,34 @@ class BatchOperationResult
     /**
      * 删除成功的个数
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $succeedCount;
 
     /**
      * 删除失败的个数
      * Required
-     *
+     * 
      * @var int
-     *
+     * 
      */
     public $failedCount;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $message;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
-     *
+     * 
      */
     public $errors;
 }
@@ -8319,17 +8859,17 @@ class KeyValuePair
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $value;
 }
@@ -8341,55 +8881,54 @@ class SocialConnectionFieldInput
 {
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $key;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $label;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $type;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $placeholder;
 
     /**
      * Optional
-     *
+     * 
      * @var SocialConnectionFieldInput[]
-     *
+     * 
      */
     public $children;
 
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $key string key
      * @return SocialConnectionFieldInput
      */
-    public function withKey(string $key)
+    public function withKey($key)
     {
         $this->key = $key;
         return $this;
@@ -8399,7 +8938,7 @@ class SocialConnectionFieldInput
      * @param $label string label
      * @return SocialConnectionFieldInput
      */
-    public function withLabel(string $label)
+    public function withLabel($label)
     {
         $this->label = $label;
         return $this;
@@ -8409,7 +8948,7 @@ class SocialConnectionFieldInput
      * @param $type string type
      * @return SocialConnectionFieldInput
      */
-    public function withType(string $type)
+    public function withType($type)
     {
         $this->type = $type;
         return $this;
@@ -8419,7 +8958,7 @@ class SocialConnectionFieldInput
      * @param $placeholder string placeholder
      * @return SocialConnectionFieldInput
      */
-    public function withPlaceholder(string $placeholder)
+    public function withPlaceholder($placeholder)
     {
         $this->placeholder = $placeholder;
         return $this;
@@ -8429,7 +8968,7 @@ class SocialConnectionFieldInput
      * @param $children SocialConnectionFieldInput[] children
      * @return SocialConnectionFieldInput
      */
-    public function withChildren(array $children)
+    public function withChildren($children)
     {
         $this->children = $children;
         return $this;
@@ -8444,41 +8983,41 @@ class CreateSocialConnectionInput
 {
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $provider;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $name;
 
     /**
      * Required
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $logo;
 
     /**
      * Optional
-     *
+     * 
      * @var string
-     *
+     * 
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var SocialConnectionFieldInput[]
-     *
+     * 
      */
     public $fields;
 
@@ -8499,7 +9038,7 @@ class CreateSocialConnectionInput
      * @param $description string description
      * @return CreateSocialConnectionInput
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -8509,11 +9048,39 @@ class CreateSocialConnectionInput
      * @param $fields SocialConnectionFieldInput[] fields
      * @return CreateSocialConnectionInput
      */
-    public function withFields(array $fields)
+    public function withFields($fields)
     {
         $this->fields = $fields;
         return $this;
     }
+}
+
+
+class PasswordUpdatePolicy
+{
+    /**
+     * Optional
+     * 
+     * @var bool
+     * 
+     */
+    public $enabled;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $forcedCycle;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     * 
+     */
+    public $differenceCycle;
 }
 
 
@@ -8531,63 +9098,63 @@ class AddMemberParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $includeChildrenNodes;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $nodeId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $nodeCode;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $userIds;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $isLeader;
@@ -8604,7 +9171,7 @@ class AddMemberParam
      * @param $page int
      * @return AddMemberParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -8614,7 +9181,7 @@ class AddMemberParam
      * @param $limit int
      * @return AddMemberParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -8624,7 +9191,7 @@ class AddMemberParam
      * @param $sortBy SortByEnum
      * @return AddMemberParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -8634,7 +9201,7 @@ class AddMemberParam
      * @param $includeChildrenNodes bool
      * @return AddMemberParam
      */
-    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
+    public function withIncludeChildrenNodes($includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -8644,7 +9211,7 @@ class AddMemberParam
      * @param $nodeId string
      * @return AddMemberParam
      */
-    public function withNodeId(string $nodeId)
+    public function withNodeId($nodeId)
     {
         $this->nodeId = $nodeId;
         return $this;
@@ -8654,7 +9221,7 @@ class AddMemberParam
      * @param $orgId string
      * @return AddMemberParam
      */
-    public function withOrgId(string $orgId)
+    public function withOrgId($orgId)
     {
         $this->orgId = $orgId;
         return $this;
@@ -8664,7 +9231,7 @@ class AddMemberParam
      * @param $nodeCode string
      * @return AddMemberParam
      */
-    public function withNodeCode(string $nodeCode)
+    public function withNodeCode($nodeCode)
     {
         $this->nodeCode = $nodeCode;
         return $this;
@@ -8674,12 +9241,11 @@ class AddMemberParam
      * @param $isLeader bool
      * @return AddMemberParam
      */
-    public function withIsLeader(bool $isLeader)
+    public function withIsLeader($isLeader)
     {
         $this->isLeader = $isLeader;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -8767,6 +9333,7 @@ EOF;
 }
 
 
+
 class AddNodeResponse
 {
 
@@ -8781,56 +9348,56 @@ class AddNodeParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $parentNodeId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $nameI18n;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $descriptionI18n;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $order;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $code;
@@ -8849,7 +9416,7 @@ class AddNodeParam
      * @param $parentNodeId string
      * @return AddNodeParam
      */
-    public function withParentNodeId(string $parentNodeId)
+    public function withParentNodeId($parentNodeId)
     {
         $this->parentNodeId = $parentNodeId;
         return $this;
@@ -8859,7 +9426,7 @@ class AddNodeParam
      * @param $nameI18n string
      * @return AddNodeParam
      */
-    public function withNameI18n(string $nameI18n)
+    public function withNameI18n($nameI18n)
     {
         $this->nameI18n = $nameI18n;
         return $this;
@@ -8869,7 +9436,7 @@ class AddNodeParam
      * @param $description string
      * @return AddNodeParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -8879,7 +9446,7 @@ class AddNodeParam
      * @param $descriptionI18n string
      * @return AddNodeParam
      */
-    public function withDescriptionI18n(string $descriptionI18n)
+    public function withDescriptionI18n($descriptionI18n)
     {
         $this->descriptionI18n = $descriptionI18n;
         return $this;
@@ -8889,7 +9456,7 @@ class AddNodeParam
      * @param $order int
      * @return AddNodeParam
      */
-    public function withOrder(int $order)
+    public function withOrder($order)
     {
         $this->order = $order;
         return $this;
@@ -8899,12 +9466,11 @@ class AddNodeParam
      * @param $code string
      * @return AddNodeParam
      */
-    public function withCode(string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -8956,6 +9522,7 @@ EOF;
 }
 
 
+
 class AddNodeV2Response
 {
 
@@ -8970,56 +9537,56 @@ class AddNodeV2Param
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $parentNodeId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $nameI18n;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $descriptionI18n;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $order;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $code;
@@ -9038,7 +9605,7 @@ class AddNodeV2Param
      * @param $parentNodeId string
      * @return AddNodeV2Param
      */
-    public function withParentNodeId(string $parentNodeId)
+    public function withParentNodeId($parentNodeId)
     {
         $this->parentNodeId = $parentNodeId;
         return $this;
@@ -9048,7 +9615,7 @@ class AddNodeV2Param
      * @param $nameI18n string
      * @return AddNodeV2Param
      */
-    public function withNameI18n(string $nameI18n)
+    public function withNameI18n($nameI18n)
     {
         $this->nameI18n = $nameI18n;
         return $this;
@@ -9058,7 +9625,7 @@ class AddNodeV2Param
      * @param $description string
      * @return AddNodeV2Param
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -9068,7 +9635,7 @@ class AddNodeV2Param
      * @param $descriptionI18n string
      * @return AddNodeV2Param
      */
-    public function withDescriptionI18n(string $descriptionI18n)
+    public function withDescriptionI18n($descriptionI18n)
     {
         $this->descriptionI18n = $descriptionI18n;
         return $this;
@@ -9078,7 +9645,7 @@ class AddNodeV2Param
      * @param $order int
      * @return AddNodeV2Param
      */
-    public function withOrder(int $order)
+    public function withOrder($order)
     {
         $this->order = $order;
         return $this;
@@ -9088,12 +9655,11 @@ class AddNodeV2Param
      * @param $code string
      * @return AddNodeV2Param
      */
-    public function withCode(string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -9126,6 +9692,7 @@ EOF;
 }
 
 
+
 class AddPolicyAssignmentsResponse
 {
 
@@ -9140,35 +9707,35 @@ class AddPolicyAssignmentsParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $policies;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyAssignmentTargetType
      */
     public $targetType;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $targetIdentifiers;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $inheritByChildren;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -9187,7 +9754,7 @@ class AddPolicyAssignmentsParam
      * @param $targetIdentifiers string[]
      * @return AddPolicyAssignmentsParam
      */
-    public function withTargetIdentifiers(array $targetIdentifiers)
+    public function withTargetIdentifiers($targetIdentifiers)
     {
         $this->targetIdentifiers = $targetIdentifiers;
         return $this;
@@ -9197,7 +9764,7 @@ class AddPolicyAssignmentsParam
      * @param $inheritByChildren bool
      * @return AddPolicyAssignmentsParam
      */
-    public function withInheritByChildren(bool $inheritByChildren)
+    public function withInheritByChildren($inheritByChildren)
     {
         $this->inheritByChildren = $inheritByChildren;
         return $this;
@@ -9207,12 +9774,11 @@ class AddPolicyAssignmentsParam
      * @param $namespace string
      * @return AddPolicyAssignmentsParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -9233,6 +9799,7 @@ EOF;
 }
 
 
+
 class AddUserToGroupResponse
 {
 
@@ -9247,14 +9814,14 @@ class AddUserToGroupParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $userIds;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $code;
@@ -9271,12 +9838,11 @@ class AddUserToGroupParam
      * @param $code string
      * @return AddUserToGroupParam
      */
-    public function withCode(string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -9297,6 +9863,7 @@ EOF;
 }
 
 
+
 class AddWhitelistResponse
 {
 
@@ -9311,14 +9878,14 @@ class AddWhitelistParam
 
     /**
      * Required
-     *
+     * 
      * @var WhitelistType
      */
     public $type;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $list;
@@ -9354,6 +9921,7 @@ EOF;
 }
 
 
+
 class AllowResponse
 {
 
@@ -9368,49 +9936,49 @@ class AllowParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $resource;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $action;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $userId;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $userIds;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $roleCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $roleCodes;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -9429,7 +9997,7 @@ class AllowParam
      * @param $userId string
      * @return AllowParam
      */
-    public function withUserId(string $userId)
+    public function withUserId($userId)
     {
         $this->userId = $userId;
         return $this;
@@ -9439,7 +10007,7 @@ class AllowParam
      * @param $userIds string[]
      * @return AllowParam
      */
-    public function withUserIds(array $userIds)
+    public function withUserIds($userIds)
     {
         $this->userIds = $userIds;
         return $this;
@@ -9449,7 +10017,7 @@ class AllowParam
      * @param $roleCode string
      * @return AllowParam
      */
-    public function withRoleCode(string $roleCode)
+    public function withRoleCode($roleCode)
     {
         $this->roleCode = $roleCode;
         return $this;
@@ -9459,7 +10027,7 @@ class AllowParam
      * @param $roleCodes string[]
      * @return AllowParam
      */
-    public function withRoleCodes(array $roleCodes)
+    public function withRoleCodes($roleCodes)
     {
         $this->roleCodes = $roleCodes;
         return $this;
@@ -9469,12 +10037,11 @@ class AllowParam
      * @param $namespace string
      * @return AllowParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -9495,6 +10062,7 @@ EOF;
 }
 
 
+
 class AssignRoleResponse
 {
 
@@ -9509,56 +10077,55 @@ class AssignRoleParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $roleCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $roleCodes;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $userIds;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $groupCodes;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $nodeCodes;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $namespace string
      * @return AssignRoleParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -9568,7 +10135,7 @@ class AssignRoleParam
      * @param $roleCode string
      * @return AssignRoleParam
      */
-    public function withRoleCode(string $roleCode)
+    public function withRoleCode($roleCode)
     {
         $this->roleCode = $roleCode;
         return $this;
@@ -9578,7 +10145,7 @@ class AssignRoleParam
      * @param $roleCodes string[]
      * @return AssignRoleParam
      */
-    public function withRoleCodes(array $roleCodes)
+    public function withRoleCodes($roleCodes)
     {
         $this->roleCodes = $roleCodes;
         return $this;
@@ -9588,7 +10155,7 @@ class AssignRoleParam
      * @param $userIds string[]
      * @return AssignRoleParam
      */
-    public function withUserIds(array $userIds)
+    public function withUserIds($userIds)
     {
         $this->userIds = $userIds;
         return $this;
@@ -9598,7 +10165,7 @@ class AssignRoleParam
      * @param $groupCodes string[]
      * @return AssignRoleParam
      */
-    public function withGroupCodes(array $groupCodes)
+    public function withGroupCodes($groupCodes)
     {
         $this->groupCodes = $groupCodes;
         return $this;
@@ -9608,12 +10175,11 @@ class AssignRoleParam
      * @param $nodeCodes string[]
      * @return AssignRoleParam
      */
-    public function withNodeCodes(array $nodeCodes)
+    public function withNodeCodes($nodeCodes)
     {
         $this->nodeCodes = $nodeCodes;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -9634,6 +10200,7 @@ EOF;
 }
 
 
+
 class AuthorizeResourceResponse
 {
 
@@ -9648,42 +10215,41 @@ class AuthorizeResourceParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $resource;
 
     /**
      * Optional
-     *
+     * 
      * @var ResourceType
      */
     public $resourceType;
 
     /**
      * Optional
-     *
+     * 
      * @var AuthorizeResourceOpt[]
      */
     public $opts;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $namespace string
      * @return AuthorizeResourceParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -9693,7 +10259,7 @@ class AuthorizeResourceParam
      * @param $resource string
      * @return AuthorizeResourceParam
      */
-    public function withResource(string $resource)
+    public function withResource($resource)
     {
         $this->resource = $resource;
         return $this;
@@ -9703,7 +10269,7 @@ class AuthorizeResourceParam
      * @param $resourceType ResourceType
      * @return AuthorizeResourceParam
      */
-    public function withResourceType(\Authing\Types\ResourceType $resourceType)
+    public function withResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
@@ -9713,12 +10279,11 @@ class AuthorizeResourceParam
      * @param $opts AuthorizeResourceOpt[]
      * @return AuthorizeResourceParam
      */
-    public function withOpts(array $opts)
+    public function withOpts($opts)
     {
         $this->opts = $opts;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -9739,6 +10304,7 @@ EOF;
 }
 
 
+
 class BindEmailResponse
 {
 
@@ -9753,14 +10319,14 @@ class BindEmailParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $email;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $emailCode;
@@ -9842,6 +10408,7 @@ EOF;
 }
 
 
+
 class BindPhoneResponse
 {
 
@@ -9856,14 +10423,14 @@ class BindPhoneParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $phone;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $phoneCode;
@@ -9945,6 +10512,7 @@ EOF;
 }
 
 
+
 class ChangeMfaResponse
 {
 
@@ -9959,49 +10527,48 @@ class ChangeMfaParam
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $enable;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $userId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $userPoolId;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $refresh;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $enable bool
      * @return ChangeMfaParam
      */
-    public function withEnable(bool $enable)
+    public function withEnable($enable)
     {
         $this->enable = $enable;
         return $this;
@@ -10011,7 +10578,7 @@ class ChangeMfaParam
      * @param $id string
      * @return ChangeMfaParam
      */
-    public function withId(string $id)
+    public function withId($id)
     {
         $this->id = $id;
         return $this;
@@ -10021,7 +10588,7 @@ class ChangeMfaParam
      * @param $userId string
      * @return ChangeMfaParam
      */
-    public function withUserId(string $userId)
+    public function withUserId($userId)
     {
         $this->userId = $userId;
         return $this;
@@ -10031,7 +10598,7 @@ class ChangeMfaParam
      * @param $userPoolId string
      * @return ChangeMfaParam
      */
-    public function withUserPoolId(string $userPoolId)
+    public function withUserPoolId($userPoolId)
     {
         $this->userPoolId = $userPoolId;
         return $this;
@@ -10041,12 +10608,11 @@ class ChangeMfaParam
      * @param $refresh bool
      * @return ChangeMfaParam
      */
-    public function withRefresh(bool $refresh)
+    public function withRefresh($refresh)
     {
         $this->refresh = $refresh;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -10070,6 +10636,7 @@ EOF;
 }
 
 
+
 class ConfigEmailTemplateResponse
 {
 
@@ -10084,7 +10651,7 @@ class ConfigEmailTemplateParam
 
     /**
      * Required
-     *
+     * 
      * @var ConfigEmailTemplateInput
      */
     public $input;
@@ -10125,6 +10692,7 @@ EOF;
 }
 
 
+
 class CreateFunctionResponse
 {
 
@@ -10139,7 +10707,7 @@ class CreateFunctionParam
 
     /**
      * Required
-     *
+     * 
      * @var CreateFunctionInput
      */
     public $input;
@@ -10175,6 +10743,7 @@ EOF;
 }
 
 
+
 class CreateGroupResponse
 {
 
@@ -10189,21 +10758,21 @@ class CreateGroupParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
@@ -10222,12 +10791,11 @@ class CreateGroupParam
      * @param $description string
      * @return CreateGroupParam
      */
-    public function withDescription(?string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -10251,6 +10819,7 @@ EOF;
 }
 
 
+
 class CreateOrgResponse
 {
 
@@ -10265,21 +10834,21 @@ class CreateOrgParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
@@ -10296,7 +10865,7 @@ class CreateOrgParam
      * @param $code string
      * @return CreateOrgParam
      */
-    public function withCode(?string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
@@ -10306,12 +10875,11 @@ class CreateOrgParam
      * @param $description string
      * @return CreateOrgParam
      */
-    public function withDescription(?string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -10363,6 +10931,7 @@ EOF;
 }
 
 
+
 class CreatePolicyResponse
 {
 
@@ -10377,28 +10946,28 @@ class CreatePolicyParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyStatementInput[]
      */
     public $statements;
@@ -10417,7 +10986,7 @@ class CreatePolicyParam
      * @param $namespace string
      * @return CreatePolicyParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -10427,12 +10996,11 @@ class CreatePolicyParam
      * @param $description string
      * @return CreatePolicyParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -10468,6 +11036,7 @@ EOF;
 }
 
 
+
 class CreateRoleResponse
 {
 
@@ -10482,28 +11051,28 @@ class CreateRoleParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $parent;
@@ -10520,7 +11089,7 @@ class CreateRoleParam
      * @param $namespace string
      * @return CreateRoleParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -10530,7 +11099,7 @@ class CreateRoleParam
      * @param $description string
      * @return CreateRoleParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -10540,12 +11109,11 @@ class CreateRoleParam
      * @param $parent string
      * @return CreateRoleParam
      */
-    public function withParent(string $parent)
+    public function withParent($parent)
     {
         $this->parent = $parent;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -10558,6 +11126,7 @@ class CreateRoleParam
     const CreateRoleDocument = <<<EOF
 mutation createRole(\$namespace: String, \$code: String!, \$description: String, \$parent: String) {
   createRole(namespace: \$namespace, code: \$code, description: \$description, parent: \$parent) {
+    id
     namespace
     code
     arn
@@ -10578,6 +11147,7 @@ EOF;
 }
 
 
+
 class CreateSocialConnectionInstanceResponse
 {
 
@@ -10592,7 +11162,7 @@ class CreateSocialConnectionInstanceParam
 
     /**
      * Required
-     *
+     * 
      * @var CreateSocialConnectionInstanceInput
      */
     public $input;
@@ -10629,6 +11199,7 @@ EOF;
 }
 
 
+
 class CreateUserResponse
 {
 
@@ -10643,17 +11214,24 @@ class CreateUserParam
 
     /**
      * Required
-     *
+     * 
      * @var CreateUserInput
      */
     public $userInfo;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $keepPassword;
+
+    /**
+     * Optional
+     * 
+     * @var bool
+     */
+    public $resetPasswordOnFirstLogin;
 
     /**
      * @param $userInfo CreateUserInput
@@ -10667,12 +11245,21 @@ class CreateUserParam
      * @param $keepPassword bool
      * @return CreateUserParam
      */
-    public function withKeepPassword(bool $keepPassword)
+    public function withKeepPassword($keepPassword)
     {
         $this->keepPassword = $keepPassword;
         return $this;
     }
 
+    /**
+     * @param $resetPasswordOnFirstLogin bool
+     * @return CreateUserParam
+     */
+    public function withResetPasswordOnFirstLogin($resetPasswordOnFirstLogin)
+    {
+        $this->resetPasswordOnFirstLogin = $resetPasswordOnFirstLogin;
+        return $this;
+    }
     function createRequest()
     {
         return [
@@ -10683,8 +11270,8 @@ class CreateUserParam
     }
 
     const CreateUserDocument = <<<EOF
-mutation createUser(\$userInfo: CreateUserInput!, \$keepPassword: Boolean) {
-  createUser(userInfo: \$userInfo, keepPassword: \$keepPassword) {
+mutation createUser(\$userInfo: CreateUserInput!, \$keepPassword: Boolean, \$resetPasswordOnFirstLogin: Boolean) {
+  createUser(userInfo: \$userInfo, keepPassword: \$keepPassword, resetPasswordOnFirstLogin: \$resetPasswordOnFirstLogin) {
     id
     arn
     userPoolId
@@ -10741,6 +11328,142 @@ EOF;
 }
 
 
+
+class CreateUserWithCustomDataResponse
+{
+
+    /**
+     * @var User
+     */
+    public $createUserWithCustomData;
+}
+
+class CreateUserWithCustomDataParam
+{
+
+    /**
+     * Required
+     * 
+     * @var CreateUserInput
+     */
+    public $userInfo;
+
+    /**
+     * Optional
+     * 
+     * @var bool
+     */
+    public $keepPassword;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $params;
+
+    /**
+     * @param $userInfo CreateUserInput
+     */
+    public function __construct($userInfo)
+    {
+        $this->userInfo = $userInfo;
+    }
+
+    /**
+     * @param $keepPassword bool
+     * @return CreateUserWithCustomDataParam
+     */
+    public function withKeepPassword($keepPassword)
+    {
+        $this->keepPassword = $keepPassword;
+        return $this;
+    }
+
+    /**
+     * @param $params string
+     * @return CreateUserWithCustomDataParam
+     */
+    public function withParams($params)
+    {
+        $this->params = $params;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::CreateUserWithCustomDataDocument,
+            "operationName" => "createUserWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const CreateUserWithCustomDataDocument = <<<EOF
+mutation createUserWithCustomData(\$userInfo: CreateUserInput!, \$keepPassword: Boolean, \$params: String) {
+  createUser(userInfo: \$userInfo, keepPassword: \$keepPassword, params: \$params) {
+    id
+    arn
+    userPoolId
+    status
+    username
+    email
+    emailVerified
+    phone
+    phoneVerified
+    unionid
+    openid
+    nickname
+    registerSource
+    photo
+    password
+    oauth
+    token
+    tokenExpiredAt
+    loginsCount
+    lastLogin
+    lastIP
+    signedUp
+    blocked
+    isDeleted
+    device
+    browser
+    company
+    name
+    givenName
+    familyName
+    middleName
+    profile
+    preferredUsername
+    website
+    gender
+    birthdate
+    zoneinfo
+    locale
+    address
+    formatted
+    streetAddress
+    locality
+    region
+    postalCode
+    city
+    province
+    country
+    createdAt
+    updatedAt
+    externalId
+    customData {
+      key
+      value
+      dataType
+      label
+    }
+  }
+}
+EOF;
+}
+
+
+
 class CreateUserpoolResponse
 {
 
@@ -10755,35 +11478,35 @@ class CreateUserpoolParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $name;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $domain;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $logo;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $userpoolTypes;
@@ -10802,7 +11525,7 @@ class CreateUserpoolParam
      * @param $description string
      * @return CreateUserpoolParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -10812,7 +11535,7 @@ class CreateUserpoolParam
      * @param $logo string
      * @return CreateUserpoolParam
      */
-    public function withLogo(string $logo)
+    public function withLogo($logo)
     {
         $this->logo = $logo;
         return $this;
@@ -10822,12 +11545,11 @@ class CreateUserpoolParam
      * @param $userpoolTypes string[]
      * @return CreateUserpoolParam
      */
-    public function withUserpoolTypes(array $userpoolTypes)
+    public function withUserpoolTypes($userpoolTypes)
     {
         $this->userpoolTypes = $userpoolTypes;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -10906,6 +11628,7 @@ EOF;
 }
 
 
+
 class DeleteFunctionResponse
 {
 
@@ -10920,7 +11643,7 @@ class DeleteFunctionParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
@@ -10953,6 +11676,7 @@ EOF;
 }
 
 
+
 class DeleteGroupsResponse
 {
 
@@ -10967,7 +11691,7 @@ class DeleteGroupsParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $codeList;
@@ -11000,6 +11724,7 @@ EOF;
 }
 
 
+
 class DeleteNodeResponse
 {
 
@@ -11014,14 +11739,14 @@ class DeleteNodeParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $nodeId;
@@ -11056,6 +11781,7 @@ EOF;
 }
 
 
+
 class DeleteOrgResponse
 {
 
@@ -11070,7 +11796,7 @@ class DeleteOrgParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
@@ -11103,6 +11829,7 @@ EOF;
 }
 
 
+
 class DeletePoliciesResponse
 {
 
@@ -11117,14 +11844,14 @@ class DeletePoliciesParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $codeList;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -11141,12 +11868,11 @@ class DeletePoliciesParam
      * @param $namespace string
      * @return DeletePoliciesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -11167,6 +11893,7 @@ EOF;
 }
 
 
+
 class DeletePolicyResponse
 {
 
@@ -11181,14 +11908,14 @@ class DeletePolicyParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -11205,12 +11932,11 @@ class DeletePolicyParam
      * @param $namespace string
      * @return DeletePolicyParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -11231,6 +11957,7 @@ EOF;
 }
 
 
+
 class DeleteRoleResponse
 {
 
@@ -11245,14 +11972,14 @@ class DeleteRoleParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -11269,12 +11996,11 @@ class DeleteRoleParam
      * @param $namespace string
      * @return DeleteRoleParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -11295,6 +12021,7 @@ EOF;
 }
 
 
+
 class DeleteRolesResponse
 {
 
@@ -11309,14 +12036,14 @@ class DeleteRolesParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $codeList;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -11333,12 +12060,11 @@ class DeleteRolesParam
      * @param $namespace string
      * @return DeleteRolesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -11359,6 +12085,7 @@ EOF;
 }
 
 
+
 class DeleteUserResponse
 {
 
@@ -11373,7 +12100,7 @@ class DeleteUserParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
@@ -11406,6 +12133,7 @@ EOF;
 }
 
 
+
 class DeleteUserpoolResponse
 {
 
@@ -11417,6 +12145,7 @@ class DeleteUserpoolResponse
 
 class DeleteUserpoolParam
 {
+
 
 
     function createRequest()
@@ -11439,6 +12168,7 @@ EOF;
 }
 
 
+
 class DeleteUsersResponse
 {
 
@@ -11453,7 +12183,7 @@ class DeleteUsersParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $ids;
@@ -11486,6 +12216,7 @@ EOF;
 }
 
 
+
 class DisableEmailTemplateResponse
 {
 
@@ -11500,7 +12231,7 @@ class DisableEmailTemplateParam
 
     /**
      * Required
-     *
+     * 
      * @var EmailTemplateType
      */
     public $type;
@@ -11541,6 +12272,7 @@ EOF;
 }
 
 
+
 class DisableSocialConnectionInstanceResponse
 {
 
@@ -11555,7 +12287,7 @@ class DisableSocialConnectionInstanceParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $provider;
@@ -11592,6 +12324,7 @@ EOF;
 }
 
 
+
 class DisbalePolicyAssignmentResponse
 {
 
@@ -11606,28 +12339,28 @@ class DisbalePolicyAssignmentParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $policy;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyAssignmentTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $targetIdentifier;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -11648,12 +12381,11 @@ class DisbalePolicyAssignmentParam
      * @param $namespace string
      * @return DisbalePolicyAssignmentParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -11674,6 +12406,7 @@ EOF;
 }
 
 
+
 class EnableEmailTemplateResponse
 {
 
@@ -11688,7 +12421,7 @@ class EnableEmailTemplateParam
 
     /**
      * Required
-     *
+     * 
      * @var EmailTemplateType
      */
     public $type;
@@ -11729,6 +12462,7 @@ EOF;
 }
 
 
+
 class EnablePolicyAssignmentResponse
 {
 
@@ -11743,28 +12477,28 @@ class EnablePolicyAssignmentParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $policy;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyAssignmentTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $targetIdentifier;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -11785,12 +12519,11 @@ class EnablePolicyAssignmentParam
      * @param $namespace string
      * @return EnablePolicyAssignmentParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -11811,6 +12544,7 @@ EOF;
 }
 
 
+
 class EnableSocialConnectionInstanceResponse
 {
 
@@ -11825,7 +12559,7 @@ class EnableSocialConnectionInstanceParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $provider;
@@ -11862,6 +12596,7 @@ EOF;
 }
 
 
+
 class LoginByEmailResponse
 {
 
@@ -11876,7 +12611,7 @@ class LoginByEmailParam
 
     /**
      * Required
-     *
+     * 
      * @var LoginByEmailInput
      */
     public $input;
@@ -11957,6 +12692,7 @@ EOF;
 }
 
 
+
 class LoginByPhoneCodeResponse
 {
 
@@ -11971,7 +12707,7 @@ class LoginByPhoneCodeParam
 
     /**
      * Required
-     *
+     * 
      * @var LoginByPhoneCodeInput
      */
     public $input;
@@ -12052,6 +12788,7 @@ EOF;
 }
 
 
+
 class LoginByPhonePasswordResponse
 {
 
@@ -12066,7 +12803,7 @@ class LoginByPhonePasswordParam
 
     /**
      * Required
-     *
+     * 
      * @var LoginByPhonePasswordInput
      */
     public $input;
@@ -12147,6 +12884,7 @@ EOF;
 }
 
 
+
 class LoginBySubAccountResponse
 {
 
@@ -12161,28 +12899,28 @@ class LoginBySubAccountParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $account;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $password;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $captchaCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $clientIp;
@@ -12201,7 +12939,7 @@ class LoginBySubAccountParam
      * @param $captchaCode string
      * @return LoginBySubAccountParam
      */
-    public function withCaptchaCode(string $captchaCode)
+    public function withCaptchaCode($captchaCode)
     {
         $this->captchaCode = $captchaCode;
         return $this;
@@ -12211,12 +12949,11 @@ class LoginBySubAccountParam
      * @param $clientIp string
      * @return LoginBySubAccountParam
      */
-    public function withClientIp(string $clientIp)
+    public function withClientIp($clientIp)
     {
         $this->clientIp = $clientIp;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -12285,6 +13022,7 @@ EOF;
 }
 
 
+
 class LoginByUsernameResponse
 {
 
@@ -12299,7 +13037,7 @@ class LoginByUsernameParam
 
     /**
      * Required
-     *
+     * 
      * @var LoginByUsernameInput
      */
     public $input;
@@ -12380,6 +13118,73 @@ EOF;
 }
 
 
+
+class MoveMembersResponse
+{
+
+    /**
+     * @var CommonMessage
+     */
+    public $moveMembers;
+}
+
+class MoveMembersParam
+{
+
+    /**
+     * Required
+     * 
+     * @var string[]
+     */
+    public $userIds;
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $sourceNodeId;
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $targetNodeId;
+
+    /**
+     * @param $userIds string[]
+     * @param $sourceNodeId string
+     * @param $targetNodeId string
+     */
+    public function __construct($userIds, $sourceNodeId, $targetNodeId)
+    {
+        $this->userIds = $userIds;
+        $this->sourceNodeId = $sourceNodeId;
+        $this->targetNodeId = $targetNodeId;
+    }
+
+    function createRequest()
+    {
+        return [
+            "query" => self::MoveMembersDocument,
+            "operationName" => "moveMembers",
+            "variables" => $this
+        ];
+    }
+
+    const MoveMembersDocument = <<<EOF
+mutation moveMembers(\$userIds: [String!]!, \$sourceNodeId: String!, \$targetNodeId: String!) {
+  moveMembers(userIds: \$userIds, sourceNodeId: \$sourceNodeId, targetNodeId: \$targetNodeId) {
+    code
+    message
+  }
+}
+EOF;
+}
+
+
+
 class MoveNodeResponse
 {
 
@@ -12394,21 +13199,21 @@ class MoveNodeParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $nodeId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $targetParentId;
@@ -12476,6 +13281,7 @@ EOF;
 }
 
 
+
 class RefreshAccessTokenResponse
 {
 
@@ -12490,26 +13296,24 @@ class RefreshAccessTokenParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $accessToken;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $accessToken string
      * @return RefreshAccessTokenParam
      */
-    public function withAccessToken(string $accessToken)
+    public function withAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -12531,6 +13335,7 @@ EOF;
 }
 
 
+
 class RefreshTokenResponse
 {
 
@@ -12545,26 +13350,24 @@ class RefreshTokenParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $id;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $id string
      * @return RefreshTokenParam
      */
-    public function withId(string $id)
+    public function withId($id)
     {
         $this->id = $id;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -12586,6 +13389,7 @@ EOF;
 }
 
 
+
 class RefreshUserpoolSecretResponse
 {
 
@@ -12597,6 +13401,7 @@ class RefreshUserpoolSecretResponse
 
 class RefreshUserpoolSecretParam
 {
+
 
 
     function createRequest()
@@ -12616,6 +13421,7 @@ EOF;
 }
 
 
+
 class RegisterByEmailResponse
 {
 
@@ -12630,7 +13436,7 @@ class RegisterByEmailParam
 
     /**
      * Required
-     *
+     * 
      * @var RegisterByEmailInput
      */
     public $input;
@@ -12711,6 +13517,7 @@ EOF;
 }
 
 
+
 class RegisterByPhoneCodeResponse
 {
 
@@ -12725,7 +13532,7 @@ class RegisterByPhoneCodeParam
 
     /**
      * Required
-     *
+     * 
      * @var RegisterByPhoneCodeInput
      */
     public $input;
@@ -12806,6 +13613,7 @@ EOF;
 }
 
 
+
 class RegisterByUsernameResponse
 {
 
@@ -12820,7 +13628,7 @@ class RegisterByUsernameParam
 
     /**
      * Required
-     *
+     * 
      * @var RegisterByUsernameInput
      */
     public $input;
@@ -12901,6 +13709,7 @@ EOF;
 }
 
 
+
 class RemoveMemberResponse
 {
 
@@ -12915,56 +13724,56 @@ class RemoveMemberParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $includeChildrenNodes;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $nodeId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $nodeCode;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $userIds;
@@ -12981,7 +13790,7 @@ class RemoveMemberParam
      * @param $page int
      * @return RemoveMemberParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -12991,7 +13800,7 @@ class RemoveMemberParam
      * @param $limit int
      * @return RemoveMemberParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -13001,7 +13810,7 @@ class RemoveMemberParam
      * @param $sortBy SortByEnum
      * @return RemoveMemberParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -13011,7 +13820,7 @@ class RemoveMemberParam
      * @param $includeChildrenNodes bool
      * @return RemoveMemberParam
      */
-    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
+    public function withIncludeChildrenNodes($includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -13021,7 +13830,7 @@ class RemoveMemberParam
      * @param $nodeId string
      * @return RemoveMemberParam
      */
-    public function withNodeId(string $nodeId)
+    public function withNodeId($nodeId)
     {
         $this->nodeId = $nodeId;
         return $this;
@@ -13031,7 +13840,7 @@ class RemoveMemberParam
      * @param $orgId string
      * @return RemoveMemberParam
      */
-    public function withOrgId(string $orgId)
+    public function withOrgId($orgId)
     {
         $this->orgId = $orgId;
         return $this;
@@ -13041,12 +13850,11 @@ class RemoveMemberParam
      * @param $nodeCode string
      * @return RemoveMemberParam
      */
-    public function withNodeCode(string $nodeCode)
+    public function withNodeCode($nodeCode)
     {
         $this->nodeCode = $nodeCode;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -13131,6 +13939,7 @@ EOF;
 }
 
 
+
 class RemovePolicyAssignmentsResponse
 {
 
@@ -13145,28 +13954,28 @@ class RemovePolicyAssignmentsParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $policies;
 
     /**
      * Required
-     *
+     * 
      * @var PolicyAssignmentTargetType
      */
     public $targetType;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $targetIdentifiers;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -13185,7 +13994,7 @@ class RemovePolicyAssignmentsParam
      * @param $targetIdentifiers string[]
      * @return RemovePolicyAssignmentsParam
      */
-    public function withTargetIdentifiers(array $targetIdentifiers)
+    public function withTargetIdentifiers($targetIdentifiers)
     {
         $this->targetIdentifiers = $targetIdentifiers;
         return $this;
@@ -13195,12 +14004,11 @@ class RemovePolicyAssignmentsParam
      * @param $namespace string
      * @return RemovePolicyAssignmentsParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -13221,6 +14029,7 @@ EOF;
 }
 
 
+
 class RemoveUdfResponse
 {
 
@@ -13235,14 +14044,14 @@ class RemoveUdfParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $key;
@@ -13277,6 +14086,7 @@ EOF;
 }
 
 
+
 class RemoveUdvResponse
 {
 
@@ -13291,21 +14101,21 @@ class RemoveUdvParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $targetId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $key;
@@ -13344,6 +14154,7 @@ EOF;
 }
 
 
+
 class RemoveUserFromGroupResponse
 {
 
@@ -13358,14 +14169,14 @@ class RemoveUserFromGroupParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $userIds;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $code;
@@ -13382,12 +14193,11 @@ class RemoveUserFromGroupParam
      * @param $code string
      * @return RemoveUserFromGroupParam
      */
-    public function withCode(string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -13408,6 +14218,7 @@ EOF;
 }
 
 
+
 class RemoveWhitelistResponse
 {
 
@@ -13422,14 +14233,14 @@ class RemoveWhitelistParam
 
     /**
      * Required
-     *
+     * 
      * @var WhitelistType
      */
     public $type;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $list;
@@ -13465,6 +14276,7 @@ EOF;
 }
 
 
+
 class ResetPasswordResponse
 {
 
@@ -13479,28 +14291,28 @@ class ResetPasswordParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $phone;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $email;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $newPassword;
@@ -13519,7 +14331,7 @@ class ResetPasswordParam
      * @param $phone string
      * @return ResetPasswordParam
      */
-    public function withPhone(string $phone)
+    public function withPhone($phone)
     {
         $this->phone = $phone;
         return $this;
@@ -13529,12 +14341,11 @@ class ResetPasswordParam
      * @param $email string
      * @return ResetPasswordParam
      */
-    public function withEmail(string $email)
+    public function withEmail($email)
     {
         $this->email = $email;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -13555,6 +14366,64 @@ EOF;
 }
 
 
+
+class ResetPasswordByFirstLoginTokenResponse
+{
+
+    /**
+     * @var CommonMessage
+     */
+    public $resetPasswordByFirstLoginToken;
+}
+
+class ResetPasswordByFirstLoginTokenParam
+{
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $token;
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $password;
+
+    /**
+     * @param $token string
+     * @param $password string
+     */
+    public function __construct($token, $password)
+    {
+        $this->token = $token;
+        $this->password = $password;
+    }
+
+    function createRequest()
+    {
+        return [
+            "query" => self::ResetPasswordByFirstLoginTokenDocument,
+            "operationName" => "resetPasswordByFirstLoginToken",
+            "variables" => $this
+        ];
+    }
+
+    const ResetPasswordByFirstLoginTokenDocument = <<<EOF
+mutation resetPasswordByFirstLoginToken(\$token: String!, \$password: String!) {
+  resetPasswordByFirstLoginToken(token: \$token, password: \$password) {
+    message
+    code
+  }
+}
+EOF;
+}
+
+
+
 class RevokeRoleResponse
 {
 
@@ -13569,56 +14438,55 @@ class RevokeRoleParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $roleCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $roleCodes;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $userIds;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $groupCodes;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $nodeCodes;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $namespace string
      * @return RevokeRoleParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -13628,7 +14496,7 @@ class RevokeRoleParam
      * @param $roleCode string
      * @return RevokeRoleParam
      */
-    public function withRoleCode(string $roleCode)
+    public function withRoleCode($roleCode)
     {
         $this->roleCode = $roleCode;
         return $this;
@@ -13638,7 +14506,7 @@ class RevokeRoleParam
      * @param $roleCodes string[]
      * @return RevokeRoleParam
      */
-    public function withRoleCodes(array $roleCodes)
+    public function withRoleCodes($roleCodes)
     {
         $this->roleCodes = $roleCodes;
         return $this;
@@ -13648,7 +14516,7 @@ class RevokeRoleParam
      * @param $userIds string[]
      * @return RevokeRoleParam
      */
-    public function withUserIds(array $userIds)
+    public function withUserIds($userIds)
     {
         $this->userIds = $userIds;
         return $this;
@@ -13658,7 +14526,7 @@ class RevokeRoleParam
      * @param $groupCodes string[]
      * @return RevokeRoleParam
      */
-    public function withGroupCodes(array $groupCodes)
+    public function withGroupCodes($groupCodes)
     {
         $this->groupCodes = $groupCodes;
         return $this;
@@ -13668,12 +14536,11 @@ class RevokeRoleParam
      * @param $nodeCodes string[]
      * @return RevokeRoleParam
      */
-    public function withNodeCodes(array $nodeCodes)
+    public function withNodeCodes($nodeCodes)
     {
         $this->nodeCodes = $nodeCodes;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -13694,6 +14561,7 @@ EOF;
 }
 
 
+
 class SendEmailResponse
 {
 
@@ -13708,14 +14576,14 @@ class SendEmailParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $email;
 
     /**
      * Required
-     *
+     * 
      * @var EmailScene
      */
     public $scene;
@@ -13750,6 +14618,64 @@ EOF;
 }
 
 
+
+class SendFirstLoginVerifyEmailResponse
+{
+
+    /**
+     * @var CommonMessage
+     */
+    public $sendFirstLoginVerifyEmail;
+}
+
+class SendFirstLoginVerifyEmailParam
+{
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $userId;
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $appId;
+
+    /**
+     * @param $userId string
+     * @param $appId string
+     */
+    public function __construct($userId, $appId)
+    {
+        $this->userId = $userId;
+        $this->appId = $appId;
+    }
+
+    function createRequest()
+    {
+        return [
+            "query" => self::SendFirstLoginVerifyEmailDocument,
+            "operationName" => "sendFirstLoginVerifyEmail",
+            "variables" => $this
+        ];
+    }
+
+    const SendFirstLoginVerifyEmailDocument = <<<EOF
+mutation sendFirstLoginVerifyEmail(\$userId: String!, \$appId: String!) {
+  sendFirstLoginVerifyEmail(userId: \$userId, appId: \$appId) {
+    message
+    code
+  }
+}
+EOF;
+}
+
+
+
 class SetMainDepartmentResponse
 {
 
@@ -13764,14 +14690,14 @@ class SetMainDepartmentParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $userId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $departmentId;
@@ -13788,12 +14714,11 @@ class SetMainDepartmentParam
      * @param $departmentId string
      * @return SetMainDepartmentParam
      */
-    public function withDepartmentId(string $departmentId)
+    public function withDepartmentId($departmentId)
     {
         $this->departmentId = $departmentId;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -13814,6 +14739,7 @@ EOF;
 }
 
 
+
 class SetUdfResponse
 {
 
@@ -13828,35 +14754,35 @@ class SetUdfParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var UdfDataType
      */
     public $dataType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $label;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $options;
@@ -13879,12 +14805,11 @@ class SetUdfParam
      * @param $options string
      * @return SetUdfParam
      */
-    public function withOptions(string $options)
+    public function withOptions($options)
     {
         $this->options = $options;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -13908,6 +14833,7 @@ EOF;
 }
 
 
+
 class SetUdfValueBatchResponse
 {
 
@@ -13922,14 +14848,14 @@ class SetUdfValueBatchParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var SetUdfValueBatchInput[]
      */
     public $input;
@@ -13964,6 +14890,7 @@ EOF;
 }
 
 
+
 class SetUdvResponse
 {
 
@@ -13978,28 +14905,28 @@ class SetUdvParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $targetId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $key;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $value;
@@ -14040,6 +14967,7 @@ EOF;
 }
 
 
+
 class SetUdvBatchResponse
 {
 
@@ -14054,21 +14982,21 @@ class SetUdvBatchParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $targetId;
 
     /**
      * Optional
-     *
+     * 
      * @var UserDefinedDataInput[]
      */
     public $udvList;
@@ -14087,12 +15015,11 @@ class SetUdvBatchParam
      * @param $udvList UserDefinedDataInput[]
      * @return SetUdvBatchParam
      */
-    public function withUdvList(array $udvList)
+    public function withUdvList($udvList)
     {
         $this->udvList = $udvList;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -14115,6 +15042,7 @@ EOF;
 }
 
 
+
 class UnbindEmailResponse
 {
 
@@ -14126,6 +15054,7 @@ class UnbindEmailResponse
 
 class UnbindEmailParam
 {
+
 
 
     function createRequest()
@@ -14195,6 +15124,7 @@ EOF;
 }
 
 
+
 class UnbindPhoneResponse
 {
 
@@ -14206,6 +15136,7 @@ class UnbindPhoneResponse
 
 class UnbindPhoneParam
 {
+
 
 
     function createRequest()
@@ -14275,6 +15206,7 @@ EOF;
 }
 
 
+
 class UpdateEmailResponse
 {
 
@@ -14289,28 +15221,28 @@ class UpdateEmailParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $email;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $emailCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $oldEmail;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $oldEmailCode;
@@ -14329,7 +15261,7 @@ class UpdateEmailParam
      * @param $oldEmail string
      * @return UpdateEmailParam
      */
-    public function withOldEmail(string $oldEmail)
+    public function withOldEmail($oldEmail)
     {
         $this->oldEmail = $oldEmail;
         return $this;
@@ -14339,12 +15271,11 @@ class UpdateEmailParam
      * @param $oldEmailCode string
      * @return UpdateEmailParam
      */
-    public function withOldEmailCode(string $oldEmailCode)
+    public function withOldEmailCode($oldEmailCode)
     {
         $this->oldEmailCode = $oldEmailCode;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -14412,6 +15343,7 @@ EOF;
 }
 
 
+
 class UpdateFunctionResponse
 {
 
@@ -14426,7 +15358,7 @@ class UpdateFunctionParam
 
     /**
      * Required
-     *
+     * 
      * @var UpdateFunctionInput
      */
     public $input;
@@ -14462,6 +15394,7 @@ EOF;
 }
 
 
+
 class UpdateGroupResponse
 {
 
@@ -14476,28 +15409,28 @@ class UpdateGroupParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $newCode;
@@ -14514,7 +15447,7 @@ class UpdateGroupParam
      * @param $name string
      * @return UpdateGroupParam
      */
-    public function withName(string $name)
+    public function withName($name)
     {
         $this->name = $name;
         return $this;
@@ -14524,7 +15457,7 @@ class UpdateGroupParam
      * @param $description string
      * @return UpdateGroupParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -14534,12 +15467,11 @@ class UpdateGroupParam
      * @param $newCode string
      * @return UpdateGroupParam
      */
-    public function withNewCode(string $newCode)
+    public function withNewCode($newCode)
     {
         $this->newCode = $newCode;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -14563,6 +15495,7 @@ EOF;
 }
 
 
+
 class UpdateNodeResponse
 {
 
@@ -14577,56 +15510,56 @@ class UpdateNodeParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $includeChildrenNodes;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $name;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
@@ -14643,7 +15576,7 @@ class UpdateNodeParam
      * @param $page int
      * @return UpdateNodeParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -14653,7 +15586,7 @@ class UpdateNodeParam
      * @param $limit int
      * @return UpdateNodeParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -14663,7 +15596,7 @@ class UpdateNodeParam
      * @param $sortBy SortByEnum
      * @return UpdateNodeParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -14673,7 +15606,7 @@ class UpdateNodeParam
      * @param $includeChildrenNodes bool
      * @return UpdateNodeParam
      */
-    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
+    public function withIncludeChildrenNodes($includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
@@ -14683,7 +15616,7 @@ class UpdateNodeParam
      * @param $name string
      * @return UpdateNodeParam
      */
-    public function withName(string $name)
+    public function withName($name)
     {
         $this->name = $name;
         return $this;
@@ -14693,7 +15626,7 @@ class UpdateNodeParam
      * @param $code string
      * @return UpdateNodeParam
      */
-    public function withCode(string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
@@ -14703,12 +15636,11 @@ class UpdateNodeParam
      * @param $description string
      * @return UpdateNodeParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -14744,6 +15676,7 @@ EOF;
 }
 
 
+
 class UpdatePasswordResponse
 {
 
@@ -14758,14 +15691,14 @@ class UpdatePasswordParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $newPassword;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $oldPassword;
@@ -14782,12 +15715,11 @@ class UpdatePasswordParam
      * @param $oldPassword string
      * @return UpdatePasswordParam
      */
-    public function withOldPassword(string $oldPassword)
+    public function withOldPassword($oldPassword)
     {
         $this->oldPassword = $oldPassword;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -14855,6 +15787,7 @@ EOF;
 }
 
 
+
 class UpdatePhoneResponse
 {
 
@@ -14869,28 +15802,28 @@ class UpdatePhoneParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $phone;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $phoneCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $oldPhone;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $oldPhoneCode;
@@ -14909,7 +15842,7 @@ class UpdatePhoneParam
      * @param $oldPhone string
      * @return UpdatePhoneParam
      */
-    public function withOldPhone(string $oldPhone)
+    public function withOldPhone($oldPhone)
     {
         $this->oldPhone = $oldPhone;
         return $this;
@@ -14919,12 +15852,11 @@ class UpdatePhoneParam
      * @param $oldPhoneCode string
      * @return UpdatePhoneParam
      */
-    public function withOldPhoneCode(string $oldPhoneCode)
+    public function withOldPhoneCode($oldPhoneCode)
     {
         $this->oldPhoneCode = $oldPhoneCode;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -14992,6 +15924,7 @@ EOF;
 }
 
 
+
 class UpdatePolicyResponse
 {
 
@@ -15006,35 +15939,35 @@ class UpdatePolicyParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyStatementInput[]
      */
     public $statements;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $newCode;
@@ -15051,7 +15984,7 @@ class UpdatePolicyParam
      * @param $namespace string
      * @return UpdatePolicyParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -15061,7 +15994,7 @@ class UpdatePolicyParam
      * @param $description string
      * @return UpdatePolicyParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -15071,7 +16004,7 @@ class UpdatePolicyParam
      * @param $statements PolicyStatementInput[]
      * @return UpdatePolicyParam
      */
-    public function withStatements(array $statements)
+    public function withStatements($statements)
     {
         $this->statements = $statements;
         return $this;
@@ -15081,12 +16014,11 @@ class UpdatePolicyParam
      * @param $newCode string
      * @return UpdatePolicyParam
      */
-    public function withNewCode(string $newCode)
+    public function withNewCode($newCode)
     {
         $this->newCode = $newCode;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -15120,6 +16052,7 @@ EOF;
 }
 
 
+
 class UpdateRoleResponse
 {
 
@@ -15134,28 +16067,28 @@ class UpdateRoleParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $description;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $newCode;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -15172,7 +16105,7 @@ class UpdateRoleParam
      * @param $description string
      * @return UpdateRoleParam
      */
-    public function withDescription(string $description)
+    public function withDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -15182,7 +16115,7 @@ class UpdateRoleParam
      * @param $newCode string
      * @return UpdateRoleParam
      */
-    public function withNewCode(string $newCode)
+    public function withNewCode($newCode)
     {
         $this->newCode = $newCode;
         return $this;
@@ -15192,12 +16125,11 @@ class UpdateRoleParam
      * @param $namespace string
      * @return UpdateRoleParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -15210,6 +16142,7 @@ class UpdateRoleParam
     const UpdateRoleDocument = <<<EOF
 mutation updateRole(\$code: String!, \$description: String, \$newCode: String, \$namespace: String) {
   updateRole(code: \$code, description: \$description, newCode: \$newCode, namespace: \$namespace) {
+    id
     namespace
     code
     arn
@@ -15230,6 +16163,7 @@ EOF;
 }
 
 
+
 class UpdateUserResponse
 {
 
@@ -15244,14 +16178,14 @@ class UpdateUserParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Required
-     *
+     * 
      * @var UpdateUserInput
      */
     public $input;
@@ -15268,12 +16202,11 @@ class UpdateUserParam
      * @param $id string
      * @return UpdateUserParam
      */
-    public function withId(string $id)
+    public function withId($id)
     {
         $this->id = $id;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -15342,6 +16275,7 @@ EOF;
 }
 
 
+
 class UpdateUserpoolResponse
 {
 
@@ -15356,7 +16290,7 @@ class UpdateUserpoolParam
 
     /**
      * Required
-     *
+     * 
      * @var UpdateUserpoolInput
      */
     public $input;
@@ -15415,6 +16349,12 @@ mutation updateUserpool(\$input: UpdateUserpoolInput!) {
       limit
       enabled
     }
+    loginFailStrategy
+    loginPasswordFailCheck {
+      timeInterval
+      limit
+      enabled
+    }
     changePhoneStrategy {
       verifyOldPhone
     }
@@ -15451,6 +16391,7 @@ EOF;
 }
 
 
+
 class AccessTokenResponse
 {
 
@@ -15465,14 +16406,14 @@ class AccessTokenParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $userPoolId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $secret;
@@ -15508,6 +16449,7 @@ EOF;
 }
 
 
+
 class ArchivedUsersResponse
 {
 
@@ -15522,28 +16464,27 @@ class ArchivedUsersParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $page int
      * @return ArchivedUsersParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -15553,12 +16494,11 @@ class ArchivedUsersParam
      * @param $limit int
      * @return ArchivedUsersParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -15630,6 +16570,7 @@ EOF;
 }
 
 
+
 class AuthorizedTargetsResponse
 {
 
@@ -15644,35 +16585,35 @@ class AuthorizedTargetsParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Required
-     *
+     * 
      * @var ResourceType
      */
     public $resourceType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $resource;
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyAssignmentTargetType
      */
     public $targetType;
 
     /**
      * Optional
-     *
+     * 
      * @var AuthorizedTargetsActionsInput
      */
     public $actions;
@@ -15693,7 +16634,7 @@ class AuthorizedTargetsParam
      * @param $targetType PolicyAssignmentTargetType
      * @return AuthorizedTargetsParam
      */
-    public function withTargetType(string $targetType)
+    public function withTargetType($targetType)
     {
         $this->targetType = $targetType;
         return $this;
@@ -15703,12 +16644,11 @@ class AuthorizedTargetsParam
      * @param $actions AuthorizedTargetsActionsInput
      * @return AuthorizedTargetsParam
      */
-    public function withActions(\Authing\Types\AuthorizedTargetsActionsInput $actions)
+    public function withActions($actions)
     {
         $this->actions = $actions;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -15733,6 +16673,7 @@ EOF;
 }
 
 
+
 class CheckLoginStatusResponse
 {
 
@@ -15747,26 +16688,24 @@ class CheckLoginStatusParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $token;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $token string
      * @return CheckLoginStatusParam
      */
-    public function withToken(?string $token)
+    public function withToken($token)
     {
         $this->token = $token;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -15795,6 +16734,7 @@ EOF;
 }
 
 
+
 class CheckPasswordStrengthResponse
 {
 
@@ -15809,7 +16749,7 @@ class CheckPasswordStrengthParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $password;
@@ -15842,6 +16782,7 @@ EOF;
 }
 
 
+
 class ChildrenNodesResponse
 {
 
@@ -15856,25 +16797,16 @@ class ChildrenNodesParam
 
     /**
      * Required
-     *
-     * @var string
-     */
-    public $orgId;
-
-    /**
-     * Required
-     *
+     * 
      * @var string
      */
     public $nodeId;
 
     /**
-     * @param $orgId string
      * @param $nodeId string
      */
-    public function __construct($orgId, $nodeId)
+    public function __construct($nodeId)
     {
-        $this->orgId = $orgId;
         $this->nodeId = $nodeId;
     }
 
@@ -15888,8 +16820,8 @@ class ChildrenNodesParam
     }
 
     const ChildrenNodesDocument = <<<EOF
-query childrenNodes(\$orgId: String!, \$nodeId: String!) {
-  childrenNodes(orgId: \$orgId, nodeId: \$nodeId) {
+query childrenNodes(\$nodeId: String!) {
+  childrenNodes(nodeId: \$nodeId) {
     id
     orgId
     name
@@ -15910,6 +16842,7 @@ EOF;
 }
 
 
+
 class EmailTemplatesResponse
 {
 
@@ -15921,6 +16854,7 @@ class EmailTemplatesResponse
 
 class EmailTemplatesParam
 {
+
 
 
     function createRequest()
@@ -15951,6 +16885,7 @@ EOF;
 }
 
 
+
 class FindUserResponse
 {
 
@@ -15965,42 +16900,41 @@ class FindUserParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $email;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $phone;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $username;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $externalId;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $email string
      * @return FindUserParam
      */
-    public function withEmail(string $email)
+    public function withEmail($email)
     {
         $this->email = $email;
         return $this;
@@ -16010,7 +16944,7 @@ class FindUserParam
      * @param $phone string
      * @return FindUserParam
      */
-    public function withPhone(string $phone)
+    public function withPhone($phone)
     {
         $this->phone = $phone;
         return $this;
@@ -16020,7 +16954,7 @@ class FindUserParam
      * @param $username string
      * @return FindUserParam
      */
-    public function withUsername(string $username)
+    public function withUsername($username)
     {
         $this->username = $username;
         return $this;
@@ -16030,12 +16964,11 @@ class FindUserParam
      * @param $externalId string
      * @return FindUserParam
      */
-    public function withExternalId(string $externalId)
+    public function withExternalId($externalId)
     {
         $this->externalId = $externalId;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16104,6 +17037,165 @@ EOF;
 }
 
 
+
+class FindUserWithCustomDataResponse
+{
+
+    /**
+     * @var User
+     */
+    public $findUserWithCustomData;
+}
+
+class FindUserWithCustomDataParam
+{
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $email;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $phone;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $username;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $externalId;
+
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param $email string
+     * @return FindUserWithCustomDataParam
+     */
+    public function withEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @param $phone string
+     * @return FindUserWithCustomDataParam
+     */
+    public function withPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @param $username string
+     * @return FindUserWithCustomDataParam
+     */
+    public function withUsername($username)
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @param $externalId string
+     * @return FindUserWithCustomDataParam
+     */
+    public function withExternalId($externalId)
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::FindUserWithCustomDataDocument,
+            "operationName" => "findUserWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const FindUserWithCustomDataDocument = <<<EOF
+query findUserWithCustomData(\$email: String, \$phone: String, \$username: String, \$externalId: String) {
+  findUser(email: \$email, phone: \$phone, username: \$username, externalId: \$externalId) {
+    id
+    arn
+    userPoolId
+    status
+    username
+    email
+    emailVerified
+    phone
+    phoneVerified
+    unionid
+    openid
+    nickname
+    registerSource
+    photo
+    password
+    oauth
+    token
+    tokenExpiredAt
+    loginsCount
+    lastLogin
+    lastIP
+    signedUp
+    blocked
+    isDeleted
+    device
+    browser
+    company
+    name
+    givenName
+    familyName
+    middleName
+    profile
+    preferredUsername
+    website
+    gender
+    birthdate
+    zoneinfo
+    locale
+    address
+    formatted
+    streetAddress
+    locality
+    region
+    postalCode
+    city
+    province
+    country
+    createdAt
+    updatedAt
+    externalId
+    customData {
+      key
+      value
+      dataType
+      label
+    }
+  }
+}
+EOF;
+}
+
+
+
 class FunctionResponse
 {
 
@@ -16118,26 +17210,24 @@ class FunctionParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $id;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $id string
      * @return FunctionParam
      */
-    public function withId(string $id)
+    public function withId($id)
     {
         $this->id = $id;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16161,6 +17251,7 @@ EOF;
 }
 
 
+
 class FunctionsResponse
 {
 
@@ -16175,35 +17266,34 @@ class FunctionsParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $page int
      * @return FunctionsParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -16213,7 +17303,7 @@ class FunctionsParam
      * @param $limit int
      * @return FunctionsParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -16223,12 +17313,11 @@ class FunctionsParam
      * @param $sortBy SortByEnum
      * @return FunctionsParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16255,6 +17344,7 @@ EOF;
 }
 
 
+
 class GetUserDepartmentsResponse
 {
 
@@ -16269,14 +17359,14 @@ class GetUserDepartmentsParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $orgId;
@@ -16293,12 +17383,11 @@ class GetUserDepartmentsParam
      * @param $orgId string
      * @return GetUserDepartmentsParam
      */
-    public function withOrgId(string $orgId)
+    public function withOrgId($orgId)
     {
         $this->orgId = $orgId;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16342,6 +17431,7 @@ EOF;
 }
 
 
+
 class GetUserGroupsResponse
 {
 
@@ -16356,7 +17446,7 @@ class GetUserGroupsParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
@@ -16397,6 +17487,7 @@ EOF;
 }
 
 
+
 class GetUserRolesResponse
 {
 
@@ -16411,14 +17502,14 @@ class GetUserRolesParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -16435,12 +17526,11 @@ class GetUserRolesParam
      * @param $namespace string
      * @return GetUserRolesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16478,6 +17568,7 @@ EOF;
 }
 
 
+
 class GroupResponse
 {
 
@@ -16492,7 +17583,7 @@ class GroupParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
@@ -16528,6 +17619,7 @@ EOF;
 }
 
 
+
 class GroupWithUsersResponse
 {
 
@@ -16542,21 +17634,21 @@ class GroupWithUsersParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
@@ -16573,7 +17665,7 @@ class GroupWithUsersParam
      * @param $page int
      * @return GroupWithUsersParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -16583,12 +17675,11 @@ class GroupWithUsersParam
      * @param $limit int
      * @return GroupWithUsersParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16661,6 +17752,146 @@ EOF;
 }
 
 
+
+class GroupWithUsersWithCustomDataResponse
+{
+
+    /**
+     * @var Group
+     */
+    public $groupWithUsersWithCustomData;
+}
+
+class GroupWithUsersWithCustomDataParam
+{
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $code;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $page;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $limit;
+
+    /**
+     * @param $code string
+     */
+    public function __construct($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @param $page int
+     * @return GroupWithUsersWithCustomDataParam
+     */
+    public function withPage($page)
+    {
+        $this->page = $page;
+        return $this;
+    }
+
+    /**
+     * @param $limit int
+     * @return GroupWithUsersWithCustomDataParam
+     */
+    public function withLimit($limit)
+    {
+        $this->limit = $limit;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::GroupWithUsersWithCustomDataDocument,
+            "operationName" => "groupWithUsersWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const GroupWithUsersWithCustomDataDocument = <<<EOF
+query groupWithUsersWithCustomData(\$code: String!, \$page: Int, \$limit: Int) {
+  group(code: \$code) {
+    users(page: \$page, limit: \$limit) {
+      totalCount
+      list {
+        id
+        arn
+        userPoolId
+        username
+        email
+        emailVerified
+        phone
+        phoneVerified
+        unionid
+        openid
+        nickname
+        registerSource
+        photo
+        password
+        oauth
+        token
+        tokenExpiredAt
+        loginsCount
+        lastLogin
+        lastIP
+        signedUp
+        blocked
+        isDeleted
+        device
+        browser
+        company
+        name
+        givenName
+        familyName
+        middleName
+        profile
+        preferredUsername
+        website
+        gender
+        birthdate
+        zoneinfo
+        locale
+        address
+        formatted
+        streetAddress
+        locality
+        region
+        postalCode
+        city
+        province
+        country
+        createdAt
+        updatedAt
+        externalId
+        customData {
+          key
+          value
+          dataType
+          label
+        }
+      }
+    }
+  }
+}
+EOF;
+}
+
+
+
 class GroupsResponse
 {
 
@@ -16675,42 +17906,41 @@ class GroupsParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $userId;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $userId string
      * @return GroupsParam
      */
-    public function withUserId(string $userId)
+    public function withUserId($userId)
     {
         $this->userId = $userId;
         return $this;
@@ -16720,7 +17950,7 @@ class GroupsParam
      * @param $page int
      * @return GroupsParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -16730,7 +17960,7 @@ class GroupsParam
      * @param $limit int
      * @return GroupsParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -16740,12 +17970,11 @@ class GroupsParam
      * @param $sortBy SortByEnum
      * @return GroupsParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16772,6 +18001,7 @@ EOF;
 }
 
 
+
 class IsActionAllowedResponse
 {
 
@@ -16786,28 +18016,28 @@ class IsActionAllowedParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $resource;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $action;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $userId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -16828,12 +18058,11 @@ class IsActionAllowedParam
      * @param $namespace string
      * @return IsActionAllowedParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -16851,6 +18080,7 @@ EOF;
 }
 
 
+
 class IsActionDeniedResponse
 {
 
@@ -16865,21 +18095,21 @@ class IsActionDeniedParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $resource;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $action;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $userId;
@@ -16913,6 +18143,7 @@ EOF;
 }
 
 
+
 class IsDomainAvaliableResponse
 {
 
@@ -16927,7 +18158,7 @@ class IsDomainAvaliableParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $domain;
@@ -16957,6 +18188,7 @@ EOF;
 }
 
 
+
 class IsRootNodeResponse
 {
 
@@ -16971,14 +18203,14 @@ class IsRootNodeParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $nodeId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
@@ -17010,6 +18242,7 @@ EOF;
 }
 
 
+
 class IsUserExistsResponse
 {
 
@@ -17024,42 +18257,41 @@ class IsUserExistsParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $email;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $phone;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $username;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $externalId;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $email string
      * @return IsUserExistsParam
      */
-    public function withEmail(string $email)
+    public function withEmail($email)
     {
         $this->email = $email;
         return $this;
@@ -17069,7 +18301,7 @@ class IsUserExistsParam
      * @param $phone string
      * @return IsUserExistsParam
      */
-    public function withPhone(string $phone)
+    public function withPhone($phone)
     {
         $this->phone = $phone;
         return $this;
@@ -17079,7 +18311,7 @@ class IsUserExistsParam
      * @param $username string
      * @return IsUserExistsParam
      */
-    public function withUsername(string $username)
+    public function withUsername($username)
     {
         $this->username = $username;
         return $this;
@@ -17089,12 +18321,11 @@ class IsUserExistsParam
      * @param $externalId string
      * @return IsUserExistsParam
      */
-    public function withExternalId(string $externalId)
+    public function withExternalId($externalId)
     {
         $this->externalId = $externalId;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17112,6 +18343,7 @@ EOF;
 }
 
 
+
 class AuthorizedResourcesResponse
 {
 
@@ -17126,42 +18358,41 @@ class AuthorizedResourcesParam
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyAssignmentTargetType
      */
     public $targetType;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $targetIdentifier;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $resourceType;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $targetType PolicyAssignmentTargetType
      * @return AuthorizedResourcesParam
      */
-    public function withTargetType(string $targetType)
+    public function withTargetType($targetType)
     {
         $this->targetType = $targetType;
         return $this;
@@ -17171,7 +18402,7 @@ class AuthorizedResourcesParam
      * @param $targetIdentifier string
      * @return AuthorizedResourcesParam
      */
-    public function withTargetIdentifier(string $targetIdentifier)
+    public function withTargetIdentifier($targetIdentifier)
     {
         $this->targetIdentifier = $targetIdentifier;
         return $this;
@@ -17181,7 +18412,7 @@ class AuthorizedResourcesParam
      * @param $namespace string
      * @return AuthorizedResourcesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17191,12 +18422,11 @@ class AuthorizedResourcesParam
      * @param $resourceType string
      * @return AuthorizedResourcesParam
      */
-    public function withResourceType(string $resourceType)
+    public function withResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17221,6 +18451,7 @@ EOF;
 }
 
 
+
 class ListGroupAuthorizedResourcesResponse
 {
 
@@ -17235,21 +18466,21 @@ class ListGroupAuthorizedResourcesParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $resourceType;
@@ -17266,7 +18497,7 @@ class ListGroupAuthorizedResourcesParam
      * @param $namespace string
      * @return ListGroupAuthorizedResourcesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17276,12 +18507,11 @@ class ListGroupAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListGroupAuthorizedResourcesParam
      */
-    public function withResourceType(string $resourceType)
+    public function withResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17308,6 +18538,7 @@ EOF;
 }
 
 
+
 class ListNodeByCodeAuthorizedResourcesResponse
 {
 
@@ -17322,28 +18553,28 @@ class ListNodeByCodeAuthorizedResourcesParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $resourceType;
@@ -17362,7 +18593,7 @@ class ListNodeByCodeAuthorizedResourcesParam
      * @param $namespace string
      * @return ListNodeByCodeAuthorizedResourcesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17372,12 +18603,11 @@ class ListNodeByCodeAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListNodeByCodeAuthorizedResourcesParam
      */
-    public function withResourceType(string $resourceType)
+    public function withResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17404,6 +18634,7 @@ EOF;
 }
 
 
+
 class ListNodeByIdAuthorizedResourcesResponse
 {
 
@@ -17418,21 +18649,21 @@ class ListNodeByIdAuthorizedResourcesParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $resourceType;
@@ -17449,7 +18680,7 @@ class ListNodeByIdAuthorizedResourcesParam
      * @param $namespace string
      * @return ListNodeByIdAuthorizedResourcesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17459,12 +18690,11 @@ class ListNodeByIdAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListNodeByIdAuthorizedResourcesParam
      */
-    public function withResourceType(string $resourceType)
+    public function withResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17491,6 +18721,7 @@ EOF;
 }
 
 
+
 class ListRoleAuthorizedResourcesResponse
 {
 
@@ -17505,21 +18736,21 @@ class ListRoleAuthorizedResourcesParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $resourceType;
@@ -17536,7 +18767,7 @@ class ListRoleAuthorizedResourcesParam
      * @param $namespace string
      * @return ListRoleAuthorizedResourcesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17546,12 +18777,11 @@ class ListRoleAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListRoleAuthorizedResourcesParam
      */
-    public function withResourceType(string $resourceType)
+    public function withResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17578,6 +18808,7 @@ EOF;
 }
 
 
+
 class ListUserAuthorizedResourcesResponse
 {
 
@@ -17592,21 +18823,21 @@ class ListUserAuthorizedResourcesParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $resourceType;
@@ -17623,7 +18854,7 @@ class ListUserAuthorizedResourcesParam
      * @param $namespace string
      * @return ListUserAuthorizedResourcesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -17633,12 +18864,11 @@ class ListUserAuthorizedResourcesParam
      * @param $resourceType string
      * @return ListUserAuthorizedResourcesParam
      */
-    public function withResourceType(string $resourceType)
+    public function withResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17665,6 +18895,7 @@ EOF;
 }
 
 
+
 class NodeByCodeResponse
 {
 
@@ -17679,14 +18910,14 @@ class NodeByCodeParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
@@ -17733,6 +18964,7 @@ EOF;
 }
 
 
+
 class NodeByCodeWithMembersResponse
 {
 
@@ -17747,42 +18979,42 @@ class NodeByCodeWithMembersParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $includeChildrenNodes;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
@@ -17801,7 +19033,7 @@ class NodeByCodeWithMembersParam
      * @param $page int
      * @return NodeByCodeWithMembersParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -17811,7 +19043,7 @@ class NodeByCodeWithMembersParam
      * @param $limit int
      * @return NodeByCodeWithMembersParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -17821,7 +19053,7 @@ class NodeByCodeWithMembersParam
      * @param $sortBy SortByEnum
      * @return NodeByCodeWithMembersParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -17831,12 +19063,11 @@ class NodeByCodeWithMembersParam
      * @param $includeChildrenNodes bool
      * @return NodeByCodeWithMembersParam
      */
-    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
+    public function withIncludeChildrenNodes($includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -17923,6 +19154,7 @@ EOF;
 }
 
 
+
 class NodeByIdResponse
 {
 
@@ -17937,7 +19169,7 @@ class NodeByIdParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
@@ -17982,6 +19214,7 @@ EOF;
 }
 
 
+
 class NodeByIdWithMembersResponse
 {
 
@@ -17996,35 +19229,35 @@ class NodeByIdWithMembersParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     /**
      * Optional
-     *
+     * 
      * @var bool
      */
     public $includeChildrenNodes;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
@@ -18041,7 +19274,7 @@ class NodeByIdWithMembersParam
      * @param $page int
      * @return NodeByIdWithMembersParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -18051,7 +19284,7 @@ class NodeByIdWithMembersParam
      * @param $limit int
      * @return NodeByIdWithMembersParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18061,7 +19294,7 @@ class NodeByIdWithMembersParam
      * @param $sortBy SortByEnum
      * @return NodeByIdWithMembersParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
@@ -18071,12 +19304,11 @@ class NodeByIdWithMembersParam
      * @param $includeChildrenNodes bool
      * @return NodeByIdWithMembersParam
      */
-    public function withIncludeChildrenNodes(bool $includeChildrenNodes)
+    public function withIncludeChildrenNodes($includeChildrenNodes)
     {
         $this->includeChildrenNodes = $includeChildrenNodes;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18163,6 +19395,7 @@ EOF;
 }
 
 
+
 class OrgResponse
 {
 
@@ -18177,7 +19410,7 @@ class OrgParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $id;
@@ -18241,6 +19474,7 @@ EOF;
 }
 
 
+
 class OrgsResponse
 {
 
@@ -18255,35 +19489,34 @@ class OrgsParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $page int
      * @return OrgsParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -18293,7 +19526,7 @@ class OrgsParam
      * @param $limit int
      * @return OrgsParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18303,12 +19536,11 @@ class OrgsParam
      * @param $sortBy SortByEnum
      * @return OrgsParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18361,6 +19593,7 @@ EOF;
 }
 
 
+
 class PoliciesResponse
 {
 
@@ -18375,35 +19608,34 @@ class PoliciesParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $page int
      * @return PoliciesParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -18413,7 +19645,7 @@ class PoliciesParam
      * @param $limit int
      * @return PoliciesParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -18423,12 +19655,11 @@ class PoliciesParam
      * @param $namespace string
      * @return PoliciesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18465,6 +19696,7 @@ EOF;
 }
 
 
+
 class PolicyResponse
 {
 
@@ -18479,14 +19711,14 @@ class PolicyParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
@@ -18503,12 +19735,11 @@ class PolicyParam
      * @param $namespace string
      * @return PolicyParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18543,6 +19774,7 @@ EOF;
 }
 
 
+
 class PolicyAssignmentsResponse
 {
 
@@ -18557,56 +19789,55 @@ class PolicyAssignmentsParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var PolicyAssignmentTargetType
      */
     public $targetType;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $targetIdentifier;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $namespace string
      * @return PolicyAssignmentsParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -18616,7 +19847,7 @@ class PolicyAssignmentsParam
      * @param $code string
      * @return PolicyAssignmentsParam
      */
-    public function withCode(string $code)
+    public function withCode($code)
     {
         $this->code = $code;
         return $this;
@@ -18626,7 +19857,7 @@ class PolicyAssignmentsParam
      * @param $targetType PolicyAssignmentTargetType
      * @return PolicyAssignmentsParam
      */
-    public function withTargetType(string $targetType)
+    public function withTargetType($targetType)
     {
         $this->targetType = $targetType;
         return $this;
@@ -18636,7 +19867,7 @@ class PolicyAssignmentsParam
      * @param $targetIdentifier string
      * @return PolicyAssignmentsParam
      */
-    public function withTargetIdentifier(string $targetIdentifier)
+    public function withTargetIdentifier($targetIdentifier)
     {
         $this->targetIdentifier = $targetIdentifier;
         return $this;
@@ -18646,7 +19877,7 @@ class PolicyAssignmentsParam
      * @param $page int
      * @return PolicyAssignmentsParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -18656,12 +19887,11 @@ class PolicyAssignmentsParam
      * @param $limit int
      * @return PolicyAssignmentsParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18686,6 +19916,7 @@ EOF;
 }
 
 
+
 class PolicyWithAssignmentsResponse
 {
 
@@ -18700,21 +19931,21 @@ class PolicyWithAssignmentsParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
@@ -18731,7 +19962,7 @@ class PolicyWithAssignmentsParam
      * @param $page int
      * @return PolicyWithAssignmentsParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -18741,12 +19972,11 @@ class PolicyWithAssignmentsParam
      * @param $limit int
      * @return PolicyWithAssignmentsParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18781,6 +20011,7 @@ EOF;
 }
 
 
+
 class PreviewEmailResponse
 {
 
@@ -18795,7 +20026,7 @@ class PreviewEmailParam
 
     /**
      * Required
-     *
+     * 
      * @var EmailTemplateType
      */
     public $type;
@@ -18825,6 +20056,7 @@ EOF;
 }
 
 
+
 class QiniuUptokenResponse
 {
 
@@ -18839,26 +20071,24 @@ class QiniuUptokenParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $type;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $type string
      * @return QiniuUptokenParam
      */
-    public function withType(string $type)
+    public function withType($type)
     {
         $this->type = $type;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18876,6 +20106,7 @@ EOF;
 }
 
 
+
 class QueryMfaResponse
 {
 
@@ -18890,35 +20121,34 @@ class QueryMfaParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $id;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $userId;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $userPoolId;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $id string
      * @return QueryMfaParam
      */
-    public function withId(string $id)
+    public function withId($id)
     {
         $this->id = $id;
         return $this;
@@ -18928,7 +20158,7 @@ class QueryMfaParam
      * @param $userId string
      * @return QueryMfaParam
      */
-    public function withUserId(string $userId)
+    public function withUserId($userId)
     {
         $this->userId = $userId;
         return $this;
@@ -18938,12 +20168,11 @@ class QueryMfaParam
      * @param $userPoolId string
      * @return QueryMfaParam
      */
-    public function withUserPoolId(string $userPoolId)
+    public function withUserPoolId($userPoolId)
     {
         $this->userPoolId = $userPoolId;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -18967,6 +20196,7 @@ EOF;
 }
 
 
+
 class RoleResponse
 {
 
@@ -18981,14 +20211,14 @@ class RoleParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
@@ -19005,12 +20235,11 @@ class RoleParam
      * @param $namespace string
      * @return RoleParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -19023,6 +20252,7 @@ class RoleParam
     const RoleDocument = <<<EOF
 query role(\$code: String!, \$namespace: String) {
   role(code: \$code, namespace: \$namespace) {
+    id
     namespace
     code
     arn
@@ -19043,6 +20273,7 @@ EOF;
 }
 
 
+
 class RoleWithUsersResponse
 {
 
@@ -19057,17 +20288,31 @@ class RoleWithUsersParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $code;
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $page;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $limit;
 
     /**
      * @param $code string
@@ -19081,12 +20326,31 @@ class RoleWithUsersParam
      * @param $namespace string
      * @return RoleWithUsersParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
     }
 
+    /**
+     * @param $page int
+     * @return RoleWithUsersParam
+     */
+    public function withPage($page)
+    {
+        $this->page = $page;
+        return $this;
+    }
+
+    /**
+     * @param $limit int
+     * @return RoleWithUsersParam
+     */
+    public function withLimit($limit)
+    {
+        $this->limit = $limit;
+        return $this;
+    }
     function createRequest()
     {
         return [
@@ -19097,9 +20361,9 @@ class RoleWithUsersParam
     }
 
     const RoleWithUsersDocument = <<<EOF
-query roleWithUsers(\$code: String!, \$namespace: String) {
+query roleWithUsers(\$code: String!, \$namespace: String, \$page: Int, \$limit: Int) {
   role(code: \$code, namespace: \$namespace) {
-    users {
+    users(page: \$page, limit: \$limit) {
       totalCount
       list {
         id
@@ -19160,6 +20424,164 @@ EOF;
 }
 
 
+
+class RoleWithUsersWithCustomDataResponse
+{
+
+    /**
+     * @var Role
+     */
+    public $roleWithUsersWithCustomData;
+}
+
+class RoleWithUsersWithCustomDataParam
+{
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $code;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $namespace;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $page;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $limit;
+
+    /**
+     * @param $code string
+     */
+    public function __construct($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @param $namespace string
+     * @return RoleWithUsersWithCustomDataParam
+     */
+    public function withNamespace($namespace)
+    {
+        $this->namespace = $namespace;
+        return $this;
+    }
+
+    /**
+     * @param $page int
+     * @return RoleWithUsersWithCustomDataParam
+     */
+    public function withPage($page)
+    {
+        $this->page = $page;
+        return $this;
+    }
+
+    /**
+     * @param $limit int
+     * @return RoleWithUsersWithCustomDataParam
+     */
+    public function withLimit($limit)
+    {
+        $this->limit = $limit;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::RoleWithUsersWithCustomDataDocument,
+            "operationName" => "roleWithUsersWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const RoleWithUsersWithCustomDataDocument = <<<EOF
+query roleWithUsersWithCustomData(\$code: String!, \$namespace: String, \$page: Int, \$limit: Int) {
+  role(code: \$code, namespace: \$namespace) {
+    users(page: \$page, limit: \$limit) {
+      totalCount
+      list {
+        id
+        arn
+        status
+        userPoolId
+        username
+        email
+        emailVerified
+        phone
+        phoneVerified
+        unionid
+        openid
+        nickname
+        registerSource
+        photo
+        password
+        oauth
+        token
+        tokenExpiredAt
+        loginsCount
+        lastLogin
+        lastIP
+        signedUp
+        blocked
+        isDeleted
+        device
+        browser
+        company
+        name
+        givenName
+        familyName
+        middleName
+        profile
+        preferredUsername
+        website
+        gender
+        birthdate
+        zoneinfo
+        locale
+        address
+        formatted
+        streetAddress
+        locality
+        region
+        postalCode
+        city
+        province
+        country
+        createdAt
+        updatedAt
+        externalId
+        customData {
+          key
+          value
+          dataType
+          label
+        }
+      }
+    }
+  }
+}
+EOF;
+}
+
+
+
 class RolesResponse
 {
 
@@ -19174,42 +20596,41 @@ class RolesParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $namespace;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $namespace string
      * @return RolesParam
      */
-    public function withNamespace(string $namespace)
+    public function withNamespace($namespace)
     {
         $this->namespace = $namespace;
         return $this;
@@ -19219,7 +20640,7 @@ class RolesParam
      * @param $page int
      * @return RolesParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -19229,7 +20650,7 @@ class RolesParam
      * @param $limit int
      * @return RolesParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -19239,12 +20660,11 @@ class RolesParam
      * @param $sortBy SortByEnum
      * @return RolesParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -19259,6 +20679,7 @@ query roles(\$namespace: String, \$page: Int, \$limit: Int, \$sortBy: SortByEnum
   roles(namespace: \$namespace, page: \$page, limit: \$limit, sortBy: \$sortBy) {
     totalCount
     list {
+      id
       namespace
       code
       arn
@@ -19270,6 +20691,7 @@ query roles(\$namespace: String, \$page: Int, \$limit: Int, \$sortBy: SortByEnum
 }
 EOF;
 }
+
 
 
 class RootNodeResponse
@@ -19286,7 +20708,7 @@ class RootNodeParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $orgId;
@@ -19333,6 +20755,7 @@ EOF;
 }
 
 
+
 class SearchNodesResponse
 {
 
@@ -19347,7 +20770,7 @@ class SearchNodesParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $keyword;
@@ -19394,6 +20817,7 @@ EOF;
 }
 
 
+
 class SearchUserResponse
 {
 
@@ -19408,49 +20832,49 @@ class SearchUserParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $query;
 
     /**
      * Optional
-     *
+     * 
      * @var string[]
      */
     public $fields;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SearchUserDepartmentOpt[]
      */
     public $departmentOpts;
 
     /**
      * Optional
-     *
+     * 
      * @var SearchUserGroupOpt[]
      */
     public $groupOpts;
 
     /**
      * Optional
-     *
+     * 
      * @var SearchUserRoleOpt[]
      */
     public $roleOpts;
@@ -19467,7 +20891,7 @@ class SearchUserParam
      * @param $fields string[]
      * @return SearchUserParam
      */
-    public function withFields(array $fields)
+    public function withFields($fields)
     {
         $this->fields = $fields;
         return $this;
@@ -19477,7 +20901,7 @@ class SearchUserParam
      * @param $page int
      * @return SearchUserParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -19487,7 +20911,7 @@ class SearchUserParam
      * @param $limit int
      * @return SearchUserParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -19497,7 +20921,7 @@ class SearchUserParam
      * @param $departmentOpts SearchUserDepartmentOpt[]
      * @return SearchUserParam
      */
-    public function withDepartmentOpts(array $departmentOpts)
+    public function withDepartmentOpts($departmentOpts)
     {
         $this->departmentOpts = $departmentOpts;
         return $this;
@@ -19507,7 +20931,7 @@ class SearchUserParam
      * @param $groupOpts SearchUserGroupOpt[]
      * @return SearchUserParam
      */
-    public function withGroupOpts(array $groupOpts)
+    public function withGroupOpts($groupOpts)
     {
         $this->groupOpts = $groupOpts;
         return $this;
@@ -19517,12 +20941,11 @@ class SearchUserParam
      * @param $roleOpts SearchUserRoleOpt[]
      * @return SearchUserParam
      */
-    public function withRoleOpts(array $roleOpts)
+    public function withRoleOpts($roleOpts)
     {
         $this->roleOpts = $roleOpts;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -19594,6 +21017,213 @@ EOF;
 }
 
 
+
+class SearchUserWithCustomDataResponse
+{
+
+    /**
+     * @var PaginatedUsers
+     */
+    public $searchUserWithCustomData;
+}
+
+class SearchUserWithCustomDataParam
+{
+
+    /**
+     * Required
+     * 
+     * @var string
+     */
+    public $query;
+
+    /**
+     * Optional
+     * 
+     * @var string[]
+     */
+    public $fields;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $page;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $limit;
+
+    /**
+     * Optional
+     * 
+     * @var SearchUserDepartmentOpt[]
+     */
+    public $departmentOpts;
+
+    /**
+     * Optional
+     * 
+     * @var SearchUserGroupOpt[]
+     */
+    public $groupOpts;
+
+    /**
+     * Optional
+     * 
+     * @var SearchUserRoleOpt[]
+     */
+    public $roleOpts;
+
+    /**
+     * @param $query string
+     */
+    public function __construct($query)
+    {
+        $this->query = $query;
+    }
+
+    /**
+     * @param $fields string[]
+     * @return SearchUserWithCustomDataParam
+     */
+    public function withFields($fields)
+    {
+        $this->fields = $fields;
+        return $this;
+    }
+
+    /**
+     * @param $page int
+     * @return SearchUserWithCustomDataParam
+     */
+    public function withPage($page)
+    {
+        $this->page = $page;
+        return $this;
+    }
+
+    /**
+     * @param $limit int
+     * @return SearchUserWithCustomDataParam
+     */
+    public function withLimit($limit)
+    {
+        $this->limit = $limit;
+        return $this;
+    }
+
+    /**
+     * @param $departmentOpts SearchUserDepartmentOpt[]
+     * @return SearchUserWithCustomDataParam
+     */
+    public function withDepartmentOpts($departmentOpts)
+    {
+        $this->departmentOpts = $departmentOpts;
+        return $this;
+    }
+
+    /**
+     * @param $groupOpts SearchUserGroupOpt[]
+     * @return SearchUserWithCustomDataParam
+     */
+    public function withGroupOpts($groupOpts)
+    {
+        $this->groupOpts = $groupOpts;
+        return $this;
+    }
+
+    /**
+     * @param $roleOpts SearchUserRoleOpt[]
+     * @return SearchUserWithCustomDataParam
+     */
+    public function withRoleOpts($roleOpts)
+    {
+        $this->roleOpts = $roleOpts;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::SearchUserWithCustomDataDocument,
+            "operationName" => "searchUserWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const SearchUserWithCustomDataDocument = <<<EOF
+query searchUserWithCustomData(\$query: String!, \$fields: [String], \$page: Int, \$limit: Int, \$departmentOpts: [SearchUserDepartmentOpt], \$groupOpts: [SearchUserGroupOpt], \$roleOpts: [SearchUserRoleOpt]) {
+  searchUser(query: \$query, fields: \$fields, page: \$page, limit: \$limit, departmentOpts: \$departmentOpts, groupOpts: \$groupOpts, roleOpts: \$roleOpts) {
+    totalCount
+    list {
+      id
+      arn
+      userPoolId
+      status
+      username
+      email
+      emailVerified
+      phone
+      phoneVerified
+      unionid
+      openid
+      nickname
+      registerSource
+      photo
+      password
+      oauth
+      token
+      tokenExpiredAt
+      loginsCount
+      lastLogin
+      lastIP
+      signedUp
+      blocked
+      isDeleted
+      device
+      browser
+      company
+      name
+      givenName
+      familyName
+      middleName
+      profile
+      preferredUsername
+      website
+      gender
+      birthdate
+      zoneinfo
+      locale
+      address
+      formatted
+      streetAddress
+      locality
+      region
+      postalCode
+      city
+      province
+      country
+      createdAt
+      updatedAt
+      externalId
+      customData {
+        key
+        value
+        dataType
+        label
+      }
+    }
+  }
+}
+EOF;
+}
+
+
+
 class SocialConnectionResponse
 {
 
@@ -19608,7 +21238,7 @@ class SocialConnectionParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $provider;
@@ -19649,6 +21279,7 @@ EOF;
 }
 
 
+
 class SocialConnectionInstanceResponse
 {
 
@@ -19663,7 +21294,7 @@ class SocialConnectionInstanceParam
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $provider;
@@ -19700,6 +21331,7 @@ EOF;
 }
 
 
+
 class SocialConnectionInstancesResponse
 {
 
@@ -19711,6 +21343,7 @@ class SocialConnectionInstancesResponse
 
 class SocialConnectionInstancesParam
 {
+
 
 
     function createRequest()
@@ -19737,6 +21370,7 @@ EOF;
 }
 
 
+
 class SocialConnectionsResponse
 {
 
@@ -19748,6 +21382,7 @@ class SocialConnectionsResponse
 
 class SocialConnectionsParam
 {
+
 
 
     function createRequest()
@@ -19778,6 +21413,7 @@ EOF;
 }
 
 
+
 class TemplateCodeResponse
 {
 
@@ -19789,6 +21425,7 @@ class TemplateCodeResponse
 
 class TemplateCodeParam
 {
+
 
 
     function createRequest()
@@ -19808,6 +21445,7 @@ EOF;
 }
 
 
+
 class UdfResponse
 {
 
@@ -19822,7 +21460,7 @@ class UdfParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
@@ -19858,6 +21496,7 @@ EOF;
 }
 
 
+
 class UdfValueBatchResponse
 {
 
@@ -19872,14 +21511,14 @@ class UdfValueBatchParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $targetIds;
@@ -19919,6 +21558,7 @@ EOF;
 }
 
 
+
 class UdvResponse
 {
 
@@ -19933,14 +21573,14 @@ class UdvParam
 
     /**
      * Required
-     *
+     * 
      * @var UdfTargetType
      */
     public $targetType;
 
     /**
      * Required
-     *
+     * 
      * @var string
      */
     public $targetId;
@@ -19977,6 +21617,7 @@ EOF;
 }
 
 
+
 class UserResponse
 {
 
@@ -19991,26 +21632,24 @@ class UserParam
 
     /**
      * Optional
-     *
+     * 
      * @var string
      */
     public $id;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $id string
      * @return UserParam
      */
-    public function withId(string $id)
+    public function withId($id)
     {
         $this->id = $id;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -20088,6 +21727,7 @@ EOF;
 }
 
 
+
 class UserBatchResponse
 {
 
@@ -20102,10 +21742,17 @@ class UserBatchParam
 
     /**
      * Required
-     *
+     * 
      * @var string[]
      */
     public $ids;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $type;
 
     /**
      * @param $ids string[]
@@ -20115,6 +21762,15 @@ class UserBatchParam
         $this->ids = $ids;
     }
 
+    /**
+     * @param $type string
+     * @return UserBatchParam
+     */
+    public function withType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
     function createRequest()
     {
         return [
@@ -20125,8 +21781,8 @@ class UserBatchParam
     }
 
     const UserBatchDocument = <<<EOF
-query userBatch(\$ids: [String!]!) {
-  userBatch(ids: \$ids) {
+query userBatch(\$ids: [String!]!, \$type: String) {
+  userBatch(ids: \$ids, type: \$type) {
     id
     arn
     userPoolId
@@ -20183,6 +21839,241 @@ EOF;
 }
 
 
+
+class UserBatchWithCustomDataResponse
+{
+
+    /**
+     * @var User[]
+     */
+    public $userBatchWithCustomData;
+}
+
+class UserBatchWithCustomDataParam
+{
+
+    /**
+     * Required
+     * 
+     * @var string[]
+     */
+    public $ids;
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $type;
+
+    /**
+     * @param $ids string[]
+     */
+    public function __construct($ids)
+    {
+        $this->ids = $ids;
+    }
+
+    /**
+     * @param $type string
+     * @return UserBatchWithCustomDataParam
+     */
+    public function withType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::UserBatchWithCustomDataDocument,
+            "operationName" => "userBatchWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const UserBatchWithCustomDataDocument = <<<EOF
+query userBatchWithCustomData(\$ids: [String!]!, \$type: String) {
+  userBatch(ids: \$ids, type: \$type) {
+    id
+    arn
+    userPoolId
+    status
+    username
+    email
+    emailVerified
+    phone
+    phoneVerified
+    unionid
+    openid
+    nickname
+    registerSource
+    photo
+    password
+    oauth
+    token
+    tokenExpiredAt
+    loginsCount
+    lastLogin
+    lastIP
+    signedUp
+    blocked
+    isDeleted
+    device
+    browser
+    company
+    name
+    givenName
+    familyName
+    middleName
+    profile
+    preferredUsername
+    website
+    gender
+    birthdate
+    zoneinfo
+    locale
+    address
+    formatted
+    streetAddress
+    locality
+    region
+    postalCode
+    city
+    province
+    country
+    createdAt
+    updatedAt
+    externalId
+    customData {
+      key
+      value
+      dataType
+      label
+    }
+  }
+}
+EOF;
+}
+
+
+
+class UserWithCustomDataResponse
+{
+
+    /**
+     * @var User
+     */
+    public $userWithCustomData;
+}
+
+class UserWithCustomDataParam
+{
+
+    /**
+     * Optional
+     * 
+     * @var string
+     */
+    public $id;
+
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param $id string
+     * @return UserWithCustomDataParam
+     */
+    public function withId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::UserWithCustomDataDocument,
+            "operationName" => "userWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const UserWithCustomDataDocument = <<<EOF
+query userWithCustomData(\$id: String) {
+  user(id: \$id) {
+    id
+    arn
+    userPoolId
+    status
+    username
+    email
+    emailVerified
+    phone
+    phoneVerified
+    identities {
+      openid
+      userIdInIdp
+      userId
+      connectionId
+      isSocial
+      provider
+      userPoolId
+    }
+    unionid
+    openid
+    nickname
+    registerSource
+    photo
+    password
+    oauth
+    token
+    tokenExpiredAt
+    loginsCount
+    lastLogin
+    lastIP
+    signedUp
+    blocked
+    isDeleted
+    device
+    browser
+    company
+    name
+    givenName
+    familyName
+    middleName
+    profile
+    preferredUsername
+    website
+    gender
+    birthdate
+    zoneinfo
+    locale
+    address
+    formatted
+    streetAddress
+    locality
+    region
+    postalCode
+    city
+    province
+    country
+    createdAt
+    updatedAt
+    externalId
+    customData {
+      key
+      value
+      dataType
+      label
+    }
+  }
+}
+EOF;
+}
+
+
+
 class UserpoolResponse
 {
 
@@ -20194,6 +22085,7 @@ class UserpoolResponse
 
 class UserpoolParam
 {
+
 
 
     function createRequest()
@@ -20243,6 +22135,12 @@ query userpool {
       limit
       enabled
     }
+    loginPasswordFailCheck {
+      timeInterval
+      limit
+      enabled
+    }
+    loginFailStrategy
     changePhoneStrategy {
       verifyOldPhone
     }
@@ -20279,6 +22177,7 @@ EOF;
 }
 
 
+
 class UserpoolTypesResponse
 {
 
@@ -20290,6 +22189,7 @@ class UserpoolTypesResponse
 
 class UserpoolTypesParam
 {
+
 
 
     function createRequest()
@@ -20315,6 +22215,7 @@ EOF;
 }
 
 
+
 class UserpoolsResponse
 {
 
@@ -20329,35 +22230,34 @@ class UserpoolsParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $page int
      * @return UserpoolsParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -20367,7 +22267,7 @@ class UserpoolsParam
      * @param $limit int
      * @return UserpoolsParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -20377,12 +22277,11 @@ class UserpoolsParam
      * @param $sortBy SortByEnum
      * @return UserpoolsParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -20426,6 +22325,7 @@ EOF;
 }
 
 
+
 class UsersResponse
 {
 
@@ -20440,35 +22340,34 @@ class UsersParam
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $page;
 
     /**
      * Optional
-     *
+     * 
      * @var int
      */
     public $limit;
 
     /**
      * Optional
-     *
+     * 
      * @var SortByEnum
      */
     public $sortBy;
 
     public function __construct()
     {
-
     }
 
     /**
      * @param $page int
      * @return UsersParam
      */
-    public function withPage(int $page)
+    public function withPage($page)
     {
         $this->page = $page;
         return $this;
@@ -20478,7 +22377,7 @@ class UsersParam
      * @param $limit int
      * @return UsersParam
      */
-    public function withLimit(int $limit)
+    public function withLimit($limit)
     {
         $this->limit = $limit;
         return $this;
@@ -20488,12 +22387,11 @@ class UsersParam
      * @param $sortBy SortByEnum
      * @return UsersParam
      */
-    public function withSortBy(\Authing\Types\SortByEnum $sortBy)
+    public function withSortBy($sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-
     function createRequest()
     {
         return [
@@ -20565,6 +22463,151 @@ EOF;
 }
 
 
+
+class UsersWithCustomDataResponse
+{
+
+    /**
+     * @var PaginatedUsers
+     */
+    public $usersWithCustomData;
+}
+
+class UsersWithCustomDataParam
+{
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $page;
+
+    /**
+     * Optional
+     * 
+     * @var int
+     */
+    public $limit;
+
+    /**
+     * Optional
+     * 
+     * @var SortByEnum
+     */
+    public $sortBy;
+
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param $page int
+     * @return UsersWithCustomDataParam
+     */
+    public function withPage($page)
+    {
+        $this->page = $page;
+        return $this;
+    }
+
+    /**
+     * @param $limit int
+     * @return UsersWithCustomDataParam
+     */
+    public function withLimit($limit)
+    {
+        $this->limit = $limit;
+        return $this;
+    }
+
+    /**
+     * @param $sortBy SortByEnum
+     * @return UsersWithCustomDataParam
+     */
+    public function withSortBy($sortBy)
+    {
+        $this->sortBy = $sortBy;
+        return $this;
+    }
+    function createRequest()
+    {
+        return [
+            "query" => self::UsersWithCustomDataDocument,
+            "operationName" => "usersWithCustomData",
+            "variables" => $this
+        ];
+    }
+
+    const UsersWithCustomDataDocument = <<<EOF
+query usersWithCustomData(\$page: Int, \$limit: Int, \$sortBy: SortByEnum) {
+  users(page: \$page, limit: \$limit, sortBy: \$sortBy) {
+    totalCount
+    list {
+      id
+      arn
+      userPoolId
+      status
+      username
+      email
+      emailVerified
+      phone
+      phoneVerified
+      unionid
+      openid
+      nickname
+      registerSource
+      photo
+      password
+      oauth
+      token
+      tokenExpiredAt
+      loginsCount
+      lastLogin
+      lastIP
+      signedUp
+      blocked
+      isDeleted
+      device
+      browser
+      company
+      name
+      givenName
+      familyName
+      middleName
+      profile
+      preferredUsername
+      website
+      gender
+      birthdate
+      zoneinfo
+      locale
+      address
+      formatted
+      streetAddress
+      locality
+      region
+      postalCode
+      city
+      province
+      country
+      createdAt
+      updatedAt
+      externalId
+      customData {
+        key
+        value
+        dataType
+        label
+      }
+    }
+  }
+}
+EOF;
+}
+
+
+
 class WhitelistResponse
 {
 
@@ -20579,7 +22622,7 @@ class WhitelistParam
 
     /**
      * Required
-     *
+     * 
      * @var WhitelistType
      */
     public $type;
@@ -20611,4 +22654,3 @@ query whitelist(\$type: WhitelistType!) {
 }
 EOF;
 }
-    
