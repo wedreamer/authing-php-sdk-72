@@ -8,10 +8,10 @@ use Authing\Mgmt\ManagementClient;
 // 初始化资源与权限客户端
 // 通过用户池 id 与 用户池密码进行初始化
 // 通过回调函数进行初始化
-// $management = new ManagementClient("5f819ffdaaf252c4df2c9266", "06eca4ed85c807db9fc6a9d5483a4dc7");
+
 $management = new ManagementClient(function ($options) {
-    $options->userPoolId = '611b62944c0d199eee1d98d2';
-    $options->secret = '25b34fe6cf1f66b0cf61e5464cf76f31';
+    $options->userPoolId = 'userPoolId';
+    $options->secret = 'secret';
     // $options->host = 'http://localhost:3000';
 });
 
