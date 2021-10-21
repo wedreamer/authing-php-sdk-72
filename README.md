@@ -10,7 +10,7 @@ Authing PHP SDK 由两部分组成：`ManagementClient` 和 `AuthenticationClien
 
 ```shell
 # latest stable
-$ composer require authing-sdk/php
+$ composer require authing-sdk/php-72
 ```
 
 ## 使用管理模块
