@@ -20,12 +20,23 @@ class Utils
                 return false;
             }
             return $item->root == true;
-        }, ARRAY_FILTER_USE_KEY);
+        });
         $mapChildren = function ($childId) use ($data, &$mapChildren) {
-            $node = array_filter($data, function ($item) use ($childId) {
+            /* $node = array_filter($data, function ($item) use ($childId) {
                 return $item->id == $childId;
-            });
-            if (is_array($node->children) && $node->children->length > 0) {
+            }); */
+            $node =
+                FluentTraversable::from($data)
+                ->filter(function ($item) use ($childId) {
+                    return $item->id == $childId;
+                })
+                ->toArray();
+            if (count($node) > 0) {
+                $node = (object)$node[0];
+            } else {
+                $node = (object)[];
+            }
+            if (is_array($node->children) && count($node->children) > 0) {
                 $childs = array_map($mapChildren, $node->children);
                 $childs = array_filter($childs, function ($item) {
                     return $item;
@@ -34,12 +45,14 @@ class Utils
             return $node;
         };
         $tree = FluentTraversable::from($rootNodes)
-            ->map(function ($node) use(&$mapChildren) {
-                FluentTraversable::from($node->children)
+            ->map(function ($node) use (&$mapChildren) {
+                $node->children = FluentTraversable::from($node->children)
                     ->map($mapChildren)
                     ->filter(is::notNull())
                     ->toArray();
-            });
+                return $node;
+            })
+            ->toArray();
         return $tree[0];
     }
 

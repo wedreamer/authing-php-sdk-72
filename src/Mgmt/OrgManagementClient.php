@@ -73,7 +73,7 @@ class OrgManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function deleteById($id)
+    public function deleteById(string $id)
     {
         $param = new DeleteOrgParam($id);
         return $this->client->request($param->createRequest());
@@ -81,7 +81,7 @@ class OrgManagementClient
 
     private function buildTree($org)
     {
-        $org->tree = Utils::buildTree(json_encode($org->nodes));
+        $org->tree = Utils::buildTree($org->nodes);
         return $org;
     }
 
@@ -107,25 +107,25 @@ class OrgManagementClient
         return $_;
     }
 
-    public function addNode($orgId, $parentNodeId, $data)
+    public function addNode(string $orgId, string $parentNodeId, array $data)
     {
         $data = (object)$data;
         $param = (new AddNodeV2Param($orgId, $data->name))
-            ->withParentNodeId($data->parentNodeId)
-            ->withCode($data->code)
-            ->withDescription($data->description)
-            ->withNameI18n($data->nameI18n)
-            ->withOrder($data->order);
+            ->withParentNodeId($parentNodeId)
+            ->withCode($data->code ?? null)
+            ->withDescription($data->description ?? null)
+            ->withNameI18n($data->nameI18n ?? null)
+            ->withOrder($data->order ?? null);
         return $this->client->request($param->createRequest());
     }
 
-    public function updateNode($id, $updates)
+    public function updateNode(string $id, array $updates)
     {
         $updates = (object)$updates;
         $param = (new UpdateNodeParam($id))
-            ->withCode($updates->code)
-            ->withDescription($updates->description)
-            ->withName($updates->name);
+            ->withCode($updates->code ?? null)
+            ->withDescription($updates->description ?? null)
+            ->withName($updates->name ?? null);
         return $this->client->request($param->createRequest());
     }
 
@@ -136,12 +136,12 @@ class OrgManagementClient
      * @return Org
      * @throws Exception
      */
-    public function findById($id)
+    public function findById(string $id)
     {
         $param = new OrgParam($id);
         // TODO: buildTree
         $data = $this->client->request($param->createRequest());
-        return Utils::buildTree($data);
+        return $this->buildTree($data);
     }
 
     /**
@@ -152,7 +152,7 @@ class OrgManagementClient
      * @return CommonMessage
      * @throws Exception
      */
-    public function deleteNode($orgId, $nodeId)
+    public function deleteNode(string $orgId, string $nodeId)
     {
         $param = new DeleteNodeParam($orgId, $nodeId);
         return $this->client->request($param->createRequest());
@@ -167,11 +167,11 @@ class OrgManagementClient
      * @return Org
      * @throws Exception
      */
-    public function moveNode($orgId, $nodeId, $targetParentId)
+    public function moveNode(string $orgId, string $nodeId, string $targetParentId)
     {
         $param = new MoveNodeParam($orgId, $nodeId, $targetParentId);
         $data = $this->client->request($param->createRequest());
-        return Utils::buildTree($data);
+        return $this->buildTree($data);
     }
 
     /**
@@ -182,11 +182,11 @@ class OrgManagementClient
      * @return boolean
      * @throws Exception
      */
-    public function isRootNode($orgId, $nodeId)
+    public function isRootNode(string $orgId, string $nodeId)
     {
-        $param = new IsRootNodeParam($orgId, $nodeId);
+        $param = new IsRootNodeParam($nodeId, $orgId);
         $res = $this->client->request($param->createRequest());
-        return (bool)$res->isRootNode;
+        return $res;
     }
 
     /**
@@ -197,11 +197,11 @@ class OrgManagementClient
      * @return Node[]
      * @throws Exception
      */
-    public function listChildren($orgId, $nodeId)
+    public function listChildren(string $nodeId)
     {
-        $param = new ChildrenNodesParam($orgId, $nodeId);
+        $param = new ChildrenNodesParam($nodeId);
         $res = $this->client->request($param->createRequest());
-        return $res->childrenNodes;
+        return $res;
     }
 
     /**
@@ -211,14 +211,14 @@ class OrgManagementClient
      * @return Node[]
      * @throws Exception
      */
-    public function rootNode($orgId)
+    public function rootNode(string $orgId)
     {
         $param = new RootNodeParam($orgId);
         $res = $this->client->request($param->createRequest());
-        return $res->rootNode;
+        return $res;
     }
 
-    public function importByJson($json)
+    public function importByJson(array $json)
     {
         $res = $this->client->httpPost('api/v2/orgs/import', [
             'filetype' => 'json',
@@ -227,14 +227,14 @@ class OrgManagementClient
         return $res;
     }
 
-    public function addMembers($nodeId, $userIds)
+    public function addMembers(string $nodeId, array $userIds)
     {
         $param = new AddMemberParam($nodeId, $userIds);
         $res = $this->client->request($param->createRequest());
         return $res->users;
     }
 
-    public function moveMembers($options)
+    public function moveMembers(array $options)
     {
         $options = (object)$options;
         $param = new MoveMembersParam($options->userIds, $options->sourceNodeId, $options->targetNodeId);
@@ -249,21 +249,22 @@ class OrgManagementClient
      * @return PaginatedUsers
      * @throws Exception
      */
-    public function listMembers($nodeId, $options)
+    public function listMembers(string $nodeId, array $options)
     {
+        $options = (object)$options;
         $param = (new NodeByIdWithMembersParam($nodeId))
-            ->withIncludeChildrenNodes($options->includeChildrenNodes)
-            ->withLimit($options->includeChildrenNodes || 10)
-            ->withPage($options->page || 1);
+            ->withIncludeChildrenNodes($options->includeChildrenNodes ?? false)
+            ->withLimit($options->limit ?? 10)
+            ->withPage($options->page ?? 1);
         $res = $this->client->request($param->createRequest())->users;
-        return $res->users;
+        return $res;
     }
 
-    public function removeMembers($nodeId, $userIds)
+    public function removeMembers(string $nodeId, array $userIds)
     {
         $param = (new RemoveMemberParam($userIds))->withNodeId($nodeId);
         $res = $this->client->request($param->createRequest());
-        return $res->users;
+        return $res;
     }
 
     public function getNodeById(string $nodeId)
@@ -325,11 +326,11 @@ class OrgManagementClient
         return $_;
     }
 
-    public function startSync($options)
+    public function startSync(array $options)
     {
         $options = (object)$options;
-        $providerType = $options->providerType;
-        $adConnectorId = $options->adConnectorId;
+        $providerType = $options->providerType ?? null;
+        $adConnectorId = $options->adConnectorId ?? null;
         $url = '';
         $body = [];
         if ($providerType === 'wechatwork') {
@@ -356,7 +357,7 @@ class OrgManagementClient
         return true;
     }
 
-    public function searchNodes($keyword)
+    public function searchNodes(string $keyword)
     {
         $param = new SearchNodesParam($keyword);
         return $this->client->request($param->createRequest());

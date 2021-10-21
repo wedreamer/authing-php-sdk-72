@@ -47,7 +47,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     // here we can define, what sets of rules will be applied
     $parameters->set(Option::SETS, [
-        // DowngradeSetList::PHP_72,
+        DowngradeSetList::PHP_72,
         // SetList::PHP_52,
         // SetList::PHP_53,
         // SetList::PHP_54,

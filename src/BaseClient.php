@@ -210,16 +210,14 @@ PUBLICKKEY;
     {
         $result = $this->send($this->host . '/graphql/v2', $this->objectToArray($data));
         $this->checkResult($result);
-        // return json_decode(json_encode($result));
-        if (!$this->firstElement($result['data'])) {
-            return null;
-        } else {
-            $attOrObj = $this->firstElement((object)$result['data']);
-            if (gettype($attOrObj) == 'array' || getType($attOrObj) == 'object') {
-                return $this->arrayToObject($attOrObj);
-            } else {
-                return $attOrObj;
-            }
+        $resData = $result->data;
+        return $this->getOnlyValue($resData);
+    }
+
+    public function getOnlyValue($data)
+    {
+        foreach ($data as $key => $value) {
+            return $value;
         }
     }
 
@@ -292,6 +290,7 @@ PUBLICKKEY;
     private function checkResult($result)
     {
         $errors = null;
+        $result = (array)$result;
         if (isset($result['errors'])) {
             $errors = $result['errors'];
         }
@@ -333,6 +332,7 @@ PUBLICKKEY;
             if (gettype($v) == 'array' || getType($v) == 'object') {
                 if ($k !== 'data') {
                     $arr[$k] = $this->arrayToObject($v);
+                    echo "ok";
                 }
             }
             // 如果是关联数组
@@ -440,7 +440,7 @@ PUBLICKKEY;
         if (curl_errno($ch) === 0) {
             $info = curl_getinfo($ch);
             if (!empty($info['http_code']) && ($info['http_code'] == 200 || $info['http_code'] == 201)) {
-                $res = json_decode($response, true);
+                $res = json_decode($response);
                 if (json_last_error() == JSON_ERROR_NONE) {
                     $return = $res;
                 } else {
